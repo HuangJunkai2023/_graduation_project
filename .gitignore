@@ -1,18 +1,42 @@
+# Python 环境、字节码与打包产物。
 .venv/
+venv/
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# 测试、静态检查与覆盖率缓存。
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# 本机密钥和私有配置；只保留无密钥的配置示例。
 .env
-!.env.example
 .env.*
 !.env.example
-.pytest_cache/
-*.egg-info/
+**/.streamlit/secrets.toml
 
-# 原始规范、工程图纸和学校模板保留本地，不纳入源码历史。
+# 编辑器配置、索引和临时文件（包括大型 VS Code C/C++ 数据库）。
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+~$*
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 原始规范、工程图纸和学校模板只存本地；不忽略开题交付文档。
 /project/task1/
 /project/task2/
 /@26-27新版资料/
 
-# 本地知识库、上传副本、实验原始输出和临时文件。
+# 本地知识库、上传副本、截图、会话及实验原始输出。
 /project/qa_system/runtime/
 /project/qa_system/outputs/
