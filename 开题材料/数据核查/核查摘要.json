@@ -1,0 +1,37 @@
+{
+  "audit_date": "2026-10-13T14:49:41.736478+08:00",
+  "inventory_counts": {
+    "task1": {
+      ".pdf": 978,
+      ".doc": 177,
+      ".docx": 73,
+      ".xlsx": 16,
+      ".zip": 1,
+      ".wps": 1,
+      ".pptx": 3,
+      ".tmp": 1,
+      ".rar": 1,
+      "[no extension]": 1,
+      ".chm": 8,
+      ".jpg": 32,
+      ".png": 1,
+      ".xls": 1
+    },
+    "task2": {
+      ".pdf": 50
+    }
+  },
+  "candidates": 25,
+  "extraction_counts": {
+    "text_sample_pass": 14,
+    "mixed_or_low_text": 4,
+    "no_useful_text_sample": 7
+  },
+  "baseline_selftest_exit_code": 0,
+  "limitations": [
+    "PDF audit samples at most five pages, not full-document quality or OCR validation.",
+    "Filename metadata is a hint, not verification of validity or publication status.",
+    "Hash duplicate detection covers the 25 candidates only.",
+    "No embeddings, online model calls, external uploads or real QA evaluation were performed."
+  ]
+}

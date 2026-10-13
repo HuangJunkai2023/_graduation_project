@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+!.env.example
+.env.*
+!.env.example
+.pytest_cache/
+*.egg-info/
+
+# 原始规范、工程图纸和学校模板保留本地，不纳入源码历史。
+/project/task1/
+/project/task2/
+/@26-27新版资料/
+
+# 本地知识库、上传副本、实验原始输出和临时文件。
+/project/qa_system/runtime/
+/project/qa_system/outputs/

@@ -1,0 +1,17 @@
+﻿learning_outcome,handbook_label,assessment_context,planned_evidence,actual_evidence_location,status
+LO1,Apply principles,"Proposal, technical achievement, report and viva: principles are identified in the proposal, applied in the technical work, and explained and defended in the report and viva.",检索与生成原理；报告方法部分与答辩解释,,planned_not_achieved
+LO2,Analyse problems,"All components: problem analysis underpins scoping, execution, discussion and reflection.",需求清单、失败案例与研究问题,,planned_not_achieved
+LO3,Computational techniques,"Technical achievement, report and viva: techniques must be justified, applied, and their limitations recognised.",检索实现、配置与消融实验,,planned_not_achieved
+LO4,Evaluate literature,"Proposal, portfolio, report and viva. Literature evaluation is evidenced in writing and discussion, not in the video.",文献阅读记录及设计选择的批判比较,,planned_not_achieved
+LO5,Design with constraints,"All components: design intent, implementation, adaptation and trade-offs are assessed across all project phases.",数据/成本/时间约束及范围决策记录,,planned_not_achieved
+LO6,Systems approach,"All components: a systems approach must be planned, applied and reflected upon.",离线建库与在线问答数据流及集成测试,,planned_not_achieved
+LO7,Environmental/Societal impact,"Proposal, report and viva: impacts are considered in planning and design, and critically discussed.",来源展示与人工复核定位、调用资源记录,,planned_not_achieved
+LO8,Ethical concerns,"Proposal, portfolio, report and viva: ethical considerations inform planning, decisions and professional reflection.",资料权限检查、真实成果与来源归属,,planned_not_achieved
+LO9,Risk management,"Proposal, portfolio, report and viva: risks are identified, tracked, managed and discussed.",风险表及导师会议后的更新,,planned_not_achieved
+LO10,Security risks,"Proposal, technical achievement, report and viva: security is planned, designed into the solution and justified.",凭据隔离、文档指令处理与本地访问检查,,planned_not_achieved
+LO11,Inclusion & EDI,"Proposal, report and viva: inclusive design choices and reflection on them.",可访问界面及术语/改写问题测试,,planned_not_achieved
+LO12,Practical/Lab skills,"Technical achievement, portfolio, report and viva. Not assessed in the proposal, which is a planning document.",可复现环境、解析调试和实际系统演示,,planned_not_achieved
+LO13,Materials/Technologies,All components: the selection and application of materials and technologies.,工具/模型/数据选择与替代方案,,planned_not_achieved
+LO14,Engineering Management,"Proposal, portfolio, report and viva: evidenced through planning documents and discussion, not the video.",甘特图、里程碑、资源与偏差记录,,planned_not_achieved
+LO15,Communication,"All components: written, oral and multimedia communication.",报告、Review 幻灯片、视频及答辩,,planned_not_achieved
+LO16,Lifelong Learning/CPD,Portfolio (Progress Journal and Review Documents) and report reflection. Not assessed in the proposal or the video.,实际周志、技术学习记录及最终个人反思,,planned_not_achieved

@@ -1,0 +1,357 @@
+% =====================================================================
+%  RAG 参考文献 BibTeX
+%  与《RAG参考文献.md》一一对应，可直接 \bibliography{references} 使用。
+%  提交前请用 Google Scholar / DBLP 复核版式与页码。
+% =====================================================================
+
+% ---------- 一、RAG 起源与基础架构 ----------
+@inproceedings{lewis2020rag,
+  title     = {Retrieval-Augmented Generation for Knowledge-Intensive {NLP} Tasks},
+  author    = {Lewis, Patrick and Perez, Ethan and Piktus, Aleksandra and Petroni, Fabio and Karpukhin, Vladimir and Goyal, Naman and K{\"u}ttler, Heinrich and Lewis, Mike and Yih, Wen-tau and Rockt{\"a}schel, Tim and Riedel, Sebastian and Kiela, Douwe},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2020},
+  eprint    = {2005.11401},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{guu2020realm,
+  title     = {{REALM}: Retrieval-Augmented Language Model Pre-Training},
+  author    = {Guu, Kelvin and Lee, Kenton and Tung, Zora and Pasupat, Panupong and Chang, Mingwei},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2020},
+  eprint    = {2002.08909},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{izacard2021fid,
+  title     = {Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering},
+  author    = {Izacard, Gautier and Grave, Edouard},
+  booktitle = {Proceedings of the 16th Conference of the European Chapter of the ACL (EACL)},
+  year      = {2021},
+  eprint    = {2007.01282},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{borgeaud2022retro,
+  title     = {Improving Language Models by Retrieving from Trillions of Tokens},
+  author    = {Borgeaud, Sebastian and Mensch, Arthur and Hoffmann, Jordan and others},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2022},
+  eprint    = {2112.04426},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{karpukhin2020dpr,
+  title     = {Dense Passage Retrieval for Open-Domain Question Answering},
+  author    = {Karpukhin, Vladimir and O{\u{g}}uz, Barlas and Min, Sewon and Lewis, Patrick and Wu, Ledell and Edunov, Sergey and Chen, Danqi and Yih, Wen-tau},
+  booktitle = {Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year      = {2020},
+  eprint    = {2004.04906},
+  archivePrefix = {arXiv}
+}
+
+% ---------- 二、稀疏检索 / BM25 ----------
+@inproceedings{robertson1994bm25,
+  title     = {Some Simple Effective Approximations to the 2-{P}oisson Model for Probabilistic Weighted Retrieval},
+  author    = {Robertson, Stephen E. and Walker, Steve},
+  booktitle = {Proceedings of the 17th Annual International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  pages     = {232--241},
+  year      = {1994}
+}
+
+@article{robertson2009bm25,
+  title     = {The Probabilistic Relevance Framework: {BM25} and Beyond},
+  author    = {Robertson, Stephen and Zaragoza, Hugo},
+  journal   = {Foundations and Trends in Information Retrieval},
+  volume    = {3},
+  number    = {4},
+  pages     = {333--389},
+  year      = {2009}
+}
+
+@inproceedings{trotman2014bm25,
+  title     = {Improvements to {BM25} and Language Models Examined},
+  author    = {Trotman, Andrew and Puurula, Antti and Burgess, Blake},
+  booktitle = {Proceedings of the 19th Australasian Document Computing Symposium (ADCS)},
+  year      = {2014}
+}
+
+@inproceedings{formal2021splade,
+  title     = {{SPLADE}: Sparse Lexical and Expansion Model for First Stage Ranking},
+  author    = {Formal, Thibault and Piwowarski, Benjamin and Clinchant, St{\'e}phane},
+  booktitle = {Proceedings of the 44th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  year      = {2021},
+  eprint    = {2107.05720},
+  archivePrefix = {arXiv}
+}
+
+% ---------- 三、稠密检索与语义表示 ----------
+@inproceedings{reimers2019sbert,
+  title     = {{Sentence-BERT}: Sentence Embeddings using Siamese {BERT}-Networks},
+  author    = {Reimers, Nils and Gurevych, Iryna},
+  booktitle = {Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year      = {2019},
+  eprint    = {1908.10084},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{khattab2020colbert,
+  title     = {{ColBERT}: Efficient and Effective Passage Search via Contextualized Late Interaction over {BERT}},
+  author    = {Khattab, Omar and Zaharia, Matei},
+  booktitle = {Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  year      = {2020},
+  eprint    = {2004.12832},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{gao2023hyde,
+  title     = {Precise Zero-Shot Dense Retrieval without Relevance Labels},
+  author    = {Gao, Luyu and Ma, Xueguang and Lin, Jimmy and Callan, Jamie},
+  booktitle = {Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (ACL)},
+  year      = {2023},
+  eprint    = {2212.10496},
+  archivePrefix = {arXiv}
+}
+
+% ---------- 四、混合检索与重排 ----------
+@article{nogueira2019bert_rerank,
+  title     = {Passage Re-ranking with {BERT}},
+  author    = {Nogueira, Rodrigo and Cho, Kyunghyun},
+  journal   = {arXiv preprint},
+  year      = {2019},
+  eprint    = {1901.04085},
+  archivePrefix = {arXiv}
+}
+
+@article{nogueira2020monot5,
+  title     = {Document Ranking with a Pretrained Sequence-to-Sequence Model},
+  author    = {Nogueira, Rodrigo and Jiang, Zhiying and Pradeep, Ronak and Lin, Jimmy},
+  journal   = {arXiv preprint},
+  year      = {2020},
+  eprint    = {2003.06713},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{cormack2009rrf,
+  title     = {Reciprocal Rank Fusion Outperforms Condorcet and Individual Rank Learning Methods},
+  author    = {Cormack, Gordon V. and Clarke, Charles L. A. and Buettcher, Stefan},
+  booktitle = {Proceedings of the 32nd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  year      = {2009}
+}
+
+% ---------- 五、向量索引与 ANN ----------
+@article{malkov2018hnsw,
+  title     = {Efficient and Robust Approximate Nearest Neighbor Search using Hierarchical Navigable Small World Graphs},
+  author    = {Malkov, Yury A. and Yashunin, Dmitry A.},
+  journal   = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume    = {42},
+  number    = {4},
+  pages     = {824--836},
+  year      = {2020},
+  eprint    = {1603.09320},
+  archivePrefix = {arXiv}
+}
+
+@article{johnson2019faiss,
+  title     = {Billion-Scale Similarity Search with {GPUs}},
+  author    = {Johnson, Jeff and Douze, Matthijs and J{\'e}gou, Herv{\'e}},
+  journal   = {IEEE Transactions on Big Data},
+  volume    = {7},
+  number    = {3},
+  pages     = {535--547},
+  year      = {2019},
+  eprint    = {1702.08734},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{guo2020scann,
+  title     = {Accelerating Large-Scale Inference with Anisotropic Vector Quantization},
+  author    = {Guo, Ruiqi and Sun, Philip and Lindgren, Erik and Geng, Quan and Simcha, David and Chern, Felix and Kumar, Sanjiv},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2020},
+  eprint    = {1908.10396},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{wang2021milvus,
+  title     = {Milvus: A Purpose-Built Vector Data Management System},
+  author    = {Wang, Jianguo and Yi, Xiaomeng and Guo, Rentong and others},
+  booktitle = {Proceedings of the 2021 International Conference on Management of Data (SIGMOD)},
+  year      = {2021}
+}
+
+% ---------- 六、自适应 / 主动检索 ----------
+@inproceedings{jiang2023flare,
+  title     = {Active Retrieval Augmented Generation},
+  author    = {Jiang, Zhengbao and Xu, Frank F. and Gao, Luyu and Sun, Zhiqing and Liu, Qian and Dwivedi-Yu, Jane and Yang, Yiming and Callan, Jamie and Neubig, Graham},
+  booktitle = {Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year      = {2023},
+  eprint    = {2305.06983},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{asai2024selfrag,
+  title     = {{Self-RAG}: Learning to Retrieve, Generate, and Critique through Self-Reflection},
+  author    = {Asai, Akari and Wu, Zeqiu and Wang, Yizhong and Sil, Avirup and Hajishirzi, Hannaneh},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024},
+  eprint    = {2310.11511},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{shao2023iterretgen,
+  title     = {Enhancing Retrieval-Augmented Large Language Models with Iterative Retrieval-Generation Synergy},
+  author    = {Shao, Zhihong and Gong, Yeyun and Shen, Yelong and Huang, Minlie and Duan, Nan and Chen, Weizhu},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2023},
+  year      = {2023},
+  eprint    = {2305.15294},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{ma2023rewrite,
+  title     = {Query Rewriting for Retrieval-Augmented Large Language Models},
+  author    = {Ma, Xinbei and Gong, Yeyun and He, Pengcheng and Zhao, Hai and Duan, Nan},
+  booktitle = {Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year      = {2023},
+  eprint    = {2305.14283},
+  archivePrefix = {arXiv}
+}
+
+% ---------- 七、上下文组织与生成质量 ----------
+@article{liu2024lostmiddle,
+  title     = {Lost in the Middle: How Language Models Use Long Contexts},
+  author    = {Liu, Nelson F. and Lin, Kevin and Hewitt, John and Paranjape, Ashwin and Bevilacqua, Michele and Petroni, Fabio and Liang, Percy},
+  journal   = {Transactions of the Association for Computational Linguistics (TACL)},
+  volume    = {12},
+  year      = {2024},
+  eprint    = {2307.03172},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{shi2023distracted,
+  title     = {Large Language Models Can Be Easily Distracted by Irrelevant Context},
+  author    = {Shi, Freda and Chen, Xinyun and Misra, Kanishka and Scales, Nathan and Dohan, David and Chi, Ed H. and Sch{\"a}rli, Nathanael and Zhou, Denny},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2023},
+  eprint    = {2302.00093},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{yu2023genread,
+  title     = {Generate rather than Retrieve: Large Language Models are Strong Context Generators},
+  author    = {Yu, Wenhao and Iter, Dan and Wang, Shuohang and Xu, Yichong and Ju, Mingxuan and Sanyal, Soumya and Zhu, Chenguang and Zeng, Michael and Jiang, Meng},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023},
+  eprint    = {2209.10063},
+  archivePrefix = {arXiv}
+}
+
+% ---------- 八、评估与基准 ----------
+@inproceedings{es2024ragas,
+  title     = {{RAGAS}: Automated Evaluation of Retrieval Augmented Generation},
+  author    = {Es, Shahul and James, Jithin and Espinosa-Anke, Luis and Schockaert, Steven},
+  booktitle = {Proceedings of the 18th Conference of the European Chapter of the ACL (EACL): System Demonstrations},
+  year      = {2024},
+  eprint    = {2309.15217},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{petroni2021kilt,
+  title     = {{KILT}: a Benchmark for Knowledge Intensive Language Tasks},
+  author    = {Petroni, Fabio and Piktus, Aleksandra and Fan, Angela and others},
+  booktitle = {Proceedings of the 2021 Conference of the North American Chapter of the ACL (NAACL)},
+  year      = {2021},
+  eprint    = {2009.02252},
+  archivePrefix = {arXiv}
+}
+
+@article{tang2024multihoprag,
+  title     = {{MultiHop-RAG}: Benchmarking Retrieval-Augmented Generation for Multi-Hop Queries},
+  author    = {Tang, Yixuan and Yang, Yi},
+  journal   = {arXiv preprint},
+  year      = {2024},
+  eprint    = {2401.15391},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{chen2024rgb,
+  title     = {Benchmarking Large Language Models in Retrieval-Augmented Generation},
+  author    = {Chen, Jiawei and Lin, Hongyu and Han, Xianpei and Sun, Le},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  year      = {2024},
+  eprint    = {2309.01431},
+  archivePrefix = {arXiv}
+}
+
+% ---------- 九、综述与中文/模型相关 ----------
+@article{gao2023ragsurvey,
+  title     = {Retrieval-Augmented Generation for Large Language Models: A Survey},
+  author    = {Gao, Yunfan and Xiong, Yun and Gao, Xinyu and Jia, Kangxiang and Pan, Jinliu and Bi, Yuxi and Dai, Yi and Sun, Jiawei and Wang, Meng and Wang, Haofen},
+  journal   = {arXiv preprint},
+  year      = {2023},
+  eprint    = {2312.10997},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{fan2024ragmeetllm,
+  title     = {A Survey on {RAG} Meeting {LLM}s: Towards Retrieval-Augmented Large Language Models},
+  author    = {Fan, Wenqi and Ding, Yujuan and Ning, Liangbo and others},
+  booktitle = {Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)},
+  year      = {2024},
+  eprint    = {2405.06211},
+  archivePrefix = {arXiv}
+}
+
+@article{zhao2023llmsurvey,
+  title     = {A Survey of Large Language Models},
+  author    = {Zhao, Wayne Xin and Zhou, Kun and Li, Junyi and others},
+  journal   = {arXiv preprint},
+  year      = {2023},
+  eprint    = {2303.18223},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{xiao2024cpack,
+  title     = {{C-Pack}: Packed Resources for General Chinese Embeddings},
+  author    = {Xiao, Shitao and Liu, Zheng and Zhang, Peitian and others},
+  booktitle = {Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  year      = {2024},
+  eprint    = {2309.07597},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{du2022glm,
+  title     = {{GLM}: General Language Model Pretraining with Autoregressive Blank Infilling},
+  author    = {Du, Zhengxiao and Qian, Yujie and Liu, Xiao and others},
+  booktitle = {Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (ACL)},
+  year      = {2022},
+  eprint    = {2103.10360},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{devlin2019bert,
+  title     = {{BERT}: Pre-training of Deep Bidirectional Transformers for Language Understanding},
+  author    = {Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},
+  booktitle = {Proceedings of the 2019 Conference of the North American Chapter of the ACL (NAACL)},
+  year      = {2019},
+  eprint    = {1810.04805},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{vaswani2017attention,
+  title     = {Attention Is All You Need},
+  author    = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and others},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2017},
+  eprint    = {1706.03762},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{brown2020gpt3,
+  title     = {Language Models are Few-Shot Learners},
+  author    = {Brown, Tom B. and Mann, Benjamin and Ryder, Nick and others},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2020},
+  eprint    = {2005.14165},
+  archivePrefix = {arXiv}
+}
