@@ -1,8 +1,8 @@
-# ELEC3801 Project Proposal — Working Draft
+# ELEC3801 Project Proposal — IEEE Two-Column Review Version
 
 Academic year: 2026–27. Prepared: 13 October 2026.
 
-Status: draft for student revision and supervisor discussion; not submitted or approved. Planned work and proposed targets below are not completed results.
+Status: complete technical proposal for student verification and supervisor review; personal declarations remain pending. Not submitted or approved. Future objectives and targets are not completed results.
 
 Name and SID: [TO BE COMPLETED BY STUDENT]
 
@@ -16,31 +16,33 @@ Project title: A Study on a Large-Model-Based Intelligent Question-Answering Sys
 
 ### Background and problem
 
-Overhead contact system information in the supplied project collection is distributed across technical standards, specifications and multiple document versions. This project addresses the difficulty of locating relevant clauses and checking which document supports an answer. Its intended users are students and engineers consulting Chinese-language standards. The prototype will support document consultation; it will not certify compliance or replace engineering judgement.
+Chinese overhead contact system standards contain specialised terminology, numerical limits and edition-dependent requirements. In the supplied collection, relevant information is distributed across PDF and DOCX files. A useful answer must identify the applicable document and preserve conditions and units. Fluent but unsupported answers, particularly from the wrong edition, could mislead students and engineers consulting these documents.
 
-Retrieval-augmented generation (RAG) combines retrieved evidence with language generation [1]. BM25 provides a lexical retrieval baseline [2], while dense retrieval provides a complementary representation-based approach [3]. However, the effectiveness of these methods on this particular collection remains to be measured. Query rewriting motivates resolving short follow-up questions before retrieval [4]. Research on irrelevant context [5] and multidimensional RAG evaluation [6] motivates testing evidence quality as well as answer quality. These studies inform the design; they do not establish its effectiveness for railway standards.
+Retrieval-augmented generation (RAG) connects retrieval with language generation [1]. BM25 offers lexical matching [2]; dense retrieval represents semantic similarity [3]. Neither establishes which edition is appropriate or guarantees that retrieved text supports a claim. Query rewriting [4] motivates resolving follow-ups before retrieval, but this project initially uses explicit context rules rather than a trained rewriter. Findings on irrelevant context [5] motivate testing distractors; their arithmetic-task results do not establish performance on railway standards. RAGAs [6] motivates separating retrieval and answer evaluation; manual evidence checking will remain primary here.
 
 ### Aim and research questions
 
-The aim is to develop and evaluate a traceable question-answering prototype for a curated collection of overhead contact system standards. RQ1 asks whether hybrid retrieval improves evidence retrieval over BM25-only and dense-only retrieval. RQ2 asks whether explicit standard identifiers and edition years reduce wrong-version citations. RQ3 asks whether evidence checks reduce unsupported answers without excessive refusal of answerable questions.
+The aim is to develop and evaluate an evidence-based question-answering system for a curated collection of Chinese overhead contact system standards. RQ1: Does hybrid retrieval improve evidence recall over BM25-only and dense-only retrieval? RQ2: Does explicit standard-and-year handling reduce wrong-edition answers? RQ3: Do evidence checks reduce unsupported answers without excessive refusal?
 
-### Objectives and proposed success criteria
+### Objectives and success criteria
 
-O1 — By Week 11, curate 20–30 usable, non-duplicate documents with file identifiers, standard/edition metadata, extraction reports and source locations. The initial 25-file audit is a candidate pool, not a completed corpus; unsuitable files will be replaced. All selected documents must have a recorded use-permission decision before external processing.
+O1 — By Week 11, curate 20–30 usable, non-duplicate documents. Record each file's hash, provenance, standard identifier, year, extraction quality and processing permission. Check metadata against document pages; a filename alone cannot establish current validity. Register unusable scans and replace them where possible.
 
-O2 — By Week 15, implement ingestion, retrieval, generation, source display and simple follow-up handling. Every displayed citation must resolve to a stored passage and document location. PDF citations will use file-page numbers; DOCX citations will use paragraph or table locations. Missing requested editions must not silently fall back to another edition.
+O2 — By Week 16, integrate ingestion, three retrieval modes, DeepSeek generation, simple follow-ups and source display. All displayed citations must resolve to retrieved evidence: PDF file-page numbers or DOCX paragraph/table locations. All mandatory missing-edition tests must avoid silently substituting another version. Parsing and API failures must remain distinguishable from evidence-based refusals.
 
-O3 — Construct 100 manually checked questions, reserving 20 for development and 80 for testing, with reference answers and evidence locations for answerable questions. Linked follow-ups and paraphrases will remain in the same split. Freeze the corpus, labels and configuration before final evaluation.
+O3 — By Week 17, freeze 100 manually checked questions: 20 development and 80 test items. Cover clauses, terminology, versions, follow-ups and unanswerable questions. Annotate required facts and evidence locations; keep related questions in one split. Select weights and thresholds using development data only.
 
-O4 — By Week 19, compare the three retrieval modes and ablate edition handling and evidence checks. Proposed targets are Recall@5 of at least 0.80, answer correctness of at least 0.80, citation support of at least 0.90, refusal recall of at least 0.80 on unanswerable questions, and false refusal of at most 0.10 on answerable questions. Report denominators, errors and uncertainty. Targets are provisional design goals, not expected findings; negative results will be reported.
+O4 — By Week 20, compare BM25, dense and hybrid retrieval, then separately remove edition filtering and the retrieval evidence gate. Hold other settings constant. Measure Recall@5, MRR@5, answer correctness, citation support, wrong-edition rate, refusal recall, false refusal and stage latency. Proposed targets are Recall@5 ≥0.80, answer correctness ≥0.80, citation support ≥0.90, refusal recall ≥0.80 and false refusal ≤0.10. These are provisional engineering goals, not measured findings. Report sample counts, paired differences, uncertainty and negative results; API failures do not count as correct refusals.
 
-O5 — Deliver reproducible configurations, evaluation outputs, a local demonstration, the assessed report and a demonstration video by Week 24. Record retrieval, generation and total latency, including API failures, without promising an unmeasured response-time target.
+O5 — By Week 24, deliver the reproducible system, evaluation records, IEEE report, Portfolio and demonstration video. Present progress at the compulsory Week 18 Symposium and prepare for the Weeks 25–27 viva.
 
-### Integrated technical approach and boundaries
+### Integrated approach, feasibility and boundaries
 
-The offline pipeline will parse text-based PDF/DOCX files, retain provenance, split text into passages, obtain online embeddings and build a local index. The online pipeline will resolve simple follow-up context, interpret standard/edition constraints, retrieve passages with BM25 and/or vector similarity, check evidence, then request a cited answer or explain insufficient evidence. Interfaces will pass passage text, stable identifiers, source locations and scores; the response will expose answer status, citations and timings. A local demonstration interface and batch evaluator will share the same pipeline.
+The ingestion module will parse and chunk documents, preserve source locations and store records in SQLite. A separate online embedding service will populate vectors. The retriever will apply standard/year constraints and combine normalised BM25 and cosine scores. After evidence screening, the generation client will send permitted passages to DeepSeek and validate returned JSON, citation identifiers and verbatim excerpts. Matching an excerpt is not proof of semantic support. The local Streamlit interface and batch evaluator will share structured records containing evidence, answer status and timings.
 
-The supplied Python reference implementation will remain identifiable as the baseline. My planned contribution is corpus curation, edition-aware retrieval, evidence checking and controlled evaluation. Training a foundation model, drawing interpretation, production deployment and multi-user access are excluded. Knowledge gaps include extraction quality, retrieval calibration, assessment consistency and API cost estimation. Early feasibility checks, development-only tuning and a documented annotation rubric will address these gaps.
+A preliminary three-document prototype already supports BM25 retrieval and cited DeepSeek answers; live API checks have succeeded. Embedding integration and formal evaluation remain outstanding. This establishes feasibility, not accuracy. The supplied reference implementation is preserved; the current implementation is separate. Planned contributions are corpus curation, version handling, evidence checks and controlled analysis, with reference-code and AI assistance acknowledged.
+
+The scope excludes model training, drawing interpretation, OCR development, multi-user access and production deployment. The system supports consultation, not engineering approval. Knowledge gaps in extraction, retrieval calibration, annotation consistency and API budgeting will be addressed through literature study, development-set trials and documented scoring rules.
 
 ### References
 
@@ -58,69 +60,69 @@ The supplied Python reference implementation will remain identifiable as the bas
 
 ## Section 2: Gantt Chart
 
-Use the accompanying Gantt chart and task/dependency table. The schedule uses course weeks, not ISO calendar weeks. Week 5 is the planning anchor; the student's current course week is to be confirmed. Holidays and examination weeks must be reconciled with the module calendar. Final submission is Thursday of Week 24 at 14:00 UK time; viva preparation continues to Weeks 25–27.
+The Gantt chart labels every interval as Week X. Week 12–13 is provisionally reserved for a two-week Chinese New Year break, with no scheduled project work. Its position must be confirmed against the course timetable; it is not a calendar-date conversion. No task bars cross the break. Planned effort remains 400 hours to Week 24 plus 28 for the viva; these are not recorded actual hours. Early prototyping is recorded separately.
 
 ![Project schedule](figures/gantt.png)
 
-Milestones: M1 proposal reviewed for Week 7 submission; M2 curated corpus and baseline by Week 11; M3 enhancements integrated by Week 15; M4 evaluation completed by Week 19; M5 report draft by Week 22; M6 final submission by Week 24. Approvals and completion will be recorded only when they occur.
+Milestones: M1 Proposal (Week 7); M2 corpus/baseline (Week 11); M3 integration (Week 16); M4 frozen benchmark/configuration (Week 17); MS compulsory Symposium (Week 18); M5 evaluation (Week 20); M6 report draft (Week 22); M7 submission (Week 24). Week 7 and Week 24 deadlines: Thursday, 14:00 UK time.
 
-The detailed dependency table and effort allocations are maintained in `进度计划.csv`. Weekly journals, meeting records, risk updates and ten Review Documents run throughout the project.
+Critical sequence: T03 → T06 → T07 → T11 → T12 → T13 → T15; integration also gates T11. Predecessors show dependencies. T16 resumes after the break and covers journals, ten Review Documents and supervision; T18 includes Symposium feedback. Confirm holiday journal obligations with the course; the work break does not itself waive submission requirements. Reassess risks and remaining effort at each meeting. Weeks 23–24 provide revision/contingency time; resolve data and API risks earlier (R1/R4/R6). Attendance and approvals remain unconfirmed until they occur.
 
 ## Section 3: Preliminary Resources Estimate
 
-| Resource | Choice and justification | Estimated incremental cost / lead time | Limitation or alternative |
+| Resource | Choice and justification | Cost / lead time | Limitation and alternative |
 | --- | --- | --- | --- |
-| Existing computer and storage | Use the existing computer for parsing and a small local index; no model training is planned. | £0 new hardware planned; available, capacity still to be measured. | A larger corpus could exceed memory; start with the curated subset. |
-| Python environment and libraries | Reuse the supplied implementation and isolate dependencies; retain attribution and check licences before distribution. | £0 software purchase planned; allow one working day for setup. | Dependency compatibility and extraction quality require tests. |
-| Online embedding and chat APIs | Avoid local model deployment; select compatible services after availability and permitted-use checks. | Proposed total spending ceiling £50, not a supplier quote or approved purchase; allow up to one week for account/access checks. | Provider and prices are not fixed. Estimate calls and token costs before use; cache embeddings and run small pilots. |
-| Local standards collection | Select 20–30 usable documents, record versions and permissions, then manually check answer evidence. | No new acquisition cost assumed; allocate two weeks for selection and permission checks. | Possession does not establish permission to upload or redistribute; use an authorised substitute if necessary. |
-| Versioning and backup | Keep code/configuration history and an approved separate backup of working documents. | £0 if existing storage suffices; set up during Week 5. | Do not place restricted source documents or credentials in a public repository. |
+| Existing computer and storage | CPU parsing and a small local index; existing machine already runs the prototype. No training GPU needed. | £0 new hardware planned; available. | Measure memory and disk use on the selected corpus; reduce batch size if necessary. |
+| Python, PyMuPDF, python-docx, NumPy, SQLite and Streamlit | Inspectable parsing, scoring and persistence; a local interface and evaluator share the pipeline. | £0 software purchase planned; environment working. | Complex layouts need manual checks. Review library licences before distribution. A larger vector database is unnecessary for this small corpus. |
+| DeepSeek chat and a separate embedding API | Reuse verified chat access; online vectors avoid local model deployment. | Proposed combined ceiling £50; chat access verified, allow one week to verify embedding access. | Chat access does not provide a configured embedding service. Record model identifiers, cost units and availability before full runs. No guaranteed price or service continuity. |
+| Standards and literature | Select 20–30 usable documents from local candidates; use six initial papers to justify design and assessment. | No new acquisition cost assumed; selection/permissions in Weeks 8–11. | Replace unusable or unauthorised files. Reserve T07's 28 hours for drafting and checking questions. |
+| Git and separate backup | Track code, labels and report changes; keep an independent approved backup. | £0 if existing storage suffices; Git already initialised. | Local Git alone is not a backup. Keep keys and restricted source documents out of published history. |
 
-Budget assumption: the £50 API ceiling is a draft planning allowance requiring student/supervisor agreement before expenditure. No purchase or API call has been made as part of this preparation.
+Budget basis: at most 500 generation requests for one pass over all 100 questions and five configurations, plus a provisional 100-call development/recovery allowance; the fixed test comparison itself is 80 × 5 = 400 runs. Embedding cost includes one corpus build and applicable query vectors, with caching. Estimate tokens using a permitted pilot and actual provider usage, not Chinese character counts. Allocate provisionally £35 to generation, £10 to embeddings and £5 contingency; this is a planning cap, not a quotation, funding approval or observed cost. Small live chat checks have already occurred; cumulative expenditure must be taken from the account ledger. Reassess the plan at 80% of the cap, retaining the fixed test set and all five comparisons before optional repeat runs. Confirm institutional funding arrangements separately; reimbursement is not assumed.
 
-Workshop/access answers, based on the current software-only scope: allocated laboratory bench — No; Mechanical Workshop — No; Electronics Workshop — No; special IT support — No currently anticipated, revisit if network or service access fails; special electronic components — No.
+Workshop/access: allocated laboratory bench — No; Mechanical Workshop — No; Electronics Workshop — No; special IT support — No currently anticipated; purchase of special electronic components — No. This is desktop software work. If hardware scope changes, consult the School's purchasing/manufacturing process before ordering and account for its lead times.
 
 ## Section 4: Professional Practice, Risk, and Compliance
 
 ### Societal and environmental considerations
 
-Intended benefit: help users find and inspect relevant evidence efficiently. Incorrect numerical requirements, omitted conditions or wrong editions could mislead users. Answers will therefore display their source and edition, identify insufficient evidence, and be presented as consultation support rather than engineering approval. Evaluation will assess factual correctness and source support; no reduction in real engineering incidents is claimed.
+User benefit is easier access to inspectable clauses. Wrong editions, numerical errors and omitted conditions could mislead users; the interface will show evidence and version labels and distinguish insufficient evidence from a supported answer. It will not certify compliance. No measured productivity or safety benefit is claimed.
 
-Inclusion and accessibility: use readable Chinese text, clear labels, selectable source passages, keyboard-accessible controls and status messages that do not rely on colour alone. Evaluate both standard terminology and paraphrased questions. English-language retrieval and universal accessibility are outside the first evaluation and will be stated as limitations.
+Inclusion: provide readable Chinese text, labelled keyboard-operable controls, selectable evidence and status messages independent of colour. Test specialist terms and ordinary-language paraphrases. This first study does not establish English-language coverage or universal accessibility.
 
-Environment: reuse existing hardware, avoid model training, cache unchanged embeddings and bound document size and repeated API runs. Record request/token counts where available as resource-use indicators; do not claim measured carbon savings without a defensible method.
+Sustainability: reuse hardware, avoid model training, cache unchanged vectors and limit unnecessary API reruns. Log available request/token counts as resource-use indicators; do not equate them with measured carbon emissions. Preserve configuration and documentation so the prototype can be maintained without rebuilding unchanged data.
 
 ### Ethics
 
-The planned evaluation uses technical documents and researcher-prepared questions. No participant recruitment, personal-data collection or user study is currently planned. Check document confidentiality, copyright, permitted cloud processing and provider retention conditions before external calls. Do not upload engineering drawings in this phase. Preserve acknowledgement of the supplied reference code and cited literature; maintain a truthful account of original work and assistance.
+Use technical documents and researcher-prepared questions; no participant recruitment or personal-data study is planned. Record provenance, confidentiality and permission for cloud processing before sending each document. A local permission toggle records a decision but does not establish legal permission. Exclude restricted material and engineering drawings from external processing in this phase. Check service retention conditions for permitted data.
 
-Ethics declaration: [STUDENT AND SUPERVISOR TO CONFIRM THE APPLICABLE OPTION]. Neither official checkbox is selected in this draft. If the scope changes to involve participants or personal data, discuss the required review before that work begins.
+Acknowledge the supplied reference implementation, literature and AI assistance in code and writing; keep development records. Do not present generated annotations, planned improvements or test targets as measured results. The applicable assessment brief governs permitted assistance. Neither ethics checkbox is selected here: the student and supervisor must determine the applicable option. Any later participant study requires review before recruitment.
 
 ### Risk Register
 
-Likelihood and impact use qualitative Low / Medium / High ratings at proposal stage; these are estimates to be reviewed at supervision meetings.
+Likelihood/impact: L = Low, M = Medium, H = High. Initial ratings are planning judgements. The student owns all risks and will review triggers, actions and residual risk at each supervision meeting.
 
-| Risk | Likelihood | Impact | Mitigation and schedule consequence |
-| --- | --- | --- | --- |
-| Scanned or poorly extracted documents | High | High | Audit candidates before building the corpus; prefer verified text-bearing counterparts; replace unusable files in Weeks 8–10. OCR remains outside the first implementation. |
-| Incorrect edition metadata or duplicate documents | High | High | Verify identifiers against document pages, record hashes and retain explicit edition labels; test missing-edition cases before Week 15. |
-| Unsupported answers or misleading citations | Medium | High | Require evidence display, add refusal and citation checks, and evaluate wrong-version and insufficient-evidence cases. |
-| API outage, access failure or spending overrun | Medium | High | Run a small permitted pilot, record usage, cache embeddings and retain an offline retrieval demonstration; allow integration buffer in Weeks 14–15. Offline retrieval does not count as completed online QA validation. |
-| Annotation errors or development/test leakage | Medium | High | Use a written rubric, group related questions before splitting, recheck labels and freeze the test set before final comparisons. |
-| Data processing permission not established | Medium | High | Resolve during corpus selection; exclude affected files from external processing and use authorised substitutes. |
-| Schedule slippage or scope expansion | Medium | High | Prioritise text QA and evaluation; exclude drawing interpretation and training; retain Weeks 23–24 for final checks. |
-| Loss of code, labels or report drafts | Low | High | Maintain version history and an approved independent backup; verify that a recent snapshot can be restored. |
+| ID / risk | L / I | Trigger, mitigation and affected tasks |
+| --- | --- | --- |
+| R1 Extraction failure | H / H | Scans, broken tables or lost units: audit pages, replace unsuitable files and log exclusions; no silent ingestion. T03/T06, before M2. |
+| R2 Wrong edition or duplicates | H / H | Metadata conflicts: verify document pages and hashes, preserve years and test missing editions. T06/T08, before M3. |
+| R3 Unsupported answers | M / H | Claims lack support or omit conditions: evidence gate, excerpt checks and manual semantic scoring; report false refusals. T09/T12. |
+| R4 API/cost/model changes | M / H | Access fails, model changes or 80% cap reached: pilot early, cache vectors, log failures, freeze model identifiers and retain local retrieval. Verify embedding access in T05; integration buffer T10. |
+| R5 Annotation/leakage | M / H | Ambiguous labels or related facts cross splits: grouped split, separate label recheck and immutable freeze before testing; mask configuration during scoring. T07/T11/T12. |
+| R6 Data permissions | M / H | Cloud rights unresolved: keep affected files local and select authorised replacements before corpus freeze. T03/T06. |
+| R7 Schedule/scope | M / H | Milestone slips: protect the Week 12–13 holiday; prioritise five comparisons, defer OCR/drawings and use Weeks 23–24 buffer. T11–T15; preserve Symposium attendance. |
+| R8 Data loss | L / H | Missing/corrupt files: version code and labels, back up to separate approved storage and test restoration. T16, throughout. |
 
-Risk owner: student; status: open at proposal stage. Review risk changes with the supervisor and record actions in the journal.
+If an alternative provider becomes necessary, repeat all affected comparisons with the same replacement configuration; do not mix favourable outputs from different models. A local retrieval demo is a fallback deliverable, not evidence that online QA or hybrid evaluation has passed.
 
 ### Security
 
-Keep API keys outside source control and redact them from logs. Bind the demonstration to the local machine; do not publish a network service. Treat document text as untrusted evidence, not instructions: it must not change system rules or trigger tools. Restrict input formats and file sizes, isolate malformed-file errors, and avoid execution of embedded content. Verify that citations refer to retrieved passages. Store only necessary evaluation logs and use approved storage for any restricted documents.
+Protect API credentials, permitted document content and evaluation labels. Keep keys in an ignored local environment file and out of exports; rotate any exposed key. Bind the demo to localhost. Treat retrieved text as untrusted data: it cannot change system rules or execute tools. Limit upload type/size, isolate parser errors and validate citation identifiers and excerpts. Keep the test set and experiment configurations versioned; minimise logs and back up restricted files only to approved storage.
 
 ### Safety
 
-Specialist laboratory required: No under the current scope; all work is desktop software and document analysis. Follow applicable workstation and electrical safety procedures. Whether existing risk assessments cover the work: [TO BE CONFIRMED WITH SUPERVISOR].
+Specialist laboratory required: No. Work is desktop software and document analysis; there are no live railway, high-voltage, workshop or field experiments. Follow workstation ergonomics and normal computer electrical-safety procedures. Existing risk-assessment coverage / whether a new assessment is required: [TO BE CONFIRMED WITH SUPERVISOR].
 
-Safety briefing attendance, student signature and date: [TO BE COMPLETED BY STUDENT; NOT ASSERTED BY THIS DRAFT].
+Safety briefing attendance: [TO BE COMPLETED BY STUDENT]. The official declaration and signature fields remain for personal confirmation; no attendance is asserted by this document.
 
 Supervisor approval, date and means: [PENDING; TO BE RECORDED AFTER REVIEW].

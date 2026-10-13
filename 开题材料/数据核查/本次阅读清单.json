@@ -1,0 +1,140 @@
+{
+  "review_date": "2026-10-13",
+  "school_files": 17,
+  "reference_files": 5,
+  "method": "Extract all school files; read the content of each distinct document, including examples and old handbook; read both reference READMEs in full. Paired PDF/DOCX versions are treated as the same material.",
+  "files": [
+    {
+      "path": "@26-27新版资料/1.Handbook_ELEC3801_Handbook_2026-27.docx",
+      "sha256": "b212e4fa612286e5799891f427605362b5730fcbaf6b5cad1d69468308e0070f",
+      "characters_extracted": 39391,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/1.Handbook_ELEC3801_Handbook_2026-27.pdf",
+      "sha256": "69d576b7e37664c4965076e4ab978eef7d7e22dad50c69d26ffbc0a2952791d5",
+      "characters_extracted": 45018,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/2.Proposal template_ELEC3801_Project_Proposal_Form.docx",
+      "sha256": "9ba9dc75f1d96dfdb0606aa807ebb8cb07da2c301bbf6888d9063be122993f99",
+      "characters_extracted": 13900,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/2.Proposal template_ELEC3801_Project_Proposal_Form.pdf",
+      "sha256": "9b717c1b87360a1e582071ed92e3f9962ff4724537d0b2ad0b0047b71e9f15e2",
+      "characters_extracted": 8090,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/3.Final report template_ELEC3801_Final_Report_Template.docx",
+      "sha256": "5bf90d04ec795552b0855c6ed43a12395de5e2deacfebb56cb77c103af210a45",
+      "characters_extracted": 21219,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/3.Final report template_ELEC3801_Final_Report_Template.pdf",
+      "sha256": "7777ff47a09331d74b989db8a9f1907f0b7b794bf73de934f83df01500466a6e",
+      "characters_extracted": 16265,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/4.Example_ELEC3801_Example_Final_Report.docx",
+      "sha256": "55ec52cf7a4d0d766053a2fd45e1b0004334708d733e1b0faf53ddf17ef4a9d1",
+      "characters_extracted": 54790,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/4.Example_ELEC3801_Example_Final_Report.pdf",
+      "sha256": "397417aa6eaef637e8d74194a0179b1f5a14ad576c49cdc3aee6afb216a80ce9",
+      "characters_extracted": 51820,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/4.Example_ELEC3801_Project_Proposal_Example.docx",
+      "sha256": "a2f26b4b1d544204b0d22659f2f51a4550dba9d4db95698f9ae84d78442be645",
+      "characters_extracted": 15589,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/4.Example_ELEC3801_Project_Proposal_Example.pdf",
+      "sha256": "7a1bdc86d43dfb020d7c8a653cc1431ac771fbaa29a505b64ed15071c8e4b046",
+      "characters_extracted": 14585,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/4.Example_ELEC3801_Review_Document_Example.docx",
+      "sha256": "5215922d9d04cf424956d7ecfbfec3a4753c68214a8237816768e50e3b40f1e1",
+      "characters_extracted": 2574,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/4.Example_ELEC3801_Review_Document_Example.pdf",
+      "sha256": "ee5c3369c9041080a462f9350ca3e2cbe44beaa0496d8a8272cc16566e9f8e51",
+      "characters_extracted": 2628,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/5.Progress Journal Guides_ELEC3801_How_to_Keep_Your_Progress_Journal.docx",
+      "sha256": "832abe807d61c48c144c8c6d49baed52b21ea47975fb19a6128e98e863ea8454",
+      "characters_extracted": 16537,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/5.Progress Journal Guides_ELEC3801_How_to_Keep_Your_Progress_Journal.pdf",
+      "sha256": "7e1d7a18b8163d7971dcc06ca6f6ded7b02c52d7714c8672b55e4aca5c90c51d",
+      "characters_extracted": 17189,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/6.Purchasing and Manufacturing_Manufacturing Guide ELEC3801.docx",
+      "sha256": "dd35e56024f922133b549e2b13106cebf54d7118967eee74e1be1ab1d626b8ba",
+      "characters_extracted": 11567,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/6.Purchasing and Manufacturing_Purchasing Guide - ELEC3801 - New.docx",
+      "sha256": "bfe7b3d26e9665c54ba25422cd1417cc45935beb4d32bdee6a13dfea7f8386ad",
+      "characters_extracted": 5747,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "@26-27新版资料/ELEC3875 Handbook -202526.pdf",
+      "sha256": "ae98b15f3539ed6d7eb715f308f25b664b410ade360f1da43fc784a425b738e5",
+      "characters_extracted": 57361,
+      "role": "旧课程对照，不作为要求"
+    },
+    {
+      "path": "毕设资料/README.md",
+      "sha256": "c00c644e9a7c158980167e79864404a33d63f0c812f9d9ee3b865c1dd81ec8d5",
+      "characters_extracted": 2701,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "毕设资料/01_主要代码/README.md",
+      "sha256": "ea7b1a9899e5ae424deb96252e450120a6ecb50488ccf5ed421df5782ee8e76e",
+      "characters_extracted": 3480,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "毕设资料/03_技术说明/系统设计说明.md",
+      "sha256": "1cc1d01ce7ace4f02a302430e95ee24603a103d2755fab9bc5e5dabd408bd557",
+      "characters_extracted": 4979,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "毕设资料/03_技术说明/论文写作建议.md",
+      "sha256": "3dd0e06090f01fac1dc1b709c6310813fe03ae53628e6896ee7288ada910db25",
+      "characters_extracted": 3060,
+      "role": "课程材料或参考资料"
+    },
+    {
+      "path": "毕设资料/02_参考文献/RAG参考文献.md",
+      "sha256": "16ad10fc01cc607a9879a652856dad76dc7ec8588fbe9cc425660a34ad11524c",
+      "characters_extracted": 7261,
+      "role": "课程材料或参考资料"
+    }
+  ]
+}

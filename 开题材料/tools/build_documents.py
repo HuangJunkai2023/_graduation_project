@@ -4,12 +4,15 @@ Markdown and CSV are the editable sources. Re-running regenerates derived output
 Does not contact providers, submit coursework or fill factual declarations.
 """
 from pathlib import Path
+import argparse
 import csv
 import hashlib
 import importlib.metadata
 import json
 import re
 import sys
+import subprocess
+import tempfile
 
 import matplotlib
 matplotlib.use("Agg")
@@ -71,9 +74,16 @@ def add_markdown(container, text):
             for row in rows[1:]:
                 cells = table.add_row().cells
                 for j, value in enumerate(row): inline(cells[j].paragraphs[0], value)
+            if rows[0][0] == "ID / risk":
+                table.autofit=False
+                for col, width in zip(table.columns, [1.65, 0.55, 4.90]):
+                    col.width=Inches(width)
+                for row in table.rows:
+                    for cell, width in zip(row.cells, [1.65, 0.55, 4.90]):
+                        cell.width=Inches(width)
             continue
         if line.startswith("!["):
-            container.add_paragraph().add_run().add_picture(str(OUT / "figures/gantt.png"), width=Inches(6.0))
+            container.add_paragraph().add_run().add_picture(str(OUT / "figures/gantt.png"), width=Inches(10.1))
         elif line.startswith("#"):
             p = container.add_paragraph()
             p.paragraph_format.keep_with_next = True
@@ -88,36 +98,52 @@ def replace_table(table, content):
     for row in list(table.rows): table._tbl.remove(row._tr)
     cell = table.add_row().cells[0]
     add_markdown(cell, content)
+    # A first-cell heading with keepNext can move the whole row in LibreOffice.
+    # Keep a tiny neutral opening paragraph to allow the content box to split.
+    cell.paragraphs[0].paragraph_format.keep_with_next=False
     return cell
 
 
 def make_schedule():
     rows = list(csv.DictReader((OUT / "进度计划.csv").open(encoding="utf-8")))
-    fig, ax = plt.subplots(figsize=(8.3, 6.7))
-    labels = [f"{r['id']}  {r['task']}" for r in rows]
-    for i, row in enumerate(rows):
-        start, end = int(row["start_week"]), int(row["end_week"])
-        ax.barh(i, end-start+0.8, left=start-0.4, height=0.58,
-                color="#497b91" if row["id"] != "T16" else "#c5cdd0",
-                edgecolor="#243c49", linewidth=0.5, hatch="//" if start >= 25 else None)
+    config = json.loads((OUT / "假期配置.json").read_text())
+    excluded = {week for period in config["breaks"] for week in range(period["start_week"],period["end_week"]+1)}
+    short = {"T01":"Scope and objectives", "T02":"Literature review", "T03":"Audit and permissions", "T04":"Proposal", "T05":"Baseline / API checks", "T06":"Corpus and index", "T07":"Benchmark annotation", "T08":"Edition handling", "T09":"Evidence checks", "T10":"Integration", "T11":"Tune and freeze", "T12":"Evaluation / analysis", "T18":"Symposium", "T13":"Report / LO evidence", "T14":"Video preparation", "T15":"Final submission", "T16":"Journal / supervision", "T17":"Viva"}
+    fig, ax = plt.subplots(figsize=(10.8,7.1))
+    labels = [f"{r['id']}  {short[r['id']]}" for r in rows]
+    for period in config["breaks"]:
+        ax.axvspan(period["start_week"]-0.5,period["end_week"]+0.5,facecolor="#f1f1f1",edgecolor="#aaaaaa",hatch="//",linewidth=0.5,zorder=0)
+        ax.text((period["start_week"]+period["end_week"])/2,7.5,"CHINESE NEW YEAR BREAK (PROVISIONAL)",rotation=90,ha="center",va="center",fontsize=10,color="#555555")
+    for i,row in enumerate(rows):
+        active=[w for w in range(int(row["start_week"]),int(row["end_week"])+1) if w not in excluded]
+        assert active, f"Task {row['id']} has no working weeks"
+        # Group adjacent active weeks; no bar or work allocation crosses a holiday.
+        groups=[]
+        for week in active:
+            if not groups or week != groups[-1][-1]+1: groups.append([week])
+            else: groups[-1].append(week)
+        for group in groups:
+            ax.barh(i,group[-1]-group[0]+0.8,left=group[0]-0.4,height=0.55,
+                    color="#497b91" if row["id"]!="T16" else "#adb8bd",
+                    edgecolor="#243c49",linewidth=0.5,hatch="//" if row["id"]=="T17" else None)
         if row["milestone"]:
-            ax.plot(end+0.36, i, marker="D", markersize=4, color="#182d38")
-    ax.set_yticks(range(len(rows)), labels, fontsize=7)
+            end=active[-1]
+            ax.plot(end+0.30,i,marker="D",markersize=4,color="#182d38")
+            ax.text(end+0.48,i-0.25,row["milestone"],fontsize=9,color="#182d38")
+    ax.set_yticks(range(len(rows)),labels,fontsize=11)
     ax.invert_yaxis()
-    ax.set_xticks(range(5,28))
-    ax.tick_params(axis="x", labelsize=7)
+    ax.set_xticks(range(5,28),[f"Week {week}" for week in range(5,28)],rotation=90,fontsize=10)
     ax.set_xlim(4.5,27.5)
-    ax.set_xlabel("Course week (not calendar week)", fontsize=9)
-    ax.set_title("ELEC3801 2026–27 | Proposed project schedule", loc="left", fontsize=12, pad=15)
-    ax.grid(axis="x", alpha=0.2)
+    ax.set_title("Project schedule by course week",loc="left",fontsize=14,pad=12)
+    ax.grid(axis="x",alpha=0.15)
     ax.set_axisbelow(True)
-    ax.axvline(24.5, color="#253744", linestyle="--", linewidth=1)
-    for spine in ["top", "right", "left"]: ax.spines[spine].set_visible(False)
-    fig.text(0.04, 0.03, "Diamonds = milestones. Hatched bar = post-submission viva.\nDependencies, outputs and effort are in the accompanying task table. All bars are planned work.", fontsize=8)
-    fig.subplots_adjust(left=0.43, right=0.98, top=0.9, bottom=0.14)
+    ax.axvline(24.5,color="#253744",linestyle="--",linewidth=0.8)
+    for spine in ["top","right","left"]:ax.spines[spine].set_visible(False)
+    fig.text(0.02,0.03,"Diamonds: milestones. Grey band: no planned project work; holiday weeks await timetable confirmation.\nDependencies and effort are listed in the accompanying schedule table. Bars show plans, not actual progress.",fontsize=10)
+    fig.subplots_adjust(left=0.29,right=0.98,top=0.93,bottom=0.19)
     (OUT / "figures").mkdir(exist_ok=True)
-    fig.savefig(OUT / "figures/gantt.png", dpi=220, facecolor="white")
-    fig.savefig(OUT / "figures/gantt.pdf", facecolor="white")
+    fig.savefig(OUT / "figures/gantt.png",dpi=300,facecolor="white")
+    fig.savefig(OUT / "figures/gantt.pdf",facecolor="white")
     plt.close(fig)
     return rows
 
@@ -157,42 +183,70 @@ def make_docx(tasks):
     tables = list(doc.tables)
     for i in range(3): tables[0].rows[i].cells[1].text = "[TO BE COMPLETED BY STUDENT]"
     tables[0].rows[3].cells[1].text = TITLE
-    doc.paragraphs[0].insert_paragraph_before("WORKING DRAFT — 13 October 2026 — Not submitted or approved").runs[0].bold = True
+    doc.paragraphs[0].insert_paragraph_before("SUPERVISOR REVIEW VERSION — 13 October 2026 — Personal declarations pending").runs[0].bold = True
     replace_table(tables[1],sections["1"])
-    chartcell = replace_table(tables[2],sections["2"])
-    chartcell.add_paragraph("Task dependencies and effort (planned)").runs[0].bold=True
-    details = chartcell.add_table(rows=1,cols=5)
-    details.style="Table Grid"
-    for c,v in zip(details.rows[0].cells,["ID / task","Weeks","Depends on","Hours","Output / milestone"]): c.text=v
-    for r in tasks:
-        values=[f"{r['id']} {r['task']}",f"{r['start_week']}–{r['end_week']}",r['depends_on'] or "—",r['planned_hours'],r['deliverable']+(" / "+r['milestone'] if r['milestone'] else "")]
-        for c,v in zip(details.add_row().cells,values): c.text=v
-    chartcell.add_paragraph("Planning allowance: 400 hours to final submission, plus 28 hours reserved for viva. Dependencies within the same week mean that the predecessor milestone is completed before the dependent work starts. Week 5 is an assumed start; align dates with the actual course calendar.")
+    replace_table(tables[2],sections["2"])
     replace_table(tables[3],sections["3"])
     parts = re.split(r"^### ([^\n]+)\n",sections["4"],flags=re.M)
     professional={parts[i]:parts[i+1] for i in range(1,len(parts),2)}
     replace_table(tables[4],professional["Societal and environmental considerations"])
-    replace_table(tables[5],professional["Ethics"]+"\n\n☐ No review required — student/supervisor to confirm.\n\n☐ Review required — student/supervisor to confirm.")
+    replace_table(tables[5],professional["Ethics"]+"\n\n☐ My project does not involve human participants, personal data or other ethical issues requiring review.\n\n☐ My project involves human participants, personal data or other ethical issues. I have discussed this with my supervisor and will obtain ethical approval before starting that work.")
     replace_table(tables[6],professional["Risk Register"])
     replace_table(tables[7],professional["Security"])
-    replace_table(tables[8],professional["Safety"].split("Supervisor approval,")[0])
-    replace_table(tables[9],"Supervisor approval, date and means: [PENDING; TO BE RECORDED AFTER REVIEW].\n\nBefore submission, the student must obtain the supervisor's review and confirmation using the course procedure.")
+    replace_table(tables[8],professional["Safety"].split("Supervisor approval,")[0]+'''
+
+Official declaration — unsigned; complete only after personally verifying it:
+
+“I have attended the Safety Briefing (included in the ELEC3801 introductory lectures) and my attendance was recorded. I am aware that full Risk Assessments relating to project work within the School have been conducted. I agree to comply with all the relevant safety policies.”
+
+Student signature: [TO BE COMPLETED BY STUDENT]     Date: [TO BE COMPLETED BY STUDENT]
+''')
+    replace_table(tables[9],'''Before submission, the supervisor should check and approve this form. A signature, or verbal, email or Teams confirmation, is accepted.
+
+“My student has completed this form satisfactorily and is aware of their safety responsibilities.”
+
+Supervisor signature or confirmation (date and means): [PENDING; TO BE RECORDED AFTER REVIEW].''')
     # Keep the official document's page geometry and section structure. Release
     # placeholder row heights so real content can paginate instead of clipping.
     def format_table(table):
-        for row in table.rows:
+        for index, row in enumerate(table.rows):
             row.height=None
             row.height_rule=WD_ROW_HEIGHT_RULE.AUTO
+            if len(table.columns) > 1:
+                row._tr.get_or_add_trPr().append(OxmlElement("w:cantSplit"))
+                if index == 0:
+                    row._tr.get_or_add_trPr().append(OxmlElement("w:tblHeader"))
             for cell in row.cells:
                 for p in cell.paragraphs:
-                    p.paragraph_format.space_after=Pt(5)
+                    p.paragraph_format.space_after=Pt(3)
+                    p.paragraph_format.line_spacing=1.0
+                    p.paragraph_format.keep_together=True
                     for run in p.runs:
                         run.font.name="Calibri"
                         run.font.size=Pt(10)
+                    if not p.text and not p._p.xpath('.//w:drawing'):
+                        p.paragraph_format.space_after=Pt(0)
+                        p.paragraph_format.line_spacing=Pt(1)
                 for nested in cell.tables: format_table(nested)
     for t in doc.tables: format_table(t)
+    # Template spacer paragraphs should not strand the final declaration.
+    in_professional=False
+    for p in doc.paragraphs:
+        if p.text.startswith("Section 4:"):
+            in_professional=True
+        if in_professional and p.text.strip() in {"Societal and environmental considerations", "Ethics:", "Risk Register", "Security", "Safety:"}:
+            p.paragraph_format.keep_with_next=True
+        if in_professional and p.text.strip()=="Security":
+            p.paragraph_format.page_break_before=True
+        if in_professional and not p.text.strip() and not p._p.xpath('./w:pPr/w:sectPr'):
+            p.paragraph_format.space_before=Pt(0)
+            p.paragraph_format.space_after=Pt(0)
+            p.paragraph_format.line_spacing=Pt(2)
+            for run in p.runs: run.font.size=Pt(2)
+    for index in [7,8,9]:
+        tables[index].rows[0]._tr.get_or_add_trPr().append(OxmlElement("w:cantSplit"))
     doc.core_properties.title=TITLE
-    doc.core_properties.subject="ELEC3801 2026–27 proposal working draft"
+    doc.core_properties.subject="ELEC3801 2026–27 proposal for supervisor review"
     doc.core_properties.author=""
     doc.core_properties.comments="Draft prepared with assistant support; personal declarations and approval remain incomplete."
     target=OUT / "Proposal_学校模板版_草稿.docx"
@@ -210,16 +264,79 @@ def make_docx(tasks):
            "official_template_sha256":before_hash,"template_unmodified":True,
            "docx_reopened":True,"embedded_figures":len(reopened.inline_shapes),
            "page_layout_visually_rendered":False,
-           "note":"Word rendering not available in this environment. Check pagination in Word before submission; the seven-page cap applies to the final report, not this proposal."}
+           "note":"Run with --renderer to export and check PDF. The seven-page cap applies to the final report, not this proposal."}
     (OUT / "数据核查/文档校验.json").write_text(json.dumps(stats,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps(stats,ensure_ascii=False,indent=2))
 
 
+def make_chinese_docx():
+    doc=Document()
+    section=doc.sections[0]
+    section.left_margin=section.right_margin=Inches(0.7)
+    section.top_margin=section.bottom_margin=Inches(0.65)
+    style=doc.styles["Normal"]
+    style.font.name="Calibri"
+    style.font.size=Pt(10.5)
+    style.element.get_or_add_rPr().rFonts.set(qn("w:eastAsia"), "Noto Sans CJK SC")
+    style.paragraph_format.space_after=Pt(6)
+    add_markdown(doc, (OUT / "06_开题报告中文对照.md").read_text())
+    for table in doc.tables:
+        for i,row in enumerate(table.rows):
+            row._tr.get_or_add_trPr().append(OxmlElement("w:cantSplit"))
+            if i==0: row._tr.get_or_add_trPr().append(OxmlElement("w:tblHeader"))
+            for cell in row.cells:
+                for p in cell.paragraphs:
+                    p.paragraph_format.space_after=Pt(3)
+                    for run in p.runs:
+                        run.font.size=Pt(9)
+    doc.core_properties.title="基于大模型的接触网领域智能问答系统研究：开题报告中文对照"
+    doc.core_properties.author=""
+    doc.save(OUT / "开题报告_中文对照稿.docx")
+
+
+def render_pdf(renderer):
+    import pymupdf
+    target = OUT / "Proposal_学校模板版_草稿.docx"
+    with tempfile.TemporaryDirectory(prefix="ocs_proposal_pdf_") as tmp:
+        command = [renderer, f"-env:UserInstallation={Path(tmp).as_uri()}/profile", "--headless", "--convert-to", "pdf", "--outdir", str(OUT), str(target)]
+        run = subprocess.run(command, capture_output=True, text=True, timeout=60)
+        if run.returncode == 81:
+            run = subprocess.run(command, capture_output=True, text=True, timeout=60)
+        if run.returncode:
+            raise RuntimeError(run.stderr or run.stdout)
+    pdf = target.with_suffix(".pdf")
+    with pymupdf.open(pdf) as doc:
+        text = "\n".join(page.get_text() for page in doc)
+        for required in ["Section 1:", "Section 2:", "Section 3:", "Section 4:", "R8", "Student signature:", "Supervisor signature or confirmation", "2024.eacl-demo.16"]:
+            assert required in text, f"Missing rendered content: {required}"
+        outside = []
+        for i, page in enumerate(doc):
+            for x0, y0, x1, y1, *_ in page.get_text("blocks"):
+                if x0 < -1 or y0 < -1 or x1 > page.rect.width+1 or y1 > page.rect.height+1:
+                    outside.append(i+1)
+        assert not outside, f"Content outside page bounds: {outside}"
+        stats_path = OUT / "数据核查/文档校验.json"
+        stats = json.loads(stats_path.read_text())
+        stats.update(pdf_exported=True, pdf_pages=len(doc), pdf_text_bounds_checked=True,
+                     pdf_sha256=hashlib.sha256(pdf.read_bytes()).hexdigest(),
+                     note="PDF exported with LibreOffice; Calibri may use a compatible font substitution. Open the DOCX in the submission editor to confirm final pagination. The seven-page cap applies to the final report.")
+        stats_path.write_text(json.dumps(stats,ensure_ascii=False,indent=2)+"\n")
+    print(f"PDF exported and structurally checked: {pdf.name}")
+
+
 def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--renderer", help="LibreOffice soffice executable for optional PDF export")
+    args=parser.parse_args()
     tasks=make_schedule()
     assert sum(int(r["planned_hours"]) for r in tasks if r["id"]!="T17")==400
-    make_outcome_map()
+    # Preserve any actual evidence the student has added to this living register.
+    if not (OUT / "学习成果证据规划.csv").exists():
+        make_outcome_map()
     make_docx(tasks)
+    make_chinese_docx()
+    if args.renderer:
+        render_pdf(args.renderer)
     packages={name:importlib.metadata.version(name) for name in ["python-docx","pymupdf","python-dotenv","numpy","matplotlib"]}
     packages["python"]=sys.version
     (OUT / "数据核查/环境版本.json").write_text(json.dumps(packages,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")

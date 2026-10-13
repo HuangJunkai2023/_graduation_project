@@ -1,0 +1,139 @@
+{
+  "description_words": 652,
+  "description_limit": 750,
+  "description_plus_abstract_words": 710,
+  "references": 6,
+  "section_column_counts": [
+    1,
+    2,
+    1
+  ],
+  "layout": "Full-width title; genuine two-column English body; full-width schedule figure/table.",
+  "body_font": "Calibri 10 pt, following the supplied IEEE report template",
+  "template_sha256": "5bf90d04ec795552b0855c6ed43a12395de5e2deacfebb56cb77c103af210a45",
+  "template_unmodified": true,
+  "holiday_configuration": {
+    "week_basis": "course week; not calendar week",
+    "breaks": [
+      {
+        "name": "Chinese New Year break",
+        "start_week": 12,
+        "end_week": 13,
+        "status": "provisional; confirm against course timetable",
+        "planned_project_hours": 0
+      }
+    ],
+    "note": "User requested an explicit New Year break. Two weeks are reserved provisionally; their position is not a conversion from natural dates. Journal obligations must be checked separately."
+  },
+  "active_weeks": {
+    "T01": [
+      5,
+      6
+    ],
+    "T02": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "T03": [
+      5,
+      6,
+      7
+    ],
+    "T04": [
+      7
+    ],
+    "T05": [
+      8,
+      9
+    ],
+    "T06": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "T07": [
+      14,
+      15,
+      16
+    ],
+    "T08": [
+      14,
+      15
+    ],
+    "T09": [
+      14,
+      15
+    ],
+    "T10": [
+      16
+    ],
+    "T11": [
+      17
+    ],
+    "T12": [
+      18,
+      19,
+      20
+    ],
+    "T18": [
+      17,
+      18
+    ],
+    "T13": [
+      21,
+      22
+    ],
+    "T14": [
+      22,
+      23
+    ],
+    "T15": [
+      23,
+      24
+    ],
+    "T16": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ],
+    "T17": [
+      25,
+      26,
+      27
+    ]
+  },
+  "holiday_work_hours": 0,
+  "hours_through_week24": 400,
+  "viva_hours": 28,
+  "docx_sha256": "ada400fe41bf0459968c4f462e92424fc028b5036152372cf582c7b9061251d6",
+  "visual_review": true,
+  "pdf_pages": 4,
+  "pdf_sha256": "66412d4615b4f88114f7a8abd2da84596bd0f870e0f90c9a5c4c6d1263f40481",
+  "pdf_text_bounds_checked": true,
+  "visual_review_details": "All four pages inspected: three two-column English body pages and one full-width schedule page; holiday gap visible and chart unclipped.",
+  "renderer": "LibreOffice 7.3.7 (temporary local extraction)",
+  "font_substitution": "Calibri -> Carlito",
+  "unique_reference_links_checked": 6,
+  "chinese_docx_sha256": "563b808f32a1bb690ee911fcb984cfb6ce84b55381445635fd56a02df843bdd8",
+  "chinese_docx_reopened": true
+}

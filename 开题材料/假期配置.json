@@ -1,0 +1,13 @@
+{
+  "week_basis": "course week; not calendar week",
+  "breaks": [
+    {
+      "name": "Chinese New Year break",
+      "start_week": 12,
+      "end_week": 13,
+      "status": "provisional; confirm against course timetable",
+      "planned_project_hours": 0
+    }
+  ],
+  "note": "User requested an explicit New Year break. Two weeks are reserved provisionally; their position is not a conversion from natural dates. Journal obligations must be checked separately."
+}
