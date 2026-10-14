@@ -1,13 +1,19 @@
 {
-  "week_basis": "course week; not calendar week",
+  "week_basis": "consecutive planning weeks from user-reported classroom Week 1; later semester mapping requires confirmation",
+  "week1_monday": "2026-09-07",
+  "proposal_deadline": "2026-10-29",
+  "proposal_week": 8,
+  "source": "User classroom clarification on 2026-10-14; conflicts with handbook Week 7",
   "breaks": [
     {
       "name": "Chinese New Year break",
-      "start_week": 12,
-      "end_week": 13,
-      "status": "provisional; confirm against course timetable",
+      "start_week": 22,
+      "end_week": 23,
+      "status": "proposed two-week work break; institutional holiday length unconfirmed",
       "planned_project_hours": 0
     }
   ],
-  "note": "User requested an explicit New Year break. Two weeks are reserved provisionally; their position is not a conversion from natural dates. Journal obligations must be checked separately."
+  "festival_date": "2027-02-06",
+  "festival_source": "https://www.info.gov.hk/gia/general/202605/15/P2026051400300.htm",
+  "note": "Festival date verified; public holidays in Hong Kong do not establish SWJTU holiday rules. Journal and meeting obligations require course agreement."
 }

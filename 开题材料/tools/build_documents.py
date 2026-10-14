@@ -113,7 +113,7 @@ def make_schedule():
     labels = [f"{r['id']}  {short[r['id']]}" for r in rows]
     for period in config["breaks"]:
         ax.axvspan(period["start_week"]-0.5,period["end_week"]+0.5,facecolor="#f1f1f1",edgecolor="#aaaaaa",hatch="//",linewidth=0.5,zorder=0)
-        ax.text((period["start_week"]+period["end_week"])/2,7.5,"CHINESE NEW YEAR BREAK (PROVISIONAL)",rotation=90,ha="center",va="center",fontsize=10,color="#555555")
+        ax.text((period["start_week"]+period["end_week"])/2,7.5,"NEW YEAR BREAK (PROPOSED)",rotation=90,ha="center",va="center",fontsize=11,color="#555555")
     for i,row in enumerate(rows):
         active=[w for w in range(int(row["start_week"]),int(row["end_week"])+1) if w not in excluded]
         assert active, f"Task {row['id']} has no working weeks"
@@ -130,16 +130,16 @@ def make_schedule():
             end=active[-1]
             ax.plot(end+0.30,i,marker="D",markersize=4,color="#182d38")
             ax.text(end+0.48,i-0.25,row["milestone"],fontsize=9,color="#182d38")
-    ax.set_yticks(range(len(rows)),labels,fontsize=11)
+    ax.set_yticks(range(len(rows)),labels,fontsize=13)
     ax.invert_yaxis()
-    ax.set_xticks(range(5,28),[f"Week {week}" for week in range(5,28)],rotation=90,fontsize=10)
+    ax.set_xticks(range(5,28),[f"Week {week}" for week in range(5,28)],rotation=90,fontsize=12)
     ax.set_xlim(4.5,27.5)
     ax.set_title("Project schedule by course week",loc="left",fontsize=14,pad=12)
     ax.grid(axis="x",alpha=0.15)
     ax.set_axisbelow(True)
     ax.axvline(24.5,color="#253744",linestyle="--",linewidth=0.8)
     for spine in ["top","right","left"]:ax.spines[spine].set_visible(False)
-    fig.text(0.02,0.03,"Diamonds: milestones. Grey band: no planned project work; holiday weeks await timetable confirmation.\nDependencies and effort are listed in the accompanying schedule table. Bars show plans, not actual progress.",fontsize=10)
+    fig.text(0.02,0.03,"Diamonds: milestones. Grey band: no planned project work; holiday length and semester mapping need confirmation.\nEffort: 372 h through Week 24 + 28 h viva = 400 h. Bars show plans, not actual progress.",fontsize=10)
     fig.subplots_adjust(left=0.29,right=0.98,top=0.93,bottom=0.19)
     (OUT / "figures").mkdir(exist_ok=True)
     fig.savefig(OUT / "figures/gantt.png",dpi=300,facecolor="white")

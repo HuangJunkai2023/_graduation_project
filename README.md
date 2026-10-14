@@ -4,7 +4,7 @@ English title: **A Study on a Large-Model-Based Intelligent Question-Answering S
 
 当前阶段：ELEC3801 2026–27，开题材料已起草，问答系统功能开发中。研究范围：规范文档问答、证据追溯、标准版本处理与实验评估；工程图纸理解列为后续扩展。
 
-- [开题材料入口](开题材料/README.md)：英文 IEEE 双栏 Proposal、按 Week X 编排并预留春节的甘特图、需求与实验方案。
+- [开题材料入口](开题材料/README.md)：英文 IEEE 双栏最终 Proposal（2026-10-14）、修改报告、Week X 甘特图与实验方案。
 - [问答系统入口](project/qa_system/README.md)：本地界面、DeepSeek 配置、建库及实验命令。
 - `@26-27新版资料/`：学校原始要求与模板。
 - `毕设资料/`：提供的参考实现和技术资料，保留原貌。

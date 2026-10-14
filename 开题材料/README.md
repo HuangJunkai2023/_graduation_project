@@ -1,53 +1,37 @@
 # 接触网智能问答毕设：开题材料包
 
-适用：ELEC3801 2026–27。2026-10-13 已重新核读课程资料和参考 README，完成**开题报告审阅稿及支撑材料**。
+当前主文件为 2026-10-14 最终技术稿，适用 ELEC3801 2026–27。个人信息、真实声明及导师批准完成后方可正式提交。
 
-按课堂补充要求，当前主文件为 [英文 IEEE 双栏 Word](Proposal_IEEE_English.docx) 和 [PDF 预览](Proposal_IEEE_English.pdf)。正文为双栏，甘特图与依赖表跨栏；保留 Proposal 的四部分内容。中文核对使用 [中文对照稿](06_开题报告中文对照.md) / [中文 Word](开题报告_中文对照稿.docx)。个人信息、伦理选项、安全声明、签名及导师认可需真实填写，尚未提交。
+- [英文最终 PDF](Proposal_IEEE_English_Final.pdf)
+- [英文最终 Word（可编辑）](Proposal_IEEE_English_Final.docx)
+- [修改报告及待确认事项](Final_Revision_Report.md)
+- [英文 Markdown 内容源](01_Proposal_Draft_EN.md)
+- [进度 CSV](进度计划.csv)、[Week 日期对照](Week_Date_Mapping.csv)、[假期配置](假期配置.json)
+- [甘特图 PNG](figures/gantt.png) / [PDF](figures/gantt.pdf)
+- [实验与验收细则](03_实验与验收方案.md)
+- [最终版校验记录](数据核查/IEEE最终版校验.json)
 
-甘特图横轴逐周标注 **Week X**。春节周号尚未确定，暂以 **Week 12–13** 预留两周，图中标记为 provisional，并安排零项目工作；这不是自然日期与课程周的换算。确定校历后，需同时调整假期配置、进度 CSV、正文里程碑并重新导出。假期内的课程日志要求另行核实。
+按用户补充的课堂通知：Week 1 从 2026-09-07 开始，Proposal DDL 为 Week 8 的 2026-10-29 周四，使用英文 IEEE 双栏。原手册写 Week 7，差异及依据已在修改报告说明。14:00 UK 暂沿用课程要求，待核对具体作业通知。后续周号按连续周计算，跨学期是否停计仍待确认。春节两周工作休息预留调整为 Week 22–23（2027-02-01至02-14），不代表学校已批准假期。
 
-| 文件 | 用途 |
-| --- | --- |
-| [英文 Proposal 源稿](01_Proposal_Draft_EN.md) | 可编辑的四部分开题内容，含 6 篇参考文献 |
-| [英文 IEEE 双栏 DOCX](Proposal_IEEE_English.docx) / [PDF](Proposal_IEEE_English.pdf) | 当前英文审阅版，按课堂要求排版 |
-| [中文对照稿](06_开题报告中文对照.md) / [中文 Word](开题报告_中文对照稿.docx) | 四部分中文内容及评测实施说明 |
-| [课程资料复核](07_课程资料复核与提交检查.md) | 版本冲突、评分要求与报告对应位置 |
-| [中文说明与需求清单](02_中文说明与需求清单.md) | 研究定位、课程要求映射、功能验收及待填写事项 |
-| [实验与验收方案](03_实验与验收方案.md) | 100 题划分、指标定义、基线与消融、异常场景 |
-| [过程记录模板](04_过程记录模板.md) | 周志、会议、Review Document 与提交检查单 |
-| [文献核验与阅读计划](05_文献核验与阅读计划.md) | 权威来源及后续阅读问题，不冒充已精读 |
-| [进度计划](进度计划.csv) | 课程周、依赖、里程碑、工时及交付物 |
-| [假期配置](假期配置.json) | 春节暂定周号及零工作时间；待校历确认 |
-| [甘特图 PNG](figures/gantt.png) / [PDF](figures/gantt.pdf) | 可插入文档或单独查看的计划图 |
-| [学习成果证据规划](学习成果证据规划.csv) | 从 Handbook 提取的 LO1–LO16 及拟收集证据 |
-| [核查记录](数据核查/核查记录.md) | 实际执行情况、发现与局限 |
-| [候选规范清单](数据核查/候选规范25份.csv) | 25 份候选的文本抽样、版本线索、哈希及许可状态 |
-| [全部文件清单](数据核查/全部文件清单.csv) | task1 与 task2 的本地文件索引，共 1,344 个 |
+最终 PDF 共 5 页，正文双栏，末页甘特图及具名任务表。Section I 含一级标题和全部小标题，按空白分词为 650，按英文字母/数字词规则为 681，均低于 750；6 篇参考文献。总工时为提交前 372 + Viva 28 = 400 小时，这是项目预算口径，手册未明确 Viva 工时是否另计。
 
-## 已做与未做
+## 版本和备份
 
-已完成四部分 Proposal、六篇初始参考文献核验、甘特图与风险/资源表。英文 Section 1 按空白分词计数为 **652 词**（包含小标题，不含参考文献），低于 750 词上限。
+当前目录仅保留 `_Final` 提交稿及其可编辑源文件。修订版和旧修改报告已归档至唯一保留的 [修改前备份](backups/2026-10-14_before_final.zip)，内含 34 个文件及哈希清单；原版也可从 Git 提交 `a7d6fae` 恢复。重复备份、旧版 PDF/Word 和旧版校验文件已清理。
 
-系统目前有三份样本文档、503 个片段，BM25 + DeepSeek 基础问答已跑通，版本处理和引用校验已有基础实现。真实 API 与合成资料联调见 [系统验证记录](../project/qa_system/VERIFICATION.md)；用户页面也已展示真实规范的带引用回答。这些不构成正式准确率评测。
+中文对照 Markdown、课程复核记录属于历史支撑资料，未作为新版同步翻译；旧周号、工时及指标以 `Final_Revision_Report.md` 和当前英文源稿为准。旧表格式稿可从 Git 提交 `7f5f3ef` 恢复。
 
-尚未完成：Embedding 联调、最终 20–30 份语料、100 题标注、五组正式实验、最终报告、视频和答辩。甘特图安排的是完善与验证。本次撰写报告没有新增模型调用。
+## 更新与重新导出
 
-25 份候选并不等于 25 份可用文档；14 份达到抽样文本规则，4 份混合/低文本，7 份未提取到足够文本。原始文档和参考代码保留在原目录，未被编辑。
-
-## 使用与更新
-
-英文 Markdown 是 Proposal 正文源文件；CSV 和假期配置是进度源文件。修改后可以重新生成 DOCX 和图，但不要在同时手工修改 DOCX 后直接重生成，否则派生文件中的手工更改会被覆盖。原始学校模板不会被覆盖。旧的 build_documents.py 主入口生成的是历史表格式版本，当前英文版使用 build_ieee_proposal.py。
+内容修改在 `01_Proposal_Draft_EN.md`；任务和假期修改在 CSV/JSON。当前生成入口为 `tools/build_ieee_proposal.py`，依赖 `tools/build_documents.py` 中的共用函数；不能删除后者。直接手改Word后再运行脚本会覆盖派生Word文件，应先同步源文件或另存手改版。
 
 ```bash
-# 在工程根目录；使用本次创建的隔离环境
-.venv/bin/python 开题材料/tools/audit_materials.py
+# 从工程根目录生成可编辑Word和甘特图
 .venv/bin/python 开题材料/tools/build_ieee_proposal.py
-# 如已安装 LibreOffice，可同时导出并检查 PDF：
+# 具备LibreOffice时同时导出并检查PDF
 .venv/bin/python 开题材料/tools/build_ieee_proposal.py --renderer /usr/bin/soffice
 ```
 
-运行环境版本见 `数据核查/环境版本.json`。重建环境可使用 `tools/requirements.txt`；两脚本均不需要 API Key。审计脚本会重新抽查本地原始文件并更新核查输出；修改候选或抽样规则后也要同步修订人工说明。
+依赖见 `tools/requirements.txt`。脚本无需API Key、不调用模型；源表修改后须重建Word与PDF。仅重新生成Word不会更新PDF，不能把旧预览当作新版。本次用临时目录中的LibreOffice7.3.7导出，未安装系统软件；PDF中Calibri以嵌入的Carlito兼容替代。正式提交前在实际Word/WPS中核对字体、计数、签名和分页。
 
-当前英文版的字数、双栏结构、假期空档及 PDF 校验见 `数据核查/IEEE版校验.json`；旧表格式 Word、PDF 及其校验记录已移出工作目录，可从 Git 提交 `7f5f3ef` 恢复。本次使用临时目录中的 LibreOffice 渲染，没有安装系统软件；Calibri 使用 Carlito 兼容替代。提交前在实际使用的 Word/WPS 中复核字体、字数和分页。学校七页上限适用于最终报告，不是 Proposal。仅重建 Word 后须重新导出 PDF，避免预览滞后。
-
-文献链接已在源稿及 Word 中提供。AI 辅助草稿须由学生理解、核查并按学校要求使用与说明；未发生的工作、反思、认可或签名不得填写为已完成。
+原始课程资料、参考实现和领域文件保持原貌；系统运行入口为 [project/qa_system](../project/qa_system/README.md)。三文档本地BM25及合成证据DeepSeek联调可行性不等于正式性能评测，独立Embedding、live dense/hybrid及正式100题评估仍待开展。

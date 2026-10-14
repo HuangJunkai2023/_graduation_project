@@ -1,0 +1,90 @@
+[
+  {
+    "path": "project/task1/01 data/001 规范/★★★★★★★★★★装备、零部件/TB T 2073-2020 接触网零部件技术条件.pdf",
+    "standard_hint": "TBT2073",
+    "year_hint": "2020",
+    "sha256": "266e6982a8052e275e40904cd2345d8b17b24059f2429f54feaefcd7458a44c7",
+    "pages": 18,
+    "pages_with_80_text_characters": 18,
+    "total_extracted_characters": 15663,
+    "front_matter_excerpt": "ICS 29. 280 \ns 82 \nTB \n中华人民共和国铁道行业标准\nTB/T 2073 一2020\n代替TB/T 2073一2010\n电气化铁路接触网零部件\n技术条件\nTechnical specification of fittings \nfor overhead contact system in electrification railway \n2020-10-30发布\n2021-05-01实施\n国家铁路局\n发布\n\nTB/T 2073-2020 \n目次\n前言........................................................................................................................ m \nl \n范围..................................................................................................................... 1 \n2 \n规范性弓！用文件...........·........................................................................................... 1 \n3 \n术语和定义............................................................................................................ 2 \n4 \n分类..................................................................................................................... 3 \n5 \n技术要求..........................................",
+    "cloud_permission": "unconfirmed",
+    "edition_identity": "candidate; page and publication verification required"
+  },
+  {
+    "path": "project/task1/01 data/001 规范/★★★★★★★★★★装备、零部件/TB T 2074-2020 接触网零件试验方法.pdf",
+    "standard_hint": "TBT2074",
+    "year_hint": "2020",
+    "sha256": "dff8634e3a3bac436997bfffa8cf9a9675ff38594b06d6a264e2825534b94925",
+    "pages": 23,
+    "pages_with_80_text_characters": 23,
+    "total_extracted_characters": 15746,
+    "front_matter_excerpt": "ICS 29. 280 \nS 82 \nTB \n中华人民共和国铁道行业标准\nTB/T 2074-2020 \n代替TB/T 2074一2010\n电气化铁路接触网零部件\n试验方法\nTest methods of fittings \nfor overhead contact system in electrification railway \n2020-10-30 发布\n国家铁路局\n发布\n2021-05-01 实施\n\nTB/T 2074-2020 \n目次\n前言．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．．皿\nl \n范围..................................................................................................................... 1 \n2 \n规范性弓\nI 用文件...................................................................................................... 1 \n3 \n术语和定义\n............................................................................................... .... ......... 1 \n4 \n检验基本要求..... ............... ......... ......................... .... ....... ............................... ......... 3 \n5 \n检验方法........... ......................................",
+    "cloud_permission": "unconfirmed",
+    "edition_identity": "candidate; page and publication verification required"
+  },
+  {
+    "path": "project/task1/01 data/001 规范/标准/铁标/TB T 2073-2003 电气化铁道接触网零部件技术条件【废】.pdf",
+    "standard_hint": "TBT2073",
+    "year_hint": "2003",
+    "sha256": "f0a558227f6c197598732a9adb8a073286505d8515794e75ff429990863e08a6",
+    "pages": 13,
+    "pages_with_80_text_characters": 0,
+    "total_extracted_characters": 0,
+    "front_matter_excerpt": "\n\n\n",
+    "cloud_permission": "unconfirmed",
+    "edition_identity": "candidate; page and publication verification required"
+  },
+  {
+    "path": "project/task1/01 data/001 规范/标准/铁标/TB T 2073-2010 电气化铁路接触网零部件技术条件.pdf",
+    "standard_hint": "TBT2073",
+    "year_hint": "2010",
+    "sha256": "a82dbcfb72cb273aa4d8c73b34c683e11790ad6473b70a092d00e26d61ff79ed",
+    "pages": 15,
+    "pages_with_80_text_characters": 0,
+    "total_extracted_characters": 0,
+    "front_matter_excerpt": "\n\n\n",
+    "cloud_permission": "unconfirmed",
+    "edition_identity": "candidate; page and publication verification required",
+    "cover_visually_checked": true,
+    "cover_observation": "Cover shows the stated TB/T standard number and 2010 edition; publication 2010-06-09, implementation 2010-12-01. No usable text layer; permission and complete content verification remain pending."
+  },
+  {
+    "path": "project/task1/01 data/001 规范/标准/铁标/TB T 2074-2003 电气化铁道接触网零部件试验方法【废】.pdf",
+    "standard_hint": "TBT2074",
+    "year_hint": "2003",
+    "sha256": "5d4eaf1f0fd31bd401aa89e395a1eaaf6f452782deae1227b91807657456db3f",
+    "pages": 17,
+    "pages_with_80_text_characters": 0,
+    "total_extracted_characters": 0,
+    "front_matter_excerpt": "\n\n\n",
+    "cloud_permission": "unconfirmed",
+    "edition_identity": "candidate; page and publication verification required"
+  },
+  {
+    "path": "project/task1/01 data/001 规范/标准/铁标/TB T 2074-2010 电气化铁路接触网零部件试验方法.pdf",
+    "standard_hint": "TBT2074",
+    "year_hint": "2010",
+    "sha256": "a9713486cdf268a040918b2424f7fdccffe0b42156c2926fad2f27171ea8432d",
+    "pages": 20,
+    "pages_with_80_text_characters": 0,
+    "total_extracted_characters": 0,
+    "front_matter_excerpt": "\n\n\n",
+    "cloud_permission": "unconfirmed",
+    "edition_identity": "candidate; page and publication verification required",
+    "cover_visually_checked": true,
+    "cover_observation": "Cover shows the stated TB/T standard number and 2010 edition; publication 2010-06-09, implementation 2010-12-01. No usable text layer; permission and complete content verification remain pending."
+  },
+  {
+    "path": "project/task1/01 data/001 规范/标准/铁标/电气化铁路接触网零部件技术条件 TBT 2073-2010.pdf",
+    "standard_hint": "TBT2073",
+    "year_hint": "2010",
+    "sha256": "a82dbcfb72cb273aa4d8c73b34c683e11790ad6473b70a092d00e26d61ff79ed",
+    "pages": 15,
+    "pages_with_80_text_characters": 0,
+    "total_extracted_characters": 0,
+    "front_matter_excerpt": "\n\n\n",
+    "cloud_permission": "unconfirmed",
+    "edition_identity": "candidate; page and publication verification required"
+  }
+]

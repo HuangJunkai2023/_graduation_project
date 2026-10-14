@@ -14,21 +14,19 @@ import tempfile
 
 from docx import Document
 from docx.enum.section import WD_SECTION_START
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt
 
-from build_documents import OUT, SCHOOL, TITLE, inline, make_schedule
+from build_documents import OUT, SCHOOL, inline, make_schedule
 
-TARGET = OUT / "Proposal_IEEE_English.docx"
+TARGET = OUT / "Proposal_IEEE_English_Final.docx"
+TITLE = "Design and Evaluation of a Large Language Model-Based Question-Answering System for Railway Overhead Contact Systems"
 ABSTRACT = (
-    "This project will develop and evaluate a retrieval-augmented question-answering "
-    "system for Chinese overhead contact system standards. It will compare lexical, "
-    "dense and hybrid retrieval, test edition constraints and examine evidence-based "
-    "refusal. A curated corpus and a manually checked benchmark will support reproducible "
-    "evaluation of retrieval, answer correctness and source support. An initial prototype "
-    "works; formal evaluation remains planned."
+    "This project will compare retrieval methods, edition filtering and evidence-based "
+    "refusal for Chinese railway standards. A bounded benchmark will support reproducible "
+    "evaluation. Local BM25 retrieval and synthetic-evidence chat checks have been verified."
 )
 
 
@@ -100,7 +98,13 @@ def blocks(doc, text):
                 remainder=text[len(row[0]):].lstrip('. ')
                 p.add_run(remainder)
             continue
-        paragraph(doc,line)
+        if line.startswith('Safety declaration — unsigned:'):
+            doc.add_paragraph().add_run().add_break(WD_BREAK.COLUMN)
+        p=paragraph(doc,line)
+        if line.startswith('Specialist laboratory required:'):
+            p.paragraph_format.keep_together=True
+        if line.startswith(('Supervisor signature or confirmation:', 'Safety briefing attendance/date:')):
+            p.alignment=WD_ALIGN_PARAGRAPH.LEFT
         i+=1
 
 
@@ -122,7 +126,7 @@ def build():
     for row in tasks:
         for predecessor in filter(None,row['depends_on'].split(';')):
             assert int(by_id[predecessor]['end_week'])<=int(row['start_week'])
-    assert sum(int(r['planned_hours']) for r in tasks if r['id']!='T17')==400
+    assert sum(int(r['planned_hours']) for r in tasks if r['id']!='T17')==372
     sections,description,references,words=read_source()
     template=SCHOOL/'3.Final report template_ELEC3801_Final_Report_Template.docx'
     template_hash=hashlib.sha256(template.read_bytes()).hexdigest()
@@ -144,9 +148,9 @@ def build():
             doc.styles[name].font.name='Calibri';doc.styles[name].font.size=Pt(10)
 
     paragraph(doc,TITLE,size=24,align=WD_ALIGN_PARAGRAPH.CENTER)
-    paragraph(doc,'[Student name] · [SID] · [Degree programme]',size=10,align=WD_ALIGN_PARAGRAPH.CENTER)
-    paragraph(doc,'Supervisor: [Name] | ELEC3801 2026–27 | Project Proposal',size=10,align=WD_ALIGN_PARAGRAPH.CENTER)
-    p=paragraph(doc,'Review version · 13 October 2026 · Personal declarations and holiday placement pending',size=9,align=WD_ALIGN_PARAGRAPH.CENTER)
+    paragraph(doc,'Student: [FULL NAME] · SID: [STUDENT ID] · Programme: [OFFICIAL DEGREE TITLE]',size=10,align=WD_ALIGN_PARAGRAPH.CENTER)
+    paragraph(doc,'Supervisor: Na Qin',size=10,align=WD_ALIGN_PARAGRAPH.CENTER)
+    p=paragraph(doc,'ELEC3801 2026–27 · Final text · 14 October 2026 · Personal declarations pending',size=9,align=WD_ALIGN_PARAGRAPH.CENTER)
     p.paragraph_format.space_after=Pt(8)
     body=doc.add_section(WD_SECTION_START.CONTINUOUS);columns(body,2)
     paragraph(doc,'Abstract — '+ABSTRACT,bold=True,size=9)
@@ -174,10 +178,12 @@ def build():
     # Inline pictures need automatic line height; exact body leading clips them.
     p.paragraph_format.line_spacing=1.0
     p.add_run().add_picture(str(OUT/'figures/gantt.png'),width=Inches(7.2))
-    paragraph(doc,'Fig. 1. Planned work by course week. Week 12–13 is a provisional two-week Chinese New Year break with zero planned project work; confirm its placement against the timetable. M1–M7 and MS are planned milestones.',size=8,align=WD_ALIGN_PARAGRAPH.LEFT)
+    paragraph(doc,'Fig. 1. Week X schedule from the classroom Week 1 anchor (7 September 2026). Week 22–23 reserves 1–14 February 2027 for a proposed New Year break; holiday length and later semester week mapping await confirmation. Diamonds show milestones, not completed work.',size=8,align=WD_ALIGN_PARAGRAPH.LEFT)
     paragraph(doc,'TABLE I\nTASK DEPENDENCIES AND PLANNED EFFORT',size=8,align=WD_ALIGN_PARAGRAPH.CENTER)
-    table=doc.add_table(rows=1,cols=4);table.style='Table Grid';table.autofit=False
-    for cell,value in zip(table.rows[0].cells,['Task','Active course weeks','Predecessors','Hours']):cell.text=value
+    table=doc.add_table(rows=1,cols=5);table.style='Table Grid';table.autofit=False
+    widths=[0.4,2.8,1.9,1.4,0.7]
+    for column,width in zip(table.columns,widths):column.width=Inches(width)
+    for cell,value in zip(table.rows[0].cells,['ID','Task description','Active weeks','Depends on','Hours']):cell.text=value
     config=json.loads((OUT/'假期配置.json').read_text())
     excluded={w for r in config['breaks'] for w in range(r['start_week'],r['end_week']+1)}
     activity={}
@@ -189,16 +195,17 @@ def build():
             if not groups or groups[-1][-1]+1!=w:groups.append([w])
             else:groups[-1].append(w)
         label='; '.join(f'Week {g[0]}' if len(g)==1 else f'Week {g[0]}–{g[-1]}' for g in groups)
-        for cell,value in zip(table.add_row().cells,[row['id'],label,row['depends_on'].replace(';',', ') or '—',row['planned_hours']]):cell.text=value
+        for cell,value in zip(table.add_row().cells,[row['id'],row['task'],label,row['depends_on'].replace(';',', ') or '—',row['planned_hours']]):cell.text=value
     for i,row in enumerate(table.rows):
         row._tr.get_or_add_trPr().append(OxmlElement('w:cantSplit'))
         if i==0:row._tr.get_or_add_trPr().append(OxmlElement('w:tblHeader'))
-        for cell,width in zip(row.cells,[0.6,3.1,2.6,0.7]):
+        for cell,width in zip(row.cells,widths):
             cell.width=Inches(width)
             for p in cell.paragraphs:
                 p.paragraph_format.space_after=Pt(0)
                 p.paragraph_format.line_spacing=1.0
-                for run in p.runs:run.font.size=Pt(8);run.bold=i==0
+                for run in p.runs:run.font.size=Pt(9);run.bold=i==0
+    paragraph(doc,'Planned effort: 372 h through Week 24 + 28 h viva = 400 h total.',size=9,align=WD_ALIGN_PARAGRAPH.LEFT)
     # A single footer is shared across continuous and figure sections.
     footer=doc.sections[0].footer.paragraphs[0]
     footer.alignment=WD_ALIGN_PARAGRAPH.CENTER
@@ -208,7 +215,7 @@ def build():
     doc.core_properties.title=TITLE
     doc.core_properties.author=''
     doc.core_properties.subject='English IEEE two-column project proposal'
-    doc.core_properties.comments='AI-assisted review version. Personal facts, supervisor confirmation and holiday placement remain pending.'
+    doc.core_properties.comments='AI-assisted final text. Student details and personal declarations pending; provisional later week mapping.'
     doc.save(TARGET)
     assert hashlib.sha256(template.read_bytes()).hexdigest()==template_hash
     reopened=Document(TARGET)
@@ -219,9 +226,26 @@ def build():
            'references':6,'section_column_counts':column_counts,'layout':'Full-width title; genuine two-column English body; full-width schedule figure/table.',
            'body_font':'Calibri 10 pt, following the supplied IEEE report template',
            'template_sha256':template_hash,'template_unmodified':True,'holiday_configuration':config,
-           'active_weeks':activity,'holiday_work_hours':0,'hours_through_week24':400,'viva_hours':28,
+           'active_weeks':activity,'holiday_work_hours':0,'hours_through_week24':372,'viva_hours':28,'total_planned_hours':400,
            'docx_sha256':hashlib.sha256(TARGET.read_bytes()).hexdigest(),'visual_review':False}
     for weeks in activity.values():assert not set(weeks)&excluded
+    desc_paragraphs=[]; inside=False
+    for p in reopened.paragraphs:
+        if p.text=='I. Project Description': inside=True;continue
+        if p.text=='II. Work Plan and Milestones':break
+        if inside:desc_paragraphs.append(p.text)
+    actual='\n'.join(desc_paragraphs)
+    stats['description_docx_whitespace_tokens']=len(actual.split())
+    stats['description_lexical_words']=len(re.findall(r"[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*",actual))
+    assert stats['description_docx_whitespace_tokens']<=750
+    stats['description_docx_including_section_heading_tokens']=len(actual.split())+3
+    stats['description_lexical_including_section_heading_words']=len(re.findall(r"[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*",actual))+3
+    assert 650 <= stats['description_docx_including_section_heading_tokens'] <= 680
+    stats['description_count_scope']='All Section I body and subsection headings (including generated A-D labels); excludes title, author line, abstract, index terms, references and Sections II-IV.'
+    stats['experiment_accounting']={'test_questions':80,'development_questions':20,'configurations':5,'test_runs':400,'all_question_runs':500,'extra_generation_allowance':100,'max_planned_new_generation_calls':600,'annotation_hours':36,'evaluation_hours':40,'generation_budget_gbp':35,'embedding_budget_gbp':10,'contingency_gbp':5,'total_budget_gbp':50}
+    stats['source_sha256']=hashlib.sha256((OUT/'01_Proposal_Draft_EN.md').read_bytes()).hexdigest()
+    stats['schedule_sha256']=hashlib.sha256((OUT/'进度计划.csv').read_bytes()).hexdigest()
+    stats['docx_tables']=len(reopened.tables)
     return stats
 
 
@@ -235,8 +259,8 @@ def render(renderer,stats):
     pdf=TARGET.with_suffix('.pdf')
     with pymupdf.open(pdf) as doc:
         text='\n'.join(p.get_text() for p in doc)
-        for expected in ['Project Description','References','TABLE I','R8','Week 12','Supervisor approval']:
-            assert expected.casefold() in text.casefold(),expected
+        for expected in ['Project Description','References','TABLE I','R8','Week 22','Supervisor approval','Student signature','29 October 2026']:
+            assert expected.casefold() in ' '.join(text.casefold().split()),expected
         assert not re.search('[\u4e00-\u9fff]',text),'Unexpected Chinese text in English proposal'
         figure_rects=[rect for page in doc for info in page.get_images(full=True)
                       for rect in page.get_image_rects(info[0])]
@@ -253,5 +277,5 @@ if __name__=='__main__':
     args=parser.parse_args()
     stats=build()
     if args.renderer:render(args.renderer,stats)
-    (OUT/'数据核查/IEEE版校验.json').write_text(json.dumps(stats,ensure_ascii=False,indent=2)+'\n')
+    (OUT/'数据核查/IEEE最终版校验.json').write_text(json.dumps(stats,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({k:v for k,v in stats.items() if k not in ['active_weeks','holiday_configuration']},ensure_ascii=False,indent=2))
