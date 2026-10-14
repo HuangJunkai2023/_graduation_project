@@ -1,7 +1,7 @@
 """Build the English IEEE two-column proposal requested in class.
 
 Sources: 01_Proposal_Draft_EN.md, 进度计划.csv and 假期配置.json.
-The original school forms and earlier form-based draft are retained unchanged.
+The original school forms are retained unchanged; earlier drafts remain in Git history.
 """
 import argparse
 from copy import deepcopy
