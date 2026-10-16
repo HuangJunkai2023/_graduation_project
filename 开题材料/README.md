@@ -1,37 +1,37 @@
 # 接触网智能问答毕设：开题材料包
 
-当前主文件为 2026-10-14 最终技术稿，适用 ELEC3801 2026–27。个人信息、真实声明及导师批准完成后方可正式提交。
+**当前提交稿使用学校 Proposal Form／示例格式，不使用 IEEE 双栏。** 依据用户 2026-10-16 更正，文件对应 `@26-27新版资料/4.Example_ELEC3801_Project_Proposal_Example.docx` 和官方 Proposal Form。个人信息、真实声明和导师批准仍需本人完成。
 
-- [英文最终 PDF](Proposal_IEEE_English_Final.pdf)
-- [英文最终 Word（可编辑）](Proposal_IEEE_English_Final.docx)
-- [修改报告及待确认事项](Final_Revision_Report.md)
+- [英文最终 PDF](Proposal_English_Final.pdf)
+- [英文最终 Word（可编辑）](Proposal_English_Final.docx)
+- [修改报告及待填写事项](Final_Revision_Report.md)
 - [英文 Markdown 内容源](01_Proposal_Draft_EN.md)
 - [进度 CSV](进度计划.csv)、[Week 日期对照](Week_Date_Mapping.csv)、[假期配置](假期配置.json)
 - [甘特图 PNG](figures/gantt.png) / [PDF](figures/gantt.pdf)
 - [实验与验收细则](03_实验与验收方案.md)
-- [最终版校验记录](数据核查/IEEE最终版校验.json)
+- [学校格式校验记录](数据核查/学校格式校验.json)
 
-按用户补充的课堂通知：Week 1 从 2026-09-07 开始，Proposal DDL 为 Week 8 的 2026-10-29 周四，使用英文 IEEE 双栏。原手册写 Week 7，差异及依据已在修改报告说明。14:00 UK 暂沿用课程要求，待核对具体作业通知。后续周号按连续周计算，跨学期是否停计仍待确认。春节两周工作休息预留调整为 Week 22–23（2027-02-01至02-14），不代表学校已批准假期。
+当前 PDF 为 8 页：学校封面、单栏项目描述及参考文献、横向甘特图与任务表、资源表、伦理/风险/安全与导师确认表。正文 Arial 10 磅，表格和参考文献 9 磅；沿用模板 A4 纸张、页边距和页码。Section 1 含章节标题、全部小标题及正文，按空白词元计 647，按英文字母/数字词规则计 678，均低于 750；参考文献仍为 6 篇。当前研究内容较示例详细，自然扩展为 8 页，不以缩小正文字号强制凑成 6 页。课程的最终报告七页限制不混用到 Proposal。
 
-最终 PDF 共 5 页，正文双栏，末页甘特图及具名任务表。Section I 含一级标题和全部小标题，按空白分词为 650，按英文字母/数字词规则为 681，均低于 750；6 篇参考文献。总工时为提交前 372 + Viva 28 = 400 小时，这是项目预算口径，手册未明确 Viva 工时是否另计。
-
-## 版本和备份
-
-当前目录仅保留 `_Final` 提交稿及其可编辑源文件。修订版和旧修改报告已归档至唯一保留的 [修改前备份](backups/2026-10-14_before_final.zip)，内含 34 个文件及哈希清单；原版也可从 Git 提交 `a7d6fae` 恢复。重复备份、旧版 PDF/Word 和旧版校验文件已清理。
-
-中文对照 Markdown、课程复核记录属于历史支撑资料，未作为新版同步翻译；旧周号、工时及指标以 `Final_Revision_Report.md` 和当前英文源稿为准。旧表格式稿可从 Git 提交 `7f5f3ef` 恢复。
+已确认的 Proposal DDL 为 2026-10-29（Week 8），封面已据此更新原模板的 Week 7；14:00 UK 沿用课程表格。Week 1 从 2026-09-07 开始，后续跨学期周数及 Week 22–23 的春节两周预留仍待校历确认。总工时为提交前 372 + Viva 28 = 400 小时，这是项目预算口径，手册未明确 Viva 是否另计。
 
 ## 更新与重新导出
 
-内容修改在 `01_Proposal_Draft_EN.md`；任务和假期修改在 CSV/JSON。当前生成入口为 `tools/build_ieee_proposal.py`，依赖 `tools/build_documents.py` 中的共用函数；不能删除后者。直接手改Word后再运行脚本会覆盖派生Word文件，应先同步源文件或另存手改版。
+编辑 `01_Proposal_Draft_EN.md`、进度 CSV 和假期 JSON。当前生成入口是 `tools/build_form_proposal.py`；保留 `tools/build_documents.py`，因为新入口使用其中的共用路径与链接函数。
 
 ```bash
-# 从工程根目录生成可编辑Word和甘特图
-.venv/bin/python 开题材料/tools/build_ieee_proposal.py
-# 具备LibreOffice时同时导出并检查PDF
-.venv/bin/python 开题材料/tools/build_ieee_proposal.py --renderer /usr/bin/soffice
+# 从工程根目录生成可编辑 Word
+.venv/bin/python 开题材料/tools/build_form_proposal.py
+# 同时导出 PDF（需 LibreOffice）
+.venv/bin/python 开题材料/tools/build_form_proposal.py --renderer /usr/bin/soffice
 ```
 
-依赖见 `tools/requirements.txt`。脚本无需API Key、不调用模型；源表修改后须重建Word与PDF。仅重新生成Word不会更新PDF，不能把旧预览当作新版。本次用临时目录中的LibreOffice7.3.7导出，未安装系统软件；PDF中Calibri以嵌入的Carlito兼容替代。正式提交前在实际Word/WPS中核对字体、计数、签名和分页。
+本轮图表和工时未改变，生成器直接嵌入既有甘特图。若改动任务或假期，应先调用 `build_documents.make_schedule()` 重绘图表，再重建 Word/PDF。依赖见 `tools/requirements.txt`。本轮使用本地临时目录解包的 LibreOffice 7.3.7，未安装系统软件；PDF 嵌入 Arial 的兼容替代字体 Liberation Sans。仅生成 Word 不会更新 PDF；直接手改 Word 后再运行脚本会覆盖派生文件，应先同步源文件或另存修改版。
 
-原始课程资料、参考实现和领域文件保持原貌；系统运行入口为 [project/qa_system](../project/qa_system/README.md)。三文档本地BM25及合成证据DeepSeek联调可行性不等于正式性能评测，独立Embedding、live dense/hybrid及正式100题评估仍待开展。
+## 历史版本
+
+旧 IEEE PDF/Word、生成脚本、校验记录及重复备份 ZIP 已从工作目录清理，统一由 Git 保存历史。它们均可从提交 `2acf6a0` 恢复；该提交中的 `开题材料/backups/2026-10-14_before_final.zip` 还保留更早的修订稿。当前目录只使用 `Proposal_English_Final.docx/pdf`。
+
+中文对照 Markdown 和早期课程复核记录均为历史支撑材料，不是当前英文稿的同步译文；其中双栏、旧日期和旧工时说明以本入口及最新修改报告为准。学校原始模板与示例保持不变。
+
+系统入口为 [project/qa_system](../project/qa_system/README.md)。三文档本地 BM25 及合成证据 DeepSeek 联调不等于正式性能评测；独立 Embedding、live dense/hybrid 和正式 100 题评估仍待开展。

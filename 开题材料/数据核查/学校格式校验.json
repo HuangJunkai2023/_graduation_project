@@ -1,0 +1,49 @@
+{
+  "description_counts_including_heading": {
+    "whitespace": 647,
+    "lexical": 678
+  },
+  "description_limit": 750,
+  "references": 6,
+  "hours_through_week24": 372,
+  "viva_hours": 28,
+  "total_hours": 400,
+  "template_sha256": "9ba9dc75f1d96dfdb0606aa807ebb8cb07da2c301bbf6888d9063be122993f99",
+  "example_sha256": "a2f26b4b1d544204b0d22659f2f51a4550dba9d4db95698f9ae84d78442be645",
+  "template_unmodified": true,
+  "source_sha256": "001bb0d811071d769d2c18e40f421f5f7b2f9db8b79cdf64860a4fd51d6acfb4",
+  "docx_sha256": "1faa164d7bba0a49d3b77753ce26a7d0062ebb917fd8ffdd8d5065d318374a6c",
+  "visual_review": true,
+  "format": "Official Proposal Form: portrait single-column form, landscape Gantt section; Arial 10 pt body, 9 pt references and tables.",
+  "proposal_deadline": "2026-10-29 (Week 8); user-confirmed classroom deadline",
+  "personal_declarations": "unselected/unsigned; supervisor approval pending",
+  "pdf_pages": 8,
+  "page_orientations": [
+    "portrait",
+    "portrait",
+    "portrait",
+    "landscape",
+    "landscape",
+    "portrait",
+    "portrait",
+    "portrait"
+  ],
+  "pdf_bounds_checked": true,
+  "pdf_sha256": "6accab0891cdb5dedcdf93272579784463f21eea2132fab38a91558ff7cac3b3",
+  "pdf_fonts": [
+    "BAAAAA+LiberationSans-Bold",
+    "CAAAAA+LiberationSans",
+    "DAAAAA+LiberationSans-Italic",
+    "EAAAAA+LiberationSans-BoldItalic",
+    "FAAAAA+LiberationSerif"
+  ],
+  "visual_review_details": "All eight pages rendered and visually inspected. Full-width form text, portrait cover and professional-practice forms; landscape Gantt on page 4 and complete task table on page 5. No clipped text, table-row orphan, overlap or missing glyphs.",
+  "section1_unchanged_from_git": "2acf6a0",
+  "docx_count_rechecked": true,
+  "schedule_table_matches_csv": true,
+  "template_geometry_preserved": true,
+  "single_column_all_sections": true,
+  "reference_links_verified": 6,
+  "pdf_fonts_embedded": true,
+  "original_ieee_files_unchanged": true
+}

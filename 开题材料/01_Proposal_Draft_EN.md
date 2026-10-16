@@ -1,6 +1,6 @@
-# ELEC3801 Project Proposal — IEEE Two-Column Final Version
+# ELEC3801 Project Proposal — School Proposal Form Version
 
-Academic year: 2026–27. Prepared: 14 October 2026.
+Academic year: 2026–27. Prepared: 14 October 2026. Format corrected: 16 October 2026.
 
 Status: final technical text; student details and factual declarations await completion before submission. Not submitted or approved. Future objectives and targets are not completed results.
 
@@ -66,13 +66,13 @@ A three-document BM25 prototype exists; live DeepSeek checks used synthetic evid
 
 ## Section 2: Gantt Chart
 
-Week 1 begins on 7 September 2026, as confirmed in class. The confirmed Proposal deadline is Thursday 29 October 2026 (Week 8), with IEEE two-column presentation. The supplied course form specifies 14:00 UK time. Later date conversions assume consecutive weeks and remain provisional pending the semester timetable.
+Week 1 begins on 7 September 2026, as confirmed in class. The confirmed Proposal deadline is Thursday 29 October 2026 (Week 8). Presentation follows the supplied ELEC3801 Proposal Form and example. The supplied course form specifies 14:00 UK time. Later date conversions assume consecutive weeks and remain provisional pending the semester timetable.
 
 Reserve Week 22–23 (1–14 February 2027) as a provisional two-week Chinese New Year work break. Lunar New Year's Day is 6 February 2027; the institutional holiday length remains unconfirmed. No task bars cross the break. Budget 400 hours overall: 372 through Week 24 and 28 for the viva. This is a planning allocation, not completed work. The handbook states approximately 400 module hours but describes a Week 4–24 working period without explicitly allocating viva hours; the inclusive total here is a project budgeting choice, not a confirmed course interpretation.
 
 ![Project schedule](figures/gantt.png)
 
-Milestones: M1 Proposal (Week 8); M2 corpus/baseline (Week 11); M3 integration (Week 16); M4 frozen benchmark/configuration (Week 17); MS compulsory Symposium (Week 18); M5 evaluation (Week 20); M6 report draft (Week 21); M7 final submission (Week 24, Thursday 14:00 UK time, subject to the course notice). Viva: Week 25–27. Table I gives named tasks, active weeks, dependencies and hours. Equal predecessor-end and successor-start weeks mean an ordered handover within that week, not parallel dependency completion.
+Milestones: M1 Proposal (Week 8); M2 corpus/baseline (Week 11); M3 integration (Week 16); M4 frozen benchmark/configuration (Week 17); MS compulsory Symposium (Week 18); M5 evaluation (Week 20); M6 report draft (Week 21); M7 final submission (Week 24, Thursday 14:00 UK time, subject to the course notice). Viva: Week 25–27. Table 1 gives named tasks, active weeks, dependencies and hours. Equal predecessor-end and successor-start weeks mean an ordered handover within that week, not parallel dependency completion.
 
 Main dependency chain: T03 → T06 → T07 → T11 → T12 → T13 → T15; integration also gates T11. Literature informs the Proposal through an initial reading checkpoint in Week 6, with the remaining T02 review continuing afterwards. T06 starts with document curation; T05 must be complete before its final embedding/index check at M2. T15 leaves 12 hours for final checks after the break; complete the report draft and video beforehand.
 
