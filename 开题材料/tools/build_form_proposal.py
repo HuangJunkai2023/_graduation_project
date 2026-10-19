@@ -110,7 +110,9 @@ def build():
     for p in doc.paragraphs:
         if 'This form must be completed' in p.text:
             for r in p.runs:r.text=r.text.replace('Week 7','Week 8 (29 October 2026)')
-    for i,value in enumerate(['[FULL NAME], [STUDENT ID]','[OFFICIAL DEGREE TITLE]','Na Qin',title]):
+    cover_values=[re.search(r'^'+label+r': (.+)$',source,re.M)[1]
+                  for label in ['Name and SID','Degree programme','Supervisor','Project title']]
+    for i,value in enumerate(cover_values):
         tables[0].cell(i,1).text=value
         for p in tables[0].cell(i,1).paragraphs:format_p(p)
     first,second=sections['1'].split('### Reproducible method and assessment',1)
@@ -121,7 +123,7 @@ def build():
     cell=reset(tables[2]);p=cell.add_paragraph();p.alignment=WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.line_spacing=1.0;p.paragraph_format.space_after=Pt(2)
     p.add_run().add_picture(str(OUT/'figures/gantt.png'),width=Inches(8.6))
-    add_p(cell,'Figure 1. Planned project weeks, milestones and provisional New Year break. Table 1 gives dependencies and effort.',9)
+    add_p(cell,'Figure 1. Planned project weeks and milestones; New Year work break: 1–14 February 2027 (Week 22–23). Table 1 gives dependencies and effort.',9)
     schedule_continuation=tables[2].add_row()
     cell=schedule_continuation.cells[0]
     markdown(cell,sections['2'])
@@ -137,8 +139,8 @@ def build():
     parts=re.split(r'^### ([^\n]+)\n',sections['4'],flags=re.M)
     professional={parts[i]:parts[i+1].strip() for i in range(1,len(parts),2)}
     markdown(reset(tables[4]),professional['Societal and environmental considerations'])
-    declarations=professional['Declarations awaiting personal confirmation']
-    ethics_options=declarations[declarations.index('[ ] My project'):declarations.index('My project work will not')].strip()
+    declarations=professional['Declarations for signature']
+    ethics_options=declarations[declarations.index('Student ethics assessment'):declarations.index('My project work will not')].strip()
     markdown(reset(tables[5]),professional['Ethics']+'\n\n'+ethics_options)
     risk_main,risk_note=professional['Risk Register'].split('If an alternative provider',1)
     markdown(reset(tables[6]),risk_main,[1.55,.55,4.9])
@@ -146,25 +148,29 @@ def build():
     markdown(risk_continuation.cells[0],'If an alternative provider'+risk_note)
     markdown(reset(tables[7]),professional['Security'])
     safety=declarations[declarations.index('My project work will not'):declarations.index('Supervisor approval')].strip()
-    safety=safety.replace('[UNCONFIRMED]. Student signature:', '[UNCONFIRMED].\n\nStudent signature:')
-    markdown(reset(tables[8]),professional['Safety']+'\n\n'+safety)
+    markdown(reset(tables[8]),professional['Safety']+'\n\n'+safety,[1.4,.75,4.0,.85])
     supervisor=declarations[declarations.index('Supervisor approval'):].strip()
-    markdown(reset(tables[9]),'Before submission, the supervisor should check and approve this form. A signature, or verbal, email or Teams confirmation, is accepted.\n\n'+supervisor)
+    markdown(reset(tables[9]),'Before submission, the supervisor should review this form, including the ethics assessment and project-specific safety assessment, and approve it below.\n\n'+supervisor)
     for table in tables:
         for row in table.rows:
             row.height=None;row.height_rule=WD_ROW_HEIGHT_RULE.AUTO
             props=row._tr.get_or_add_trPr()
             for element in list(props.findall(qn('w:cantSplit'))):props.remove(element)
-    for row in [desc_continuation,schedule_continuation,risk_continuation]:
+    for row in [desc_continuation,schedule_continuation,risk_continuation,tables[9].rows[0]]:
         row._tr.get_or_add_trPr().append(OxmlElement('w:cantSplit'))
+    in_professional=False
     for p in doc.paragraphs:
+        if p.text.startswith('Section 4:'):in_professional=True
         if not p.text.strip() and not p._p.xpath('./w:pPr/w:sectPr'):
             p.paragraph_format.space_after=Pt(0);p.paragraph_format.space_before=Pt(0)
+            if in_professional:
+                p.paragraph_format.line_spacing=Pt(2)
+                for run in p.runs:run.font.size=Pt(2)
         if p.text.strip() in ['Societal and environmental considerations','Ethics:','Risk Register','Security','Safety:']:
             p.paragraph_format.keep_with_next=True
     doc.core_properties.title=title;doc.core_properties.author=''
     doc.core_properties.subject='ELEC3801 2026–27 Project Proposal Form'
-    doc.core_properties.comments='School example format; personal declarations pending; no approval asserted.'
+    doc.core_properties.comments='School Proposal Form; prepared for signature; no signature, attendance record or approval asserted.'
     doc.save(TARGET)
     assert hashlib.sha256(template.read_bytes()).hexdigest()==before
     desc=sections['1'].split('### References')[0]
@@ -179,7 +185,7 @@ def build():
            'docx_sha256':hashlib.sha256(TARGET.read_bytes()).hexdigest(),'visual_review':False,
            'format':'Official Proposal Form: portrait single-column form, landscape Gantt section; Arial 10 pt body, 9 pt references and tables.',
            'proposal_deadline':'2026-10-29 (Week 8); user-confirmed classroom deadline',
-           'personal_declarations':'unselected/unsigned; supervisor approval pending'}
+           'personal_declarations':'document-only ethics option selected for review; project-specific safety assessment supplied; unsigned student attendance attestation and supervisor approval'}
     return stats
 
 

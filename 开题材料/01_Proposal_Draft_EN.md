@@ -2,11 +2,11 @@
 
 Academic year: 2026–27. Prepared: 14 October 2026. Format corrected: 16 October 2026.
 
-Status: final technical text; student details and factual declarations await completion before submission. Not submitted or approved. Future objectives and targets are not completed results.
+Status: prepared for student signature and supervisor review/signature. Not submitted or approved. Future objectives and targets are not completed results.
 
-Name and SID: [TO BE COMPLETED BY STUDENT]
+Name and SID: Huang Junkai, 201804121
 
-Degree programme: [TO BE COMPLETED BY STUDENT]
+Degree programme: Electronic and Electrical Engineering
 
 Supervisor: Na Qin
 
@@ -68,7 +68,7 @@ A three-document BM25 prototype exists; live DeepSeek checks used synthetic evid
 
 Week 1 begins on 7 September 2026, as confirmed in class. The confirmed Proposal deadline is Thursday 29 October 2026 (Week 8). Presentation follows the supplied ELEC3801 Proposal Form and example. The supplied course form specifies 14:00 UK time. Later date conversions assume consecutive weeks and remain provisional pending the semester timetable.
 
-Reserve Week 22–23 (1–14 February 2027) as a provisional two-week Chinese New Year work break. Lunar New Year's Day is 6 February 2027; the institutional holiday length remains unconfirmed. No task bars cross the break. Budget 400 hours overall: 372 through Week 24 and 28 for the viva. This is a planning allocation, not completed work. The handbook states approximately 400 module hours but describes a Week 4–24 working period without explicitly allocating viva hours; the inclusive total here is a project budgeting choice, not a confirmed course interpretation.
+The project plan sets 1–14 February 2027 as a two-week Chinese New Year work break, corresponding to Week 22–23 under the consecutive planning-week convention. This is the student's work schedule, not an institutional holiday approval. No task bars cross the break. Budget 400 hours overall: 372 through Week 24 and 28 for the viva. This is a planning allocation, not completed work. The handbook states approximately 400 module hours but describes a Week 4–24 working period without explicitly allocating viva hours; the inclusive total here is a project budgeting choice, not a confirmed course interpretation.
 
 ![Project schedule](figures/gantt.png)
 
@@ -108,9 +108,13 @@ Sustainability: reuse hardware, avoid model training, cache unchanged vectors an
 
 ### Ethics
 
-Use technical documents and researcher-prepared questions; no participant recruitment or personal-data study is planned. Record provenance, confidentiality and permission for cloud processing before sending each document. A local permission toggle records a decision but does not establish legal permission. Exclude restricted material and engineering drawings from external processing in this phase. Check service retention conditions for permitted data.
+The project will use railway technical standards and researcher-prepared questions to evaluate a document-based question-answering system. No human participants, surveys, interviews or personal-data analysis are planned. Evaluation will use a fixed question set rather than collecting user conversations.
 
-Acknowledge the supplied reference implementation, literature and AI assistance in code and writing; keep development records. Do not present generated annotations, planned improvements or test targets as measured results. The applicable assessment brief governs permitted assistance. The unselected ethics options and signature fields follow below; the student and supervisor must determine the applicable option. Any later participant study requires review before recruitment.
+Document provenance and permitted uses will be recorded before ingestion. Only material permitted for external processing will be sent to chat or embedding services; this includes document chunks used to build the vector index. Restricted documents, personal information and operationally sensitive railway material will be excluded. Provider retention conditions will be checked, and only the text required for each request will be transmitted. Unresolved permissions will lead to exclusion or replacement, not assumed consent. Published outputs will use permitted excerpts and source references rather than redistribute complete standards.
+
+Incorrect editions, unsupported claims and omitted conditions could mislead readers. Answers will display source locations and edition labels, with refusal or clarification where evidence is inadequate. The system will support study and document consultation; it will not authorise maintenance, railway operation or safety-critical decisions. Readers must verify the original standard before any practical use.
+
+Reference code, literature and permitted AI assistance will be acknowledged. Benchmark answers will be checked against source text, and all configurations, failures and measured results will be reported honestly. Any later participant study or change in data use will require renewed ethics screening before that work begins.
 
 ### Risk Register
 
@@ -124,7 +128,7 @@ Likelihood/impact: L = Low, M = Medium, H = High. Initial ratings are planning j
 | R4 API/cost/model changes | M / H | Access fails, model changes or 80% cap reached: pilot early, cache vectors, log failures, freeze model identifiers and retain local retrieval. Verify embedding access in T05; integration buffer T10. |
 | R5 Annotation/leakage | M / H | Ambiguous labels or related facts cross splits: grouped split, separate label recheck and immutable freeze before testing; mask configuration during scoring. T07/T11/T12. |
 | R6 Data permissions | M / H | Cloud rights unresolved: keep affected files local and select authorised replacements before corpus freeze. T03/T06. |
-| R7 Schedule/scope | M / H | Milestone slips: protect the provisional Week 22–23 break; prioritise five comparisons and finish report/video by Week 21, with Week 24 checks. Recheck date mapping and timed annotation/scoring pilots; keep OCR/drawings out of scope. T11–T15; preserve Symposium attendance. |
+| R7 Schedule/scope | M / H | Milestone slips: protect the planned 1–14 February break (Week 22–23); prioritise five comparisons and finish report/video by Week 21, with Week 24 checks. Recheck date mapping and timed annotation/scoring pilots; keep OCR/drawings out of scope. T11–T15; preserve Symposium attendance. |
 | R8 Data loss | L / H | Missing/corrupt files: version code and labels, back up to separate approved storage and test restoration. T16, throughout. |
 
 If an alternative provider becomes necessary, repeat all affected comparisons with the same replacement configuration; do not mix favourable outputs from different models. A local retrieval demo is a fallback deliverable, not evidence that online QA or hybrid evaluation has passed.
@@ -135,24 +139,36 @@ Protect API credentials, permitted document content and evaluation labels. Keep 
 
 ### Safety
 
-Specialist laboratory required: No. Work is desktop software and document analysis; there are no live railway, high-voltage, workshop or field experiments. Follow workstation ergonomics and normal computer electrical-safety procedures. Existing risk-assessment coverage / whether a new assessment is required: [TO BE CONFIRMED WITH SUPERVISOR].
+Specialist laboratory required: No. The project will involve computer-based document processing, software development and local demonstrations. It will not involve railway access, live contact systems, high-voltage equipment, workshop manufacture or hardware modification. The researcher will use an ordinary workstation and follow the School's applicable computer-use and electrical-safety procedures.
 
-### Declarations awaiting personal confirmation
+The following project-specific assessment is submitted for supervisor review; coverage by an existing School assessment has not been established. L/M/H denote low/medium/high likelihood and impact. Residual ratings assume that the listed controls are applied; they do not represent measured accident rates.
 
-The following wording is reproduced from the supplied Proposal Form for completion only after factual confirmation. Both ethics options are unselected; no approval, attendance or signature is asserted. Complete any separate official declaration or risk-assessment form required by the submission portal; these reproduced fields do not replace it.
+| Hazard / persons affected | Initial L/I | Planned precautions | Residual L/I |
+| --- | --- | --- | --- |
+| Prolonged screen work / researcher | M/L | Adjust seating and display position, use suitable lighting, take regular breaks and vary tasks to reduce fatigue and strain. | L/L |
+| Damaged computer power equipment / researcher | L/H | Use suitable intact power supplies, keep liquids away, avoid overloaded sockets and stop using damaged or overheating equipment; report faults rather than attempt electrical repair. | L/H |
+| Trailing leads or obstructed workspace / researcher and nearby users | M/M | Route cables away from walkways and keep the desk, floor and exits clear. | L/M |
 
-[ ] My project does not involve human participants, personal data or other ethical issues requiring review.
+The researcher will review these precautions when the workspace or project scope changes and report incidents through the School's procedures. Any move to laboratory or railway work will require a separate assessment before it starts. The supervisor will review the assessment and its controls before practical work begins. Any separately prescribed School risk-assessment form will also be completed before that work; this Proposal does not replace it.
+
+### Declarations for signature
+
+Student ethics assessment for the defined scope: the first option below is selected on the basis of the document-only methodology and the permission controls stated above, for supervisor review.
+
+[x] My project does not involve human participants, personal data or other ethical issues requiring review.
 
 [ ] My project involves human participants, personal data or other ethical issues. I have discussed this with my supervisor and will obtain ethical approval before starting that work.
 
-Ethics option / discussion date: [TO BE COMPLETED].
+My project work will not be covered by existing Risk Assessments. A new one is required. Yes [x] / No [ ]. A project-specific assessment is provided above because existing School coverage has not been established; it is submitted with this form for supervisor review.
 
-My project work will not be covered by existing Risk Assessments. A new one is required. Yes [ ] / No [ ] — [PENDING SUPERVISOR CONFIRMATION]. Assessment reference and precautions, if applicable: [TO BE COMPLETED BEFORE PRACTICAL WORK].
+Safety declaration (to be confirmed by the student's signature): “I have attended the Safety Briefing (included in the ELEC3801 introductory lectures) and my attendance was recorded. I am aware that full Risk Assessments relating to project work within the School have been conducted. I agree to comply with all the relevant safety policies.”
 
-Safety declaration — unsigned: “I have attended the Safety Briefing (included in the ELEC3801 introductory lectures) and my attendance was recorded. I am aware that full Risk Assessments relating to project work within the School have been conducted. I agree to comply with all the relevant safety policies.”
+Student name: Huang Junkai. Student ID: 201804121.
 
-Safety briefing attendance/date: [UNCONFIRMED]. Student signature: ____________________ Date: __________.
+Student signature: ____________________ Date: __________.
 
-Supervisor approval — not yet given: “My student has completed this form satisfactorily and is aware of their safety responsibilities.”
+Supervisor approval (to be confirmed by signature): “My student has completed this form satisfactorily and is aware of their safety responsibilities.”
 
-Supervisor signature or confirmation: ____________________. Date: __________. Means (signature / verbal / email / Teams): [TO BE COMPLETED AFTER REVIEW].
+Supervisor name: Na Qin.
+
+Supervisor signature or confirmation: ____________________ Date: __________.

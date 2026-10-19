@@ -9,11 +9,14 @@
       "name": "Chinese New Year break",
       "start_week": 22,
       "end_week": 23,
-      "status": "proposed two-week work break; institutional holiday length unconfirmed",
-      "planned_project_hours": 0
+      "status": "project work break set by the student on 2026-10-19; not an institutional holiday approval",
+      "planned_project_hours": 0,
+      "start_date": "2027-02-01",
+      "end_date": "2027-02-14",
+      "confirmed_by": "student instruction on 2026-10-19"
     }
   ],
   "festival_date": "2027-02-06",
   "festival_source": "https://www.info.gov.hk/gia/general/202605/15/P2026051400300.htm",
-  "note": "Festival date verified; public holidays in Hong Kong do not establish SWJTU holiday rules. Journal and meeting obligations require course agreement."
+  "note": "Project break fixed at 1–14 February 2027 by the student. Week 22–23 uses consecutive planning weeks from 7 September 2026; later course week mapping remains to be confirmed. Journal and meeting obligations require course agreement."
 }

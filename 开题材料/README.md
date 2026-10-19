@@ -1,6 +1,6 @@
 # 接触网智能问答毕设：开题材料包
 
-**当前提交稿使用学校 Proposal Form／示例格式，不使用 IEEE 双栏。** 依据用户 2026-10-16 更正，文件对应 `@26-27新版资料/4.Example_ELEC3801_Project_Proposal_Example.docx` 和官方 Proposal Form。个人信息、真实声明和导师批准仍需本人完成。
+**当前文件为待签署版，使用学校 Proposal Form／示例格式，不使用 IEEE 双栏。** 首页已填写 Huang Junkai（黄俊凯）、201804121、Electronic and Electrical Engineering 和 Na Qin。伦理选项、项目安全风险评估及措施已填写；因未确认学校现有评估覆盖范围，选用提供项目专项评估的路径，交导师审核。第8页只保留学生与导师的签名、日期空栏。本人须在签名前确认原表的安全说明课出席声明属实；如学校另要求独立评估表，应按要求另交。
 
 - [英文最终 PDF](Proposal_English_Final.pdf)
 - [英文最终 Word（可编辑）](Proposal_English_Final.docx)
@@ -13,7 +13,7 @@
 
 当前 PDF 为 8 页：学校封面、单栏项目描述及参考文献、横向甘特图与任务表、资源表、伦理/风险/安全与导师确认表。正文 Arial 10 磅，表格和参考文献 9 磅；沿用模板 A4 纸张、页边距和页码。Section 1 含章节标题、全部小标题及正文，按空白词元计 647，按英文字母/数字词规则计 678，均低于 750；参考文献仍为 6 篇。当前研究内容较示例详细，自然扩展为 8 页，不以缩小正文字号强制凑成 6 页。课程的最终报告七页限制不混用到 Proposal。
 
-已确认的 Proposal DDL 为 2026-10-29（Week 8），封面已据此更新原模板的 Week 7；14:00 UK 沿用课程表格。Week 1 从 2026-09-07 开始，后续跨学期周数及 Week 22–23 的春节两周预留仍待校历确认。总工时为提交前 372 + Viva 28 = 400 小时，这是项目预算口径，手册未明确 Viva 是否另计。
+已确认的 Proposal DDL 为 2026-10-29（Week 8），封面已据此更新原模板的 Week 7；14:00 UK 沿用课程表格。Week 1 从 2026-09-07 开始，春节项目休息已按本人要求定为 2027-02-01 至 02-14，共两周，对应连续规划周 Week 22–23；后续跨学期课程周号仍待校历确认。总工时为提交前 372 + Viva 28 = 400 小时，这是项目预算口径，手册未明确 Viva 是否另计。
 
 ## 更新与重新导出
 
@@ -26,7 +26,7 @@
 .venv/bin/python 开题材料/tools/build_form_proposal.py --renderer /usr/bin/soffice
 ```
 
-本轮图表和工时未改变，生成器直接嵌入既有甘特图。若改动任务或假期，应先调用 `build_documents.make_schedule()` 重绘图表，再重建 Word/PDF。依赖见 `tools/requirements.txt`。本轮使用本地临时目录解包的 LibreOffice 7.3.7，未安装系统软件；PDF 嵌入 Arial 的兼容替代字体 Liberation Sans。仅生成 Word 不会更新 PDF；直接手改 Word 后再运行脚本会覆盖派生文件，应先同步源文件或另存修改版。
+本轮已重绘甘特图中的春节说明，总工时不变；生成器直接嵌入既有甘特图。若改动任务或假期，应先调用 `build_documents.make_schedule()` 重绘图表，再重建 Word/PDF。依赖见 `tools/requirements.txt`。本轮使用本地临时目录解包的 LibreOffice 7.3.7，未安装系统软件；PDF 嵌入 Arial 的兼容替代字体 Liberation Sans。仅生成 Word 不会更新 PDF；直接手改 Word 后再运行脚本会覆盖派生文件，应先同步源文件或另存修改版。
 
 ## 历史版本
 
