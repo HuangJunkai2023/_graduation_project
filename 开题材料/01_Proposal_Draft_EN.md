@@ -159,7 +159,7 @@ Student ethics assessment for the defined scope: the first option below is selec
 
 [ ] My project involves human participants, personal data or other ethical issues. I have discussed this with my supervisor and will obtain ethical approval before starting that work.
 
-My project work will not be covered by existing Risk Assessments. A new one is required. Yes [x] / No [ ]. A project-specific assessment is provided above because existing School coverage has not been established; it is submitted with this form for supervisor review.
+My project work will not be covered by existing Risk Assessments. A new one is required. Yes [ ] / No [ ]. To be completed by the supervisor after confirming existing School assessment coverage and whether a separate formal assessment is required. The project-specific hazards and precautions above are provided for that review.
 
 Safety declaration (to be confirmed by the student's signature): “I have attended the Safety Briefing (included in the ELEC3801 introductory lectures) and my attendance was recorded. I am aware that full Risk Assessments relating to project work within the School have been conducted. I agree to comply with all the relevant safety policies.”
 
