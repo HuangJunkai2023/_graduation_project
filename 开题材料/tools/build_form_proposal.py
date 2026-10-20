@@ -199,7 +199,8 @@ def render(renderer,stats):
     pdf=TARGET.with_suffix('.pdf')
     with pymupdf.open(pdf) as d:
         text=' '.join(' '.join(p.get_text() for p in d).split())
-        for term in ['Section 1:', 'Section 2:', 'Section 3:', 'Section 4:', 'Na Qin', '29 October 2026','R8','T17','Student signature:','Supervisor signature or confirmation']:
+        supervisor_name=re.search(r'^Supervisor: (.+)$',(OUT/'01_Proposal_Draft_EN.md').read_text(),re.M)[1]
+        for term in ['Section 1:', 'Section 2:', 'Section 3:', 'Section 4:', supervisor_name, '29 October 2026','R8','T17','Student signature:','Supervisor signature or confirmation']:
             assert term in text,term
         assert all(t not in text for t in ['Maya Okafor','Helen Carter','Remove the text below','IEEE two-column presentation'])
         for i,page in enumerate(d):

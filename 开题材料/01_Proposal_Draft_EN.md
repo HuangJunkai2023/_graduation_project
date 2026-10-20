@@ -8,9 +8,9 @@ Name and SID: Huang Junkai, 201804121
 
 Degree programme: Electronic and Electrical Engineering
 
-Supervisor: Na Qin
+Supervisor: Deqing Huang
 
-Project title: Design and Evaluation of a Large Language Model-Based Question-Answering System for Railway Overhead Contact Systems
+Project title: A Study on a Large-Model-Based Intelligent Question-Answering System for the Overhead Contact System Field
 
 ## Section 1: Project Description
 
@@ -169,6 +169,6 @@ Student signature: ____________________ Date: __________.
 
 Supervisor approval (to be confirmed by signature): “My student has completed this form satisfactorily and is aware of their safety responsibilities.”
 
-Supervisor name: Na Qin.
+Supervisor name: Deqing Huang.
 
 Supervisor signature or confirmation: ____________________ Date: __________.
