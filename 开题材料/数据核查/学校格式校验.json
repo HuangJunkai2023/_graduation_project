@@ -11,12 +11,12 @@
   "template_sha256": "9ba9dc75f1d96dfdb0606aa807ebb8cb07da2c301bbf6888d9063be122993f99",
   "example_sha256": "a2f26b4b1d544204b0d22659f2f51a4550dba9d4db95698f9ae84d78442be645",
   "template_unmodified": true,
-  "source_sha256": "1bb47014f1e9ebbf606a1523cf84281c898c30bb2e3230386671285adabf124f",
-  "docx_sha256": "6045948e02d0ebace1d5ae0c5482350d07df49f13a17b4097fa6a08c9b7dfa05",
+  "source_sha256": "035e2f32450b020c6fe2fa5aad9e7e6dc8cccfb59e83c9826dd7cd36e661f258",
+  "docx_sha256": "37ea33bb217255bd4d2ebb53905d7d6be3b715fa79ab2540c366f74b3ab403ff",
   "visual_review": true,
   "format": "Official Proposal Form: portrait single-column form, landscape Gantt section; Arial 10 pt body, 9 pt references and tables.",
   "proposal_deadline": "2026-10-29 (Week 8); user-confirmed classroom deadline",
-  "personal_declarations": "document-only ethics option selected for review; project-specific safety assessment supplied; new assessment Yes/No left unselected for supervisor decision; unsigned student attendance attestation and supervisor approval",
+  "personal_declarations": "document-only ethics option selected for review; project-specific safety assessment supplied; new assessment No selected as instructed by student; unsigned student attendance attestation and supervisor approval",
   "pdf_pages": 8,
   "page_orientations": [
     "portrait",
@@ -29,12 +29,12 @@
     "portrait"
   ],
   "pdf_bounds_checked": true,
-  "pdf_sha256": "48ce75935484cc140c2c230b0b555246db61dafd3070a5c64f8060f7c384e0f1",
+  "pdf_sha256": "f46ce266761ea6bed4ac383a9ce0133d7d8dac5d4c16903466022c95650b9ca1",
   "visual_review_pages": [
-    1,
     8
   ],
   "unchanged_pages_pixel_identical": [
+    1,
     2,
     3,
     4,
@@ -42,7 +42,9 @@
     6,
     7
   ],
-  "student_name": "Junkai Huang",
-  "supervisor": "Deqing Huang",
-  "name_order": "given name followed by family name; consistent on cover and signature page"
+  "new_assessment_selection": "No",
+  "selection_basis": "user instruction",
+  "provisional_selection_note": false,
+  "student_signature_supplied": false,
+  "supervisor_approval_supplied": false
 }

@@ -141,7 +141,7 @@ Protect API credentials, permitted document content and evaluation labels. Keep 
 
 Specialist laboratory required: No. The project will involve computer-based document processing, software development and local demonstrations. It will not involve railway access, live contact systems, high-voltage equipment, workshop manufacture or hardware modification. The researcher will use an ordinary workstation and follow the School's applicable computer-use and electrical-safety procedures.
 
-The following project-specific assessment is submitted for supervisor review; coverage by an existing School assessment has not been established. L/M/H denote low/medium/high likelihood and impact. Residual ratings assume that the listed controls are applied; they do not represent measured accident rates.
+The following table identifies the hazards and precautions for the computer-based project. L/M/H denote low/medium/high likelihood and impact. Residual ratings assume that the listed controls are applied; they do not represent measured accident rates.
 
 | Hazard / persons affected | Initial L/I | Planned precautions | Residual L/I |
 | --- | --- | --- | --- |
@@ -159,7 +159,7 @@ Student ethics assessment for the defined scope: the first option below is selec
 
 [ ] My project involves human participants, personal data or other ethical issues. I have discussed this with my supervisor and will obtain ethical approval before starting that work.
 
-My project work will not be covered by existing Risk Assessments. A new one is required. Yes [ ] / No [ ]. To be completed by the supervisor after confirming existing School assessment coverage and whether a separate formal assessment is required. The project-specific hazards and precautions above are provided for that review.
+My project work will not be covered by existing Risk Assessments. A new one is required. Yes [ ] / No [x].
 
 Safety declaration (to be confirmed by the student's signature): “I have attended the Safety Briefing (included in the ELEC3801 introductory lectures) and my attendance was recorded. I am aware that full Risk Assessments relating to project work within the School have been conducted. I agree to comply with all the relevant safety policies.”
 

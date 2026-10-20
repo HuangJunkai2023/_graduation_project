@@ -185,7 +185,7 @@ def build():
            'docx_sha256':hashlib.sha256(TARGET.read_bytes()).hexdigest(),'visual_review':False,
            'format':'Official Proposal Form: portrait single-column form, landscape Gantt section; Arial 10 pt body, 9 pt references and tables.',
            'proposal_deadline':'2026-10-29 (Week 8); user-confirmed classroom deadline',
-           'personal_declarations':'document-only ethics option selected for review; project-specific safety assessment supplied; new assessment Yes/No left unselected for supervisor decision; unsigned student attendance attestation and supervisor approval'}
+           'personal_declarations':'document-only ethics option selected for review; project-specific safety assessment supplied; new assessment No selected as instructed by student; unsigned student attendance attestation and supervisor approval'}
     return stats
 
 
