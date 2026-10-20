@@ -11,8 +11,8 @@
   "template_sha256": "9ba9dc75f1d96dfdb0606aa807ebb8cb07da2c301bbf6888d9063be122993f99",
   "example_sha256": "a2f26b4b1d544204b0d22659f2f51a4550dba9d4db95698f9ae84d78442be645",
   "template_unmodified": true,
-  "source_sha256": "43908c087b1d2c8ea6537eb0614339797ba3a99fad2e017ac75c2cbce74142cd",
-  "docx_sha256": "455deff8439677939b90714e7461a351cc0bc74ba28117e740fdfb3c41621ce1",
+  "source_sha256": "1bb47014f1e9ebbf606a1523cf84281c898c30bb2e3230386671285adabf124f",
+  "docx_sha256": "6045948e02d0ebace1d5ae0c5482350d07df49f13a17b4097fa6a08c9b7dfa05",
   "visual_review": true,
   "format": "Official Proposal Form: portrait single-column form, landscape Gantt section; Arial 10 pt body, 9 pt references and tables.",
   "proposal_deadline": "2026-10-29 (Week 8); user-confirmed classroom deadline",
@@ -29,7 +29,7 @@
     "portrait"
   ],
   "pdf_bounds_checked": true,
-  "pdf_sha256": "6e0eb4718ac769df9df74e760e52b78a2ca82a379139c8561db17f64aa17b99f",
+  "pdf_sha256": "48ce75935484cc140c2c230b0b555246db61dafd3070a5c64f8060f7c384e0f1",
   "visual_review_pages": [
     1,
     8
@@ -42,11 +42,7 @@
     6,
     7
   ],
+  "student_name": "Junkai Huang",
   "supervisor": "Deqing Huang",
-  "title_matches_user_exactly": true,
-  "narrative_first_person_pronouns": 0,
-  "official_first_person_declarations_preserved": true,
-  "new_assessment_selected": false,
-  "student_signature_supplied": false,
-  "supervisor_approval_supplied": false
+  "name_order": "given name followed by family name; consistent on cover and signature page"
 }

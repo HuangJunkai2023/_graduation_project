@@ -4,7 +4,7 @@ Academic year: 2026–27. Prepared: 14 October 2026. Format corrected: 16 Octobe
 
 Status: prepared for student signature and supervisor review/signature. Not submitted or approved. Future objectives and targets are not completed results.
 
-Name and SID: Huang Junkai, 201804121
+Name and SID: Junkai Huang, 201804121
 
 Degree programme: Electronic and Electrical Engineering
 
@@ -163,7 +163,7 @@ My project work will not be covered by existing Risk Assessments. A new one is r
 
 Safety declaration (to be confirmed by the student's signature): “I have attended the Safety Briefing (included in the ELEC3801 introductory lectures) and my attendance was recorded. I am aware that full Risk Assessments relating to project work within the School have been conducted. I agree to comply with all the relevant safety policies.”
 
-Student name: Huang Junkai. Student ID: 201804121.
+Student name: Junkai Huang. Student ID: 201804121.
 
 Student signature: ____________________ Date: __________.
 

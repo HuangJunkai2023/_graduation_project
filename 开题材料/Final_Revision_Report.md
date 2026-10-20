@@ -6,10 +6,12 @@
 
 ## 本轮实际修改
 
+- 统一英文姓名为名在前、姓在后：Junkai Huang（黄俊凯）与 Deqing Huang（黄德青）。首页与末页学生签署栏同步，中文姓名和学号不变。
+
 - 10月20日按本人要求将导师改为黄德青，英文按姓名拼音填写 Deqing Huang；首页、签署栏及当前说明同步更新。题目逐字改为 `A Study on a Large-Model-Based Intelligent Question-Answering System for the Overhead Contact System Field`。
 - 检查全文第一人称：研究正文不使用 I / we / my / our 等第一人称；学校原表的伦理选项、安全声明和导师签署声明保留原文中的 I / My，避免改变正式确认措辞。风险表中的 I 指 impact，不是第一人称代词。
 
-- 保留已填写的 Huang Junkai（黄俊凯）、201804121、Electronic and Electrical Engineering 和导师 Deqing Huang；在最后一页签署区再次预填双方姓名。
+- 保留已填写的 Junkai Huang（黄俊凯）、201804121、Electronic and Electrical Engineering 和导师 Deqing Huang；在最后一页签署区再次预填双方姓名。
 - 按仅使用许可技术资料、不招募参与者、不分析个人数据的研究范围，填写伦理第一项，连同数据许可、外传限制及研究诚信措施交导师审核。
 - 保留桌面研究的三项安全风险、初始/剩余风险与防范措施。更正“现有覆盖尚未确认”与预先勾选“需要新增评估”的不一致：取消 Yes 勾选，Yes/No 均留空，由导师确认学校现有覆盖和是否需要独立正式评估。本页项目风险表保留供审核；伦理第一项保持不变。
 - 保留官方安全声明原文，将其明确设为本人签名时确认的声明。删除额外的培训日期、讨论日期、批准方式及内部待填写提示，保留学生、导师各自的签名和日期空栏，以及由导师决定的新增评估 Yes/No 选项。

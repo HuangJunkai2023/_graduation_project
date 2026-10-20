@@ -1,6 +1,6 @@
 # 接触网智能问答毕设：开题材料包
 
-**当前文件为待签署版，使用学校 Proposal Form／示例格式，不使用 IEEE 双栏。** 首页已填写 Huang Junkai（黄俊凯）、201804121、Electronic and Electrical Engineering 和 Deqing Huang。伦理选项、项目安全风险评估及措施已填写；学校现有评估覆盖范围尚未确认，因此第8页“是否需要新增评估”的 Yes/No 均留空，由导师审核决定；保留项目风险表供审核。学生与导师的签名、日期亦留空。本人须在签名前确认原表的安全说明课出席声明属实；如学校另要求独立评估表，应按要求另交。
+**当前文件为待签署版，使用学校 Proposal Form／示例格式，不使用 IEEE 双栏。** 首页已填写 Junkai Huang（黄俊凯）、201804121、Electronic and Electrical Engineering 和 Deqing Huang。伦理选项、项目安全风险评估及措施已填写；学校现有评估覆盖范围尚未确认，因此第8页“是否需要新增评估”的 Yes/No 均留空，由导师审核决定；保留项目风险表供审核。学生与导师的签名、日期亦留空。本人须在签名前确认原表的安全说明课出席声明属实；如学校另要求独立评估表，应按要求另交。
 
 - [英文最终 PDF](Proposal_English_Final.pdf)
 - [英文最终 Word（可编辑）](Proposal_English_Final.docx)
