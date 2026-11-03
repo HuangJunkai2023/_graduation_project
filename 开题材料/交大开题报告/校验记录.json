@@ -3,12 +3,13 @@
   "template": "交大资料/附件九利兹学院本科毕业设计(论文)开题报告-新.docx",
   "template_sha256": "accc058572013499045d37256a058069b8a8bf599928f5c6d6ff9b8c7d8b88ca",
   "template_unmodified": true,
-  "source_sha256": "1c6e6cef75bc14c35f14adbec4633ec2471dfbd922685a750c15f16e8c4f363e",
-  "docx_sha256": "3287035426747c96046ed8d658390db044dfa4f6aa17d410e7fac0a3625ec5d7",
+  "source_sha256": "7ed04e48c877f6084c2e77abfaa1030ec855417534aa22dc6e6c46934d277783",
+  "docx_sha256": "6e5a25e225724c09fab77c6adee59726a6b26f4d5a60e2d12673915c8ed79e33",
   "student_name": "黄俊凯",
   "student_id": "2023115799",
   "major": "Electronic and Electrical Engineering",
   "supervisor": "黄德青",
+  "supervisor_rank": "教授",
   "title": "A Study on a Large-Model-Based Intelligent Question-Answering System for the Overhead Contact System Field",
   "body_language": "English",
   "reference_count": 7,
@@ -24,7 +25,6 @@
   "viva_hours": 28,
   "planned_api_budget_gbp": 50,
   "blank_registration_fields": [
-    "导师职称",
     "选题类型",
     "题目来源",
     "毕业设计指导日志填写情况"
@@ -35,21 +35,14 @@
   "approval_dates_blank": true,
   "original_form_rows_preserved": 13,
   "visual_review": true,
-  "pdf_sha256": "ef897e8cf9f5262b5a94c73f224f79111c3e33f2d49727029515d403089052b3",
+  "pdf_sha256": "655c248728ebf20a67b5240791dd0574d1e41b6993104d3b1a3c1d57531b65af",
   "pdf_pages": 4,
   "pdf_page_bounds_checked": true,
-  "visual_review_pages": [
-    1
-  ],
-  "unchanged_pages_pixel_identical": [
-    2,
-    3,
-    4
-  ],
   "source_paragraphs_and_table_rows_verified_in_pdf": 44,
   "blank_pages": false,
   "unicode_empty_checkboxes": 11,
   "original_fields_all_present": true,
+  "source_proposal_and_schedule_unchanged": true,
   "pdf_fonts": [
     "BAAAAA+NotoSerifCJKjp-Bold-VKana",
     "CAAAAA+DejaVuSans-Bold",
@@ -61,8 +54,21 @@
   ],
   "body_section_word_counts_whitespace": {
     "选题意义和国内外研究现状分析": 283,
-    "主要研究目标和研究内容": 517,
-    "工作计划及进度安排": 441,
+    "主要研究目标和研究内容": 509,
+    "工作计划及进度安排": 447,
     "参考文献": 202
-  }
+  },
+  "visual_review_pages": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "updated_on": "2026-11-03",
+  "supervisor_rank_source": "Student-provided profile, 2026-11-03",
+  "final_review_date": "2026-11-03",
+  "final_review_result": "ready_for_supervisor_review",
+  "formal_approval_obtained": false,
+  "handwritten_archival_scan_created": false,
+  "opinion_and_signature_fields_preserved": true
 }

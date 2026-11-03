@@ -291,13 +291,17 @@ def build():
         'source_sha256': sha256(SOURCE), 'docx_sha256': sha256(target),
         'student_name': fields['Student name'], 'student_id': fields['Student ID'],
         'major': fields['Degree programme'], 'supervisor': fields['Supervisor'],
+        'supervisor_rank': fields['Supervisor rank'],
         'title': fields['Project title'], 'body_language': 'English',
         'reference_count': 7, 'research_questions': 3, 'formal_configurations': 5,
         'planned_documents': '20–30', 'planned_questions': 100,
         'development_questions': 20, 'test_questions': 80,
         'formal_executions': 400, 'planned_total_hours': 400,
         'hours_through_week24': 372, 'viva_hours': 28, 'planned_api_budget_gbp': 50,
-        'blank_registration_fields': ['导师职称', '选题类型', '题目来源', '毕业设计指导日志填写情况'],
+        'blank_registration_fields': [label for field, label in [
+            ('Supervisor rank', '导师职称'), ('Project type', '选题类型'),
+            ('Topic source', '题目来源'), ('Guidance journal', '毕业设计指导日志填写情况')
+        ] if not fields[field]],
         'supervisor_opinion_blank': True, 'expert_opinion_blank': True,
         'signatures_blank': True, 'approval_dates_blank': True,
         'original_form_rows_preserved': 13, 'visual_review': False,
