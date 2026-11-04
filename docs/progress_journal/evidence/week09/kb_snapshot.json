@@ -1,0 +1,10 @@
+{
+  "captured_at_utc": "2026-11-04T08:52:49.676791+00:00",
+  "code_revision": "eb7ed4f2847959cca1775e5121eb9ddda7882b17",
+  "actor": "AI-assisted command execution for student review",
+  "actual_effort_hours": null,
+  "method": "SQLite mode=ro; no Store constructor or schema changes",
+  "documents": 3,
+  "chunks": 503,
+  "vectors": 0
+}

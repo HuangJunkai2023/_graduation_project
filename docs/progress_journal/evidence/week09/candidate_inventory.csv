@@ -1,0 +1,10 @@
+file,candidate_standard,candidate_year,filename_status,sha256,pages,pages_with_40plus_alnum_chars,total_alnum_chars,permission_status
+project/task1/01 data/001 规范/★★★★★★★★★★装备、零部件/TB T 2073-2020 接触网零部件技术条件.pdf,TB/T 2073,2020,unconfirmed,266e6982a8052e275e40904cd2345d8b17b24059f2429f54feaefcd7458a44c7,18,18,10390,not_independently_confirmed
+project/task1/01 data/001 规范/★★★★★★★★★★装备、零部件/TB T 2074-2020 接触网零件试验方法.pdf,TB/T 2074,2020,unconfirmed,dff8634e3a3bac436997bfffa8cf9a9675ff38594b06d6a264e2825534b94925,23,23,10310,not_independently_confirmed
+project/task1/01 data/001 规范/标准/铁标/TB T 2073-2003 电气化铁道接触网零部件技术条件【废】.pdf,TB/T 2073,2003,obsolete_marked,f0a558227f6c197598732a9adb8a073286505d8515794e75ff429990863e08a6,13,0,0,not_independently_confirmed
+project/task1/01 data/001 规范/标准/铁标/TB T 2073-2009 接触网零件技术条件（报批稿）【废】.pdf,TB/T 2073,2009,draft_marked,c0c4359ea81d863666f174d91006ca1680dfe14c15bc333a460710d28b174e8e,16,14,11114,not_independently_confirmed
+project/task1/01 data/001 规范/标准/铁标/TB T 2073-2010 电气化铁路接触网零部件技术条件.pdf,TB/T 2073,2010,unconfirmed,a82dbcfb72cb273aa4d8c73b34c683e11790ad6473b70a092d00e26d61ff79ed,15,0,0,not_independently_confirmed
+project/task1/01 data/001 规范/标准/铁标/TB T 2074-2003 电气化铁道接触网零部件试验方法【废】.pdf,TB/T 2074,2003,obsolete_marked,5d4eaf1f0fd31bd401aa89e395a1eaaf6f452782deae1227b91807657456db3f,17,0,0,not_independently_confirmed
+project/task1/01 data/001 规范/标准/铁标/TB T 2074-2009 接触网零件试验方法（报批稿）【废】.pdf,TB/T 2074,2009,draft_marked,62fbb55e6ad0e74e3fc21d0eb8e3f2153ebe1063b89a2d5ed64c7a6f2ddee7d1,21,19,14622,not_independently_confirmed
+project/task1/01 data/001 规范/标准/铁标/TB T 2074-2010 电气化铁路接触网零部件试验方法.pdf,TB/T 2074,2010,unconfirmed,a9713486cdf268a040918b2424f7fdccffe0b42156c2926fad2f27171ea8432d,20,0,0,not_independently_confirmed
+project/task1/01 data/001 规范/标准/铁标/电气化铁路接触网零部件技术条件 TBT 2073-2010.pdf,TB/T 2073,2010,unconfirmed,a82dbcfb72cb273aa4d8c73b34c683e11790ad6473b70a092d00e26d61ff79ed,15,0,0,not_independently_confirmed

@@ -1,0 +1,17 @@
+usage: __main__.py [-h] [--db DB]
+                   {ingest,status,allow-cloud,embed,ask,evaluate} ...
+
+接触网规范问答：本地检索 / DeepSeek 生成
+
+positional arguments:
+  {ingest,status,allow-cloud,embed,ask,evaluate}
+    ingest              仅本地解析入库，不调用模型
+    status              文档、向量及配置状态，不显示密钥
+    allow-cloud         标记指定文档可用于在线处理
+    embed               对获准的文档补建向量；调用 Embedding API
+    ask                 检索或问答
+    evaluate            运行已标注的 JSONL 评测集
+
+options:
+  -h, --help            show this help message and exit
+  --db DB               SQLite 知识库路径

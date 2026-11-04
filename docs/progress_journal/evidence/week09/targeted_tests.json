@@ -1,0 +1,25 @@
+{
+  "activity_date": "2026-11-04",
+  "actor": "AI-assisted command execution for student review",
+  "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 project/qa_system/.venv/bin/python -I -m pytest project/qa_system/tests/test_system.py -q -k 'embedding or vector_mismatch or api_errors_redacted or deepseek_wire_contract or bad_response or timeout_is_error_not_refusal or retrieval_only_requires_no_key' --junitxml=/tmp/ocs_week09_tests.xml",
+  "passed": 12,
+  "deselected": 23,
+  "pytest_reported_seconds": 0.78,
+  "failures": 0,
+  "errors": 0,
+  "testcase_names": [
+    "test_retrieval_only_requires_no_key",
+    "test_embedding_resume_and_model_identity",
+    "test_no_partial_batch_on_vector_mismatch",
+    "test_deepseek_wire_contract",
+    "test_api_errors_redacted[401]",
+    "test_api_errors_redacted[429]",
+    "test_api_errors_redacted[500]",
+    "test_timeout_is_error_not_refusal",
+    "test_bad_response[body0]",
+    "test_bad_response[body1]",
+    "test_bad_response[body2]",
+    "test_embedding_response_reorders_and_validates"
+  ],
+  "scope": "Existing targeted functional tests using mocks/fakes and synthetic documents, not live API verification or formal RQ evaluation."
+}

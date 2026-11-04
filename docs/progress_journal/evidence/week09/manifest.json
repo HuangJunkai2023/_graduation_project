@@ -1,0 +1,43 @@
+{
+  "prepared_on": "2026-11-04",
+  "recorded_through": "2026-11-04",
+  "status": "Draft",
+  "published_at": null,
+  "course_week": 9,
+  "period": [
+    "2026-11-02",
+    "2026-11-08"
+  ],
+  "code_revision": "eb7ed4f2847959cca1775e5121eb9ddda7882b17",
+  "activity_actor": "AI-assisted verification and document preparation; student review required before posting",
+  "word_count_rendered_whitespace": 382,
+  "word_count_lexical": 387,
+  "section_count": 7,
+  "evidence_ids": [
+    "E09-01",
+    "E09-02",
+    "E09-03",
+    "E09-04",
+    "E09-05"
+  ],
+  "targeted_existing_tests_passed": 12,
+  "synthetic_response_checks_passed": 7,
+  "real_model_api_calls": 0,
+  "live_embedding_verified": false,
+  "actual_student_effort_hours": null,
+  "local_links_checked": 49,
+  "week08_and_application_source_unchanged": true,
+  "files_sha256": {
+    "docs/progress_journal/WEEK_09.md": "7136ffc2e4394b7302db860d86dd62f23cc69aa7711b80683ac14ed121463b6e",
+    "docs/progress_journal/evidence/week09/README.md": "59b2cb804b48dddaff6829080dd3b2522449d9b4f0023106f62d6cbf57756719",
+    "docs/progress_journal/evidence/week09/candidate_inventory.csv": "b86a45c52a2252306d3cf3250edb129a5174d1460d652fc22d04845bf463b2d5",
+    "docs/progress_journal/evidence/week09/cli_help.txt": "8999b1eb84e86136ad0984b5211618da889a64f9cb4dbcba4972f3248e5f4a82",
+    "docs/progress_journal/evidence/week09/environment.json": "a402766313f65b94cbde490222e74ceabbfe18ae71442e0216af0e0407820409",
+    "docs/progress_journal/evidence/week09/interface_checks.json": "9f55e51d2f714cc9e3859f503e13a063c52df26833adeb0d098362f12475a80f",
+    "docs/progress_journal/evidence/week09/isolation_comparison.json": "3e26ba284c2c323036aed26799d4247171dda7f7418f35a90f7f56ba9c8234da",
+    "docs/progress_journal/evidence/week09/kb_snapshot.json": "29196f0380f65eb4013505cac2bf2f2c76052fc1b11133339f58f5111fd67f61",
+    "docs/progress_journal/evidence/week09/targeted_tests.json": "00f83afcf87f73e9b748e2e6a1cc3970cdc4bb759eef2eaea516c6c736ad8ff8",
+    "docs/progress_journal/evidence/week09/targeted_tests.txt": "d1159c0195617a10782b7d757a15a6797c0ade7605e57fb034dd9e4f8d352683",
+    "docs/progress_journal/evidence/week09/verify_week09.py": "9d427276f86c74e4576e8b7eba527511cd170b0d1f5bca708f1cd3b1968e03ba"
+  }
+}

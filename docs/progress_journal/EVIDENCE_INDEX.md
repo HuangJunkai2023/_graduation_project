@@ -36,7 +36,7 @@ These are **plans**, not measured results, and can be pasted without requiring r
 | **H06-03** | [Initial audit](../../开题材料/数据核查/核查记录.md), 2026-10-13; [edition audit](../../开题材料/数据核查/版本语料抽查_20261014.json), 2026-10-14 | Historical candidate checks and sample extraction limitations, including 2010 candidates without usable text. Candidate count, duplicate files and usable editions are different concepts; cloud permissions were unresolved. | Plan corpus and version checks, then retain new audit evidence. The existing audit does not certify the final corpus or permissions. |
 | **H07-01** | Git `ad30c78` (2026-10-19), `076400c`, `b11da5a`, `86c894f` (2026-10-20) | Earlier Proposal text, names/title and risk-selection revisions. Local repository HEAD before this workflow was `86c894fc95397a745f03d7458fb9eae6c53457f6`. | Trace the document lineage without moving these edits into Week 8. Signing and final review are separately supported by E08-04 and E08-03. |
 
-No code commit dated Week 8 was present when this directory was created. This does not negate non-code review/signing work. No new system tests, API requests or benchmark runs were executed for the journal-writing task.
+No code commit dated Week 8 was present when this directory was created on 27 October. This does not negate non-code review/signing work. No new system tests, API requests or benchmark runs were executed during that initial 27 October preparation; the new Week 9 checks are recorded separately below.
 
 ## Draft preparation checks — 2026-10-27
 
@@ -59,7 +59,7 @@ The fingerprints below identify the readable material inspected on 2026-10-27; t
 
 ## Future evidence: append only when activity actually occurs
 
-Future weeks currently have plans in WEEKLY_PLAN.md and no completed evidence entries. Keep permitted raw runs under the application's ignored `runtime/` or `outputs/`; store shareable summaries/plots with their actual week only when generated. Register a hash/configuration so ignored local evidence remains traceable, and use an approved independent backup rather than treating a local Git repository as a backup of ignored files.
+Weeks 10–24 currently have plans in WEEKLY_PLAN.md and no completed evidence entries. Week 9 now has actual checks and a separate draft, recorded below. Keep permitted raw runs under the application's ignored `runtime/` or `outputs/`; store shareable summaries/plots with their actual week only when generated. Register a hash/configuration so ignored local evidence remains traceable, and use an approved independent backup rather than treating a local Git repository as a backup of ignored files.
 
 Append a record with the following fields, not invented values:
 
@@ -80,5 +80,22 @@ Append a record with the following fields, not invented values:
 | Week | Local file | Recorded through | Status | Minerva publication |
 | --- | --- | --- | --- | --- |
 | 8 | [WEEK_08.md](WEEK_08.md) | 2026-10-27 | Draft, for student review | Not confirmed |
+| 9 | [WEEK_09.md](WEEK_09.md) | 2026-11-04 | Draft, for student review | Not confirmed |
 
 Add future rows only with the corresponding actual draft/activity. Student approval of wording is `Approved for posting`; actual posting confirmed by the student permits `Published` and an actual date. Neither a generated file nor a Git commit establishes publication.
+
+## Week 9 — readiness checks through 4 November 2026
+
+All new checks below were executed with assistant/tool support on 4 November. They do not re-date the October implementation. Actual student working hours were not recorded. The readable English Proposal hash still matches the Week 8 fingerprint; T05 remains Weeks 9–10 and T06 Weeks 9–11.
+
+| ID | Actual activity / evidence | Observed outcome and limits | Minerva-ready evidence |
+| --- | --- | --- | --- |
+| **E09-01** | 2026-11-04; [environment snapshot](evidence/week09/environment.json), [isolation comparison](evidence/week09/isolation_comparison.json) | Shared environment: seven dependency conflicts. New dedicated environment with `-I`: clean dependency check; five modules import. Without `-I`, ambient ROS packages remain visible. Exact installed versions and pyproject hash retained. This does not prove a live API or cross-machine reproducibility. | “Python 3.10.12; isolated project dependency check passed; shared environment had seven conflicts.” |
+| **E09-02** | 2026-11-04; [12 existing test cases](evidence/week09/targeted_tests.json), [actual transcript](evidence/week09/targeted_tests.txt) | 12 passed, 23 deselected, pytest-reported 0.78 s. Existing tests with fakes/mocks cover API contract/errors and vector-store safeguards. No new algorithm or formal benchmark performance claimed. | “12 existing functional tests passed; synthetic/mock inputs, no live service verification.” |
+| **E09-03** | 2026-11-04; [interface checks](evidence/week09/interface_checks.json), [executed check script](evidence/week09/verify_week09.py) | Three embedding fields absent. Actual configuration returns `embedding_not_configured` with zero HTTP dispatches. Seven mock fixtures pass (one accepted/reordered, six rejected). Zero real model API requests; live identity, dimension, usage and billing unavailable. Chat key presence is only a configuration observation. | “7 synthetic vector-response checks passed; missing embedding configuration blocks the live pilot.” |
+| **E09-04** | 2026-11-04; [candidate CSV](evidence/week09/candidate_inventory.csv), [read-only database snapshot](evidence/week09/kb_snapshot.json) | 9 PDFs, 8 unique hashes in TB/T 2073/2074 candidates; three 2010 entries have no extracted alphanumeric characters, including one duplicate copy. Existing database: 3 documents, 503 chunks, 0 vectors. Text-layer detection is not full extraction-quality checking or permission confirmation. No OCR/ingestion performed. | “9 candidate files / 8 hashes; existing database: 503 chunks / 0 vectors; usable edition pairs not established.” |
+| **E09-05** | Feedback and signing confirmed by student in the 2026-11-04 conversation; [Chinese-side revision record](../../开题材料/交大开题报告/最终检查记录.md), Git `eb7ed4f` | Student supplied requests for justified prose, fuller research content and diagrams. Revision addressed these while preserving RQs/configurations; subsequent student message confirmed teacher signing. Actual feedback/signing dates and meeting number not supplied; no signed scan or Review Document approval inspected. Separate from E08-04 English Proposal signing. | “Research explanation and diagrams revised following supervisor feedback.” |
+
+The first-person draft has 382 rendered whitespace-delimited words (387 English/numeric lexical words), including the title, seven headings and evidence table, excluding YAML, the maintenance comment and Markdown formatting. The unstripped source has 413 whitespace tokens. All five Evidence IDs agree between metadata, the inline table and this index. It remains Draft and records progress only through 4 November; no Minerva upload or later-week work is claimed.
+
+Source code, tests, English Proposal and task CSV were unchanged. No formal retrieval/QA experiments, live model calls or performance improvements were recorded. The local independent virtual environment and editable-install metadata are ignored by Git. Raw standard text and credentials are absent from this evidence package.

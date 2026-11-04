@@ -1,0 +1,12 @@
+{
+  "captured_at_utc": "2026-11-04T08:57:24.425199+00:00",
+  "method": "Child interpreter without -I retains ambient PYTHONPATH; environment.json records the -I comparison.",
+  "without_isolated_mode": {
+    "returncode": 1,
+    "output": "launch-ros 0.19.14 requires pyyaml, which is not installed.\ngenerate-parameter-library-py 0.7.7 requires pyyaml, which is not installed.\ngenerate-parameter-library-py 0.7.7 requires typeguard, which is not installed.\nament-clang-format 0.12.15 requires pyyaml, which is not installed."
+  },
+  "with_isolated_mode": {
+    "returncode": 0,
+    "output": "No broken requirements found."
+  }
+}

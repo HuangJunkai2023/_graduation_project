@@ -1,0 +1,6 @@
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 project/qa_system/.venv/bin/python -I -m pytest project/qa_system/tests/test_system.py -q -k 'embedding or vector_mismatch or api_errors_redacted or deepseek_wire_contract or bad_response or timeout_is_error_not_refusal or retrieval_only_requires_no_key' --junitxml=/tmp/ocs_week09_tests.xml
+
+............                                                             [100%]
+12 passed, 23 deselected in 0.78s
+
+Transcript retained from the actual 4 November tool run; pytest JUnit case names are in targeted_tests.json.

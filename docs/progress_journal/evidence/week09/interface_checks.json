@@ -1,0 +1,66 @@
+{
+  "captured_at_utc": "2026-11-04T08:52:49.676791+00:00",
+  "code_revision": "eb7ed4f2847959cca1775e5121eb9ddda7882b17",
+  "actor": "AI-assisted command execution for student review",
+  "actual_effort_hours": null,
+  "real_configuration_guard": {
+    "embedding_fields_present": {
+      "key": false,
+      "url": false,
+      "model": false
+    },
+    "chat_key_present": true,
+    "observed_error_code": "embedding_not_configured"
+  },
+  "guard_transport_calls": 0,
+  "synthetic_vector_checks": [
+    {
+      "case": "reordered_valid",
+      "transport": "httpx.MockTransport",
+      "observed": "accepted_and_reordered",
+      "passed": true
+    },
+    {
+      "case": "missing_vector",
+      "transport": "httpx.MockTransport",
+      "observed": "invalid_embedding",
+      "passed": true
+    },
+    {
+      "case": "duplicate_index",
+      "transport": "httpx.MockTransport",
+      "observed": "invalid_embedding",
+      "passed": true
+    },
+    {
+      "case": "unequal_dimensions",
+      "transport": "httpx.MockTransport",
+      "observed": "invalid_embedding",
+      "passed": true
+    },
+    {
+      "case": "zero_vector",
+      "transport": "httpx.MockTransport",
+      "observed": "invalid_embedding",
+      "passed": true
+    },
+    {
+      "case": "non_finite_vector",
+      "transport": "httpx.MockTransport",
+      "observed": "invalid_embedding",
+      "passed": true
+    },
+    {
+      "case": "empty_vectors",
+      "transport": "httpx.MockTransport",
+      "observed": "invalid_embedding",
+      "passed": true
+    }
+  ],
+  "real_api_requests": 0,
+  "live_embedding_status": "not_verified",
+  "live_model_identity": null,
+  "live_vector_dimension": null,
+  "provider_usage": null,
+  "provider_billing": null
+}

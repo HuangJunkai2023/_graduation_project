@@ -13,7 +13,7 @@
 
 仓库可读的 [Proposal PDF](../../开题材料/Proposal_English_Final.pdf) 与[内容源](../../开题材料/01_Proposal_Draft_EN.md)用于核对方案；本次未找到单独的已签字扫描件，本地 PDF 的签名栏仍为空。**审核签字日期依据本人本次确认，不声称已检查到签字图像或收到提交回执。** 如签字稿内容与本地稿不同，以签字稿为准，在计划中记录差异，不擅自修改已签署方案。证据来源见 [EVIDENCE_INDEX.md](EVIDENCE_INDEX.md)。
 
-Proposal 截止为课堂确认的 **Week 8，2026-10-29，14:00 UK**，优先于手册旧 Week 7。Week 8 覆盖10月26日至11月1日；当前草稿仅记录截至10月27日的事实。后续采用课程周号，跨学期日期不从连续周算术推导为正式校历。春节项目休息按 Proposal 保留2027年2月1日至14日（规划 Week 22–23）。
+Proposal 截止为课堂确认的 **Week 8，2026-10-29，14:00 UK**，优先于手册旧 Week 7。Week 8 覆盖10月26日至11月1日，其草稿仅记录截至10月27日的事实；新增Week 9草稿覆盖11月2–8日、实际记录截至11月4日，不预写本周剩余日期。后续采用课程周号，跨学期日期不从连续周算术推导为正式校历。春节项目休息按 Proposal 保留2027年2月1日至14日（规划 Week 22–23）。
 
 ## 学校要求与本项目写法
 
@@ -35,6 +35,8 @@ Proposal 截止为课堂确认的 **Week 8，2026-10-29，14:00 UK**，优先于
 - [WEEKLY_PLAN.md](WEEKLY_PLAN.md)：Weeks 8–24 的验证、实验、写作安排，含并行任务与里程碑。
 - [WEEKLY_TEMPLATE.md](WEEKLY_TEMPLATE.md)：每周草稿与当周事实采集结构。
 - [WEEK_08.md](WEEK_08.md)：当前 `Draft`，Minerva 可复制正文位于 `# Progress – Week 8` 至文末；含标题、小标题和证据表共424英文词，不计本地维护元数据。
+- [WEEK_09.md](WEEK_09.md)：截至2026-11-04的 `Draft`，去除Markdown格式后约382词；环境隔离、接口合成验证、初步语料检查及真实Embedding配置缺口。
+- [Week 9证据包](evidence/week09/README.md)：依赖快照、12项现有测试、7个合成响应检查、候选清单与只读数据库统计，含复查命令。
 - [EVIDENCE_INDEX.md](EVIDENCE_INDEX.md)：证据、发生时间、支持范围及后续实际工作登记方式。
 - [SUPERVISION_LOG.md](SUPERVISION_LOG.md)：真实审核/会议记录、后续行动及 Review Document 索引。
 
@@ -55,3 +57,7 @@ Proposal 截止为课堂确认的 **Week 8，2026-10-29，14:00 UK**，优先于
 > 生成 Week X Journal：按已签字 Proposal 和 docs/progress_journal 的周计划，核对本周实际工作与证据，更新证据及真实导师记录，写300–500词第一人称英文草稿和下周计划；不把旧实现算成本周成果，不虚构缺失结果，保留 Draft，等我确认发布。
 
 周初也可使用：“开始 Week X：读取对应 Proposal 任务，给出本周验证清单、完成标准和需要保留的证据；先不写完成日志。”
+
+## Week 9 已完成的当前检查
+
+2026-11-04建立本地独立环境 `project/qa_system/.venv` 并使用 `-I` 排除继承的Python/ROS路径；依赖检查通过。没有改变共享环境或应用算法。真实Embedding密钥、地址及模型仍未配置，T05继续到Week 10；不能用12个mock/合成功能测试或7个合成向量响应案例代替在线接口验证。详见Week 9正文及证据包。
