@@ -402,6 +402,85 @@ def build():
     }
 
 
+def close_page_tables(docx_path, pdf_path):
+    """Use the actual first-pass layout to give each page its own closed table.
+
+    Paragraph-group rows are unsplittable, so each row can be assigned to a PDF
+    page by its text. Splitting only at those boundaries preserves the layout
+    while avoiding cell-level hidden borders suppressing the continuation frame.
+    """
+    import pymupdf
+
+    normalise = lambda value: ''.join(c for c in unicodedata.normalize('NFKC', value) if c.isalnum())
+    with pymupdf.open(pdf_path) as pdf:
+        pages = [normalise(page.get_text(clip=pymupdf.Rect(0, 90, page.rect.width, 770))) for page in pdf]
+    doc = Document(docx_path)
+    table = doc.tables[0]
+    rows = list(table._tbl.findall(qn('w:tr')))
+    groups = [[] for _ in pages]
+    cursor = 0
+    for index, row in enumerate(rows):
+        if index >= 7:
+            content = row.findall(qn('w:tc'))[-1]
+            text = normalise(''.join(t.text or '' for t in content.iter(qn('w:t'))))
+            assert text, f'Empty pagination row {index}'
+            matches = [i for i in range(cursor, len(pages)) if text in pages[i]]
+            assert matches, f'Cannot locate row {index} in rendered PDF: {text[:60]}'
+            cursor = matches[0]
+        groups[cursor].append(row)
+    assert all(groups), 'Unexpected page without report-table rows'
+
+    original = table._tbl
+    parent = original.getparent()
+    position = parent.index(original)
+    for number, page_rows in enumerate(groups):
+        if number:
+            p = OxmlElement('w:p')
+            props = OxmlElement('w:pPr')
+            for name in ['pageBreakBefore', 'keepNext']:
+                props.append(OxmlElement('w:' + name))
+            snap = OxmlElement('w:snapToGrid')
+            snap.set(qn('w:val'), '0')
+            props.append(snap)
+            spacing = OxmlElement('w:spacing')
+            for name, value in [('before', '0'), ('after', '0'), ('line', '1'), ('lineRule', 'exact')]:
+                spacing.set(qn('w:' + name), value)
+            props.append(spacing)
+            p.append(props)
+            parent.insert(position, p)
+            position += 1
+        clone = deepcopy(original)
+        for row in list(clone.findall(qn('w:tr'))):
+            clone.remove(row)
+        for row in page_rows:
+            clone.append(deepcopy(row))
+        cloned_rows = clone.findall(qn('w:tr'))
+        # Restart a field's vertical merge on the new page; continuation labels
+        # stay blank, following the supplied example's continuation convention.
+        for cell in cloned_rows[0].findall(qn('w:tc')):
+            merge = cell.find(qn('w:tcPr')).find(qn('w:vMerge'))
+            if merge is not None:
+                merge.set(qn('w:val'), 'restart')
+        for row, side in [(cloned_rows[0], 'top'), (cloned_rows[-1], 'bottom')]:
+            for cell in row.findall(qn('w:tc')):
+                props = cell.find(qn('w:tcPr'))
+                borders = props.find(qn('w:tcBorders'))
+                if borders is None:
+                    borders = OxmlElement('w:tcBorders')
+                    props.append(borders)
+                for existing in list(borders.findall(qn('w:' + side))):
+                    borders.remove(existing)
+                border = OxmlElement('w:' + side)
+                for key, value in [('val', 'single'), ('sz', '4'), ('color', 'auto')]:
+                    border.set(qn('w:' + key), value)
+                borders.append(border)
+        parent.insert(position, clone)
+        position += 1
+    parent.remove(original)
+    doc.save(docx_path)
+    return [len(rows) for rows in groups]
+
+
 def render(renderer, stats):
     import pymupdf
     target = target_path()
@@ -412,15 +491,25 @@ def render(renderer, stats):
         unpacked = program.parents[4]
         env['LD_LIBRARY_PATH'] = ':'.join([str(program.parent), str(unpacked / 'usr/lib/x86_64-linux-gnu'), env.get('LD_LIBRARY_PATH', '')])
         env['URE_BOOTSTRAP'] = 'vnd.sun.star.pathname:' + str(program.parent / 'fundamentalrc')
-    with tempfile.TemporaryDirectory(prefix='ocs_swjtu_') as directory:
-        command = [str(program), f'-env:UserInstallation={Path(directory).as_uri()}/profile',
-                   '--headless', '--convert-to', 'pdf', '--outdir', str(OUT), str(target)]
-        process = subprocess.run(command, env=env, capture_output=True, text=True, timeout=60)
-        if process.returncode == 81:
+    def export():
+        with tempfile.TemporaryDirectory(prefix='ocs_swjtu_') as directory:
+            command = [str(program), f'-env:UserInstallation={Path(directory).as_uri()}/profile',
+                       '--headless', '--convert-to', 'pdf', '--outdir', str(OUT), str(target)]
             process = subprocess.run(command, env=env, capture_output=True, text=True, timeout=60)
-        if process.returncode:
-            raise RuntimeError(process.stderr or process.stdout)
+            if process.returncode == 81:
+                process = subprocess.run(command, env=env, capture_output=True, text=True, timeout=60)
+            if process.returncode:
+                raise RuntimeError(process.stderr or process.stdout)
+    export()
     pdf = target.with_suffix('.pdf')
+    page_rows = close_page_tables(target, pdf)
+    export()
+    from check_table_frames import check_frames
+    frames = check_frames(pdf)
+    assert len(frames) == len(page_rows), 'Framing changed pagination; review page capacity'
+    stats.update(docx_sha256=sha256(target), table_frames_checked=True,
+                 page_table_count=len(page_rows), rows_per_page_table=page_rows,
+                 table_frame_geometry=frames)
     with pymupdf.open(pdf) as doc:
         text = ' '.join(' '.join(p.get_text() for p in doc).split())
         for term in [stats['student_name'], stats['student_id'], stats['supervisor'], 'Electronic and Electrical Engineering',
@@ -459,10 +548,10 @@ def render(renderer, stats):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--renderer', help='Path to LibreOffice soffice or soffice.bin')
+    parser.add_argument('--renderer', required=True,
+                        help='LibreOffice path; actual PDF pagination is required to close Word/PDF table frames')
     args = parser.parse_args()
     result = build()
-    if args.renderer:
-        render(args.renderer, result)
+    render(args.renderer, result)
     STATS.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps(result, ensure_ascii=False, indent=2))

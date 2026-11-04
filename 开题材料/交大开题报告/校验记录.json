@@ -15,8 +15,8 @@
     "4. Research Content and Methods"
   ],
   "planned_workflow_figure": "figures/planned_workflow.png",
-  "source_sha256": "191e1476345dbb931f6f7529e3e424378e339f26e6b862c5fe8a4ddeefca418c",
-  "docx_sha256": "c3b3d6c1a98439ba15269b1a1819bba4cb1440cb594367949974e175b14eaa8c",
+  "source_sha256": "c87a92452d5a15ff7b1cd637510d21723128151e1d5d34e820794712a59f51f3",
+  "docx_sha256": "3eb5a96d10bc85c1e465c7fd3d932b38a0ef98b6bf677b583bea15ae5ab9c952",
   "student_name": "黄俊凯",
   "student_id": "2023115799",
   "major": "Electronic and Electrical Engineering",
@@ -50,7 +50,61 @@
   "visual_review": true,
   "formal_approval_obtained": false,
   "handwritten_archival_scan_created": false,
-  "pdf_sha256": "6fea8b133643d4153996237807d216d7cbb3ca0ff501ceae1ced5c41399c8892",
+  "table_frames_checked": true,
+  "page_table_count": 6,
+  "rows_per_page_table": [
+    11,
+    10,
+    7,
+    6,
+    7,
+    3
+  ],
+  "table_frame_geometry": [
+    {
+      "page": 1,
+      "left": 87.19999694824219,
+      "right": 507.20001220703125,
+      "top": 136.00079345703125,
+      "bottom": 742.0007934570312
+    },
+    {
+      "page": 2,
+      "left": 87.19999694824219,
+      "right": 507.20001220703125,
+      "top": 93.30078125,
+      "bottom": 763.30078125
+    },
+    {
+      "page": 3,
+      "left": 87.19999694824219,
+      "right": 507.20001220703125,
+      "top": 93.30078125,
+      "bottom": 737.80078125
+    },
+    {
+      "page": 4,
+      "left": 87.19999694824219,
+      "right": 507.20001220703125,
+      "top": 93.30078125,
+      "bottom": 728.80078125
+    },
+    {
+      "page": 5,
+      "left": 87.19999694824219,
+      "right": 507.20001220703125,
+      "top": 93.30078125,
+      "bottom": 676.80078125
+    },
+    {
+      "page": 6,
+      "left": 87.19999694824219,
+      "right": 507.20001220703125,
+      "top": 93.30078125,
+      "bottom": 705.1007690429688
+    }
+  ],
+  "pdf_sha256": "d6984300aa36f238bb2f33e8a1c9fa517c422392ad2d617ef417ee601ee445eb",
   "pdf_pages": 6,
   "pdf_page_bounds_checked": true,
   "pdf_image_bounds_checked": true,
@@ -83,5 +137,26 @@
     6
   ],
   "final_review_date": "2026-11-04",
-  "final_review_result": "ready_for_supervisor_review"
+  "final_review_result": "ready_for_supervisor_review",
+  "table_frame_fix_verified": true,
+  "table_frame_fix_date": "2026-11-04",
+  "wording_revision_changes": [
+    [
+      "a local RAG system",
+      "a RAG system with local document retrieval"
+    ],
+    [
+      "A2 Hybrid without the retrieval gate",
+      "A2 Hybrid without the Evidence Gate"
+    ],
+    [
+      "Three research questions will guide the study:",
+      "The research questions are:"
+    ]
+  ],
+  "wording_revision_changed_pages": [
+    2,
+    3
+  ],
+  "only_requested_wording_and_intro_shortening_changed": true
 }
