@@ -1,0 +1,22 @@
+digraph research {
+  graph [rankdir=TB, bgcolor="white", nodesep=0.16, ranksep=0.30, pad=0.10];
+  node [shape=box, style="rounded", fontname="Liberation Serif", fontsize=15,
+        margin="0.10,0.08", color="#333333"];
+  edge [fontname="Liberation Serif", fontsize=12, color="#444444", arrowsize=0.7];
+  corpus [label="Permitted corpus + 100 source-checked questions\nGrouped development / test split"];
+  dev [label="20 development questions\nSelect fusion weight and thresholds"];
+  freeze [label="Freeze corpus, questions, code, prompts and models\nNo test-based parameter selection"];
+  test [label="80 fixed test questions\n64 answerable + 16 unanswerable"];
+  b1 [label="B1: BM25"];
+  b2 [label="B2: Dense"];
+  b3 [label="B3: Hybrid"];
+  a1 [label="A1: Hybrid\nNo edition filter"];
+  a2 [label="A2: Hybrid\nNo Evidence Gate"];
+  outcome [label="400 controlled executions + common scoring rubric\nRetrieval / edition / answer / citation / refusal metrics"];
+  interpretation [label="RQ1: compare B1 / B2 / B3\nRQ2: compare B3 / A1    |    RQ3: compare B3 / A2\nReport failures, coverage, uncertainty and latency"];
+  corpus -> dev -> freeze -> test;
+  {rank=same; b1; b2; b3; a1; a2;}
+  test -> {b1 b2 b3 a1 a2};
+  {b1 b2 b3 a1 a2} -> outcome;
+  outcome -> interpretation;
+}

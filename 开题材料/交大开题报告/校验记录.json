@@ -15,8 +15,14 @@
     "4. Research Content and Methods"
   ],
   "planned_workflow_figure": "figures/planned_workflow.png",
-  "source_sha256": "c87a92452d5a15ff7b1cd637510d21723128151e1d5d34e820794712a59f51f3",
-  "docx_sha256": "3eb5a96d10bc85c1e465c7fd3d932b38a0ef98b6bf677b583bea15ae5ab9c952",
+  "research_figures": [
+    "figures/domain_challenges.png",
+    "figures/planned_workflow.png",
+    "figures/research_framework.png"
+  ],
+  "body_alignment": "justified; headings left, captions centred, references left",
+  "source_sha256": "ecc79579793477feefb86f4195870d63908b330da39768f6e5ae5881676bc934",
+  "docx_sha256": "a6dd61f9626e3e92b87d82fd3cc0b5fda03134cabe54869012588f27364f9408",
   "student_name": "黄俊凯",
   "student_id": "2023115799",
   "major": "Electronic and Electrical Engineering",
@@ -46,17 +52,19 @@
   "signatures_blank": true,
   "approval_dates_blank": true,
   "original_logical_fields_preserved": 13,
-  "physical_table_rows": 44,
+  "physical_table_rows": 54,
   "visual_review": true,
-  "formal_approval_obtained": false,
   "handwritten_archival_scan_created": false,
   "table_frames_checked": true,
-  "page_table_count": 6,
+  "page_table_count": 9,
   "rows_per_page_table": [
-    11,
     10,
-    7,
     6,
+    6,
+    10,
+    4,
+    4,
+    4,
     7,
     3
   ],
@@ -66,97 +74,141 @@
       "left": 87.19999694824219,
       "right": 507.20001220703125,
       "top": 136.00079345703125,
-      "bottom": 742.0007934570312
+      "bottom": 709.500732421875
     },
     {
       "page": 2,
       "left": 87.19999694824219,
       "right": 507.20001220703125,
       "top": 93.30078125,
-      "bottom": 763.30078125
+      "bottom": 721.80078125
     },
     {
       "page": 3,
       "left": 87.19999694824219,
       "right": 507.20001220703125,
       "top": 93.30078125,
-      "bottom": 737.80078125
+      "bottom": 723.30078125
     },
     {
       "page": 4,
       "left": 87.19999694824219,
       "right": 507.20001220703125,
       "top": 93.30078125,
-      "bottom": 728.80078125
+      "bottom": 742.80078125
     },
     {
       "page": 5,
       "left": 87.19999694824219,
       "right": 507.20001220703125,
       "top": 93.30078125,
-      "bottom": 676.80078125
+      "bottom": 623.80078125
     },
     {
       "page": 6,
       "left": 87.19999694824219,
       "right": 507.20001220703125,
       "top": 93.30078125,
+      "bottom": 692.30078125
+    },
+    {
+      "page": 7,
+      "left": 87.19999694824219,
+      "right": 507.20001220703125,
+      "top": 93.30078125,
+      "bottom": 742.1007690429688
+    },
+    {
+      "page": 8,
+      "left": 87.19999694824219,
+      "right": 507.20001220703125,
+      "top": 93.30078125,
+      "bottom": 613.80078125
+    },
+    {
+      "page": 9,
+      "left": 87.19999694824219,
+      "right": 507.20001220703125,
+      "top": 93.30078125,
       "bottom": 705.1007690429688
     }
   ],
-  "pdf_sha256": "d6984300aa36f238bb2f33e8a1c9fa517c422392ad2d617ef417ee601ee445eb",
-  "pdf_pages": 6,
+  "pdf_sha256": "6ca200df5ece243f003b97adc9bcf0bfbd4c027f5e4e397cd32251d46cb8c49a",
+  "pdf_pages": 9,
   "pdf_page_bounds_checked": true,
   "pdf_image_bounds_checked": true,
-  "source_paragraphs_verified_in_pdf": 64,
+  "source_paragraphs_verified_in_pdf": 75,
   "unicode_empty_checkboxes": 11,
   "blank_pages": false,
   "example_personal_details_not_copied": true,
   "body_section_word_counts_whitespace": {
+    "选题意义和国内外研究现状分析": 1269,
+    "主要研究目标和研究内容": 991,
+    "工作计划及进度安排": 314,
+    "参考文献": 202
+  },
+  "previous_section_word_counts_whitespace": {
     "选题意义和国内外研究现状分析": 544,
     "主要研究目标和研究内容": 750,
     "工作计划及进度安排": 413,
     "参考文献": 202
   },
-  "word_count_scope": "Subheadings, body and caption; references counted separately; metadata/Chinese form labels excluded.",
-  "source_proposal_and_schedule_unchanged": true,
-  "opinion_and_signature_fields_preserved": true,
-  "original_fields_all_present": true,
-  "original_margins_preserved": true,
+  "body_words_excluding_references": 2574,
+  "words_including_references": 2776,
+  "word_count_scope": "Subheadings, prose and captions; metadata/Chinese labels and figure-internal text excluded; references counted separately.",
+  "justified_prose_paragraphs_verified": 41,
+  "rq_and_objective_lines_unchanged": true,
   "reference_entries_unchanged": true,
-  "updated_on": "2026-11-04",
-  "planned_max_generation_calls_including_reserve": 600,
+  "source_proposal_and_schedule_unchanged": true,
   "counts_recomputed_from_task_csv": true,
-  "formal_calls_not_claimed_as_completed": true,
+  "planned_max_generation_calls_including_reserve": 600,
+  "original_margins_preserved": true,
+  "opinion_and_signature_fields_preserved": true,
+  "previous_risk_paragraph_words": 74,
+  "risk_paragraph_words": 66,
+  "teacher_feedback_applied": [
+    "Justified body text",
+    "Expanded research content",
+    "Three explanatory figures",
+    "Condensed schedule and risks"
+  ],
+  "final_review_date": "2026-11-04",
+  "updated_on": "2026-11-04",
   "visual_review_pages": [
     1,
     2,
     3,
     4,
     5,
-    6
+    6,
+    7,
+    8,
+    9
   ],
-  "final_review_date": "2026-11-04",
   "final_review_result": "ready_for_supervisor_review",
-  "table_frame_fix_verified": true,
-  "table_frame_fix_date": "2026-11-04",
-  "wording_revision_changes": [
-    [
-      "a local RAG system",
-      "a RAG system with local document retrieval"
-    ],
-    [
-      "A2 Hybrid without the retrieval gate",
-      "A2 Hybrid without the Evidence Gate"
-    ],
-    [
-      "Three research questions will guide the study:",
-      "The research questions are:"
-    ]
+  "domain_source_checks": [
+    {
+      "path": "project/task1/01 data/001 规范/★★★★★★★★★★装备、零部件/TB T 2073-2020 接触网零部件技术条件.pdf",
+      "sha256": "266e6982a8052e275e40904cd2345d8b17b24059f2429f54feaefcd7458a44c7",
+      "checked_pdf_file_pages": [
+        1,
+        3
+      ],
+      "use": "Candidate corpus scope and edition-change motivation; not a claim of current validity or data permission."
+    },
+    {
+      "path": "project/task1/01 data/001 规范/★★★★★★★★★★装备、零部件/TB T 2074-2020 接触网零件试验方法.pdf",
+      "sha256": "dff8634e3a3bac436997bfffa8cf9a9675ff38594b06d6a264e2825534b94925",
+      "checked_pdf_file_pages": [
+        1,
+        3
+      ],
+      "use": "Candidate corpus scope and edition-change motivation; not a claim of current validity or data permission."
+    }
   ],
-  "wording_revision_changed_pages": [
-    2,
-    3
-  ],
-  "only_requested_wording_and_intro_shortening_changed": true
+  "supervisor_signature_user_confirmed": true,
+  "supervisor_signature_confirmation_source": "Student message: teacher has signed; signed scan not inspected.",
+  "supervisor_signature_date": null,
+  "signed_scan_inspected": false,
+  "expert_review_status": "not recorded"
 }

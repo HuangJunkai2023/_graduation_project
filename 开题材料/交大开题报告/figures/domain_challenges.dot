@@ -1,0 +1,18 @@
+digraph challenges {
+  graph [rankdir=LR, bgcolor="white", nodesep=0.35, ranksep=0.32, pad=0.10];
+  node [shape=box, style="rounded", fontname="Liberation Serif", fontsize=15,
+        margin="0.11,0.09", color="#333333"];
+  edge [color="#444444", arrowsize=0.7];
+  need [label="OCS standards\nquestion answering\n\nTraceable evidence"];
+  lexical [label="Terms / paraphrases\nExact and semantic matching"];
+  edition [label="Formal editions\nRequested year and availability"];
+  support [label="Evidence sufficiency\nValues, units and conditions"];
+  rq1 [label="RQ1\nBM25 / Dense / Hybrid"];
+  rq2 [label="RQ2\nEdition filtering"];
+  rq3 [label="RQ3\nEvidence Gate / refusal"];
+  {rank=same; lexical; edition; support;}
+  {rank=same; rq1; rq2; rq3;}
+  need -> lexical -> rq1;
+  need -> edition -> rq2;
+  need -> support -> rq3;
+}

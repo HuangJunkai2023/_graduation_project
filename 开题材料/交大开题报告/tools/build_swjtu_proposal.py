@@ -5,6 +5,7 @@ import argparse
 from copy import deepcopy
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -52,7 +53,7 @@ def paragraph_format(p, size=10.5, heading=False, body=False, compact=False):
     p.paragraph_format.keep_with_next = heading
     p.paragraph_format.keep_together = body
     p.paragraph_format.widow_control = True
-    p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY if body and not heading else WD_ALIGN_PARAGRAPH.LEFT
     # The template's document grid otherwise overrides the English line spacing.
     props = p._p.get_or_add_pPr()
     snap = props.find(qn('w:snapToGrid'))
@@ -149,7 +150,8 @@ def markdown(cell, text, references=False, compact=False):
             p.paragraph_format.line_spacing = 1.0
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
             p.paragraph_format.keep_with_next = True
-            p.add_run().add_picture(str(OUT / picture[2]), width=Cm(8.5))
+            width = 11.0 if Path(picture[2]).stem == 'planned_workflow' else 12.5
+            p.add_run().add_picture(str(OUT / picture[2]), width=Cm(width))
             caption = add_text(cell, picture[1], 9.5)
             caption.alignment = WD_ALIGN_PARAGRAPH.CENTER
             caption.paragraph_format.line_spacing = Pt(12)
@@ -161,6 +163,7 @@ def markdown(cell, text, references=False, compact=False):
         size = 12 if major_heading else 10.5
         p = add_text(cell, text, size, heading, first, body=True, compact=compact or references)
         if references:
+            p.alignment = WD_ALIGN_PARAGRAPH.LEFT
             p.paragraph_format.first_line_indent = Pt(-15)
             p.paragraph_format.left_indent = Pt(15)
             p.paragraph_format.space_after = Pt(3)
@@ -174,6 +177,10 @@ def paginate_field(row):
     Physical rows enforce those rules while preserving one logical form field.
     """
     paragraphs = [deepcopy(p._p) for p in row.cells[-1].paragraphs]
+    # The schedule heading must not start in a tiny page remainder: LibreOffice
+    # can clip that row's introduction despite cantSplit when its label is merged.
+    label_lines = sum(max(1, math.ceil(len(line) / 2)) for line in row.cells[0].text.splitlines())
+    protect_schedule = '工作计划' in row.cells[0].text.replace('\n', '')
     groups = []
     i = 0
     while i < len(paragraphs):
@@ -225,6 +232,13 @@ def paginate_field(row):
         if props is None:
             props = OxmlElement('w:trPr')
             clone.insert(0, props)
+        if i == 0 and protect_schedule:
+            for height in list(props.findall(qn('w:trHeight'))):
+                props.remove(height)
+            height = OxmlElement('w:trHeight')
+            height.set(qn('w:val'), str(round((label_lines * 13.5 + 4) * 20)))
+            height.set(qn('w:hRule'), 'atLeast')
+            props.append(height)
         props.append(OxmlElement('w:cantSplit'))
         parent.insert(position, clone)
         position += 1
@@ -380,6 +394,8 @@ def build():
         'numbered_sections': ['1. Background and Significance', '2. Review of Related Research',
                               '3. Research Aim and Objectives', '4. Research Content and Methods'],
         'planned_workflow_figure': 'figures/planned_workflow.png',
+        'research_figures': re.findall(r'!\[.+?\]\((.+?)\)', source),
+        'body_alignment': 'justified; headings left, captions centred, references left',
         'source_sha256': sha256(SOURCE), 'docx_sha256': sha256(target),
         'student_name': fields['Student name'], 'student_id': fields['Student ID'],
         'major': fields['Degree programme'], 'supervisor': fields['Supervisor'],
