@@ -1,4 +1,4 @@
-"""Fill the supplied SWJTU Attachment 9 without modifying the original form."""
+"""Follow the supplied example's structure; Attachment 9 governs conflicting items."""
 from __future__ import annotations
 
 import argparse
@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 import subprocess
 import tempfile
+import unicodedata
 
 from docx import Document
 from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT, WD_ROW_HEIGHT_RULE
@@ -43,12 +44,13 @@ def font(run, size=10.5, bold=False):
     run._r.get_or_add_rPr().get_or_add_rFonts().set(qn('w:eastAsia'), '宋体')
 
 
-def paragraph_format(p, size=10.5, heading=False):
-    p.paragraph_format.space_before = Pt(2 if heading else 0)
+def paragraph_format(p, size=10.5, heading=False, body=False, compact=False):
+    p.paragraph_format.space_before = Pt(4 if heading else 0)
     p.paragraph_format.space_after = Pt(2)
-    p.paragraph_format.line_spacing = Pt(size + 2)
-    p.paragraph_format.first_line_indent = Pt(0)
+    p.paragraph_format.line_spacing = Pt(14 if compact else 14.5 if body else size + 3)
+    p.paragraph_format.first_line_indent = Pt(21 if body and not heading else 0)
     p.paragraph_format.keep_with_next = heading
+    p.paragraph_format.keep_together = body
     p.paragraph_format.widow_control = True
     p.alignment = WD_ALIGN_PARAGRAPH.LEFT
     # The template's document grid otherwise overrides the English line spacing.
@@ -65,9 +67,9 @@ def clear_cell(cell):
     cell.add_paragraph()
 
 
-def add_text(cell, text, size=10.5, heading=False, first=False):
+def add_text(cell, text, size=10.5, heading=False, first=False, body=False, compact=False):
     p = cell.paragraphs[0] if first else cell.add_paragraph()
-    paragraph_format(p, size, heading)
+    paragraph_format(p, size, heading, body, compact)
     font(p.add_run(text), size, heading)
     return p
 
@@ -120,7 +122,7 @@ def add_grid(cell, lines):
     paragraph_format(p)
 
 
-def markdown(cell, text, references=False):
+def markdown(cell, text, references=False, compact=False):
     clear_cell(cell)
     cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
     lines = text.strip().splitlines()
@@ -139,36 +141,102 @@ def markdown(cell, text, references=False):
             add_grid(cell, block)
             first = False
             continue
-        heading = line.startswith('### ')
-        text = line[4:] if heading else line
-        add_text(cell, text, 9.5 if references else 10.5, heading, first)
+        picture = re.fullmatch(r'!\[(.+)\]\((.+)\)', line)
+        if picture:
+            p = cell.paragraphs[0] if first else cell.add_paragraph()
+            paragraph_format(p)
+            # Exact text line heights would clip an inline illustration.
+            p.paragraph_format.line_spacing = 1.0
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            p.paragraph_format.keep_with_next = True
+            p.add_run().add_picture(str(OUT / picture[2]), width=Cm(8.5))
+            caption = add_text(cell, picture[1], 9.5)
+            caption.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            caption.paragraph_format.line_spacing = Pt(12)
+            first = False
+            continue
+        heading = line.startswith('### ') or line.startswith('#### ')
+        major_heading = line.startswith('### ')
+        text = re.sub(r'^#{3,4} ', '', line) if heading else line
+        size = 12 if major_heading else 10.5
+        p = add_text(cell, text, size, heading, first, body=True, compact=compact or references)
+        if references:
+            p.paragraph_format.first_line_indent = Pt(-15)
+            p.paragraph_format.left_indent = Pt(15)
+            p.paragraph_format.space_after = Pt(3)
         first = False
 
 
-def page_break():
-    p = OxmlElement('w:p')
-    props = OxmlElement('w:pPr')
-    before = OxmlElement('w:pageBreakBefore')
-    props.append(before)
-    keep = OxmlElement('w:keepNext')
-    props.append(keep)
-    snap = OxmlElement('w:snapToGrid')
-    snap.set(qn('w:val'), '0')
-    props.append(snap)
-    spacing = OxmlElement('w:spacing')
-    for name in ['before', 'after']:
-        spacing.set(qn('w:' + name), '0')
-    spacing.set(qn('w:line'), '20')
-    spacing.set(qn('w:lineRule'), 'exact')
-    props.append(spacing)
-    p.append(props)
-    return p
+def paginate_field(row):
+    """Split a long field into unsplittable paragraph groups with a merged label.
+
+    LibreOffice ignores paragraph keep rules inside a row spanning many pages.
+    Physical rows enforce those rules while preserving one logical form field.
+    """
+    paragraphs = [deepcopy(p._p) for p in row.cells[-1].paragraphs]
+    groups = []
+    i = 0
+    while i < len(paragraphs):
+        group = [paragraphs[i]]
+        i += 1
+        props = group[0].find(qn('w:pPr'))
+        keep_next = props.find(qn('w:keepNext')) if props is not None else None
+        if keep_next is not None and keep_next.get(qn('w:val'), '1') not in ['0', 'false'] and i < len(paragraphs):
+            group.append(paragraphs[i])
+            i += 1
+            # A numbered main heading followed by a subheading needs its body too.
+            props2 = group[-1].find(qn('w:pPr'))
+            keep2 = props2.find(qn('w:keepNext')) if props2 is not None else None
+            if keep2 is not None and keep2.get(qn('w:val'), '1') not in ['0', 'false'] and i < len(paragraphs):
+                group.append(paragraphs[i])
+                i += 1
+        groups.append(group)
+    original = row._tr
+    parent = original.getparent()
+    position = parent.index(original)
+    for i, paragraphs in enumerate(groups):
+        clone = deepcopy(original)
+        cells = clone.findall(qn('w:tc'))
+        merge = OxmlElement('w:vMerge')
+        merge.set(qn('w:val'), 'restart' if i == 0 else 'continue')
+        cells[0].find(qn('w:tcPr')).append(merge)
+        if i:
+            for child in list(cells[0]):
+                if child.tag != qn('w:tcPr'):
+                    cells[0].remove(child)
+            cells[0].append(OxmlElement('w:p'))
+        for child in list(cells[-1]):
+            if child.tag != qn('w:tcPr'):
+                cells[-1].remove(child)
+        for p in paragraphs:
+            cells[-1].append(p)
+        # These are pagination rows, not extra form fields: hide their internal
+        # horizontal edges, retaining the original outer/section/column borders.
+        for cell in cells:
+            cell_props = cell.find(qn('w:tcPr'))
+            borders = OxmlElement('w:tcBorders')
+            for name, internal in [('top', i > 0), ('bottom', i < len(groups) - 1)]:
+                if internal:
+                    edge = OxmlElement('w:' + name)
+                    edge.set(qn('w:val'), 'nil')
+                    borders.append(edge)
+            cell_props.append(borders)
+        props = clone.find(qn('w:trPr'))
+        if props is None:
+            props = OxmlElement('w:trPr')
+            clone.insert(0, props)
+        props.append(OxmlElement('w:cantSplit'))
+        parent.insert(position, clone)
+        position += 1
+    parent.remove(original)
 
 
 def build():
     target = target_path()
     template = next((ROOT / '交大资料').glob('附件九*.docx'))
     before = sha256(template)
+    example = ROOT / '交大资料/开题报告模板.pdf'
+    example_hash = sha256(example)
     source = SOURCE.read_text()
     fields = dict(re.findall(r'^([^\n:]+):([^\n]*)$', source.split('## ')[0], re.M))
     fields = {k.strip(): v.strip() for k, v in fields.items()}
@@ -183,6 +251,8 @@ def build():
     }
     for name, (row, col) in field_cells.items():
         fill_field(table.cell(row, col), fields[name])
+        for p in table.cell(row, col).paragraphs:
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     # Preserve every option, replacing legacy Wingdings boxes with real Unicode
     # empty boxes so font substitution cannot make an option appear selected.
     assert not fields['Project type'] and not fields['Topic source'] and not fields['Guidance journal']
@@ -219,18 +289,34 @@ def build():
                 for run in p.runs:
                     if run.font.name != 'DejaVu Sans':
                         font(run)
+    for row in table.rows[:4]:
+        for cell in row.cells:
+            for p in cell.paragraphs:
+                p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     for index, heading in [(7, '选题意义和国内外研究现状分析'),
                            (8, '主要研究目标和研究内容'), (9, '工作计划及进度安排'),
                            (10, '参考文献')]:
-        markdown(table.rows[index].cells[-1], sections[heading], references=index == 10)
+        # Follow the example's prose schedule instead of a dense nested grid.
+        markdown(table.rows[index].cells[-1], sections[heading], references=index == 10, compact=index == 9)
         table.rows[index].height = None
         table.rows[index].height_rule = WD_ROW_HEIGHT_RULE.AUTO
+        # Preserve the narrow Chinese field labels and let long sections continue
+        # across pages, as in the supplied example.
+        label = table.rows[index].cells[0]
+        # Keep the whole label at the start of a multi-page field; centring a
+        # vertically merged label can strand its last character on another page.
+        label.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
+        for p in label.paragraphs:
+            paragraph_format(p)
+            p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            for run in p.runs:
+                font(run, 10.5)
     # Keep all original Chinese form items and merged-cell geometry.
     for i, row in enumerate(table.rows):
         props = row._tr.get_or_add_trPr()
         for flag in list(props.findall(qn('w:cantSplit'))):
             props.remove(flag)
-        if i != 8:  # allow a long objectives section to flow rather than clip
+        if i not in [7, 8, 9]:
             no_split(row)
     for i in [11, 12]:
         row = table.rows[i]
@@ -240,22 +326,21 @@ def build():
             for run in p.runs:
                 if run.text:
                     font(run, 10.5)
-    # Extend the form by section, as explicitly allowed by the template.
-    original = table._tbl
-    parent = original.getparent()
-    position = parent.index(original)
-    groups = [(0, 8), (8, 9), (9, 10), (10, 13)]
-    for i, (start, end) in enumerate(groups):
-        if i:
-            parent.insert(position, page_break())
-            position += 1
-        clone = deepcopy(original)
-        for j, row in enumerate(list(clone.findall(qn('w:tr')))):
-            if not start <= j < end:
-                clone.remove(row)
-        parent.insert(position, clone)
-        position += 1
-    parent.remove(original)
+    # Keep the official filling instruction with the form, without an orphan page.
+    for p in doc.paragraphs:
+        if p.text.startswith('填写说明'):
+            paragraph_format(p, 9)
+            p.paragraph_format.space_before = Pt(3)
+            for run in p.runs:
+                font(run, 9)
+    # Keep the original continuous form. Like the example, long fields continue
+    # across pages without forced section breaks that leave almost-empty pages.
+    original_opinions = [table.rows[i].cells[0].text for i in [11, 12]]
+    # Seven references fit on one page with the opinion areas; keep this short
+    # field intact so its narrow Chinese label cannot split across pages.
+    long_fields = [table.rows[i] for i in [7, 8, 9]]
+    for row in long_fields:
+        paginate_field(row)
     for section in doc.sections:
         p = section.footer.paragraphs[0]
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -271,15 +356,15 @@ def build():
     doc.core_properties.title = fields['Project title']
     doc.core_properties.author = '黄俊凯'
     doc.core_properties.subject = '西南交通大学-利兹学院本科毕业设计（论文）开题报告（附件九）'
-    doc.core_properties.comments = 'Original Attachment 9 retained; opinion/signature fields intentionally blank.'
+    doc.core_properties.comments = 'Example-based numbered sections; Attachment 9 governs fields/language. Signatures blank.'
     OUT.mkdir(exist_ok=True)
     doc.save(target)
     assert sha256(template) == before
     # These blank official approval areas must not acquire generated comments.
     result = Document(target)
-    assert len(result.tables) == 4
-    for original_row, generated_row in [(11, 1), (12, 2)]:
-        assert result.tables[-1].rows[generated_row].cells[0].text == table.rows[original_row].cells[0].text
+    assert len(result.tables) == 1
+    for generated_row, original_text in zip(result.tables[0].rows[-2:], original_opinions):
+        assert generated_row.cells[0].text == original_text
     body = '\n'.join(sections.values())
     assert not re.search(r'\b(?:I|[Ww]e|[Mm]y|[Oo]ur)\b', body)
     assert len(re.findall(r'^\[\d+\]', sections['参考文献'], re.M)) == 7
@@ -288,6 +373,13 @@ def build():
     return {
         'prepared_on': fields['Prepared on'], 'template': str(template.relative_to(ROOT)),
         'template_sha256': before, 'template_unmodified': True,
+        'restructured_on': '2026-11-04',
+        'layout_example': str(example.relative_to(ROOT)), 'layout_example_sha256': example_hash,
+        'conflict_priority': 'Attachment 9 over the supplied example',
+        'example_unmodified': sha256(example) == example_hash,
+        'numbered_sections': ['1. Background and Significance', '2. Review of Related Research',
+                              '3. Research Aim and Objectives', '4. Research Content and Methods'],
+        'planned_workflow_figure': 'figures/planned_workflow.png',
         'source_sha256': sha256(SOURCE), 'docx_sha256': sha256(target),
         'student_name': fields['Student name'], 'student_id': fields['Student ID'],
         'major': fields['Degree programme'], 'supervisor': fields['Supervisor'],
@@ -304,7 +396,9 @@ def build():
         ] if not fields[field]],
         'supervisor_opinion_blank': True, 'expert_opinion_blank': True,
         'signatures_blank': True, 'approval_dates_blank': True,
-        'original_form_rows_preserved': 13, 'visual_review': False,
+        'original_logical_fields_preserved': 13,
+        'physical_table_rows': len(result.tables[0].rows), 'visual_review': False,
+        'formal_approval_obtained': False, 'handwritten_archival_scan_created': False,
     }
 
 
@@ -335,10 +429,32 @@ def render(renderer, stats):
                      '指导教师意见', '专家组评审意见']:
             assert term in text, term
         assert '请用英文填写' not in text
+        normalise = lambda value: ''.join(c for c in unicodedata.normalize('NFKC', value) if c.isalnum())
+        # Ignore running headers/footers when checking paragraphs that span pages.
+        pdf_text = normalise(' '.join(page.get_text(clip=pymupdf.Rect(0, 90, page.rect.width, 770)) for page in doc))
+        source_blocks = []
+        body = SOURCE.read_text().split('## 选题意义和国内外研究现状分析\n', 1)[1]
+        for line in body.splitlines():
+            line = line.strip()
+            if not line or line.startswith('## '):
+                continue
+            line = re.sub(r'^#{3,4} ', '', line)
+            picture = re.fullmatch(r'!\[(.+)\]\((.+)\)', line)
+            if picture:
+                line = picture[1]
+            assert normalise(line) in pdf_text, f'Missing source block: {line[:90]}'
+            source_blocks.append(line)
         for i, page in enumerate(doc):
+            assert len(page.get_text().strip()) > 100, f'Blank/orphan page {i + 1}'
             for x0, y0, x1, y1, *_ in page.get_text('blocks'):
                 assert x0 >= -1 and y0 >= -1 and x1 <= page.rect.width + 1 and y1 <= page.rect.height + 1, f'Page {i + 1} bounds'
-        stats.update(pdf_sha256=sha256(pdf), pdf_pages=len(doc), pdf_page_bounds_checked=True)
+            for picture in page.get_image_info():
+                assert page.rect.contains(pymupdf.Rect(picture['bbox'])), f'Page {i + 1} image bounds'
+        assert text.count('☐') == 11
+        assert not any(term in text for term in ['刘曦扬', '2022111802', '秦娜', '师玉娇', '上海科技大学', '3DGS', 'SLAM'])
+        stats.update(pdf_sha256=sha256(pdf), pdf_pages=len(doc), pdf_page_bounds_checked=True,
+                     pdf_image_bounds_checked=True, source_paragraphs_verified_in_pdf=len(source_blocks),
+                     unicode_empty_checkboxes=11, blank_pages=False, example_personal_details_not_copied=True)
 
 
 if __name__ == '__main__':

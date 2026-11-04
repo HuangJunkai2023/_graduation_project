@@ -1,0 +1,24 @@
+digraph workflow {
+  graph [rankdir=TB, bgcolor="white", nodesep=0.18, ranksep=0.25, pad=0.08];
+  node [shape=box, style="rounded", fontname="Liberation Serif", fontsize=12,
+        color="#444444", margin="0.12,0.08", width=2.5];
+  edge [fontname="Liberation Serif", fontsize=11, color="#444444", arrowsize=0.65];
+  documents [label="Permitted PDF / DOCX\nExtraction, chunks and metadata"];
+  corpus [label="SQLite corpus + retrieval indexes"];
+  query [label="Question / rule-based follow-up\nIdentifier and edition handling"];
+  retrieval [label="BM25 / Dense / Hybrid retrieval\nEligible document passages"];
+  gate [label="Evidence Gate", shape=diamond, width=1.5, height=0.55, margin=0.02];
+  generate [label="DeepSeek generation\nCitation / excerpt checks"];
+  refuse [label="Explicit refusal / clarification"];
+  interface [label="Streamlit: answer or refusal\nRetrieved sources and locations"];
+  documents -> corpus;
+  {rank=same; corpus; query;}
+  corpus -> retrieval;
+  query -> retrieval;
+  retrieval -> gate;
+  gate -> generate [label="Pass"];
+  gate -> refuse [label="Insufficient evidence"];
+  {rank=same; generate; refuse;}
+  generate -> interface;
+  refuse -> interface;
+}
