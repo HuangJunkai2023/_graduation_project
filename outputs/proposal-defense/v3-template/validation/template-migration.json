@@ -1,0 +1,98 @@
+﻿[
+    {
+        "templateSlide":  8,
+        "title":  "Standards consultation",
+        "copiedNativeObjects":  12,
+        "page":  2
+    },
+    {
+        "templateSlide":  8,
+        "title":  "An edition-specific query",
+        "copiedNativeObjects":  15,
+        "page":  3
+    },
+    {
+        "templateSlide":  8,
+        "title":  "Related work and research gap",
+        "copiedNativeObjects":  15,
+        "page":  4
+    },
+    {
+        "templateSlide":  8,
+        "title":  "Research aim and questions",
+        "copiedNativeObjects":  19,
+        "page":  5
+    },
+    {
+        "templateSlide":  8,
+        "title":  "System architecture",
+        "copiedNativeObjects":  52,
+        "page":  6
+    },
+    {
+        "templateSlide":  8,
+        "title":  "RQ1: Hybrid retrieval",
+        "copiedNativeObjects":  17,
+        "page":  7
+    },
+    {
+        "templateSlide":  8,
+        "title":  "RQ2 and RQ3: edition and evidence checks",
+        "copiedNativeObjects":  22,
+        "page":  8
+    },
+    {
+        "templateSlide":  8,
+        "title":  "Benchmark and controlled experiments",
+        "copiedNativeObjects":  21,
+        "page":  9
+    },
+    {
+        "templateSlide":  8,
+        "title":  "Evaluation metrics and planned targets",
+        "copiedNativeObjects":  28,
+        "page":  10
+    },
+    {
+        "templateSlide":  8,
+        "title":  "Preliminary progress and feasibility",
+        "copiedNativeObjects":  12,
+        "page":  11
+    },
+    {
+        "templateSlide":  8,
+        "title":  "Schedule and expected outcomes",
+        "copiedNativeObjects":  41,
+        "page":  12
+    },
+    {
+        "templateSlide":  8,
+        "title":  "References",
+        "copiedNativeObjects":  10,
+        "page":  14
+    },
+    {
+        "templateSlide":  8,
+        "title":  "Hybrid scoring and selection",
+        "copiedNativeObjects":  11,
+        "page":  15
+    },
+    {
+        "templateSlide":  8,
+        "title":  "Evidence Gate and human scoring",
+        "copiedNativeObjects":  13,
+        "page":  16
+    },
+    {
+        "templateSlide":  8,
+        "title":  "Ablation definitions and denominators",
+        "copiedNativeObjects":  8,
+        "page":  17
+    },
+    {
+        "templateSlide":  8,
+        "title":  "Data risks and fallback scope",
+        "copiedNativeObjects":  12,
+        "page":  18
+    }
+]

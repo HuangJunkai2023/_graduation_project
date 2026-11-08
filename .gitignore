@@ -41,3 +41,13 @@ Desktop.ini
 # 本地知识库、上传副本、截图、会话及实验原始输出。
 /project/qa_system/runtime/
 /project/qa_system/outputs/
+
+# 开题答辩本地构建缓存和重复打包文件；正式成果、源码与预览保留。
+/.codex-build/
+/outputs/proposal-defense/**/.build/
+/outputs/proposal-defense/*_Package.zip
+/outputs/proposal-defense/v2/validation/report-extracted.txt
+
+# 学校原模板与迁移输入副本沿用仅本地保存的约定。
+/docs/交大ppt模板-1.pptx
+/outputs/proposal-defense/v3-template/source/inputs/

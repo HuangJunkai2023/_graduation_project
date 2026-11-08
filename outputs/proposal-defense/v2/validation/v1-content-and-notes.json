@@ -1,0 +1,477 @@
+[
+  {
+    "slide": 1,
+    "text": [
+      "A Study on a Large-Model-Based Intelligent\nQuestion-Answering System for the\nOverhead Contact System Field",
+      "Junkai Huang  |  Student ID: 2023115799\nSupervisor: Prof. Deqing Huang",
+      "Undergraduate Project Proposal Defense  |  Electronic and Electrical Engineering"
+    ],
+    "notes": [
+      "Good morning. I am Junkai Huang. My project studies an intelligent question-answering system for Chinese overhead contact system standards. The central aim is to make answers traceable to the correct document edition and supporting clause. I will introduce the research questions, the planned method, and the evaluation design. This is a proposal presentation: performance targets and future experiments are not completed results.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md",
+      "1"
+    ]
+  },
+  {
+    "slide": 2,
+    "text": [
+      "PROPOSAL DEFENSE",
+      "Presentation outline",
+      "01   Background and related research",
+      "02   Research questions and proposed method",
+      "03   Benchmark and controlled evaluation",
+      "04   Feasibility, schedule and expected outputs"
+    ],
+    "notes": [
+      "The presentation has four parts. First, I will explain why standards-based question answering needs more than a fluent response. Second, I will define the three research questions. Third, I will describe the retrieval, edition and evidence checks, followed by the controlled evaluation. Finally, I will discuss the available evidence, remaining risks and project schedule.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md",
+      "2"
+    ]
+  },
+  {
+    "slide": 3,
+    "text": [
+      "Why standards-based QA needs traceable evidence",
+      "Source: SWJTU proposal, Sections 1-4; planned study",
+      "03",
+      "Reliable answers preserve the clause, edition and conditions",
+      "Focus: permitted Chinese PDF/DOCX standards; consultation and study"
+    ],
+    "notes": [
+      "The research object is technical information in documents, rather than the physical operation of railway equipment. These standards contain specialised terms, numerical limits, units and edition-dependent conditions. Exact-term matching may miss a paraphrase; semantic matching may retrieve a similar clause from the wrong edition. Even a relevant passage may not support the requested conclusion. The three branches in this conceptual figure define the three questions I will test. The output is intended for study and consultation, not engineering approval.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md §1.1-1.3; original conceptual figure: figures/domain_challenges.png",
+      "3"
+    ]
+  },
+  {
+    "slide": 4,
+    "text": [
+      "Related research informs three testable choices",
+      "Source: SWJTU proposal, Sections 1-4; planned study",
+      "04",
+      "Research basis",
+      "Useful principle",
+      "Boundary in this project",
+      "RAG [1]; BM25 [2]",
+      "Ground generation in documents; preserve exact terms",
+      "Existing tools and APIs; no model training",
+      "Dense retrieval [3]; rewriting [4]",
+      "Test paraphrase matching and follow-up context",
+      "Hybrid is a hypothesis; follow-ups use rules",
+      "Distractors [5]; RAGAs [6]",
+      "Check relevance; assess retrieval and answers separately",
+      "Human semantic scoring; no LLM judge",
+      "Chinese survey [7]",
+      "Consider Chinese retrieval and evidence use",
+      "Corpus-specific performance remains to be tested",
+      "Project gap: test these methods under edition-dependent technical queries"
+    ],
+    "notes": [
+      "RAG motivates grounding a model answer in retrieved documents. BM25 provides an interpretable lexical baseline, while dense retrieval provides semantic matching. These are complementary mechanisms, but improvement from combining them must be measured. Query-rewriting work motivates limited rules for follow-ups; I will not train a rewriter. Distractor studies motivate checking evidence relevance, and RAGAs motivates separating retrieval from answer assessment. This project uses human semantic scoring rather than an LLM judge. None of the cited studies establishes performance on this railway corpus.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md §2.1-2.5 and References [1]-[7]",
+      "4"
+    ]
+  },
+  {
+    "slide": 5,
+    "text": [
+      "Research questions and intended contribution",
+      "Source: SWJTU proposal, Sections 1-4; planned study",
+      "05",
+      "RQ1  Retrieval",
+      "Does Hybrid improve evidence recall over BM25 and Dense?",
+      "RQ2  Standard editions",
+      "Does edition filtering reduce answers using a non-requested edition?",
+      "RQ3  Evidence sufficiency",
+      "Does the Evidence Gate reduce unsupported answers without excessive refusal?",
+      "Aim: evidence-based question answering for overhead contact system standards"
+    ],
+    "notes": [
+      "My aim is to develop and evaluate evidence-based question answering for these standards. RQ1 tests whether hybrid retrieval improves recall compared with lexical and dense retrieval separately. RQ2 tests whether edition filtering reduces the use of non-requested editions. RQ3 tests whether an Evidence Gate reduces unsupported answers without causing excessive refusal. The intended contribution is a curated, traceable corpus and benchmark, together with controlled comparisons and failure analysis. I am not claiming a new foundation model or an established performance improvement.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md",
+      "5"
+    ]
+  },
+  {
+    "slide": 6,
+    "text": [
+      "Proposed document-grounded QA workflow",
+      "Source: SWJTU proposal, Sections 1-4; planned study",
+      "06",
+      "Local document retrieval",
+      "20-30 permitted documents\nParsing, chunks and SQLite",
+      "Conditional generation",
+      "DeepSeek receives accepted, permitted evidence",
+      "Traceable interface",
+      "PDF file-page or DOCX paragraph/table location"
+    ],
+    "notes": [
+      "The planned system separates local document retrieval from online generation. Permitted PDFs and DOCX files will be extracted, chunked and indexed with their standard identifiers, years, hashes and source locations in SQLite. The question and any rule-based follow-up determine the eligible passages. Retrieval is followed by the Evidence Gate. Accepted evidence goes to DeepSeek, with citation and excerpt checks; insufficient evidence leads to refusal or clarification. Streamlit presents the answer and traceable sources. Only text with appropriate permission may leave the device.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md §4.1; original planned workflow: figures/planned_workflow.png",
+      "6"
+    ]
+  },
+  {
+    "slide": 7,
+    "text": [
+      "Hybrid retrieval: lexical and semantic matching",
+      "Source: SWJTU proposal, Sections 1-4; planned study",
+      "07",
+      "BM25",
+      "Lexical matching for identifiers and specialised terms",
+      "Dense",
+      "Cosine similarity for questions using different wording",
+      "Shared preprocessing",
+      "Consistent Chinese segmentation and a small domain dictionary",
+      "Hybrid score = (1 - w) B + w D",
+      "B, D: min-max normalised BM25 and cosine scores",
+      "w in {0.25, 0.50, 0.75}; select on development data only",
+      "Top-K = 5  |  Freeze preprocessing, chunks, models and settings"
+    ],
+    "notes": [
+      "All retrieval methods will use consistent Chinese tokenisation and the same eligible chunks. Identifiers, terms, numbers and units must be preserved. For each question, BM25 and cosine scores are min-max normalised over the eligible chunks. The hybrid score combines the normalised lexical score B and dense score D. I will choose the weight from three candidates using development Recall at five, then MRR at five, with ties favouring 0.50. Corpus, preprocessing and parameters will be frozen before testing. This slide describes the proposed method, not a tuned implementation.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md §4.2; ",
+      "开题材料",
+      "/01_Proposal_Draft_EN.md Reproducible method: constant positive scores map to 1; other constants to 0; ties favour w=0.50",
+      "7"
+    ]
+  },
+  {
+    "slide": 8,
+    "text": [
+      "Edition handling prevents silent year substitution",
+      "Source: SWJTU proposal, Sections 1-4; planned study",
+      "08",
+      "Query condition",
+      "Planned behaviour",
+      "Reason",
+      "Requested edition available",
+      "Retrieve within that edition",
+      "Preserve applicability",
+      "Requested edition missing",
+      "Explicit refusal",
+      "Avoid silent substitution",
+      "Edition is ambiguous",
+      "Ask for clarification",
+      "Resolve the intended scope",
+      "Duplicate file",
+      "Deduplicate using hashes",
+      "A copy is not a new edition",
+      "A1 disables edition checks but retains standard-family filtering"
+    ],
+    "notes": [
+      "Edition identity is separate from relevance. If a question specifies an available edition, retrieval should use that edition. If the requested edition is missing, the system must refuse rather than silently use another year. Ambiguity requires clarification. Duplicate copies do not count as separate formal editions. The target is two standard families with two usable editions each, but availability and permissions remain to be confirmed. To isolate edition handling, ablation A1 retains family filtering while disabling year restrictions and edition availability or ambiguity checks.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md §3 O1/O2/O4; §4.3",
+      "8"
+    ]
+  },
+  {
+    "slide": 9,
+    "text": [
+      "The Evidence Gate screens for insufficient context",
+      "Source: SWJTU proposal, Sections 1-4; planned study",
+      "09",
+      "Accept if: lexical coverage >= threshold OR raw cosine >= threshold",
+      "Lexical coverage",
+      "Distinct content-token overlap; exclude identifiers and fixed stopwords",
+      "Automatic checks",
+      "Metadata, citation identifiers and literal excerpt matching",
+      "Human judgement",
+      "Required facts, numerical values, units and applicable conditions"
+    ],
+    "notes": [
+      "The gate uses two signals: lexical coverage and raw cosine similarity. Coverage is the matched distinct query content tokens divided by all distinct query content tokens, excluding standard identifiers and fixed stopwords. The same segmenter is used for passages; an empty content-token set scores zero. Thresholds are selected on development data. The gate accepts when either signal reaches its threshold. Automatic checks validate metadata, citation identifiers and literal excerpts. Human scoring still determines semantic support, including values, units and conditions. High similarity alone does not prove correctness.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md §4.4; ",
+      "开题材料",
+      "/01_Proposal_Draft_EN.md Reproducible method and assessment",
+      "9"
+    ]
+  },
+  {
+    "slide": 10,
+    "text": [
+      "A fixed benchmark separates tuning from testing",
+      "Source: SWJTU proposal, Sections 1-4; planned study",
+      "10",
+      "Planned split",
+      "Answerable / unanswerable",
+      "Purpose",
+      "20 development items",
+      "16 / 4",
+      "Parameter selection",
+      "80 fixed test items",
+      "64 / 16",
+      "Final comparison",
+      "Source-checked annotation",
+      "Required facts, units, conditions, edition and evidence locations",
+      "Freeze before testing",
+      "Keep related facts/dialogues together; no test-based tuning"
+    ],
+    "notes": [
+      "The planned benchmark contains one hundred manually checked questions. Twenty are for development, including sixteen answerable items. Eighty are held out for testing, including sixty-four answerable and sixteen unanswerable items. Each record will include required facts, values, units, conditions, editions and evidence spans. Related facts and dialogues stay in one split to reduce leakage. Only the development set selects weights and gate thresholds. Before the test, I will freeze the corpus, questions, code, prompts, models and configuration. The main experiment then has eighty questions across five configurations: four hundred executions.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md §3 O3; §4.5",
+      "10"
+    ]
+  },
+  {
+    "slide": 11,
+    "text": [
+      "Five configurations isolate retrieval and safeguards",
+      "Source: SWJTU proposal, Sections 1-4; planned study",
+      "11",
+      "Configuration",
+      "Retrieval",
+      "Edition checks",
+      "Evidence Gate",
+      "B1",
+      "BM25",
+      "On",
+      "On",
+      "B2",
+      "Dense",
+      "On",
+      "On",
+      "B3",
+      "Hybrid",
+      "On",
+      "On",
+      "A1",
+      "Hybrid",
+      "Off; family retained",
+      "On",
+      "A2",
+      "Hybrid",
+      "On",
+      "Off; citations retained",
+      "RQ1: B1 / B2 / B3     RQ2: B3 / A1     RQ3: B3 / A2"
+    ],
+    "notes": [
+      "The five configurations answer the three research questions without introducing extra formal groups. B1, B2 and B3 compare BM25, Dense and Hybrid retrieval. B3 versus A1 isolates edition checks: standard-family filtering remains in place. B3 versus A2 isolates only the retrieval gate: prompts, citation validation and error handling remain active. All five use the same frozen corpus, test questions and generation settings. Each of the four hundred test executions will retain rankings, gate and edition decisions, answers, failures and timing. I will report unfavourable as well as favourable outcomes.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md §3 O4; §4.5; ",
+      "开题材料",
+      "/01_Proposal_Draft_EN.md A1/A2 definitions",
+      "11"
+    ]
+  },
+  {
+    "slide": 12,
+    "text": [
+      "Evaluation measures quality and refusal together",
+      "Source: SWJTU proposal, Sections 1-4; planned study",
+      "12",
+      "Metric",
+      "Fixed scoring basis",
+      "Planning target",
+      "Recall@5 / MRR@5",
+      "64 answerable items; pre-gate rankings",
+      "Recall >= 0.80",
+      "Answer correctness",
+      "Fully correct answers / 64",
+      ">= 0.80",
+      "Citation support",
+      "Supported cited claims / all cited claims",
+      ">= 0.90",
+      "Wrong-edition rate",
+      "All unambiguous edition requests; stratify availability",
+      "Compare B3 / A1",
+      "Refusal recall",
+      "Justified non-answering / 16",
+      ">= 0.80",
+      "False refusal",
+      "Refusals or unnecessary clarifications / 64",
+      "<= 0.10",
+      "Targets are planning goals. API/format failures are errors; report counts and coverage."
+    ],
+    "notes": [
+      "Retrieval metrics use pre-gate rankings on all sixty-four answerable test questions. Correctness counts only fully correct answers; errors and refusals score zero. Citation support is assessed at claim level, with citation coverage reported separately. Wrong-edition rate includes missing-edition cases among all unambiguous edition requests, and will be stratified by availability. Refusal recall uses the sixteen unanswerable items; false refusal uses the sixty-four answerable items. Unsupported-answer incidence uses all eighty test items. The displayed thresholds are planning goals. Counts, paired differences, uncertainty, coverage and failures are needed to interpret them.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md §4.5; ",
+      "开题材料",
+      "/01_Proposal_Draft_EN.md assessment. Clarification is justified only for pre-labelled ambiguous items; zero denominators are N/A. Unsupported-answer incidence is per all 80 test items. Report citation/answer coverage, counts, paired differences, uncertainty and latency.",
+      "12"
+    ]
+  },
+  {
+    "slide": 13,
+    "text": [
+      "Feasibility evidence and remaining validation",
+      "Sources: proposal §4.6; Week 9 evidence, 4 Nov 2026 (historical snapshot)",
+      "13",
+      "Recorded evidence",
+      "Still to validate",
+      "Three-document BM25 prototype\n\nDeepSeek checks with synthetic evidence\n\n4 Nov snapshot: 503 chunks, 0 vectors",
+      "Live embedding access and identity\n\nDense / Hybrid and formal benchmark\n\nCorpus permissions and usable editions",
+      "Feasibility controls",
+      "Existing CPU hardware; only permitted text sent online.\nNo model training, OCR, agents, hardware work or deployment."
+    ],
+    "notes": [
+      "The dated evidence supports a limited feasibility claim. A three-document BM25 prototype exists, and earlier DeepSeek checks used synthetic evidence. The fourth-of-November read-only snapshot contains three documents, five hundred and three chunks and zero vectors. No live embedding request was made in that evidence package. Therefore, embedding access, Dense and Hybrid retrieval, corpus permissions, usable edition pairs and formal evaluation are still pending. The main controls are to resolve access early, retain local retrieval, limit edition conclusions if pairs are unavailable and keep the study within its original scope.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md §4.6; docs/progress_journal/evidence/week09/README.md E09-03/E09-04, dated 2026-11-04",
+      "13"
+    ]
+  },
+  {
+    "slide": 14,
+    "text": [
+      "Milestones protect evaluation before reporting",
+      "Source: SWJTU proposal, Sections 1-4; planned study",
+      "14",
+      "Planning weeks",
+      "Milestone / deliverable",
+      "Status",
+      "W9-11",
+      "Corpus, embedding access and BM25 baseline",
+      "M2: W11",
+      "W12-16",
+      "Questions, edition / evidence checks, integration",
+      "M3: W16",
+      "W17",
+      "Freeze corpus, benchmark and five configurations",
+      "M4: W17",
+      "W18-20",
+      "Symposium, 400 test runs and manual scoring",
+      "M5: W20",
+      "W21 / W24",
+      "Report and video / final checks and submission",
+      "M6 / M7",
+      "W25-27",
+      "Viva preparation and examination",
+      "Planned",
+      "Planned budget: 400 hours and GBP 50  |  Review spend at GBP 40",
+      "Weeks 22-23: planned break, 1-14 February 2027; final dates follow official notices"
+    ],
+    "notes": [
+      "The schedule follows the signed proposal planning weeks. Corpus and baseline review are due at Week eleven, integration at Week sixteen, and benchmark and configuration freeze at Week seventeen. Controlled testing and manual scoring follow in Weeks eighteen to twenty, including the Week eighteen Symposium. Report and video preparation are planned by Week twenty-one, followed by final checks and submission at Week twenty-four and the viva in Weeks twenty-five to twenty-seven. The budget is four hundred hours and fifty pounds, with a spending review at forty pounds. These are planned commitments, not completed hours or confirmed later-semester calendar dates.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md Work Plan and Schedule; docs/progress_journal/WEEKLY_PLAN.md; budget 372 h + 28 h viva, GBP 35 generation + 10 embedding + 5 contingency",
+      "14"
+    ]
+  },
+  {
+    "slide": 15,
+    "text": [
+      "Expected outputs\nand discussion",
+      "Traceable QA prototype and source-checked benchmark\nControlled comparisons and documented failure analysis",
+      "Thank you  |  Questions and discussion"
+    ],
+    "notes": [
+      "The expected outputs are a traceable question-answering prototype, a curated corpus and source-checked benchmark, and controlled evidence about retrieval, edition filtering and evidence gating. The main conclusion at proposal stage is that these mechanisms need separate measurement: a working interface does not establish accurate answers. I will report limitations and negative results as well as improvements. Thank you for listening. I welcome questions about the scope, edition handling, evaluation design and feasibility.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md",
+      "15"
+    ]
+  },
+  {
+    "slide": 16,
+    "text": [
+      "References",
+      "Bibliographic details reproduced from the supplied proposal",
+      "16",
+      "[1] P. Lewis et al. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. NeurIPS 33, pp. 9459-9474, 2020.",
+      "[2] S. Robertson and H. Zaragoza. The Probabilistic Relevance Framework: BM25 and Beyond.\nFoundations and Trends in IR 3(4), pp. 333-389, 2009. doi: 10.1561/1500000019.",
+      "[3] V. Karpukhin et al. Dense Passage Retrieval for Open-Domain Question Answering. EMNLP, pp. 6769-6781, 2020. doi: 10.18653/v1/2020.emnlp-main.550.",
+      "[4] X. Ma et al. Query Rewriting in Retrieval-Augmented Large Language Models. EMNLP, pp. 5303-5315, 2023. doi: 10.18653/v1/2023.emnlp-main.322.",
+      "[5] F. Shi et al. Large Language Models Can Be Easily Distracted by Irrelevant Context. ICML, PMLR 202, pp. 31210-31227, 2023.",
+      "[6] S. Es et al. RAGAs: Automated Evaluation of Retrieval Augmented Generation. EACL System Demonstrations, pp. 150-158, 2024. doi: 10.18653/v1/2024.eacl-demo.16.",
+      "[7] Z. Feng et al. Enhancing Large Language Models with Retrieval-Augmented Techniques: Trends, Challenges, and Prospects. CCL (Vol. 2: Frontier Forum), pp. 151-168, 2024 (in Chinese). aclanthology.org/2024.ccl-2.9/"
+    ],
+    "notes": [
+      "Backup slide. Bibliographic entries are reproduced from the supplied SWJTU proposal. The cited work motivates the architecture and measurement design; it does not establish accuracy on the selected railway standards.",
+      "Sources: ",
+      "开题材料",
+      "/",
+      "交大开题报告",
+      "/",
+      "开题报告内容",
+      ".md References [1]-[7]",
+      "16"
+    ]
+  }
+]

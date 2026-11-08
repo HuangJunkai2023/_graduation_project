@@ -1,0 +1,8 @@
+{
+  "name": "ocs-proposal-defense-v2",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Editable English proposal slides with matching Chinese notes",
+  "dependencies": { "pptxgenjs": "4.0.1" },
+  "scripts": { "build": "node build_deck.cjs" }
+}
