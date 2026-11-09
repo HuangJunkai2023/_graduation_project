@@ -1,0 +1,17 @@
+{
+  "photo": {
+    "title": "Overhead-lines-railway.JPG",
+    "author": "AlexHe34",
+    "page": "https://commons.wikimedia.org/wiki/File:Overhead-lines-railway.JPG",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Overhead-lines-railway.JPG",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "changes": "No pixel modifications. Scaled proportionally and placed beside explanatory text.",
+    "purpose": "Real overhead-line context only, not evidence of a standard requirement."
+  },
+  "logo": {
+    "source": "docs/交大ppt模板-1.pptx, cover logo",
+    "changes": "Extracted original image without modification",
+    "purpose": "School identity in the requested academic defense"
+  }
+}

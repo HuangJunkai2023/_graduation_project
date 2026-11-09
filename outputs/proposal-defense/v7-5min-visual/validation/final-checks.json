@@ -1,0 +1,19 @@
+{
+  "checks": {
+    "20_slides_and_PDF_pages": true,
+    "20_bilingual_notes_match": true,
+    "15_main_300_seconds": true,
+    "Contents_and_four_Part_dividers": true,
+    "three_RQs": true,
+    "illustration_labels": true,
+    "no_text_overflow": true,
+    "no_progress_claims": true,
+    "UI_pages_native_editable": true,
+    "native_ablation_table": true,
+    "100_native_question_tiles": true,
+    "20_previews": true
+  },
+  "all_pass": true,
+  "reference_seconds": 300,
+  "english_main_words": 656
+}

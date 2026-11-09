@@ -51,3 +51,7 @@ Desktop.ini
 # 学校原模板与迁移输入副本沿用仅本地保存的约定。
 /docs/交大ppt模板-1.pptx
 /outputs/proposal-defense/v3-template/source/inputs/
+
+# ppt-master往返工作区可从已提交的上版PPT重建；不提交重复输入、导出和媒体缓存。
+/outputs/proposal-defense/**/workspace/
+/outputs/proposal-defense/**/validation/readback_files/

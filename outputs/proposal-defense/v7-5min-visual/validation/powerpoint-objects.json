@@ -1,0 +1,2542 @@
+﻿[
+    {
+        "y":  193.140152,
+        "width":  960,
+        "name":  "Picture 1",
+        "type":  13,
+        "height":  346.859833,
+        "x":  0,
+        "text":  "",
+        "page":  1
+    },
+    {
+        "y":  -3.27590561,
+        "width":  963.5345,
+        "name":  "矩形 155",
+        "type":  5,
+        "height":  413.782135,
+        "x":  -3.5344882,
+        "text":  "",
+        "page":  1
+    },
+    {
+        "y":  99.97157,
+        "width":  113.389687,
+        "name":  "等腰三角形 13",
+        "type":  5,
+        "height":  545.6192,
+        "x":  633.750549,
+        "text":  "",
+        "page":  1
+    },
+    {
+        "y":  -80.65945,
+        "width":  111.756065,
+        "name":  "等腰三角形 13",
+        "type":  5,
+        "height":  931.221558,
+        "x":  408.652832,
+        "text":  "",
+        "page":  1
+    },
+    {
+        "y":  194.285751,
+        "width":  828.4115,
+        "name":  "Picture 3",
+        "type":  13,
+        "height":  346.8545,
+        "x":  60.08008,
+        "text":  "",
+        "page":  1
+    },
+    {
+        "y":  105.999924,
+        "width":  776,
+        "name":  "标题 4",
+        "type":  17,
+        "height":  120,
+        "x":  91.99992,
+        "text":  "A Study on a Large-Model-Based Intelligent\nQuestion-Answering System for the\nOverhead Contact System Field",
+        "page":  1
+    },
+    {
+        "y":  231,
+        "width":  595.4286,
+        "name":  "Straight Connector 174",
+        "type":  9,
+        "height":  0,
+        "x":  185.142838,
+        "text":  "",
+        "page":  1
+    },
+    {
+        "y":  244.999924,
+        "width":  660,
+        "name":  "TextBox 175",
+        "type":  17,
+        "height":  64,
+        "x":  149.999924,
+        "text":  "Junkai Huang  |  Student ID: 2023115799\nSupervisor: Prof. Deqing Huang",
+        "page":  1
+    },
+    {
+        "y":  26.8047237,
+        "width":  197.229691,
+        "name":  "Picture 2",
+        "type":  13,
+        "height":  55.60079,
+        "x":  34.2856674,
+        "text":  "",
+        "page":  1
+    },
+    {
+        "y":  318,
+        "width":  740,
+        "name":  "TextBox 12",
+        "type":  17,
+        "height":  30,
+        "x":  109.999924,
+        "text":  "SWJTU-Leeds Joint School  |  Undergraduate Project Proposal Defense",
+        "page":  1
+    },
+    {
+        "y":  227.7048,
+        "width":  374.896454,
+        "name":  "Picture 70",
+        "type":  13,
+        "height":  312.2177,
+        "x":  584.689758,
+        "text":  "",
+        "page":  2
+    },
+    {
+        "y":  -0.00228346465,
+        "width":  960,
+        "name":  "Picture 1",
+        "type":  13,
+        "height":  113.578346,
+        "x":  0,
+        "text":  "",
+        "page":  2
+    },
+    {
+        "y":  -7.874016E-05,
+        "width":  958.689758,
+        "name":  "Rectangle 141",
+        "type":  1,
+        "height":  113.893463,
+        "x":  1.31023622,
+        "text":  "",
+        "page":  2
+    },
+    {
+        "y":  66,
+        "width":  500,
+        "name":  "TextBox 142",
+        "type":  17,
+        "height":  25,
+        "x":  98,
+        "text":  "PRESENTATION OUTLINE",
+        "page":  2
+    },
+    {
+        "y":  12,
+        "width":  550,
+        "name":  "标题 9",
+        "type":  17,
+        "height":  52,
+        "x":  97.99992,
+        "text":  "Contents",
+        "page":  2
+    },
+    {
+        "y":  -7.874016E-05,
+        "width":  140.11969,
+        "name":  "Group 144",
+        "type":  6,
+        "height":  113.576141,
+        "x":  -0.8152756,
+        "text":  "",
+        "page":  2
+    },
+    {
+        "y":  164,
+        "width":  680,
+        "name":  "Rectangle 149",
+        "type":  1,
+        "height":  43,
+        "x":  79.99992,
+        "text":  "01  Background and Motivation",
+        "page":  2
+    },
+    {
+        "y":  518.7399,
+        "width":  569.1009,
+        "name":  "Straight Connector 222",
+        "type":  9,
+        "height":  0,
+        "x":  80.5797653,
+        "text":  "",
+        "page":  2
+    },
+    {
+        "y":  232,
+        "width":  680,
+        "name":  "Rectangle 223",
+        "type":  1,
+        "height":  43,
+        "x":  80,
+        "text":  "02  Research Questions and Methods",
+        "page":  2
+    },
+    {
+        "y":  300,
+        "width":  680,
+        "name":  "Rectangle 224",
+        "type":  1,
+        "height":  43,
+        "x":  80,
+        "text":  "03  Evaluation Plan",
+        "page":  2
+    },
+    {
+        "y":  368,
+        "width":  680,
+        "name":  "Rectangle 225",
+        "type":  1,
+        "height":  43,
+        "x":  79.99992,
+        "text":  "04  Feasibility and Schedule",
+        "page":  2
+    },
+    {
+        "y":  87.9848,
+        "width":  960,
+        "name":  "Picture 2",
+        "type":  13,
+        "height":  452.763062,
+        "x":  0,
+        "text":  "",
+        "page":  3
+    },
+    {
+        "y":  0,
+        "width":  960,
+        "name":  "Rectangle 4",
+        "type":  1,
+        "height":  392,
+        "x":  0,
+        "text":  "",
+        "page":  3
+    },
+    {
+        "y":  -9.815591,
+        "width":  233.523224,
+        "name":  "Group 1",
+        "type":  6,
+        "height":  296.5741,
+        "x":  81.440155,
+        "text":  "",
+        "page":  3
+    },
+    {
+        "y":  25,
+        "width":  210,
+        "name":  "标题 9",
+        "type":  17,
+        "height":  47,
+        "x":  130,
+        "text":  "PART",
+        "page":  3
+    },
+    {
+        "y":  85,
+        "width":  245,
+        "name":  "TextBox 14",
+        "type":  17,
+        "height":  160,
+        "x":  113,
+        "text":  "01",
+        "page":  3
+    },
+    {
+        "y":  155.002518,
+        "width":  435,
+        "name":  "文本框 15",
+        "type":  1,
+        "height":  99.99748,
+        "x":  429.997467,
+        "text":  "Standards consultation\u000bIllustrative query\u000bEvidence-traceable RAG",
+        "page":  3
+    },
+    {
+        "y":  64.99992,
+        "width":  513.293335,
+        "name":  "标题 207",
+        "type":  17,
+        "height":  92,
+        "x":  419.999847,
+        "text":  "Background and\rMotivation",
+        "page":  3
+    },
+    {
+        "y":  10,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38,
+        "x":  64.99992,
+        "text":  "Standards consultation",
+        "page":  4
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  4
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "Proposal pp.1–2. Photo: AlexHe34, Wikimedia Commons, CC BY-SA 3.0",
+        "page":  4
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "04 / 15",
+        "page":  4
+    },
+    {
+        "y":  106.56,
+        "width":  276.48,
+        "name":  "Image 0",
+        "type":  13,
+        "height":  368.64,
+        "x":  46.8,
+        "text":  "",
+        "page":  4
+    },
+    {
+        "y":  477.36,
+        "width":  276.48,
+        "name":  "Text 6",
+        "type":  1,
+        "height":  15.84,
+        "x":  46.8,
+        "text":  "Overhead-line context",
+        "page":  4
+    },
+    {
+        "y":  113.04,
+        "width":  511.2,
+        "name":  "Text 7",
+        "type":  1,
+        "height":  28.8,
+        "x":  367.2,
+        "text":  "Find the requirement",
+        "page":  4
+    },
+    {
+        "y":  152.64,
+        "width":  511.2,
+        "name":  "Text 8",
+        "type":  1,
+        "height":  56.16,
+        "x":  367.2,
+        "text":  "Technical requirements and test methods\rmay appear in different documents.",
+        "page":  4
+    },
+    {
+        "y":  221.76,
+        "width":  511.2,
+        "name":  "Text 9",
+        "type":  1,
+        "height":  28.8,
+        "x":  367.2,
+        "text":  "Check the edition",
+        "page":  4
+    },
+    {
+        "y":  261.36,
+        "width":  511.2,
+        "name":  "Text 10",
+        "type":  1,
+        "height":  56.16,
+        "x":  367.2,
+        "text":  "The answer must preserve the requested\redition, units and applicable conditions.",
+        "page":  4
+    },
+    {
+        "y":  334.8,
+        "width":  511.2,
+        "name":  "Text 11",
+        "type":  1,
+        "height":  25.2,
+        "x":  367.2,
+        "text":  "Candidate documents in the proposal",
+        "page":  4
+    },
+    {
+        "y":  370.08,
+        "width":  511.2,
+        "name":  "Text 12",
+        "type":  1,
+        "height":  57.6,
+        "x":  367.2,
+        "text":  "TB/T 2073-2020: fittings requirements\rTB/T 2074-2020: test methods",
+        "page":  4
+    },
+    {
+        "y":  446.4,
+        "width":  511.2,
+        "name":  "Text 13",
+        "type":  1,
+        "height":  39.6,
+        "x":  367.2,
+        "text":  "For learning and consultation. Engineering approval and operational decisions remain outside scope.",
+        "page":  4
+    },
+    {
+        "y":  9.99748,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38.00252,
+        "x":  65.00252,
+        "text":  "What the user will see",
+        "page":  5
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  5
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "Planned interface illustration. Fictional Standard S, editions A/B and fitting X. Not a live result.",
+        "page":  5
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "05 / 15",
+        "page":  5
+    },
+    {
+        "y":  82.5,
+        "width":  697.5,
+        "name":  "frontend-window",
+        "type":  6,
+        "height":  390,
+        "x":  37.5,
+        "text":  "",
+        "page":  5
+    },
+    {
+        "y":  114.5,
+        "width":  166.642044,
+        "name":  "usage-steps",
+        "type":  6,
+        "height":  326.35,
+        "x":  756.84,
+        "text":  "",
+        "page":  5
+    },
+    {
+        "y":  57.4252739,
+        "width":  960,
+        "name":  "Picture 2",
+        "type":  13,
+        "height":  482.574738,
+        "x":  0,
+        "text":  "",
+        "page":  6
+    },
+    {
+        "y":  -0.258661419,
+        "width":  961.5,
+        "name":  "Rectangle 4",
+        "type":  1,
+        "height":  393.0001,
+        "x":  0,
+        "text":  "",
+        "page":  6
+    },
+    {
+        "y":  -9.815591,
+        "width":  233.523224,
+        "name":  "Group 17",
+        "type":  6,
+        "height":  296.5741,
+        "x":  81.440155,
+        "text":  "",
+        "page":  6
+    },
+    {
+        "y":  25,
+        "width":  210,
+        "name":  "标题 9",
+        "type":  17,
+        "height":  47,
+        "x":  129.999924,
+        "text":  "PART",
+        "page":  6
+    },
+    {
+        "y":  85,
+        "width":  245,
+        "name":  "TextBox 14",
+        "type":  17,
+        "height":  160,
+        "x":  113,
+        "text":  "02",
+        "page":  6
+    },
+    {
+        "y":  155,
+        "width":  435,
+        "name":  "TextBox 24",
+        "type":  17,
+        "height":  100,
+        "x":  429.9999,
+        "text":  "Three research questions\nSystem architecture\nRetrieval and evidence checks",
+        "page":  6
+    },
+    {
+        "y":  64.99992,
+        "width":  470,
+        "name":  "标题 207",
+        "type":  17,
+        "height":  92,
+        "x":  419.9999,
+        "text":  "Research Questions\nand Methods",
+        "page":  6
+    },
+    {
+        "y":  10,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38,
+        "x":  64.99992,
+        "text":  "Research aim and questions",
+        "page":  7
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  7
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "Proposal pp.4–5, §3. RQs are hypotheses to evaluate.",
+        "page":  7
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "07 / 15",
+        "page":  7
+    },
+    {
+        "y":  106.56,
+        "width":  864,
+        "name":  "Text 6",
+        "type":  1,
+        "height":  43.2,
+        "x":  46.8,
+        "text":  "Aim: evidence-based QA for Chinese OCS standards",
+        "page":  7
+    },
+    {
+        "y":  174.24,
+        "width":  61.2,
+        "name":  "Text 7",
+        "type":  1,
+        "height":  32.4,
+        "x":  46.8,
+        "text":  "RQ1",
+        "page":  7
+    },
+    {
+        "y":  174.24,
+        "width":  504,
+        "name":  "Text 8",
+        "type":  1,
+        "height":  27.36,
+        "x":  120.24,
+        "text":  "Retrieval",
+        "page":  7
+    },
+    {
+        "y":  205.2,
+        "width":  568.8,
+        "name":  "Text 9",
+        "type":  1,
+        "height":  48.96,
+        "x":  120.24,
+        "text":  "Does Hybrid retrieval improve evidence recall compared\rwith BM25-only and Dense-only retrieval?",
+        "page":  7
+    },
+    {
+        "y":  213.84,
+        "width":  29.52,
+        "name":  "Shape 10",
+        "type":  9,
+        "height":  0,
+        "x":  704.16,
+        "text":  "",
+        "page":  7
+    },
+    {
+        "y":  185.04,
+        "width":  160.56,
+        "name":  "Text 11",
+        "type":  1,
+        "height":  56.16,
+        "x":  752.4,
+        "text":  "BM25 / Dense / Hybrid",
+        "page":  7
+    },
+    {
+        "y":  269.28,
+        "width":  61.2,
+        "name":  "Text 12",
+        "type":  1,
+        "height":  32.4,
+        "x":  46.8,
+        "text":  "RQ2",
+        "page":  7
+    },
+    {
+        "y":  269.28,
+        "width":  504,
+        "name":  "Text 13",
+        "type":  1,
+        "height":  27.36,
+        "x":  120.24,
+        "text":  "Standard editions",
+        "page":  7
+    },
+    {
+        "y":  300.24,
+        "width":  568.8,
+        "name":  "Text 14",
+        "type":  1,
+        "height":  48.96,
+        "x":  120.24,
+        "text":  "Does edition filtering reduce answers using\ra non-requested edition?",
+        "page":  7
+    },
+    {
+        "y":  308.88,
+        "width":  29.52,
+        "name":  "Shape 15",
+        "type":  9,
+        "height":  0,
+        "x":  704.16,
+        "text":  "",
+        "page":  7
+    },
+    {
+        "y":  280.08,
+        "width":  160.56,
+        "name":  "Text 16",
+        "type":  1,
+        "height":  56.16,
+        "x":  752.4,
+        "text":  "Identifier + edition filtering",
+        "page":  7
+    },
+    {
+        "y":  364.32,
+        "width":  61.2,
+        "name":  "Text 17",
+        "type":  1,
+        "height":  32.4,
+        "x":  46.8,
+        "text":  "RQ3",
+        "page":  7
+    },
+    {
+        "y":  364.32,
+        "width":  504,
+        "name":  "Text 18",
+        "type":  1,
+        "height":  27.36,
+        "x":  120.24,
+        "text":  "Evidence sufficiency",
+        "page":  7
+    },
+    {
+        "y":  395.28,
+        "width":  568.8,
+        "name":  "Text 19",
+        "type":  1,
+        "height":  48.96,
+        "x":  120.24,
+        "text":  "Does an Evidence Gate reduce unsupported answers\rwithout excessive refusal?",
+        "page":  7
+    },
+    {
+        "y":  403.92,
+        "width":  29.52,
+        "name":  "Shape 20",
+        "type":  9,
+        "height":  0,
+        "x":  704.16,
+        "text":  "",
+        "page":  7
+    },
+    {
+        "y":  375.12,
+        "width":  160.56,
+        "name":  "Text 21",
+        "type":  1,
+        "height":  56.16,
+        "x":  752.4,
+        "text":  "Evidence Gate + refusal",
+        "page":  7
+    },
+    {
+        "y":  9.99748,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38.00252,
+        "x":  65.00252,
+        "text":  "Make the evidence visible — or refuse",
+        "page":  8
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  8
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "Planned interface states. Gate signals are heuristic; evidence support requires human scoring.",
+        "page":  8
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "08 / 15",
+        "page":  8
+    },
+    {
+        "y":  84,
+        "width":  532.5,
+        "name":  "source-preview",
+        "type":  6,
+        "height":  286.5,
+        "x":  37.5,
+        "text":  "",
+        "page":  8
+    },
+    {
+        "y":  84,
+        "width":  330,
+        "name":  "refusal-preview",
+        "type":  6,
+        "height":  286.5,
+        "x":  592.5,
+        "text":  "",
+        "page":  8
+    },
+    {
+        "y":  397.5,
+        "width":  886.5,
+        "name":  "system-workflow",
+        "type":  6,
+        "height":  71.25,
+        "x":  37.5,
+        "text":  "",
+        "page":  8
+    },
+    {
+        "y":  47.93,
+        "width":  960.000061,
+        "name":  "Picture 24",
+        "type":  13,
+        "height":  492.07,
+        "x":  -7.874016E-05,
+        "text":  "",
+        "page":  9
+    },
+    {
+        "y":  0,
+        "width":  960,
+        "name":  "Rectangle 4",
+        "type":  1,
+        "height":  257.6926,
+        "x":  0,
+        "text":  "",
+        "page":  9
+    },
+    {
+        "y":  -8.574173,
+        "width":  233.523224,
+        "name":  "Group 16",
+        "type":  6,
+        "height":  296.5741,
+        "x":  81.440155,
+        "text":  "",
+        "page":  9
+    },
+    {
+        "y":  25,
+        "width":  210,
+        "name":  "标题 9",
+        "type":  17,
+        "height":  47,
+        "x":  130,
+        "text":  "PART",
+        "page":  9
+    },
+    {
+        "y":  85,
+        "width":  245,
+        "name":  "TextBox 14",
+        "type":  17,
+        "height":  160,
+        "x":  113,
+        "text":  "03",
+        "page":  9
+    },
+    {
+        "y":  155,
+        "width":  435,
+        "name":  "TextBox 25",
+        "type":  17,
+        "height":  100,
+        "x":  429.9999,
+        "text":  "Benchmark and data split\nFive controlled configurations\nMetrics and planned targets",
+        "page":  9
+    },
+    {
+        "y":  64.99992,
+        "width":  470,
+        "name":  "标题 207",
+        "type":  17,
+        "height":  92,
+        "x":  419.9999,
+        "text":  "Evaluation Plan",
+        "page":  9
+    },
+    {
+        "y":  9.99748,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38.00252,
+        "x":  65.00252,
+        "text":  "How the study will be tested",
+        "page":  10
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  10
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "Planned counts, not completed tests. A2 also retains error handling. Definitions and denominators: backup slides.",
+        "page":  10
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "10 / 15",
+        "page":  10
+    },
+    {
+        "y":  70.75,
+        "width":  506.43,
+        "name":  "question-benchmark",
+        "type":  6,
+        "height":  372.35,
+        "x":  40.32,
+        "text":  "",
+        "page":  10
+    },
+    {
+        "y":  75.25,
+        "width":  322.5,
+        "name":  "experiment-configurations",
+        "type":  6,
+        "height":  388.54,
+        "x":  599.25,
+        "text":  "",
+        "page":  10
+    },
+    {
+        "y":  10,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38,
+        "x":  64.99992,
+        "text":  "Evaluation metrics and planned targets",
+        "page":  11
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  11
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "Proposal pp.6–7, §4.5. Counts, coverage, paired differences, uncertainty and failures will be reported.",
+        "page":  11
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "11 / 15",
+        "page":  11
+    },
+    {
+        "y":  113.76,
+        "width":  298.8,
+        "name":  "Text 6",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Recall@5",
+        "page":  11
+    },
+    {
+        "y":  113.76,
+        "width":  100.8,
+        "name":  "Text 7",
+        "type":  1,
+        "height":  28.8,
+        "x":  352.8,
+        "text":  "≥ 0.80",
+        "page":  11
+    },
+    {
+        "y":  155.52,
+        "width":  406.8,
+        "name":  "Text 8",
+        "type":  1,
+        "height":  46.8,
+        "x":  46.8,
+        "text":  "64 answerable items, pre-gate rankings",
+        "page":  11
+    },
+    {
+        "y":  211.68,
+        "width":  406.8,
+        "name":  "Shape 9",
+        "type":  9,
+        "height":  0,
+        "x":  46.8,
+        "text":  "",
+        "page":  11
+    },
+    {
+        "y":  225.36,
+        "width":  298.8,
+        "name":  "Text 10",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Answer Correctness",
+        "page":  11
+    },
+    {
+        "y":  225.36,
+        "width":  100.8,
+        "name":  "Text 11",
+        "type":  1,
+        "height":  28.8,
+        "x":  352.8,
+        "text":  "≥ 0.80",
+        "page":  11
+    },
+    {
+        "y":  267.12,
+        "width":  406.8,
+        "name":  "Text 12",
+        "type":  1,
+        "height":  46.8,
+        "x":  46.8,
+        "text":  "Fully correct answers / 64",
+        "page":  11
+    },
+    {
+        "y":  323.28,
+        "width":  406.8,
+        "name":  "Shape 13",
+        "type":  9,
+        "height":  0,
+        "x":  46.8,
+        "text":  "",
+        "page":  11
+    },
+    {
+        "y":  336.96,
+        "width":  298.8,
+        "name":  "Text 14",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Citation Support",
+        "page":  11
+    },
+    {
+        "y":  336.96,
+        "width":  100.8,
+        "name":  "Text 15",
+        "type":  1,
+        "height":  28.8,
+        "x":  352.8,
+        "text":  "≥ 0.90",
+        "page":  11
+    },
+    {
+        "y":  378.72,
+        "width":  406.8,
+        "name":  "Text 16",
+        "type":  1,
+        "height":  46.8,
+        "x":  46.8,
+        "text":  "Supported cited claims / all cited claims",
+        "page":  11
+    },
+    {
+        "y":  434.88,
+        "width":  406.8,
+        "name":  "Shape 17",
+        "type":  9,
+        "height":  0,
+        "x":  46.8,
+        "text":  "",
+        "page":  11
+    },
+    {
+        "y":  113.76,
+        "width":  298.8,
+        "name":  "Text 18",
+        "type":  1,
+        "height":  28.8,
+        "x":  504,
+        "text":  "Wrong-edition Rate",
+        "page":  11
+    },
+    {
+        "y":  113.76,
+        "width":  100.8,
+        "name":  "Text 19",
+        "type":  1,
+        "height":  28.8,
+        "x":  810,
+        "text":  "B3 vs A1",
+        "page":  11
+    },
+    {
+        "y":  155.52,
+        "width":  406.8,
+        "name":  "Text 20",
+        "type":  1,
+        "height":  46.8,
+        "x":  504,
+        "text":  "All unambiguous edition requests, including missing editions",
+        "page":  11
+    },
+    {
+        "y":  211.68,
+        "width":  406.8,
+        "name":  "Shape 21",
+        "type":  9,
+        "height":  0,
+        "x":  504,
+        "text":  "",
+        "page":  11
+    },
+    {
+        "y":  225.36,
+        "width":  298.8,
+        "name":  "Text 22",
+        "type":  1,
+        "height":  28.8,
+        "x":  504,
+        "text":  "Refusal Recall",
+        "page":  11
+    },
+    {
+        "y":  225.36,
+        "width":  100.8,
+        "name":  "Text 23",
+        "type":  1,
+        "height":  28.8,
+        "x":  810,
+        "text":  "≥ 0.80",
+        "page":  11
+    },
+    {
+        "y":  267.12,
+        "width":  406.8,
+        "name":  "Text 24",
+        "type":  1,
+        "height":  46.8,
+        "x":  504,
+        "text":  "Justified non-answering / 16",
+        "page":  11
+    },
+    {
+        "y":  323.28,
+        "width":  406.8,
+        "name":  "Shape 25",
+        "type":  9,
+        "height":  0,
+        "x":  504,
+        "text":  "",
+        "page":  11
+    },
+    {
+        "y":  336.96,
+        "width":  298.8,
+        "name":  "Text 26",
+        "type":  1,
+        "height":  28.8,
+        "x":  504,
+        "text":  "False Refusal",
+        "page":  11
+    },
+    {
+        "y":  336.96,
+        "width":  100.8,
+        "name":  "Text 27",
+        "type":  1,
+        "height":  28.8,
+        "x":  810,
+        "text":  "≤ 0.10",
+        "page":  11
+    },
+    {
+        "y":  378.72,
+        "width":  406.8,
+        "name":  "Text 28",
+        "type":  1,
+        "height":  46.8,
+        "x":  504,
+        "text":  "Refusals or unnecessary clarifications / 64",
+        "page":  11
+    },
+    {
+        "y":  434.88,
+        "width":  406.8,
+        "name":  "Shape 29",
+        "type":  9,
+        "height":  0,
+        "x":  504,
+        "text":  "",
+        "page":  11
+    },
+    {
+        "y":  464.4,
+        "width":  864,
+        "name":  "Text 30",
+        "type":  1,
+        "height":  25.92,
+        "x":  46.8,
+        "text":  "Planned targets only. Formal test results are pending.",
+        "page":  11
+    },
+    {
+        "y":  73.45992,
+        "width":  960,
+        "name":  "Picture 2",
+        "type":  13,
+        "height":  466.935272,
+        "x":  0,
+        "text":  "",
+        "page":  12
+    },
+    {
+        "y":  0,
+        "width":  960,
+        "name":  "Rectangle 4",
+        "type":  1,
+        "height":  321.142822,
+        "x":  0,
+        "text":  "",
+        "page":  12
+    },
+    {
+        "y":  -8.574173,
+        "width":  233.523224,
+        "name":  "Group 17",
+        "type":  6,
+        "height":  296.5741,
+        "x":  81.440155,
+        "text":  "",
+        "page":  12
+    },
+    {
+        "y":  25,
+        "width":  210,
+        "name":  "标题 9",
+        "type":  17,
+        "height":  47,
+        "x":  130,
+        "text":  "PART",
+        "page":  12
+    },
+    {
+        "y":  85,
+        "width":  245,
+        "name":  "TextBox 14",
+        "type":  17,
+        "height":  160,
+        "x":  113,
+        "text":  "04",
+        "page":  12
+    },
+    {
+        "y":  155.002518,
+        "width":  435,
+        "name":  "文本框 25",
+        "type":  1,
+        "height":  99.99748,
+        "x":  429.997467,
+        "text":  "Planned feasibility\u000bRisks and fallback scope\u000bMilestones and expected outputs",
+        "page":  12
+    },
+    {
+        "y":  64.99992,
+        "width":  470,
+        "name":  "标题 207",
+        "type":  17,
+        "height":  92,
+        "x":  419.9999,
+        "text":  "Feasibility\nand Schedule",
+        "page":  12
+    },
+    {
+        "y":  9.99748,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38.00252,
+        "x":  65.00252,
+        "text":  "Feasibility and key risks",
+        "page":  13
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  13
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "Source: Proposal, section 4.6. Planned approach; no performance claim.",
+        "page":  13
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "13 / 15",
+        "page":  13
+    },
+    {
+        "y":  113.04,
+        "width":  410.4,
+        "name":  "Text 6",
+        "type":  1,
+        "height":  24.48,
+        "x":  46.8,
+        "text":  "BOUNDED PROJECT SCOPE",
+        "page":  13
+    },
+    {
+        "y":  113.04,
+        "width":  410.4,
+        "name":  "Text 7",
+        "type":  1,
+        "height":  24.48,
+        "x":  504,
+        "text":  "PLANNED VALIDATION",
+        "page":  13
+    },
+    {
+        "y":  156.96,
+        "width":  407.679932,
+        "name":  "Text 8",
+        "type":  6,
+        "height":  129.6,
+        "x":  45.92008,
+        "text":  "",
+        "page":  13
+    },
+    {
+        "y":  156.96,
+        "width":  407.679932,
+        "name":  "Text 9",
+        "type":  6,
+        "height":  129.6,
+        "x":  503.1201,
+        "text":  "",
+        "page":  13
+    },
+    {
+        "y":  312.48,
+        "width":  864,
+        "name":  "Shape 10",
+        "type":  9,
+        "height":  0,
+        "x":  46.8,
+        "text":  "",
+        "page":  13
+    },
+    {
+        "y":  342,
+        "width":  406.8,
+        "name":  "Text 11",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Risk 1: usable edition pairs",
+        "page":  13
+    },
+    {
+        "y":  381.6,
+        "width":  406.8,
+        "name":  "Text 12",
+        "type":  1,
+        "height":  56.16,
+        "x":  46.8,
+        "text":  "Seek permitted alternatives.\rLimit RQ2 to available formal editions.",
+        "page":  13
+    },
+    {
+        "y":  342,
+        "width":  406.8,
+        "name":  "Text 13",
+        "type":  1,
+        "height":  28.8,
+        "x":  504,
+        "text":  "Risk 2: heuristic evidence signals",
+        "page":  13
+    },
+    {
+        "y":  381.6,
+        "width":  406.8,
+        "name":  "Text 14",
+        "type":  1,
+        "height":  56.16,
+        "x":  504,
+        "text":  "Heuristics can accept unsupported evidence.\rReport errors and false refusals.",
+        "page":  13
+    },
+    {
+        "y":  10,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38,
+        "x":  64.99992,
+        "text":  "Schedule and expected outcomes",
+        "page":  14
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "Proposal p.8 and task CSV. Planning weeks, not completed work or a confirmed institutional calendar.",
+        "page":  14
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "14 / 15",
+        "page":  14
+    },
+    {
+        "y":  107.28,
+        "width":  194.4,
+        "name":  "Text 6",
+        "type":  1,
+        "height":  21.6,
+        "x":  46.8,
+        "text":  "Planned task",
+        "page":  14
+    },
+    {
+        "y":  105.12,
+        "width":  38.88,
+        "name":  "Text 7",
+        "type":  1,
+        "height":  25.2,
+        "x":  256.32,
+        "text":  "W9",
+        "page":  14
+    },
+    {
+        "y":  105.12,
+        "width":  38.88,
+        "name":  "Text 8",
+        "type":  1,
+        "height":  25.2,
+        "x":  338.04,
+        "text":  "W11",
+        "page":  14
+    },
+    {
+        "y":  105.12,
+        "width":  38.88,
+        "name":  "Text 9",
+        "type":  1,
+        "height":  25.2,
+        "x":  419.76,
+        "text":  "W13",
+        "page":  14
+    },
+    {
+        "y":  105.12,
+        "width":  38.88,
+        "name":  "Text 10",
+        "type":  1,
+        "height":  25.2,
+        "x":  542.34,
+        "text":  "W16",
+        "page":  14
+    },
+    {
+        "y":  105.12,
+        "width":  38.88,
+        "name":  "Text 11",
+        "type":  1,
+        "height":  25.2,
+        "x":  583.2,
+        "text":  "W17",
+        "page":  14
+    },
+    {
+        "y":  105.12,
+        "width":  38.88,
+        "name":  "Text 12",
+        "type":  1,
+        "height":  25.2,
+        "x":  624.06,
+        "text":  "W18",
+        "page":  14
+    },
+    {
+        "y":  105.12,
+        "width":  38.88,
+        "name":  "Text 13",
+        "type":  1,
+        "height":  25.2,
+        "x":  705.78,
+        "text":  "W20",
+        "page":  14
+    },
+    {
+        "y":  105.12,
+        "width":  38.88,
+        "name":  "Text 14",
+        "type":  1,
+        "height":  25.2,
+        "x":  746.64,
+        "text":  "W21",
+        "page":  14
+    },
+    {
+        "y":  105.12,
+        "width":  38.88,
+        "name":  "Text 15",
+        "type":  1,
+        "height":  25.2,
+        "x":  869.22,
+        "text":  "W24",
+        "page":  14
+    },
+    {
+        "y":  138.24,
+        "width":  81.72,
+        "name":  "Shape 16",
+        "type":  1,
+        "height":  260.64,
+        "x":  786.78,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  144,
+        "width":  201.6,
+        "name":  "Text 17",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Corpus + baseline",
+        "page":  14
+    },
+    {
+        "y":  174.96,
+        "width":  653.76,
+        "name":  "Shape 18",
+        "type":  9,
+        "height":  0,
+        "x":  255.6,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  149.76,
+        "width":  113.94,
+        "name":  "Shape 19",
+        "type":  1,
+        "height":  15.84,
+        "x":  259.92,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  178.56,
+        "width":  201.6,
+        "name":  "Text 20",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Benchmark + checks",
+        "page":  14
+    },
+    {
+        "y":  209.52,
+        "width":  653.76,
+        "name":  "Shape 21",
+        "type":  9,
+        "height":  0,
+        "x":  255.6,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  184.32,
+        "width":  195.66,
+        "name":  "Shape 22",
+        "type":  1,
+        "height":  15.84,
+        "x":  382.5,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  213.12,
+        "width":  201.6,
+        "name":  "Text 23",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Integration",
+        "page":  14
+    },
+    {
+        "y":  244.08,
+        "width":  653.76,
+        "name":  "Shape 24",
+        "type":  9,
+        "height":  0,
+        "x":  255.6,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  218.88,
+        "width":  32.22,
+        "name":  "Shape 25",
+        "type":  1,
+        "height":  15.84,
+        "x":  545.94,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  247.68,
+        "width":  201.6,
+        "name":  "Text 26",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Configuration freeze",
+        "page":  14
+    },
+    {
+        "y":  278.64,
+        "width":  653.76,
+        "name":  "Shape 27",
+        "type":  9,
+        "height":  0,
+        "x":  255.6,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  253.44,
+        "width":  32.22,
+        "name":  "Shape 28",
+        "type":  1,
+        "height":  15.84,
+        "x":  586.8,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  282.24,
+        "width":  201.6,
+        "name":  "Text 29",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Evaluation",
+        "page":  14
+    },
+    {
+        "y":  313.2,
+        "width":  653.76,
+        "name":  "Shape 30",
+        "type":  9,
+        "height":  0,
+        "x":  255.6,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  288,
+        "width":  113.94,
+        "name":  "Shape 31",
+        "type":  1,
+        "height":  15.84,
+        "x":  627.66,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  316.8,
+        "width":  201.6,
+        "name":  "Text 32",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Report + video",
+        "page":  14
+    },
+    {
+        "y":  347.76,
+        "width":  653.76,
+        "name":  "Shape 33",
+        "type":  9,
+        "height":  0,
+        "x":  255.6,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  322.56,
+        "width":  73.08,
+        "name":  "Shape 34",
+        "type":  1,
+        "height":  15.84,
+        "x":  709.38,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  351.36,
+        "width":  201.6,
+        "name":  "Text 35",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Final checks / submit",
+        "page":  14
+    },
+    {
+        "y":  382.32,
+        "width":  653.76,
+        "name":  "Shape 36",
+        "type":  9,
+        "height":  0,
+        "x":  255.6,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  357.12,
+        "width":  32.22,
+        "name":  "Shape 37",
+        "type":  1,
+        "height":  15.84,
+        "x":  872.82,
+        "text":  "",
+        "page":  14
+    },
+    {
+        "y":  404.64,
+        "width":  864,
+        "name":  "Text 38",
+        "type":  1,
+        "height":  25.92,
+        "x":  46.8,
+        "text":  "M2 W11     M3 W16     M4 W17     M5 W20     M7 W24",
+        "page":  14
+    },
+    {
+        "y":  441.36,
+        "width":  187.2,
+        "name":  "Text 39",
+        "type":  1,
+        "height":  25.2,
+        "x":  46.8,
+        "text":  "Expected outputs",
+        "page":  14
+    },
+    {
+        "y":  441.36,
+        "width":  129.6,
+        "name":  "Text 40",
+        "type":  1,
+        "height":  28.8,
+        "x":  255.6,
+        "text":  "QA system",
+        "page":  14
+    },
+    {
+        "y":  441.36,
+        "width":  226.8,
+        "name":  "Text 41",
+        "type":  1,
+        "height":  28.8,
+        "x":  408.24,
+        "text":  "Checked benchmark",
+        "page":  14
+    },
+    {
+        "y":  441.36,
+        "width":  252,
+        "name":  "Text 42",
+        "type":  1,
+        "height":  28.8,
+        "x":  656.64,
+        "text":  "Experiment report",
+        "page":  14
+    },
+    {
+        "y":  478.08,
+        "width":  864,
+        "name":  "Text 43",
+        "type":  1,
+        "height":  18,
+        "x":  46.8,
+        "text":  "W18 Symposium. W22–23 planned break. Budget: 400 hours and GBP 50.",
+        "page":  14
+    },
+    {
+        "y":  193.140152,
+        "width":  960,
+        "name":  "Picture 1",
+        "type":  13,
+        "height":  346.859833,
+        "x":  0,
+        "text":  "",
+        "page":  15
+    },
+    {
+        "y":  -3.27590561,
+        "width":  963.5345,
+        "name":  "矩形 155",
+        "type":  5,
+        "height":  413.782135,
+        "x":  -3.5344882,
+        "text":  "",
+        "page":  15
+    },
+    {
+        "y":  99.97157,
+        "width":  113.389687,
+        "name":  "等腰三角形 13",
+        "type":  5,
+        "height":  545.6192,
+        "x":  633.750549,
+        "text":  "",
+        "page":  15
+    },
+    {
+        "y":  -80.65945,
+        "width":  111.756065,
+        "name":  "等腰三角形 13",
+        "type":  5,
+        "height":  931.221558,
+        "x":  408.652832,
+        "text":  "",
+        "page":  15
+    },
+    {
+        "y":  194.285751,
+        "width":  828.4115,
+        "name":  "Picture 3",
+        "type":  13,
+        "height":  346.8545,
+        "x":  60.08008,
+        "text":  "",
+        "page":  15
+    },
+    {
+        "y":  117,
+        "width":  776,
+        "name":  "标题 4",
+        "type":  17,
+        "height":  80,
+        "x":  91.99992,
+        "text":  "Thank you",
+        "page":  15
+    },
+    {
+        "y":  231,
+        "width":  595.4286,
+        "name":  "Straight Connector 174",
+        "type":  9,
+        "height":  0,
+        "x":  185.142838,
+        "text":  "",
+        "page":  15
+    },
+    {
+        "y":  244.999924,
+        "width":  660,
+        "name":  "TextBox 175",
+        "type":  17,
+        "height":  64,
+        "x":  149.999924,
+        "text":  "Traceable answers to standards queries\nEdition checks and evidence-based refusal",
+        "page":  15
+    },
+    {
+        "y":  26.8047237,
+        "width":  197.229691,
+        "name":  "Picture 2",
+        "type":  13,
+        "height":  55.60079,
+        "x":  34.2856674,
+        "text":  "",
+        "page":  15
+    },
+    {
+        "y":  318,
+        "width":  740,
+        "name":  "TextBox 12",
+        "type":  17,
+        "height":  30,
+        "x":  109.999924,
+        "text":  "Questions and discussion",
+        "page":  15
+    },
+    {
+        "y":  10,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38,
+        "x":  64.99992,
+        "text":  "References",
+        "page":  16
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  16
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "References reproduced from the supplied formal report, p.9. No new literature performance claims.",
+        "page":  16
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "B1 / 5",
+        "page":  16
+    },
+    {
+        "y":  105.84,
+        "width":  864,
+        "name":  "Text 6",
+        "type":  1,
+        "height":  46.8,
+        "x":  46.8,
+        "text":  "[1] P. Lewis et al., “Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks,” Advances in Neural Information Processing Systems, vol.33, pp.9459–9474, 2020.",
+        "page":  16
+    },
+    {
+        "y":  159.12,
+        "width":  864,
+        "name":  "Text 7",
+        "type":  1,
+        "height":  46.8,
+        "x":  46.8,
+        "text":  "[2] S. Robertson and H. Zaragoza, “The Probabilistic Relevance Framework: BM25 and Beyond,” Foundations and Trends in Information Retrieval, vol.3, no.4, pp.333–389, 2009. doi: 10.1561/1500000019.",
+        "page":  16
+    },
+    {
+        "y":  212.4,
+        "width":  864,
+        "name":  "Text 8",
+        "type":  1,
+        "height":  46.8,
+        "x":  46.8,
+        "text":  "[3] V. Karpukhin et al., “Dense Passage Retrieval for Open-Domain Question Answering,” EMNLP, pp.6769–6781, 2020. doi: 10.18653/v1/2020.emnlp-main.550.",
+        "page":  16
+    },
+    {
+        "y":  265.68,
+        "width":  864,
+        "name":  "Text 9",
+        "type":  1,
+        "height":  46.8,
+        "x":  46.8,
+        "text":  "[4] X. Ma, Y. Gong, P. He, H. Zhao, and N. Duan, “Query Rewriting in Retrieval-Augmented Large Language Models,” EMNLP, pp.5303–5315, 2023. doi: 10.18653/v1/2023.emnlp-main.322.",
+        "page":  16
+    },
+    {
+        "y":  318.96,
+        "width":  864,
+        "name":  "Text 10",
+        "type":  1,
+        "height":  46.8,
+        "x":  46.8,
+        "text":  "[5] F. Shi et al., “Large Language Models Can Be Easily Distracted by Irrelevant Context,” ICML, PMLR, vol.202, pp.31210–31227, 2023.",
+        "page":  16
+    },
+    {
+        "y":  372.24,
+        "width":  864,
+        "name":  "Text 11",
+        "type":  1,
+        "height":  46.8,
+        "x":  46.8,
+        "text":  "[6] S. Es, J. James, L. Espinosa Anke, and S. Schockaert, “RAGAs: Automated Evaluation of Retrieval Augmented Generation,” EACL: System Demonstrations, pp.150–158, 2024. doi: 10.18653/v1/2024.eacl-demo.16.",
+        "page":  16
+    },
+    {
+        "y":  425.52,
+        "width":  864,
+        "name":  "Text 12",
+        "type":  1,
+        "height":  54.72,
+        "x":  46.8,
+        "text":  "[7] Z. Feng, K. Zhu, W. Ma, L. Huang, B. Qin, T. Liu, and X. Feng, “Enhancing Large Language Models with Retrieval-Augmented Techniques: Trends, Challenges, and Prospects,” 23rd Chinese National Conference on Computational Linguistics (Vol.2: Frontier Forum), pp.151–168, 2024 (in Chinese). https://aclanthology.org/2024.ccl-2.9/",
+        "page":  16
+    },
+    {
+        "y":  10,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38,
+        "x":  64.99992,
+        "text":  "Hybrid scoring and selection",
+        "page":  17
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  17
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "Proposal p.6, §4.2. Top-K = 5. No parameter selection on the test set.",
+        "page":  17
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "B2 / 5",
+        "page":  17
+    },
+    {
+        "y":  111.6,
+        "width":  864,
+        "name":  "Text 6",
+        "type":  1,
+        "height":  48.24,
+        "x":  46.8,
+        "text":  "S(q, c) = (1 - w)B(q, c) + wD(q, c)",
+        "page":  17
+    },
+    {
+        "y":  190.8,
+        "width":  406.8,
+        "name":  "Text 7",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Per-query normalisation",
+        "page":  17
+    },
+    {
+        "y":  230.4,
+        "width":  406.8,
+        "name":  "Text 8",
+        "type":  1,
+        "height":  56.16,
+        "x":  46.8,
+        "text":  "Min-max normalise BM25 and cosine scores\rover eligible chunks for each query.",
+        "page":  17
+    },
+    {
+        "y":  190.8,
+        "width":  406.8,
+        "name":  "Text 9",
+        "type":  1,
+        "height":  28.8,
+        "x":  504,
+        "text":  "Constant-score rule",
+        "page":  17
+    },
+    {
+        "y":  230.4,
+        "width":  406.8,
+        "name":  "Text 10",
+        "type":  1,
+        "height":  56.16,
+        "x":  504,
+        "text":  "Constant positive scores map to 1.\rOther constant scores map to 0.",
+        "page":  17
+    },
+    {
+        "y":  311.76,
+        "width":  864,
+        "name":  "Text 11",
+        "type":  1,
+        "height":  37.44,
+        "x":  46.8,
+        "text":  "w ∈ {0.25, 0.50, 0.75}",
+        "page":  17
+    },
+    {
+        "y":  367.2,
+        "width":  864,
+        "name":  "Text 12",
+        "type":  1,
+        "height":  45.36,
+        "x":  46.8,
+        "text":  "Select by development Recall@5, then MRR@5. Ties favour 0.50.",
+        "page":  17
+    },
+    {
+        "y":  434.16,
+        "width":  864,
+        "name":  "Text 13",
+        "type":  1,
+        "height":  51.84,
+        "x":  46.8,
+        "text":  "Freeze Chinese tokenisation, domain dictionary, stopwords, chunking,\rcorpus, models, prompts, thresholds and weight before testing.",
+        "page":  17
+    },
+    {
+        "y":  10,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38,
+        "x":  64.99992,
+        "text":  "Evidence Gate and human scoring",
+        "page":  18
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  18
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "Proposal pp.6–7, §§4.4–4.5. Numerical thresholds remain to be selected on development data.",
+        "page":  18
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "B3 / 5",
+        "page":  18
+    },
+    {
+        "y":  112.32,
+        "width":  864,
+        "name":  "Text 6",
+        "type":  1,
+        "height":  45.36,
+        "x":  46.8,
+        "text":  "Accept if coverage \u003e τlex OR raw cosine \u003e τcos",
+        "page":  18
+    },
+    {
+        "y":  186.48,
+        "width":  406.8,
+        "name":  "Text 7",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Coverage definition",
+        "page":  18
+    },
+    {
+        "y":  226.08,
+        "width":  406.8,
+        "name":  "Text 8",
+        "type":  1,
+        "height":  56.16,
+        "x":  46.8,
+        "text":  "Matched distinct query content tokens /\rall distinct query content tokens.",
+        "page":  18
+    },
+    {
+        "y":  186.48,
+        "width":  406.8,
+        "name":  "Text 9",
+        "type":  1,
+        "height":  28.8,
+        "x":  504,
+        "text":  "Fixed preprocessing",
+        "page":  18
+    },
+    {
+        "y":  226.08,
+        "width":  406.8,
+        "name":  "Text 10",
+        "type":  1,
+        "height":  56.16,
+        "x":  504,
+        "text":  "Exclude IDs and fixed stopwords.\rSame segmenter. Empty sets score 0.",
+        "page":  18
+    },
+    {
+        "y":  300.24,
+        "width":  406.8,
+        "name":  "Text 11",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Automatic checks",
+        "page":  18
+    },
+    {
+        "y":  339.84,
+        "width":  406.8,
+        "name":  "Text 12",
+        "type":  1,
+        "height":  56.16,
+        "x":  46.8,
+        "text":  "Metadata, citation identifiers\rand literal excerpts.",
+        "page":  18
+    },
+    {
+        "y":  300.24,
+        "width":  406.8,
+        "name":  "Text 13",
+        "type":  1,
+        "height":  28.8,
+        "x":  504,
+        "text":  "Human scoring",
+        "page":  18
+    },
+    {
+        "y":  339.84,
+        "width":  406.8,
+        "name":  "Text 14",
+        "type":  1,
+        "height":  56.16,
+        "x":  504,
+        "text":  "Semantic support, facts, values,\runits and applicable conditions.",
+        "page":  18
+    },
+    {
+        "y":  439.2,
+        "width":  864,
+        "name":  "Text 15",
+        "type":  1,
+        "height":  46.8,
+        "x":  46.8,
+        "text":  "No numerical threshold is claimed as tuned. Similarity is not semantic proof.\rAPI/format failures are errors. Clarification is justified only for labelled ambiguity.",
+        "page":  18
+    },
+    {
+        "y":  10,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38,
+        "x":  64.99992,
+        "text":  "Ablation definitions and denominators",
+        "page":  19
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  19
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "Proposal pp.5–7 and readable ELEC3801 Proposal. Report citation/answer coverage. Zero denominators: N/A.",
+        "page":  19
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "B4 / 5",
+        "page":  19
+    },
+    {
+        "y":  106.56,
+        "width":  864,
+        "name":  "Text 6",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "A1: remove edition checks",
+        "page":  19
+    },
+    {
+        "y":  146.16,
+        "width":  864,
+        "name":  "Text 7",
+        "type":  1,
+        "height":  56.16,
+        "x":  46.8,
+        "text":  "Disable year restrictions and edition availability/ambiguity checks.\rRetain standard-family filtering.",
+        "page":  19
+    },
+    {
+        "y":  215.28,
+        "width":  864,
+        "name":  "Text 8",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "A2: remove the retrieval gate",
+        "page":  19
+    },
+    {
+        "y":  254.88,
+        "width":  864,
+        "name":  "Text 9",
+        "type":  1,
+        "height":  56.16,
+        "x":  46.8,
+        "text":  "Retain prompts, citation validation and error handling.\rThis measures only the gate\u0027s incremental effect.",
+        "page":  19
+    },
+    {
+        "y":  329.76,
+        "width":  867.6,
+        "name":  "Table 0",
+        "type":  19,
+        "height":  151.2,
+        "x":  46.8,
+        "text":  "",
+        "page":  19
+    },
+    {
+        "y":  10,
+        "width":  720,
+        "name":  "标题 1",
+        "type":  14,
+        "height":  38,
+        "x":  64.99992,
+        "text":  "Data risks and fallback scope",
+        "page":  20
+    },
+    {
+        "y":  504,
+        "width":  880.56,
+        "name":  "Shape 3",
+        "type":  9,
+        "height":  0,
+        "x":  39.6,
+        "text":  "",
+        "page":  20
+    },
+    {
+        "y":  511.2,
+        "width":  813.6,
+        "name":  "Text 4",
+        "type":  1,
+        "height":  12.96,
+        "x":  39.6,
+        "text":  "Proposal O1, §4.6 and schedule. Replacement-provider comparisons must use one consistent configuration.",
+        "page":  20
+    },
+    {
+        "y":  508.32,
+        "width":  52.56,
+        "name":  "Text 5",
+        "type":  1,
+        "height":  20.16,
+        "x":  867.6,
+        "text":  "B5 / 5",
+        "page":  20
+    },
+    {
+        "y":  106.56,
+        "width":  864,
+        "name":  "Text 6",
+        "type":  1,
+        "height":  31.68,
+        "x":  46.8,
+        "text":  "Corpus target: 20–30 usable documents",
+        "page":  20
+    },
+    {
+        "y":  152.64,
+        "width":  864,
+        "name":  "Text 7",
+        "type":  1,
+        "height":  54.72,
+        "x":  46.8,
+        "text":  "Seek 2 families × 2 formal editions. Verify provenance, permissions, hashes,\ridentifier/year, extraction quality and PDF/DOCX source locations.",
+        "page":  20
+    },
+    {
+        "y":  235.44,
+        "width":  406.8,
+        "name":  "Text 8",
+        "type":  1,
+        "height":  28.8,
+        "x":  46.8,
+        "text":  "Insufficient formal edition pairs",
+        "page":  20
+    },
+    {
+        "y":  275.04,
+        "width":  406.8,
+        "name":  "Text 9",
+        "type":  1,
+        "height":  56.16,
+        "x":  46.8,
+        "text":  "Seek permitted alternatives.\rKeep A1 and limit RQ2 to available editions.",
+        "page":  20
+    },
+    {
+        "y":  235.44,
+        "width":  406.8,
+        "name":  "Text 10",
+        "type":  1,
+        "height":  28.8,
+        "x":  504,
+        "text":  "Embedding service unavailable",
+        "page":  20
+    },
+    {
+        "y":  275.04,
+        "width":  406.8,
+        "name":  "Text 11",
+        "type":  1,
+        "height":  56.16,
+        "x":  504,
+        "text":  "Resolve access or document replacement.\rBM25 alone cannot validate Dense/Hybrid.",
+        "page":  20
+    },
+    {
+        "y":  359.28,
+        "width":  864,
+        "name":  "Text 12",
+        "type":  1,
+        "height":  24.48,
+        "x":  46.8,
+        "text":  "Rights and scope",
+        "page":  20
+    },
+    {
+        "y":  394.56,
+        "width":  864,
+        "name":  "Text 13",
+        "type":  1,
+        "height":  57.6,
+        "x":  46.8,
+        "text":  "Only permitted text goes online. Protect keys and test labels.\rExclude scans/drafts, training, OCR, agents, drawings, hardware and deployment.",
+        "page":  20
+    },
+    {
+        "y":  462.24,
+        "width":  864,
+        "name":  "Text 14",
+        "type":  1,
+        "height":  40.32,
+        "x":  46.8,
+        "text":  "Budget: GBP 35 generation + 10 embeddings + 5 reserve. Review at GBP 40.\r372 h through W24 + 28 h viva. W22–23 break, W25–27 viva, subject to official notices.",
+        "page":  20
+    }
+]

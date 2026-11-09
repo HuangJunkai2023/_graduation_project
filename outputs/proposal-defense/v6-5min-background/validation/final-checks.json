@@ -1,0 +1,22 @@
+{
+  "checks": {
+    "20_slides": true,
+    "20_PDF_pages": true,
+    "20_previews": true,
+    "300_seconds": true,
+    "20_bilingual_notes": true,
+    "15_main_script_pages_plus_backups": true,
+    "four_part_dividers": true,
+    "Contents_preserved": true,
+    "no_overflow": true,
+    "no_stale_counters": true,
+    "three_RQs": true,
+    "native_architecture": true,
+    "native_table": true
+  },
+  "all_pass": true,
+  "english_main_words": 676,
+  "note_count": 20,
+  "reference_seconds": 300,
+  "timing_limitation": "Planned timing, not a measured rehearsal."
+}

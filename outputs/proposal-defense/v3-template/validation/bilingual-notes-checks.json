@@ -1,0 +1,10 @@
+{
+  "pages": 18,
+  "main": 13,
+  "backup": 5,
+  "both_languages_verified_on_all_pages": true,
+  "all_non_note_parts_byte_identical": true,
+  "source_unchanged": true,
+  "input_sha256": "2c4b2ce06312ee1b4b28ab5782202519d5beef3a0453a9232f2f45c50a884189",
+  "output_sha256": "bfdbebe15eae0c512487841f2328d841fea3657243ff8d5874201501839d85c2"
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "ppt-master.source_to_md.profile.v1",
+  "converter": "ppt_to_md.py",
+  "conversion_type": "pptx",
+  "source": {
+    "path": "D:/_graduation_project/outputs/proposal-defense/v7-5min-visual/OCS_Proposal_Defense_EN_5min_SWJTU_Visual.pptx",
+    "name": "OCS_Proposal_Defense_EN_5min_SWJTU_Visual.pptx",
+    "suffix": ".pptx",
+    "kind": "file",
+    "exists": true,
+    "size_bytes": 16244562
+  },
+  "outputs": {
+    "markdown": "readback.md",
+    "asset_dir": "readback_files",
+    "image_manifest": "readback_files/image_manifest.json",
+    "image_count": 10
+  },
+  "markdown": {
+    "line_count": 907,
+    "char_count": 23249,
+    "heading_count": 41,
+    "table_count": 1,
+    "image_ref_count": 13,
+    "link_count": 0
+  },
+  "warnings": []
+}

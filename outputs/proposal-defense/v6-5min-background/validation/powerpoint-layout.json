@@ -1,0 +1,15 @@
+﻿{
+    "slideWidth":  960,
+    "overflowCount":  0,
+    "method":  "Native PowerPoint export and TextFrame2 bounds, including table cells",
+    "tableCellsInspected":  10,
+    "fonts":  [
+                  "Arial",
+                  "Microsoft YaHei"
+              ],
+    "slides":  20,
+    "slideHeight":  540,
+    "overflows":  [
+
+                  ]
+}
