@@ -1,0 +1,19 @@
+{
+  "recorded_on": "2026-11-10",
+  "source": "开题材料/Proposal_English_Final.pdf",
+  "sha256": "f46ce266761ea6bed4ac383a9ce0133d7d8dac5d4c16903466022c95650b9ca1",
+  "source_pages": [
+    2,
+    3,
+    4,
+    5,
+    7
+  ],
+  "plan_facts": {
+    "T05": "Verify baseline and embedding access, Weeks 9–10",
+    "T06": "Curate corpus and build index, Weeks 9–11",
+    "M2": "Corpus/baseline, Week 11"
+  },
+  "student_confirmation": "Project is largely complete; organise journal around the Proposal plan rather than repository file availability.",
+  "limits": "No specific implementation date, achieved corpus size, test pass count, live API output or formal result newly confirmed."
+}

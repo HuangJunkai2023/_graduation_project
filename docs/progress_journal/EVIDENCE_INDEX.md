@@ -59,7 +59,7 @@ The fingerprints below identify the readable material inspected on 2026-10-27; t
 
 ## Future evidence: append only when activity actually occurs
 
-Weeks 10–24 currently have plans in WEEKLY_PLAN.md and no completed evidence entries. Week 9 now has actual checks and a separate draft, recorded below. Keep permitted raw runs under the application's ignored `runtime/` or `outputs/`; store shareable summaries/plots with their actual week only when generated. Register a hash/configuration so ignored local evidence remains traceable, and use an approved independent backup rather than treating a local Git repository as a backup of ignored files.
+Weeks 11–24 remain future plans; Week 10 now has a dated draft recorded only through 10 November. Week 9 now has actual checks and a separate draft, recorded below. Keep permitted raw runs under the application's ignored `runtime/` or `outputs/`; store shareable summaries/plots with their actual week only when generated. Register a hash/configuration so ignored local evidence remains traceable, and use an approved independent backup rather than treating a local Git repository as a backup of ignored files.
 
 Append a record with the following fields, not invented values:
 
@@ -77,10 +77,13 @@ Append a record with the following fields, not invented values:
 
 ## Journal release register
 
+Week 10新增：[WEEK_10.md](WEEK_10.md)，recorded_through为2026-11-10，状态Draft，Minerva发布未确认。下方Week 8/9记录保持原状态。
+
 | Week | Local file | Recorded through | Status | Minerva publication |
 | --- | --- | --- | --- | --- |
 | 8 | [WEEK_08.md](WEEK_08.md) | 2026-10-27 | Draft, for student review | Not confirmed |
 | 9 | [WEEK_09.md](WEEK_09.md) | 2026-11-04 | Draft, for student review | Not confirmed |
+| 10 | [WEEK_10.md](WEEK_10.md) | 2026-11-10 | Draft, for student review | Not confirmed |
 
 Add future rows only with the corresponding actual draft/activity. Student approval of wording is `Approved for posting`; actual posting confirmed by the student permits `Published` and an actual date. Neither a generated file nor a Git commit establishes publication.
 
@@ -99,3 +102,24 @@ All new checks below were executed with assistant/tool support on 4 November. Th
 The first-person draft has 382 rendered whitespace-delimited words (387 English/numeric lexical words), including the title, seven headings and evidence table, excluding YAML, the maintenance comment and Markdown formatting. The unstripped source has 413 whitespace tokens. All five Evidence IDs agree between metadata, the inline table and this index. It remains Draft and records progress only through 4 November; no Minerva upload or later-week work is claimed.
 
 Source code, tests, English Proposal and task CSV were unchanged. No formal retrieval/QA experiments, live model calls or performance improvements were recorded. The local independent virtual environment and editable-install metadata are ignored by Git. Raw standard text and credentials are absent from this evidence package.
+
+## Week 10 — defence preparation through 10 November 2026
+
+This entry covers 9–10 November only. Existing October and Week 9 system checks are background, not new technical achievements. Assistant-supported preparation is subject to the student's review. Actual effort, costs, defence attendance, supervision feedback and publication have not been newly confirmed.
+
+| ID | Actual activity / evidence | Observation and limit | Journal use |
+| --- | --- | --- | --- |
+| **E10-01** | 9 November; Git `f1ebd28`, [visual presentation and scripts](../../outputs/proposal-defense/v7-5min-visual/Modification_Summary.md) | 15 main slides and five backups using the university template; editable interface illustrations show edition selection, citations, evidence inspection and refusal. Not live outputs or application performance. | Communication and design explanation; three RQs and five configurations retained. |
+| **E10-02** | Retained 9 November checks; 10 November [read-only audit](evidence/week10/artifact_audit.json), [audit script](evidence/week10/verify_week10.py) | Existing report: 12/12 delivery checks, zero overflow flags. Fresh inspection: 20 slide parts, 20 note parts, 19/20 exact bilingual matches. Slide 5 English opening is abbreviated relative to JSON. Deck unchanged; hashes retained. Allocated duration is 300 seconds, not a rehearsal measurement. | Presentation QA with a newly recorded text discrepancy; no claim of a new system test. |
+| **E10-03** | 10 November conversation and [Week 10 evidence scope](evidence/week10/README.md) | Student requested a plain-language explanation for defence preparation. Assistant explained RAG, RQ1–3, controlled comparisons, refusal trade-offs and research limits using supplied materials. No mastery assessment or supervisor discussion inferred. | Reflective preparation; no new literature-reading or experiment claim. |
+
+The [Week 10 draft](WEEK_10.md) retains seven first-person English sections and an inline evidence table. The planned T05 live embedding pilot and T06 source/extraction audit remain unverified in this reporting window. No API, corpus, benchmark or signed Proposal was changed, and no Minerva post, Teams message or Git submission was made by this journal update.
+
+
+## 10 November clarification — revised journal basis
+
+- **E10-04:** The student explicitly confirmed that the project is largely complete and asked for a journal organised around `Proposal_English_Final.pdf`, rather than inferred from repository files. This supports the broad completion context, not specific test figures or dates of past implementation.
+- **E10-05:** Proposal pp.2–5 and 7 were reviewed on 10 November. T05 covers Weeks 9–10, T06 Weeks 9–11, and M2 is Week 11. [proposal_alignment.json](proposal_alignment.json) retains the source fingerprint and mapping.
+- The revised Week 10 body reviews document processing, chunking, source tracing and edition metadata against that plan. It does not describe all components as newly implemented this week. The earlier assertion that presentation work displaced unfinished engineering is withdrawn: missing repository evidence does not establish non-completion.
+- E10-01–03 and the presentation audit remain supporting preparation records. Presentation checks and the slide-5 note discrepancy are not the technical focus of the revised journal.
+- The added Week 10 deviation checkpoint was removed from WEEKLY_PLAN.md; the original schedule is retained. No milestone, Proposal or prior-week journal was changed.

@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "seven_sections": true,
+    "300_to_500_words": true,
+    "Draft": true,
+    "no_missing_links": true,
+    "three_evidence_ids": true,
+    "recorded_through_today": true,
+    "note_difference_recorded": true
+  },
+  "word_count": 448,
+  "all_pass": true,
+  "missing_links": []
+}

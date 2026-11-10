@@ -1,0 +1,53 @@
+{
+  "recorded_on": "2026-11-10",
+  "activity_date_of_retained_deck": "2026-11-09",
+  "method": "Read-only ZIP/XML and JSON inspection; hashes; Git commit metadata. No rerender or QA-system test.",
+  "artifact_commit": "f1ebd28ef754b252073518db2359853f8f48a5ce 2026-11-09T17:23:05+08:00 docs: add bilingual proposal decks and five-minute visual version",
+  "observations": {
+    "pptx_slides": 20,
+    "notes_parts": 20,
+    "main_slides": 15,
+    "backup_slides": 5,
+    "allocated_seconds": 300,
+    "bilingual_note_matches": 19,
+    "retained_delivery_checks_passed": 12,
+    "retained_delivery_checks_total": 12,
+    "retained_PowerPoint_overflow_flags": 0
+  },
+  "exact_note_mismatch_pages": [
+    5
+  ],
+  "readback_finding": "Slide 5 English note abbreviates the opening sentence relative to the JSON/script. All 20 note parts are present; 19 are exact bilingual matches. Deck left unchanged during journal preparation.",
+  "files": {
+    "outputs/proposal-defense/v7-5min-visual/OCS_Proposal_Defense_EN_5min_SWJTU_Visual.pptx": {
+      "sha256": "11134b9624e782f149b77ff643e0c2d9736a54fa8266b02910f7f44ea79ec24f",
+      "bytes": 16244625
+    },
+    "outputs/proposal-defense/v7-5min-visual/OCS_Proposal_Defense_EN_5min_SWJTU_Visual.pdf": {
+      "sha256": "9f8160704c056d022dda2524e93b94243bf457e89d94ab0568e385e92719cc25",
+      "bytes": 4558250
+    },
+    "outputs/proposal-defense/v7-5min-visual/OCS_Proposal_Defense_CN_EN_Script_5min.md": {
+      "sha256": "55206eb18f909bec965c40aedf5b9f8e39ab5ae1b8af3ad8d109c0dbbabbe85c",
+      "bytes": 16248
+    },
+    "outputs/proposal-defense/v7-5min-visual/source/content_5min.json": {
+      "sha256": "e05b84dfab8a98feb66c5c562311db3103aec7db3ad687e9a1f5b3fcd851cc10",
+      "bytes": 44199
+    },
+    "outputs/proposal-defense/v7-5min-visual/validation/final-checks.json": {
+      "sha256": "a5b23965e9b9f9746dc55e63d52c246abfa6f72e515a0228d71189ea6849ff53",
+      "bytes": 523
+    },
+    "outputs/proposal-defense/v7-5min-visual/validation/powerpoint-layout.json": {
+      "sha256": "0d73ab872eb4ee40ff519332ea0a572c59a8de22f677d8174c32e516f99298c0",
+      "bytes": 372
+    }
+  },
+  "limits": [
+    "Not an application test or formal RQ evaluation.",
+    "300 seconds is allocated timing, not a measured rehearsal.",
+    "No new live API request, extraction audit, corpus acceptance, expense or actual working-hour measurement.",
+    "The untracked speech DOCX is excluded; its authorship and completion were not inspected."
+  ]
+}
