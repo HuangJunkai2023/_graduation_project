@@ -1,5 +1,6 @@
 # Python 环境、字节码与打包产物。
 .venv/
+.venv-win/
 venv/
 __pycache__/
 *.py[cod]

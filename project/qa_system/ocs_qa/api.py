@@ -1,6 +1,11 @@
 """DeepSeek generation and a separately configured embeddings endpoint."""
 import json
 import math
+import time
+import uuid
+from datetime import datetime, timezone
+from pathlib import Path
+from urllib.parse import urlsplit
 import httpx
 
 
@@ -11,17 +16,26 @@ class APIError(RuntimeError):
 
 
 class ModelClient:
-    def __init__(self, settings, transport=None):
+    def __init__(self, settings, transport=None, event_sink=None):
         self.settings = settings
         self.transport = transport
+        self.event_sink = Path(event_sink) if event_sink else (settings.db_path.parent / 'api_usage.jsonl' if transport is None else None)
+        self.last_request_metadata = None
 
     def _post(self, base, endpoint, key, payload):
         if not key: raise APIError("missing_key", "未配置相应 API Key，请在本机 .env 中填写。")
         if not base.startswith("https://") and not base.startswith(("http://localhost:", "http://127.0.0.1:")):
             raise APIError("invalid_endpoint", "API 地址须使用 HTTPS，本机测试地址除外。")
+        started = time.perf_counter()
+        event = {'request_id':uuid.uuid4().hex,'created_at':datetime.now(timezone.utc).isoformat(),
+                 'host':urlsplit(base).hostname,'endpoint':endpoint,'requested_model':payload.get('model'),
+                 'input_items':len(payload['input']) if isinstance(payload.get('input'),list) else None,
+                 'http_status':None,'returned_model':None,'usage':{},'error_code':None}
+        if self.event_sink:self.event_sink.parent.mkdir(parents=True,exist_ok=True)
         try:
             with httpx.Client(timeout=self.settings.timeout, transport=self.transport, follow_redirects=False) as client:
                 response = client.post(base.rstrip("/")+endpoint, headers={"Authorization": f"Bearer {key}"}, json=payload)
+            event['http_status']=response.status_code
             if response.status_code != 200:
                 code = response.status_code
                 message = {401: "密钥无效或未授权", 402: "账户余额不足", 403: "接口无访问权限", 404: "模型或接口不存在", 429: "请求受到限流"}.get(code, "模型服务请求失败")
@@ -29,13 +43,28 @@ class ModelClient:
                 raise APIError(f"http_{code}", f"{message}（HTTP {code}）。")
             result = response.json()
             if not isinstance(result, dict): raise ValueError("not an object")
+            event['returned_model']=result.get('model')
+            usage=result.get('usage',{})
+            if isinstance(usage,dict):event['usage']=usage
             return result
+        except APIError as exc:
+            event['error_code']=exc.code
+            raise
         except httpx.TimeoutException as exc:
+            event['error_code']='timeout'
             raise APIError("timeout", "模型服务超时，请稍后重试。") from exc
         except httpx.RequestError as exc:
+            event['error_code']='network'
             raise APIError("network", "无法连接模型服务，请检查网络和接口地址。") from exc
         except (ValueError, TypeError) as exc:
+            event['error_code']='invalid_response'
             raise APIError("invalid_response", "模型服务返回了无效 JSON。") from exc
+        finally:
+            event['elapsed_ms']=round((time.perf_counter()-started)*1000,2)
+            self.last_request_metadata=event
+            if self.event_sink:
+                with self.event_sink.open('a',encoding='utf-8') as handle:
+                    handle.write(json.dumps(event,ensure_ascii=False)+'\n')
 
     def chat(self, system, prompt):
         data = self._post(self.settings.chat_url, "/chat/completions", self.settings.chat_key, {

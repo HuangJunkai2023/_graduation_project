@@ -4,6 +4,35 @@
 
 ## 先运行
 
+### Windows 本机启动
+
+已经配置好本机 `.venv-win` 时，双击本目录的 `start_windows.cmd`，或在 PowerShell 执行：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\project\qa_system\start_windows.ps1
+```
+
+启动后访问 <http://127.0.0.1:8501>。服务在后台运行，日志位于本目录 `runtime/streamlit-windows.*.log`；再次双击不会重复启动健康的服务。原有 Linux `.venv` 与 Windows `.venv-win` 相互独立。
+
+首次创建 Windows 环境：
+
+```powershell
+python -m venv project/qa_system/.venv-win
+& ./project/qa_system/.venv-win/Scripts/python.exe -m pip install -e './project/qa_system[dev]'
+```
+
+本机向量服务已选择独立的硅基流动 `BAAI/bge-m3`，兼容 `/embeddings`：
+
+```dotenv
+EMBEDDING_API_KEY=在本机填写硅基流动密钥
+EMBEDDING_BASE_URL=https://api.siliconflow.cn/v1
+EMBEDDING_MODEL=BAAI/bge-m3
+```
+
+在[硅基流动控制台](https://cloud.siliconflow.cn/account/ak)创建密钥，填入本目录 `.env`，保存后刷新页面。地址和模型参考[官方 Embedding 文档](https://docs.siliconflow.cn/docs/api/embeddings-post)，具体访问权限和费用以账户为准。DeepSeek 与 Embedding 的密钥分别填写，不能互换。未填写向量密钥时，仍可使用 BM25；填写后先确认文档在线处理许可，再补建向量并切换 Dense/Hybrid。
+
+### Linux / 通用安装
+
 在工程根目录，已有 `.venv` 可直接使用。首次安装：
 
 ```bash

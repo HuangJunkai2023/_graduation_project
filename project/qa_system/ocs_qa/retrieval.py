@@ -1,31 +1,17 @@
 """BM25 / dense / hybrid retrieval with explicit edition constraints."""
-from collections import Counter, defaultdict
+from collections import Counter
 import math
 import re
 import numpy as np
-from .documents import STANDARD, standards
+from .documents import standards
 from .api import APIError
-
-
-def tokens(text):
-    result = []
-    for part in re.findall(r"[\u4e00-\u9fff]+|[a-z0-9_.-]+", text.lower()):
-        if re.fullmatch(r"[\u4e00-\u9fff]+", part):
-            for n in (1, 2, 3): result.extend(part[i:i+n] for i in range(len(part)-n+1))
-        else: result.append(part)
-    return result
-
-
-def content_terms(query):
-    query = STANDARD.sub(" ", query)
-    query = re.sub(r"请问|请介绍|请说明|根据|有关|规定|标准|哪些|什么|如何|多少|是否|怎么|里面|其中|要求|有什么|有哪些|的|是|了|吗|呢", " ", query)
-    return {t for t in tokens(query) if len(t) >= 2}
+from .preprocessing import tokens, content_terms, lexical_coverage, preprocessing_identity
 
 
 def normalize(values):
     if not values: return {}
     low, high = min(values.values()), max(values.values())
-    if math.isclose(low, high): return {k: (1.0 if v > 0 else 0.0) for k,v in values.items()}
+    if low == high: return {k: (1.0 if v > 0 else 0.0) for k,v in values.items()}
     return {k: (v-low)/(high-low) for k,v in values.items()}
 
 
@@ -46,14 +32,14 @@ class Retriever:
         if not self.records: return {"status": "empty_kb", "sources": []}
         candidates = [i for i,r in enumerate(self.records) if include_drafts or r["document"]["publication_status"] != "draft"]
         specs = standards(query)
-        if edition_filter and specs:
+        if specs:
             wanted = set()
             for standard, year in specs:
                 hits = [i for i in candidates if self.records[i]["document"]["standard"] == standard]
                 editions = sorted({self.records[i]["document"]["year"] or "未标年份" for i in hits})
-                if year: hits = [i for i in hits if self.records[i]["document"]["year"] == year]
-                if not hits: return {"status": "missing_edition", "sources": [], "requested": f"{standard}-{year}".rstrip("-"), "available_editions": editions}
-                if not year and len(editions)>1:
+                if edition_filter and year: hits = [i for i in hits if self.records[i]["document"]["year"] == year]
+                if edition_filter and not hits: return {"status": "missing_edition", "sources": [], "requested": f"{standard}-{year}".rstrip("-"), "available_editions": editions}
+                if edition_filter and not year and len(editions)>1:
                     return {"status": "clarify_edition", "sources": [], "requested": standard, "available_editions": editions}
                 wanted.update(hits)
             candidates = sorted(wanted)
@@ -84,18 +70,19 @@ class Retriever:
         # Never return zero-overlap keyword candidates just to fill Top-K.
         if mode == "bm25": ranked = [i for i in ranked if lexical[i]>0]
         # Multiple requested standards each get one slot, then fill by rank.
-        if edition_filter and len(specs)>1:
+        if len(specs)>1:
             selected = []
             for spec in specs:
-                first = next((i for i in ranked if self.records[i]["document"]["standard"]==spec[0] and (not spec[1] or self.records[i]["document"]["year"]==spec[1]) and i not in selected),None)
+                first = next((i for i in ranked if self.records[i]["document"]["standard"]==spec[0] and (not edition_filter or not spec[1] or self.records[i]["document"]["year"]==spec[1]) and i not in selected),None)
                 if first is not None: selected.append(first)
             ranked = selected+[i for i in ranked if i not in selected]
-        terms = content_terms(query)
         sources = []
         for i in ranked[:top_k]:
             record = self.records[i]
-            coverage = sum(t in record["text"].lower() for t in terms)/len(terms) if terms else 0.
+            coverage = lexical_coverage(query,record["text"])
             sources.append({k:v for k,v in record.items() if k not in ("vector", "vector_identity")})
             sources[-1].update(source=len(sources), bm25_score=lexical[i], vector_score=dense.get(i),
-                               score=fused[i], lexical_coverage=coverage)
-        return {"status": "retrieved" if sources else "insufficient_evidence", "sources": sources, "query": query}
+                               score=fused[i], lexical_coverage=coverage,
+                               bm25_normalized=ln[i],dense_normalized=dn.get(i))
+        return {"status": "retrieved" if sources else "insufficient_evidence", "sources": sources, "query": query,
+                "candidate_count":len(candidates),"preprocessing_identity":preprocessing_identity()}

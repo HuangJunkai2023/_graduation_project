@@ -21,7 +21,7 @@ def retrieval_metrics(sources, gold):
 def run_evaluation(pipeline, dataset_path, output, *, mode="bm25", generate=False,
                    edition_filter=True, evidence_check=True):
     dataset_path, output = Path(dataset_path), Path(output)
-    questions = [json.loads(line) for line in dataset_path.read_text().splitlines() if line.strip()]
+    questions = [json.loads(line) for line in dataset_path.read_text(encoding='utf-8-sig').splitlines() if line.strip()]
     ids = set()
     for q in questions:
         if not isinstance(q.get("question"),str) or not q["question"].strip(): raise ValueError("评测题缺少有效 question。")
