@@ -1,0 +1,14 @@
+{
+  "status": "pending_review",
+  "reviewed_by": "",
+  "reviewed_at": "",
+  "spent_gbp": null,
+  "historical_cost_unknown": true,
+  "conservative_remaining_run_gbp": null,
+  "threshold_40_reviewed": false,
+  "pricing_sources": [
+    "https://api-docs.deepseek.com/quick_start/pricing/",
+    "https://www.siliconflow.cn/pricing"
+  ],
+  "notes": "Copy to runtime/research/budget_review.json; reconcile historical project charges from provider bills, record GBP conversion basis and conservative remaining cost. Balance is not spending. £50 total; review at £40. Never put API keys here."
+}
