@@ -1,0 +1,35 @@
+{
+  "valid": true,
+  "errors": [],
+  "questions": 100,
+  "approved": 0,
+  "counts": {
+    "dev/clause": 6,
+    "dev/edition": 4,
+    "dev/follow_up": 3,
+    "dev/term": 3,
+    "dev/unanswerable": 4,
+    "test/clause": 24,
+    "test/edition": 16,
+    "test/follow_up": 12,
+    "test/term": 12,
+    "test/unanswerable": 16
+  },
+  "checked_at": "2026-11-12T08:18:52.159964+00:00",
+  "status": "machine_checked_awaiting_human_review",
+  "corpus_sha256": "f569710daa5fc2db76e0662776cca4c484b547d6cf798c10a65b30e8bcf33446",
+  "source_evidence_units": 80,
+  "unreviewed_without_human_identity": true,
+  "missing_edition_requests_absent": true,
+  "missing_edition_requests": 5,
+  "manual_semantic_review_complete": false,
+  "candidate_canonical_sha256": "12c4319feb4f267fa10d3c2fb3439c90e1e6ebe4ac59e18dba792849dfdaf8b7",
+  "candidate_file_sha256": "933d77ac78760db6a5dc29360f1ff6ee00b6543b496a6360848e20a4dcc027bf",
+  "review_ui_smoke_check": {
+    "loaded_actual_candidates": 100,
+    "approved_displayed": 0,
+    "pdf_preview_question_id": "dev-007",
+    "external_model_calls": 0,
+    "exception_count": 0
+  }
+}

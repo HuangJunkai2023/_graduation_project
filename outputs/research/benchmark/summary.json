@@ -1,0 +1,56 @@
+{
+  "status": "awaiting_human_review",
+  "total": 100,
+  "approved": 0,
+  "dev": 20,
+  "test": 80,
+  "answerable": 80,
+  "unanswerable": 20,
+  "quotas": {
+    "dev/clause": 6,
+    "dev/term": 3,
+    "dev/edition": 4,
+    "dev/follow_up": 3,
+    "dev/unanswerable": 4,
+    "test/term": 12,
+    "test/clause": 24,
+    "test/edition": 16,
+    "test/follow_up": 12,
+    "test/unanswerable": 16
+  },
+  "source_documents": 6,
+  "source_locations": {
+    "dev": 14,
+    "test": 36
+  },
+  "source_groups_cross_split": false,
+  "candidate_sha256": "933d77ac78760db6a5dc29360f1ff6ee00b6543b496a6360848e20a4dcc027bf",
+  "pilot_question_ids": [
+    "dev-001",
+    "dev-002",
+    "dev-003",
+    "dev-004",
+    "dev-005",
+    "dev-006",
+    "dev-007",
+    "dev-008",
+    "dev-009",
+    "dev-010"
+  ],
+  "gold_status": "not_frozen_not_manually_verified",
+  "limitations": [
+    "Exact source-anchor matches check provenance, not semantic correctness.",
+    "Draft questions and answers require human review including extracted numbers, units and conditions.",
+    "Missing-edition labels are relative to this selected corpus; no invented edition is treated as a real standard."
+  ],
+  "unanswerable_quotas": {
+    "dev/ambiguous": 1,
+    "dev/missing_edition": 1,
+    "dev/out_of_corpus": 1,
+    "dev/unrelated": 1,
+    "test/ambiguous": 4,
+    "test/missing_edition": 4,
+    "test/out_of_corpus": 4,
+    "test/unrelated": 4
+  }
+}
