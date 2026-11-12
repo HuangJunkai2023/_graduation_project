@@ -1,0 +1,16 @@
+{
+  "status": "awaiting_source_grades",
+  "slots_by_configuration": {
+    "B1": 2,
+    "B2": 2,
+    "B3": 2,
+    "A1": 1,
+    "A2": 2
+  },
+  "total_slots": 9,
+  "blind_tasks": 8,
+  "freeze_sha256": "929f09cbd8fa1add989543488045a3fbb92fc913014b7c545ed2741120865fe6",
+  "primary_attempt": 2,
+  "split": "test",
+  "paid_calls_note": "Run slots include early refusals and are not equal to generation requests."
+}
