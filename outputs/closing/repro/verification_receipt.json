@@ -1,0 +1,56 @@
+{
+  "verified_at": "2026-11-12T11:02:29.651649+00:00",
+  "git_commit": "a52e9bfe73330786d73bfca0049fa91437318c06",
+  "snapshot_current_docs": [
+    {
+      "path": "README.md",
+      "sha256": "d1a7961501bde05f44ab734965e6660e1ef5630e6f80f07e6768f775cb951c24",
+      "working_tree_update": true
+    },
+    {
+      "path": "project/qa_system/README.md",
+      "sha256": "ff1f3026934b0e783d6b06359fc402dcf34ab23c7cc05d6890fc2b0f65ab3865",
+      "working_tree_update": true
+    }
+  ],
+  "public_archive": "outputs\\closing\\repro\\OCS_Public_Code_closing-v1.zip",
+  "public_zip_sha256": "c725b401b642e76e27b0c0bab7d7616f198d2af730ee7b78e09ceb32d0cde03a",
+  "public_bytes": 123389,
+  "public_source_files": 49,
+  "controlled_archive": "project\\qa_system\\runtime\\closing_delivery\\closing-v1\\OCS_Controlled_Research.zip",
+  "controlled_zip_sha256": "bc24019885f6f60fb4967a828806e504a7199ebba7d414b8685d0f4aea1df13a",
+  "controlled_bytes": 191610123,
+  "public_extraction": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\closing-v1\\public_final_extracted_c725b401b642",
+  "controlled_extraction": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\closing-v1\\controlled_extracted",
+  "restore": {
+    "restored_database": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\closing-v1\\final_public_restore_20261112T110222.sqlite3",
+    "source_documents": 25,
+    "snapshot_file_hashes": "passed",
+    "freeze_verification": "passed",
+    "api_requests": 0
+  },
+  "frozen_source_hashes_verified": 22,
+  "recomputed_summary_identical": true,
+  "api_requests": 0,
+  "extracted_source_tests": {
+    "passed": 109,
+    "seconds": 19.3,
+    "exit_code": 0
+  },
+  "supplementary": {
+    "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\closing-v1\\OCS_Controlled_Supplementary.zip",
+    "bytes": 180270,
+    "sha256": "e04fa22ce8d08ce2a4b81adaf7259c46f8cee812a4ae304780d8ee97ffb209fd",
+    "files": 27,
+    "archive_integrity": "passed",
+    "extracted_file_hashes": "passed",
+    "configured_key_scan": "passed",
+    "recovery_slots": 9,
+    "recovery_blind_tuples": 8,
+    "primary_analysis_replaced": false,
+    "resource_ledger_hash_verified": true,
+    "public_distribution": false
+  },
+  "environment_scope": "Fresh final public source extraction using recorded existing Python 3.12.7 environment",
+  "no_git_manifest_fallback_verified": true
+}

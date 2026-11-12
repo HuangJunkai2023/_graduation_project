@@ -1,0 +1,45 @@
+{
+  "status": "review_ready",
+  "technical_report_page_limit": 7,
+  "word_count_including_tables_and_references": 3537,
+  "rendering": "LibreOffice 25.8.7.3, source geometry and styles retained",
+  "artifacts": [
+    {
+      "artifact": "OCS_Final_Report_EN",
+      "pages": 5,
+      "docx_sha256": "8fd6b3554760692767765da4843743fe4d2b083680e9e311471f64a532d49c6e",
+      "pdf_sha256": "3cbfdb24d247903725163a3576970d924757dc49893aca11ec4c6e542d679d8f",
+      "modified_template_parts": [
+        "word/document.xml"
+      ],
+      "visual_review": "All 5 final pages inspected individually",
+      "visual_findings": "No clipped text, overlapping elements, unreadable tables or missing glyphs observed."
+    },
+    {
+      "artifact": "OCS_Submission_Review_Draft",
+      "pages": 8,
+      "docx_sha256": "5a205f4b1d48b5e32b2dcfc341453cba0b9b13388004347796020af613ff13cf",
+      "pdf_sha256": "ac3fe8d0248f36d10a235d14e2641c2c5a3ac7c3f9a2e0c7a53a9ad25017fe97",
+      "modified_template_parts": [
+        "word/document.xml"
+      ],
+      "visual_review": "All 8 final pages inspected individually",
+      "visual_findings": "No clipped text, overlapping elements, unreadable tables or missing glyphs observed."
+    }
+  ],
+  "source_review_method": "assistant_source_review",
+  "research_limitations": [
+    "No independent human scoring validation",
+    "No admitted same-family formal edition pair",
+    "Hybrid did not improve Recall@5 over BM25",
+    "No observed incremental RQ2 or RQ3 benefit"
+  ],
+  "institutional_items_pending": [
+    "assessor details",
+    "personal declaration",
+    "Review Document approvals",
+    "student audio",
+    "OneDrive access link",
+    "actual submission"
+  ]
+}

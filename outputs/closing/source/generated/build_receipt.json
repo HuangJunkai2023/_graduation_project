@@ -1,0 +1,20 @@
+{
+  "template_sha256": "5bf90d04ec795552b0855c6ed43a12395de5e2deacfebb56cb77c103af210a45",
+  "report_sha256": "8fd6b3554760692767765da4843743fe4d2b083680e9e311471f64a532d49c6e",
+  "word_count": 3537,
+  "modified_package_parts": [
+    "word/document.xml"
+  ],
+  "source_review_status": "source_reviewed",
+  "result_freeze_sha256": "929f09cbd8fa1add989543488045a3fbb92fc913014b7c545ed2741120865fe6",
+  "render_required": true,
+  "institutional_items_pending": [
+    "assessor details",
+    "personal declaration",
+    "Review Document approvals",
+    "student audio",
+    "OneDrive access link",
+    "actual submission"
+  ],
+  "font_and_geometry": "Source template retained without font-size or margin changes."
+}

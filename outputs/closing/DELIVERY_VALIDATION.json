@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-11-12T11:10:21.476394+00:00",
+  "status": "technical_delivery_review_ready",
+  "freeze_sha256": "929f09cbd8fa1add989543488045a3fbb92fc913014b7c545ed2741120865fe6",
+  "primary_slots": 400,
+  "scored_blind_tuples": 296,
+  "recovery_slots_separate": 9,
+  "program_tests_passed": 109,
+  "report_pages": 5,
+  "combined_review_pages": 8,
+  "viva_pages_and_bilingual_notes": 18,
+  "visual_demo_seconds": 240,
+  "service_health": {
+    "8501": "ok",
+    "8502": "ok"
+  },
+  "pending": [
+    "Student English audio and final audio-video review",
+    "Actual Portfolio Review Documents and supervisor approvals",
+    "Assessor details, personal declaration and course activity evidence",
+    "Institution-accessible video link and actual submission",
+    "Account invoice reconciliation for unlogged historical spending"
+  ],
+  "verification_scope": "This Windows computer and existing Python environment; target-computer fonts and fresh dependency installation unverified"
+}

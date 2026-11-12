@@ -1,5 +1,7 @@
 # 开题计划执行入口
 
+2026年11月12日，学生授权所有题目、候选段落和答案由助手对照原文核查。本轮使用 `review_method=assistant_source_review`，执行者为Codex，并保留真实记录。原先界面中的人工核查流程仍可用于后续本人或领域人员复核。本轮设计变化及局限记于 [PROTOCOL_ADJUSTMENT.md](PROTOCOL_ADJUSTMENT.md)。
+
 以下命令均在 `D:\_graduation_project` 运行，使用已安装的 Windows 环境。正式标准全文、参考答案、人工记录及API用量保存在被Git忽略的 `project/qa_system/runtime/research/`，仓库只保存代码、方法和不含全文的目录。
 
 ## 1. 核查题目
@@ -40,7 +42,7 @@ Gate候选覆盖率为0.05/0.10/0.20，余弦为0.20/0.30/0.40/0.50。先最大�
 
 ## 3. 冻结与预算核对
 
-100题全部通过、校准及向量齐全后，新建冻结版本：
+100题来源核查全部通过、校准及向量齐全后，新建冻结版本：
 
 ```powershell
 & ./project/qa_system/.venv-win/Scripts/python.exe -X utf8 -m ocs_qa.research freeze --calibration project/qa_system/runtime/research/calibration/v1/selected.json --output project/qa_system/runtime/research/freezes/v1
@@ -48,7 +50,7 @@ Gate候选覆盖率为0.05/0.10/0.20，余弦为0.20/0.30/0.40/0.50。先最大�
 
 冻结保存题集、语料、数值向量、提示词、代码、词典及模型设置指纹，同时记录Python和依赖版本，不能覆盖。之后如需更改应新建研究版本。开发校准也绑定当时的向量索引。冻结快照中的题目作为正式运行及盲评的唯一参考。
 
-将 [budget_review.template.json](budget_review.template.json) 复制到 `runtime/research/budget_review.json`，核对两家服务的历史项目账单、当前价格和保守剩余费用，记录换算依据及真实核对人、时间。当前余额不等于历史支出；未知费用不能记为零。总预算£50，预计达到£40时按Proposal复核。不需要在文件中填写密钥。
+预算记录位于 `runtime/research/budget_review.json`。核对当前价格和保守剩余费用，记录实际执行者、日期及费用证据。历史账单未完全取得时，保留 `historical_cost_unknown=true` 并明确历史预算预留及其依据。本轮预留£35历史预算与£5.60剩余调用费用，均属于预算分配。总预算£50，预计达到£40时复核。
 
 ## 4. 正式五组实验
 
