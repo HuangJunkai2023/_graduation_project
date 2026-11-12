@@ -13,7 +13,7 @@ from .config import Settings,APP_ROOT
 from .api import ModelClient
 from .pipeline import Pipeline,SYSTEM,compact
 from .evaluation import retrieval_metrics
-from .study import (canonical_hash,corpus_fingerprint,vector_fingerprint,load_questions,
+from .study import (canonical_hash,corpus_fingerprint,vector_fingerprint,runtime_identity,load_questions,
                     validate_questions,blind_tasks,utc_now,_atomic_jsonl)
 
 def verify_freeze(freeze_dir,store):
@@ -23,6 +23,7 @@ def verify_freeze(freeze_dir,store):
     if canonical_hash(rows)!=manifest['dataset_sha256']:raise ValueError('冻结题集已改变。')
     if corpus_fingerprint(store)!=manifest['corpus_sha256']:raise ValueError('冻结语料已改变。')
     if vector_fingerprint(store)!=manifest['vectors_sha256']:raise ValueError('冻结向量索引已改变。')
+    if runtime_identity()!=manifest['runtime_identity']:raise ValueError('Python或依赖环境与冻结记录不一致。')
     if hashlib.sha256(SYSTEM.encode()).hexdigest()!=manifest['prompt_sha256']:raise ValueError('提示词已改变。')
     calibration=json.loads((freeze_dir/'calibration.json').read_text(encoding='utf-8'))
     if canonical_hash(calibration)!=manifest['calibration_sha256']:raise ValueError('冻结校准文件已改变。')
@@ -245,6 +246,7 @@ def summarize_scored(run_dir,grade_path,output_path):
             'retrieval_latency':_latency(rows,'retrieval_ms'),
             'generation_latency':_latency(rows,'generation_ms'),
             'answer_coverage':_ratio(sum(r['result']['status'] in ['answered','partial'] for r in rows),80),
+            'completion_rate':_ratio(sum(r['result']['status'] in ['answered','partial','missing_edition','clarify_edition','clarify_context','insufficient_evidence'] for r in rows),80),
             'failure_types':dict(Counter(grade(r)['failure_type'] for r in rows)),
             'edition_availability':{state:{'items':sum(r['edition_stratum']==state for r in rows),
                 'answered':sum(r['edition_stratum']==state and r['result']['status'] in ['answered','partial'] for r in rows)} for state in ['available','missing','ambiguous','not_applicable']}}

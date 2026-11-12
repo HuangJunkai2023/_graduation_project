@@ -34,7 +34,7 @@ def budget(tmp_path):
     return path
 
 
-@pytest.mark.parametrize('change', ['dataset', 'calibration', 'prompt', 'code', 'config', 'corpus', 'vectors', 'vector_values'])
+@pytest.mark.parametrize('change', ['dataset', 'calibration', 'prompt', 'code', 'config', 'corpus', 'vectors', 'vector_values', 'environment'])
 def test_freeze_tampering_rejected(frozen, monkeypatch, change):
     store, folder, _, _ = frozen
     if change == 'dataset':
@@ -55,6 +55,8 @@ def test_freeze_tampering_rejected(frozen, monkeypatch, change):
     elif change == 'corpus':
         with store.connect() as db:
             db.execute('DELETE FROM chunks WHERE id=(SELECT MIN(id) FROM chunks)')
+    elif change == 'environment':
+        monkeypatch.setattr('ocs_qa.study_run.runtime_identity', lambda: {'python': 'changed'})
     elif change == 'vector_values':
         with store.connect() as db: db.execute("UPDATE vectors SET payload='[0.0,1.0]'")
     else:
@@ -200,6 +202,7 @@ def test_scored_metrics_keep_predeclared_denominators(scored, tmp_path):
         assert metrics['refusal_recall'] == {'numerator':16,'denominator':16,'value':1.}
         assert metrics['false_refusal']['denominator'] == 64
         assert metrics['answer_coverage']['denominator'] == 80
+        assert metrics['completion_rate'] == {'numerator':80,'denominator':80,'value':1.}
         assert metrics['total_latency']['observations'] == 80
         assert metrics['total_latency']['mean_ms'] == 40.5
         assert metrics['total_latency']['median_ms'] == 40.5

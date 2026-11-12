@@ -13,6 +13,8 @@ import math
 import os
 import random
 import re
+import platform
+from importlib.metadata import version
 
 from .config import APP_ROOT
 from .pipeline import SYSTEM, compact
@@ -246,6 +248,12 @@ def vector_fingerprint(store):
     return canonical_hash(rows)
 
 
+def runtime_identity():
+    return {'python': platform.python_version(), 'platform': platform.system(),
+            'packages': {name: version(name) for name in
+                         ['numpy', 'pymupdf', 'python-docx', 'python-dotenv', 'httpx', 'streamlit', 'jieba']}}
+
+
 def save_passage_label(path, label_id, *, reviewer, relevant, notes=""):
     """Record human passage support labels; never promote proposed_relevant."""
     reviewer = _review_identity(reviewer)
@@ -280,6 +288,8 @@ def freeze_study(dataset_path, store, calibration_path, output_dir):
         raise ValueError("开发集已改变，需重新核对校准记录。")
     if calibration.get("corpus_sha256") != corpus_fingerprint(store):
         raise ValueError("语料已改变，需重新核对校准记录。")
+    if calibration.get('vectors_sha256') != vector_fingerprint(store):
+        raise ValueError('向量已改变，需重新核对校准记录。')
     evidence_path = Path(calibration["selection_evidence"])
     if not evidence_path.is_absolute():
         evidence_path = Path(calibration_path).parent / evidence_path
@@ -306,6 +316,8 @@ def freeze_study(dataset_path, store, calibration_path, output_dir):
     if output_dir.exists():
         raise ValueError("冻结目录已存在，请使用新版本目录，不能覆盖。")
     code_files = list((APP_ROOT / "ocs_qa").rglob("*.py")) + [APP_ROOT / "pyproject.toml"]
+    lockfile = APP_ROOT / 'requirements-lock-windows.txt'
+    if lockfile.exists(): code_files.append(lockfile)
     for directory in [APP_ROOT / "ocs_qa/resources", APP_ROOT / "resources"]:
         if directory.exists():
             code_files.extend(p for p in directory.rglob("*") if p.is_file())
@@ -316,6 +328,7 @@ def freeze_study(dataset_path, store, calibration_path, output_dir):
     manifest = {"schema": "ocs-study-freeze.v1", "created_at": utc_now(),
         "dataset_sha256": canonical_hash(rows), "development_dataset_sha256": development_hash(rows),
         "corpus_sha256": corpus_fingerprint(store), "vectors_sha256": vector_fingerprint(store), "config": config,
+        "runtime_identity": runtime_identity(),
         "prompt_sha256": hashlib.sha256(SYSTEM.encode("utf-8")).hexdigest(),
         "code_sha256": files, "calibration_sha256": canonical_hash(calibration),
         "validation": check, "configurations": {

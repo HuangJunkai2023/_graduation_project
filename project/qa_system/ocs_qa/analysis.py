@@ -29,6 +29,7 @@ def contributions(row, grade):
         'unsupported_answer_incidence': (int(unsupported), 1),
         'unsupported_among_answers': (int(unsupported), int(answered)),
         'answer_coverage': (int(answered), 1),
+        'completion_rate': (int(result['status'] in ['answered','partial','missing_edition','clarify_edition','clarify_context','insufficient_evidence']), 1),
     }
 
 

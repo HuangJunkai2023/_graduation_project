@@ -6,7 +6,7 @@ from docx import Document
 from ocs_qa.config import Settings
 from ocs_qa.store import Store
 from ocs_qa.study import QUOTAS,load_questions,save_passage_label,utc_now
-from ocs_qa.calibration import prepare_calibration,select_gate,CachedEmbeddingClient
+from ocs_qa.calibration import prepare_calibration,select_gate,CachedEmbeddingClient,passage_review_material
 
 class FakeEmbedding:
     def __init__(self,settings):self.settings=settings;self.calls=0
@@ -58,3 +58,28 @@ def test_selection_retains_cosine_and_blocks_unreviewed_labels(development,tmp_p
     selected=select_gate(directory/'selection_prepared.json',dataset,store,tmp_path/'chosen.json')
     assert selected['status']=='validated' and selected['selected']['vector_weight']==.5
     assert Path(selected['selection_evidence']).exists()
+
+
+def test_prepared_version_loads_in_review_ui_and_rejects_stale_gold(development,tmp_path,monkeypatch):
+    from streamlit.testing.v1 import AppTest
+    from ocs_qa.api import ModelClient
+    from ocs_qa.config import APP_ROOT
+    store,client,dataset=development
+    prepared_dir=tmp_path/'calibration/v1'
+    prepare_calibration(dataset,store,prepared_dir,client)
+    monkeypatch.setattr(ModelClient,'_post',lambda *a,**k:pytest.fail('Review must not call models'))
+    source=(APP_ROOT/'review_app.py').read_text(encoding='utf-8').replace(
+        'ROOT = APP_ROOT / "runtime/research"',f'ROOT = Path({str(tmp_path)!r})')
+    app=AppTest.from_string(source,default_timeout=30).run()
+    app.sidebar.text_input[0].set_value(str(dataset))
+    app.sidebar.text_input[1].set_value(str(store.settings.db_path))
+    app.run()
+    assert not app.exception
+    assert any(m.label=='已核查候选' and m.value.startswith('0 / ') for m in app.metric)
+    rows=load_questions(dataset);rows[0]['question']='开发问题已修订'
+    with pytest.raises(ValueError,match='已变更'):
+        passage_review_material(prepared_dir/'selection_prepared.json',rows,store)
+    with store.connect() as db:
+        db.execute("UPDATE vectors SET payload='[0.0,1.0]'")
+    with pytest.raises(ValueError,match='向量索引已变更'):
+        passage_review_material(prepared_dir/'selection_prepared.json',load_questions(dataset),store)

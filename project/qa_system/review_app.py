@@ -10,6 +10,7 @@ from ocs_qa.config import Settings, APP_ROOT
 from ocs_qa.store import Store
 from ocs_qa.study import (load_questions, validate_questions, save_review,
                           blind_tasks, save_grade, development_hash, save_passage_label, source_units)
+from ocs_qa.calibration import passage_review_material
 
 ROOT = APP_ROOT / "runtime/research"
 st.set_page_config(page_title="接触网研究核查台", page_icon="📋", layout="wide")
@@ -20,6 +21,9 @@ with st.sidebar:
     dataset = Path(st.text_input("题集JSONL", str(ROOT / "benchmark/candidates.jsonl")))
     database = Path(st.text_input("研究知识库", str(ROOT / "kb.sqlite3")))
     reviewer = st.text_input("实际审核人姓名", placeholder="请由实际核查者填写")
+    prepared_path = Path(st.text_input("开发校准记录", str(ROOT / "calibration/v1/selection_prepared.json")))
+    result_dir = Path(st.text_input("正式结果目录", str(ROOT / "results")))
+    grades_path = Path(st.text_input("盲评记录", str(ROOT / "scoring/grades.jsonl")))
     st.caption("保存时记录本人输入的姓名和实际时间；未审核不会自动计为通过。")
 
 if not database.is_file():
@@ -127,10 +131,12 @@ with review_tab:
                         st.error(str(exc))
 
 with passages_tab:
-    labels_path = ROOT / "benchmark/passage_labels.jsonl"
     try:
-        labels = load_questions(labels_path)
-    except (ValueError, OSError) as exc:
+        if prepared_path.is_file():
+            _, labels_path, labels = passage_review_material(prepared_path, questions, store)
+        else:
+            labels = []
+    except (ValueError, OSError, KeyError) as exc:
         st.error(str(exc))
         labels = []
     if not labels:
@@ -173,8 +179,6 @@ with passages_tab:
                               "quote": source.get("text", "")}, f"passage-{label_id}")
 
 with grade_tab:
-    result_dir = ROOT / "results"
-    grades_path = ROOT / "scoring/grades.jsonl"
     # Only the five predeclared runs belong in blinded scoring. Private task
     # exports, event logs and resumed diagnostics are not additional runs.
     result_files = [result_dir / f"{label}.jsonl" for label in ["B1", "B2", "B3", "A1", "A2"]
@@ -184,7 +188,10 @@ with grade_tab:
     else:
         try:
             tasks = blind_tasks(result_files)
-            existing = {g["blind_id"]: g for g in load_questions(grades_path)}
+            current_tasks = {t["blind_id"]: t for t in tasks}
+            existing = {g["blind_id"]: g for g in load_questions(grades_path)
+                        if g.get("blind_id") in current_tasks
+                        and g.get("run_slots") == current_tasks[g["blind_id"]]["run_slots"]}
             st.caption("配置标签和运行文件名不在页面展示。只有答案、claims及证据完全相同的记录才合并评分。")
             show_done = st.checkbox("也显示已评分条目")
             available = [t for t in tasks if show_done or t["blind_id"] not in existing]

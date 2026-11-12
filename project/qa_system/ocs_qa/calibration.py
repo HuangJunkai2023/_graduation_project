@@ -11,7 +11,7 @@ from .evaluation import retrieval_metrics
 from .pipeline import resolve_query
 from .retrieval import Retriever
 from .study import (QUOTAS,canonical_hash,development_hash,load_questions,
-                    validate_questions,utc_now,_atomic_jsonl,corpus_fingerprint)
+                    validate_questions,utc_now,_atomic_jsonl,corpus_fingerprint,vector_fingerprint)
 
 WEIGHTS=(.25,.50,.75)
 LEXICAL=(.05,.10,.20)
@@ -84,20 +84,31 @@ def prepare_calibration(dataset_path,store,output_dir,client=None):
     _atomic_jsonl(label_path,list(labels.values()))
     prepared={'status':'pending_passage_review','created_at':utc_now(),
         'development_dataset_sha256':development_hash(rows),'corpus_sha256':corpus_fingerprint(store),
+        'vectors_sha256':vector_fingerprint(store),
         'weight_trials':trials,'selected_weight':chosen['weight'],
         'label_population_sha256':canonical_hash([{k:r[k] for k in ['label_id','question_id','source','modes']} for r in labels.values()]),
         'passage_label_count':len(labels),'candidate_labels':str(label_path.resolve())}
     (output_dir/'selection_prepared.json').write_text(json.dumps(prepared,ensure_ascii=False,indent=2),encoding='utf-8')
     return prepared
 
-def select_gate(prepared_path,dataset_path,store,output_path):
+def passage_review_material(prepared_path,rows,store):
+    """Resolve the exact prepared version and reject stale source/gold material."""
     prepared_path=Path(prepared_path);prepared=json.loads(prepared_path.read_text(encoding='utf-8'))
-    rows=load_questions(dataset_path);_development(rows,store)
     if prepared['development_dataset_sha256']!=development_hash(rows) or prepared['corpus_sha256']!=corpus_fingerprint(store):
         raise ValueError('开发题或语料已变更，不能沿用旧候选标签。')
-    labels=load_questions(prepared['candidate_labels'])
+    if prepared['vectors_sha256']!=vector_fingerprint(store):
+        raise ValueError('向量索引已变更，需重新准备开发校准。')
+    path=Path(prepared['candidate_labels'])
+    if not path.is_absolute():path=prepared_path.parent/path
+    labels=load_questions(path)
     population=canonical_hash([{k:r[k] for k in ['label_id','question_id','source','modes']} for r in labels])
     if population!=prepared['label_population_sha256']:raise ValueError('候选证据集合已变更。')
+    return prepared,path,labels
+
+
+def select_gate(prepared_path,dataset_path,store,output_path):
+    rows=load_questions(dataset_path);_development(rows,store)
+    prepared,_,labels=passage_review_material(prepared_path,rows,store)
     if not labels or any(r.get('review_status')!='approved' or type(r.get('relevant')) is not bool or not r.get('reviewer') or not r.get('reviewed_at') for r in labels):
         raise ValueError('请先完成人工候选证据审核，不能将自动提议作为人工标签。')
     trials=[]
@@ -126,6 +137,7 @@ def select_gate(prepared_path,dataset_path,store,output_path):
         'reviewed_labels_sha256':canonical_hash(labels),'development_only':True},ensure_ascii=False,indent=2),encoding='utf-8')
     output={'status':'validated','validated_by':'development-calibration-runner','validated_at':utc_now(),
         'development_dataset_sha256':development_hash(rows),'corpus_sha256':corpus_fingerprint(store),
+        'vectors_sha256':vector_fingerprint(store),
         'selected':{'vector_weight':prepared['selected_weight'],'min_coverage':chosen['min_coverage'],'min_cosine':chosen['min_cosine']},
         'selection_evidence':str(evidence.resolve())}
     Path(output_path).write_text(json.dumps(output,ensure_ascii=False,indent=2),encoding='utf-8')

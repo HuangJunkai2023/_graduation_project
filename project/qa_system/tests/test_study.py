@@ -8,7 +8,7 @@ from docx import Document
 from ocs_qa.config import Settings
 from ocs_qa.store import Store
 from ocs_qa.study import (QUOTAS, load_questions, validate_questions, save_review,
-                          development_hash, freeze_study, blind_tasks, save_grade, save_passage_label, corpus_fingerprint)
+                          development_hash, freeze_study, blind_tasks, save_grade, save_passage_label, corpus_fingerprint, vector_fingerprint)
 
 
 @pytest.fixture
@@ -157,12 +157,14 @@ def test_passage_label_requires_explicit_human_decision(tmp_path):
 
 
 def calibration(path, rows, store, **updates):
+    store.embed_pending(Vectors())
     selection = path.parent/"selection.json"
     selection.write_text('{"fixture": true}', encoding="utf-8")
     data = {"status": "validated", "validated_by": "fixture calibration runner",
             "validated_at": "2026-11-11T00:00:00+00:00", "selection_evidence": "selection.json",
             "development_dataset_sha256": development_hash(rows),
             "corpus_sha256": corpus_fingerprint(store),
+            "vectors_sha256": vector_fingerprint(store),
             "selected": {"vector_weight": .5, "min_coverage": .1, "min_cosine": .3}}
     data.update(updates)
     path.write_text(json.dumps(data), encoding="utf-8")

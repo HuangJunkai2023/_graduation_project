@@ -8,7 +8,8 @@ METRICS = {
     'citation_coverage': 'Citation coverage', 'citation_resolvability': 'Citation resolvability',
     'wrong_edition_rate': 'Wrong-edition rate', 'refusal_recall': 'Refusal recall',
     'false_refusal': 'False refusal', 'unsupported_answer_incidence': 'Unsupported / all questions',
-    'unsupported_among_answers': 'Unsupported / answered questions', 'answer_coverage': 'Answer coverage'}
+    'unsupported_among_answers': 'Unsupported / answered questions', 'answer_coverage': 'Answer coverage',
+    'completion_rate': 'Successful completion (including valid refusals)'}
 
 
 def _number(value):

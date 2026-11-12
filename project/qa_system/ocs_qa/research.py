@@ -40,7 +40,7 @@ def readiness(store, dataset):
         'note': 'Machine source matching is not human semantic verification. No formal run is started by status.'}
 
 
-def main():
+def _main():
     parser = argparse.ArgumentParser(description='开题计划研究流程：核查→开发校准→冻结→五组测试→人工评分')
     parser.add_argument('--db', default=str(ROOT / 'kb.sqlite3'))
     parser.add_argument('--dataset', default=str(ROOT / 'benchmark/candidates.jsonl'))
@@ -95,5 +95,15 @@ def main():
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 
+def main():
+    from .api import APIError
+    try:
+        _main()
+        return 0
+    except (ValueError, OSError, APIError) as exc:
+        print(json.dumps({'status': 'not_ready', 'message': str(exc)}, ensure_ascii=False, indent=2))
+        return 1
+
+
 if __name__ == '__main__':
-    main()
+    raise SystemExit(main())

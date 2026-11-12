@@ -46,7 +46,7 @@ Gate候选覆盖率为0.05/0.10/0.20，余弦为0.20/0.30/0.40/0.50。先最大�
 & ./project/qa_system/.venv-win/Scripts/python.exe -X utf8 -m ocs_qa.research freeze --calibration project/qa_system/runtime/research/calibration/v1/selected.json --output project/qa_system/runtime/research/freezes/v1
 ```
 
-冻结保存题集、语料、提示词、代码、词典及模型设置指纹，不能覆盖。之后如需更改应新建研究版本。冻结快照中的题目作为正式运行及盲评的唯一参考。
+冻结保存题集、语料、数值向量、提示词、代码、词典及模型设置指纹，同时记录Python和依赖版本，不能覆盖。之后如需更改应新建研究版本。开发校准也绑定当时的向量索引。冻结快照中的题目作为正式运行及盲评的唯一参考。
 
 将 [budget_review.template.json](budget_review.template.json) 复制到 `runtime/research/budget_review.json`，核对两家服务的历史项目账单、当前价格和保守剩余费用，记录换算依据及真实核对人、时间。当前余额不等于历史支出；未知费用不能记为零。总预算£50，预计达到£40时按Proposal复核。不需要在文件中填写密钥。
 
