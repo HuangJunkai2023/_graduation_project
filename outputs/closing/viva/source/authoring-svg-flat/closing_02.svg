@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="720" viewBox="0 0 1280 720" font-family="Arial, &quot;微软雅黑&quot;, &quot;等线&quot;, sans-serif"><defs><linearGradient id="ggrad1" x1="0" y1="0.5" x2="1" y2="0.5"><stop offset="0.05" stop-color="#134C91"/><stop offset="0.91" stop-color="#134C91" stop-opacity="0"/></linearGradient></defs><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="shape-71" data-pptx-object="picture" data-pptx-frame="779.59 303.61 499.86 416.29" data-pptx-source-ref="slide:71">
+<svg data-pptx-object="picture" data-pptx-frame="779.59 303.61 499.86 416.29" x="779.59" y="303.61" width="499.86" height="416.29" viewBox="0 0 0.82998 0.67964" preserveAspectRatio="none" overflow="hidden"><image href="../images/image5.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></svg>
+</g>
+<g id="shape-2" data-pptx-object="picture" data-pptx-frame="0 0 1280 151.44" data-pptx-source-ref="slide:2">
+<svg data-pptx-object="picture" data-pptx-frame="0 0 1280 151.44" x="0" y="0" width="1280" height="151.44" viewBox="0 0.31718 1 0.39828" preserveAspectRatio="none" overflow="hidden"><image href="../images/image6.jpeg" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></svg>
+</g>
+<g id="shape-142" data-pptx-object="shape" data-pptx-frame="1.75 0 1278.25 151.86" data-pptx-prst="rect" data-pptx-source-ref="slide:142" data-pptx-semantic-object="shape">
+<path d="M 1.75 0 L 1280 0 L 1280 151.86 L 1.75 151.86 Z" fill="url(#ggrad1)" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" data-pptx-part="geometry"/>
+
+
+</g>
+<g id="shape-143" data-pptx-object="shape" data-pptx-frame="130.67 88 666.67 33.33" data-pptx-prst="rect" data-pptx-source-ref="slide:143" data-pptx-semantic-object="shape">
+<path d="M 130.67 88 L 797.33 88 L 797.33 121.33 L 130.67 121.33 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="130.67" y="112" text-anchor="start" xml:space="preserve" font-size="24" fill="#FFFFFF" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">PRESENTATION OUTLINE</tspan></text>
+</g>
+<g id="shape-144" data-pptx-object="shape" data-pptx-frame="130.67 16 733.33 69.33" data-pptx-prst="rect" data-pptx-source-ref="slide:144" data-pptx-semantic-object="shape">
+<path d="M 130.67 16 L 864 16 L 864 85.33 L 130.67 85.33 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="130.67" y="62.66666667" text-anchor="start" xml:space="preserve" font-size="48" fill="#FFFFFF" font-weight="bold" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-style="normal" text-decoration="none">Contents</tspan></text>
+</g>
+<g id="shape-145" data-pptx-object="group" data-pptx-frame="-1.09 0 186.83 151.43" data-pptx-source-ref="slide:145">
+<g id="shape-146" data-pptx-object="shape" data-pptx-frame="-1.09 0 58.6 92.44" data-pptx-geometry-kind="custom" data-pptx-source-ref="slide:146" data-pptx-semantic-object="shape">
+<path d="M -1.09 0.12 C -0.92 29.19 -0.76 58.25 -0.59 87.32 L 11.57 92.44 L 57.51 0 L -1.09 0.12 Z" data-pptx-part="geometry" fill="#92D050" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+<g id="shape-147" data-pptx-object="shape" data-pptx-frame="-0.59 62.82 186.33 88.62" data-pptx-geometry-kind="custom" data-pptx-source-ref="slide:147" data-pptx-semantic-object="shape">
+<path d="M -0.59 151.43 L 185.74 151.43 L -0.59 62.82 L -0.59 151.43 Z" data-pptx-part="geometry" fill="#00B0F0" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+<g id="shape-148" data-pptx-object="shape" data-pptx-frame="-0.43 62.21 21.73 51.91" data-pptx-geometry-kind="custom" data-pptx-source-ref="slide:148" data-pptx-semantic-object="shape">
+<path d="M -0.43 62.21 L 21.3 73.37 L -0.43 114.12 L -0.43 62.21 Z" data-pptx-part="geometry" fill="#92D050" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+</g>
+<g id="shape-150" data-pptx-object="shape" data-pptx-frame="106.67 218.67 906.67 57.33" data-pptx-prst="rect" data-pptx-source-ref="slide:150" data-pptx-semantic-object="shape">
+<path d="M 106.67 218.67 L 1013.33 218.67 L 1013.33 276 L 106.67 276 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="106.67" y="252.0" text-anchor="start" xml:space="preserve" font-size="34.67" fill="#333333">01  System and scope</text></g>
+<g id="shape-223" data-pptx-object="connector" data-pptx-frame="107.44 691.65 758.8 0" data-pptx-prst="line" data-pptx-source-ref="slide:223" data-pptx-semantic-object="shape">
+<path d="M 107.44 691.65 L 866.24 691.65" stroke-width="1.33333" stroke-linecap="butt" stroke="#134C91" stroke-linejoin="miter" fill="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-224" data-pptx-object="shape" data-pptx-frame="106.67 309.33 906.67 57.33" data-pptx-prst="rect" data-pptx-source-ref="slide:224" data-pptx-semantic-object="shape">
+<path d="M 106.67 309.33 L 1013.33 309.33 L 1013.33 366.67 L 106.67 366.67 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="106.67" y="342.66666667" text-anchor="start" xml:space="preserve" font-size="34.67" fill="#333333">02  Study design</text></g>
+<g id="shape-225" data-pptx-object="shape" data-pptx-frame="106.67 400 906.67 57.33" data-pptx-prst="rect" data-pptx-source-ref="slide:225" data-pptx-semantic-object="shape">
+<path d="M 106.67 400 L 1013.33 400 L 1013.33 457.33 L 106.67 457.33 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="106.67" y="433.33333333" text-anchor="start" xml:space="preserve" font-size="34.67" fill="#333333">03  Results and limitations</text></g>
+<g id="shape-226" data-pptx-object="shape" data-pptx-frame="106.67 490.67 906.67 57.33" data-pptx-prst="rect" data-pptx-source-ref="slide:226" data-pptx-semantic-object="shape">
+<path d="M 106.67 490.67 L 1013.33 490.67 L 1013.33 548 L 106.67 548 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="106.67" y="524.0" text-anchor="start" xml:space="preserve" font-size="34.67" fill="#333333">04  Conclusions and discussion</text></g></svg>

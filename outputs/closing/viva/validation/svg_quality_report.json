@@ -1,0 +1,634 @@
+{
+  "schema": "ppt-master.svg-quality-report.v1",
+  "stage": "final",
+  "target": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace",
+  "source_fingerprint": {
+    "algorithm": "sha256",
+    "digest": "3cf302f33fa9ae70f7913a53f69baa9343b89c45f312a162237495446e634f0a",
+    "file_count": 39,
+    "files": [
+      {
+        "file": "authoring-svg-flat/closing_01.svg",
+        "sha256": "a1c5cbb3cff6dc1accae469bba3f7d9dd0b1bf25eaf33cd246c414e2b4b0def0"
+      },
+      {
+        "file": "authoring-svg-flat/closing_02.svg",
+        "sha256": "5c8fd55d1605e373ebb3c48cd7347cef7d67fdd5416a2c7f481ebfb4cff847c3"
+      },
+      {
+        "file": "authoring-svg-flat/closing_03.svg",
+        "sha256": "fcc33f3fccf25ad26f89983e8facb07f71e67b65652229e6085a3306b8dad375"
+      },
+      {
+        "file": "authoring-svg-flat/closing_04.svg",
+        "sha256": "176821dbc756831ade61eaee957afb54b45445bdd38c7a54e9ea59481cd7374b"
+      },
+      {
+        "file": "authoring-svg-flat/closing_05.svg",
+        "sha256": "999478408b9375a84b79b68a7640069bf63bcadb4d3f6a03e77230e2713d99dc"
+      },
+      {
+        "file": "authoring-svg-flat/closing_06.svg",
+        "sha256": "75b7da3b2d18a885ba96948863ef1e2ec0818eb6d5cd831f5b40334560d6b865"
+      },
+      {
+        "file": "authoring-svg-flat/closing_07.svg",
+        "sha256": "3ee7916ff1401927b63dfa5a474aeb69fb920511fa444103790fc9044906bbbe"
+      },
+      {
+        "file": "authoring-svg-flat/closing_08.svg",
+        "sha256": "42832d4bdba9ce7178ca1dac41d5c0ce8a79e619229114b45eab5aac1c07b06c"
+      },
+      {
+        "file": "authoring-svg-flat/closing_09.svg",
+        "sha256": "43f2b4d942b0742af7fa79fec5b66e7c6f07ff9e732ae1da8bdd06b2ab34682d"
+      },
+      {
+        "file": "authoring-svg-flat/closing_10.svg",
+        "sha256": "05654feefd9373a396190741325182f00342d776801be6ce78553658e41b2bca"
+      },
+      {
+        "file": "authoring-svg-flat/closing_11.svg",
+        "sha256": "e2f72be5e604377e0edc113d1e5304daccf90b10affcdf8280abd4ab5e23d8a0"
+      },
+      {
+        "file": "authoring-svg-flat/closing_12.svg",
+        "sha256": "bdb66d9be78d50d0914e0858a18cec5034620518aa317a1eba1efce9623f9d5a"
+      },
+      {
+        "file": "authoring-svg-flat/closing_13.svg",
+        "sha256": "741778b5dcbf919b883357ec40143e2cd7d9cb7bc8b231e13ba858759f3b08d5"
+      },
+      {
+        "file": "authoring-svg-flat/closing_14.svg",
+        "sha256": "c5cb985cbcce80bd1c3a0106f98402f2225a897c5dfa15ef146ec6fec1941fcd"
+      },
+      {
+        "file": "authoring-svg-flat/closing_15.svg",
+        "sha256": "24e08ab113e361543eb7f810f678e10172c20bb03a8a6186d6fb7041d9200461"
+      },
+      {
+        "file": "authoring-svg-flat/closing_16.svg",
+        "sha256": "aa74e5688f09422eb18f27de2ede4ce67df3c102766c128f9779bcead4bb834d"
+      },
+      {
+        "file": "authoring-svg-flat/closing_17.svg",
+        "sha256": "192c279b7380c295d3b4a4d4ac020fc0e2f8691da842a087ee2b44e75b159b42"
+      },
+      {
+        "file": "authoring-svg-flat/closing_18.svg",
+        "sha256": "616f87ec85a8c729ced971ac48c1395b019e398cd1f9beda5e98da73307db4d3"
+      },
+      {
+        "file": "authoring-svg-flat/slide_01.svg",
+        "sha256": "e18d535013c77a167a975970dc273f0cd67748ebf295b1a0dcc2874936e208e9"
+      },
+      {
+        "file": "authoring-svg-flat/slide_02.svg",
+        "sha256": "2a5e72cf00855a287a427aa012e5a5bb3dc2f48d6ce35f573979908b46776799"
+      },
+      {
+        "file": "authoring-svg-flat/slide_03.svg",
+        "sha256": "5b5dcd419411f1c52263dfa750b16505b5f8b5ca516c4d61b5ee7038f8f22310"
+      },
+      {
+        "file": "authoring-svg-flat/slide_04.svg",
+        "sha256": "aa2267e1aefb1897d574c3747bdb19668ee2ba58ef04c19e106a9bfc4bdb035f"
+      },
+      {
+        "file": "authoring-svg-flat/slide_05.svg",
+        "sha256": "031dff7eb3635832a1ee034a76327798f7bff5b9c5c84385286f206394916b40"
+      },
+      {
+        "file": "authoring-svg-flat/slide_06.svg",
+        "sha256": "70f772f4f3a44cadc7634cf7a1ac93514f402668e6c37d10ef3a5b514efa4229"
+      },
+      {
+        "file": "authoring-svg-flat/slide_07.svg",
+        "sha256": "fd0a9a1f2193ce885c4fffb0fa8deec7a1544ddeb09d7c48feb6f204a753477a"
+      },
+      {
+        "file": "authoring-svg-flat/slide_08.svg",
+        "sha256": "ba80a6bbce06280441d7a66537fe124be63f1bc5a1f15e20708d473438b82aad"
+      },
+      {
+        "file": "authoring-svg-flat/slide_09.svg",
+        "sha256": "e0a99a7dce3f8823c40b2cb9aa9762dd22bcb639071acd2403f96137dfbbdcdd"
+      },
+      {
+        "file": "authoring-svg-flat/slide_10.svg",
+        "sha256": "b504811fd90d5813e4990111a40661707d61ab62f144733c8bd2b91384d51e68"
+      },
+      {
+        "file": "authoring-svg-flat/slide_11.svg",
+        "sha256": "68e6185a40410685ecb84f86b7ba5133b527a6a2109d80be868abe62e4e45c76"
+      },
+      {
+        "file": "authoring-svg-flat/slide_12.svg",
+        "sha256": "36fc932ed35a611b761e097e854e23b595c1d1d0066fc15a5c8ae07fc86e635d"
+      },
+      {
+        "file": "authoring-svg-flat/slide_13.svg",
+        "sha256": "02b3fcdf44ee146ee9597b07e1ddafe11d79a69695222ec05d0e8e81bc7ed76c"
+      },
+      {
+        "file": "authoring-svg-flat/slide_14.svg",
+        "sha256": "1d7aab3c3ef4ab9c97b3973262196f03c4f18c11d1407b3bdf26081917f95940"
+      },
+      {
+        "file": "authoring-svg-flat/slide_15.svg",
+        "sha256": "e92ff3531dacdfeec77024de96c5c648d99112ebe2caf75b54737ebdf7ce00db"
+      },
+      {
+        "file": "authoring-svg-flat/slide_16.svg",
+        "sha256": "e4f7e43b5370df092fd260705fa00fc39a13a1f684f7fd3e1c67134d4439c274"
+      },
+      {
+        "file": "authoring-svg-flat/slide_17.svg",
+        "sha256": "b834d1abb1001606b94c5bd480689b23c71ef15c5a951ddd88db608579cbafc2"
+      },
+      {
+        "file": "authoring-svg-flat/slide_18.svg",
+        "sha256": "14c88ec7d36e3745d4cd152cec7355d6bd107ddfee48450074a7432421e84636"
+      },
+      {
+        "file": "authoring-svg-flat/slide_19.svg",
+        "sha256": "f036667f7d521db6ef26502e230d77f28210d3876cefc23080ed531234e0d33e"
+      },
+      {
+        "file": "authoring-svg-flat/slide_20.svg",
+        "sha256": "f6e731345bb1836e747113e99fb7760d3cfab5c02ca63212ca01eb923119ca5e"
+      },
+      {
+        "file": "page_plan.json",
+        "sha256": "cd380285c9f40f0278ae7b52326ceeae188597f27f4c7f07c7c0a00c4c79be74"
+      }
+    ]
+  },
+  "summary": {
+    "total": 18,
+    "passed": 18,
+    "warnings": 0,
+    "errors": 0
+  },
+  "issue_types": {},
+  "categories": {
+    "blocking": {
+      "count": 0,
+      "issues": []
+    },
+    "introduced": {
+      "count": 0,
+      "issues": []
+    },
+    "inherited": {
+      "count": 0,
+      "issues": []
+    },
+    "source-import": {
+      "count": 0,
+      "summary": {
+        "warning_count": 0,
+        "by_code": {}
+      }
+    }
+  },
+  "drift": {
+    "colors": {},
+    "fonts": {},
+    "sizes": {}
+  },
+  "carrier_receipt": {
+    "scope": "informational-not-a-quota",
+    "pages": 0,
+    "totals": {
+      "text_elements": 0,
+      "image_placements": 0,
+      "icons": 0,
+      "svg_geometry_elements": 0,
+      "preset_shapes": 0,
+      "page_frame_elements": 0,
+      "marker_uses": 0,
+      "inline_emphasis_runs": 0,
+      "gradient_uses": 0,
+      "filter_uses": 0,
+      "text_effects": 0
+    },
+    "pages_with": {
+      "images": 0,
+      "icons": 0,
+      "presets": 0,
+      "charts": 0,
+      "tables": 0,
+      "formulas": 0,
+      "inline_emphasis_runs": 0,
+      "gradient_uses": 0,
+      "filter_uses": 0,
+      "text_effects": 0
+    },
+    "relationship_pages": null,
+    "geometry_elements": {},
+    "preset_names": {},
+    "native_objects": {},
+    "image_page_max_frame_share_range": []
+  },
+  "project_issues": {
+    "template": [],
+    "animation": [],
+    "illustration": [],
+    "communication_trace": [],
+    "pptx_structure": []
+  },
+  "files": [
+    {
+      "file": "closing_01.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_01.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 1,
+        "source_slide": 1,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 2,
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 1,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "a1c5cbb3cff6dc1accae469bba3f7d9dd0b1bf25eaf33cd246c414e2b4b0def0"
+    },
+    {
+      "file": "closing_02.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_02.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 2,
+        "source_slide": 2,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 4,
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 2,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "5c8fd55d1605e373ebb3c48cd7347cef7d67fdd5416a2c7f481ebfb4cff847c3"
+    },
+    {
+      "file": "closing_03.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_03.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 3,
+        "source_slide": 3,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 3,
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 1,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "fcc33f3fccf25ad26f89983e8facb07f71e67b65652229e6085a3306b8dad375"
+    },
+    {
+      "file": "closing_04.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_04.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 4,
+        "source_slide": 4,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 2,
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 9,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "176821dbc756831ade61eaee957afb54b45445bdd38c7a54e9ea59481cd7374b"
+    },
+    {
+      "file": "closing_05.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_05.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 5,
+        "source_slide": 10,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 8,
+        "fonts": [
+          "Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 0,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "999478408b9375a84b79b68a7640069bf63bcadb4d3f6a03e77230e2713d99dc"
+    },
+    {
+      "file": "closing_06.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_06.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 6,
+        "source_slide": 6,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 3,
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 1,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "75b7da3b2d18a885ba96948863ef1e2ec0818eb6d5cd831f5b40334560d6b865"
+    },
+    {
+      "file": "closing_07.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_07.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 7,
+        "source_slide": 10,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 20,
+        "fonts": [
+          "Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 0,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "3ee7916ff1401927b63dfa5a474aeb69fb920511fa444103790fc9044906bbbe"
+    },
+    {
+      "file": "closing_08.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_08.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 8,
+        "source_slide": 10,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 20,
+        "fonts": [
+          "Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 0,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "42832d4bdba9ce7178ca1dac41d5c0ce8a79e619229114b45eab5aac1c07b06c"
+    },
+    {
+      "file": "closing_09.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_09.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 9,
+        "source_slide": 9,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 3,
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 1,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "43f2b4d942b0742af7fa79fec5b66e7c6f07ff9e732ae1da8bdd06b2ab34682d"
+    },
+    {
+      "file": "closing_10.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_10.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 10,
+        "source_slide": 10,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 44,
+        "fonts": [
+          "Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 0,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "05654feefd9373a396190741325182f00342d776801be6ce78553658e41b2bca"
+    },
+    {
+      "file": "closing_11.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_11.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 11,
+        "source_slide": 10,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 12,
+        "fonts": [
+          "Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 0,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "e2f72be5e604377e0edc113d1e5304daccf90b10affcdf8280abd4ab5e23d8a0"
+    },
+    {
+      "file": "closing_12.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_12.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 12,
+        "source_slide": 12,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 3,
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 1,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "bdb66d9be78d50d0914e0858a18cec5034620518aa317a1eba1efce9623f9d5a"
+    },
+    {
+      "file": "closing_13.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_13.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 13,
+        "source_slide": 10,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 12,
+        "fonts": [
+          "Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 0,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "741778b5dcbf919b883357ec40143e2cd7d9cb7bc8b231e13ba858759f3b08d5"
+    },
+    {
+      "file": "closing_14.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_14.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 14,
+        "source_slide": 10,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 16,
+        "fonts": [
+          "Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 0,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "c5cb985cbcce80bd1c3a0106f98402f2225a897c5dfa15ef146ec6fec1941fcd"
+    },
+    {
+      "file": "closing_15.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_15.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 15,
+        "source_slide": 15,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 1,
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 2,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "24e08ab113e361543eb7f810f678e10172c20bb03a8a6186d6fb7041d9200461"
+    },
+    {
+      "file": "closing_16.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_16.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 16,
+        "source_slide": 10,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 9,
+        "fonts": [
+          "Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 0,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "aa74e5688f09422eb18f27de2ede4ce67df3c102766c128f9779bcead4bb834d"
+    },
+    {
+      "file": "closing_17.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_17.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 17,
+        "source_slide": 10,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 10,
+        "fonts": [
+          "Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 0,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "192c279b7380c295d3b4a4d4ac020fc0e2f8691da842a087ee2b44e75b159b42"
+    },
+    {
+      "file": "closing_18.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_18.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [],
+      "info": {
+        "output_page": 18,
+        "source_slide": 10,
+        "viewbox": "0 0 1280 720",
+        "edited_text_elements": 15,
+        "fonts": [
+          "Arial"
+        ],
+        "roundtrip_text_calibration": {
+          "factor": 0.0,
+          "measured_unchanged": 0,
+          "positive_unchanged": 0
+        }
+      },
+      "passed": true,
+      "source_sha256": "616f87ec85a8c729ced971ac48c1395b019e398cd1f9beda5e98da73307db4d3"
+    }
+  ]
+}

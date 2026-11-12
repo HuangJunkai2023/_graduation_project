@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="720" viewBox="0 0 1280 720" font-family="Arial, &quot;微软雅黑&quot;, &quot;等线&quot;, sans-serif"><defs><marker id="marrow1" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="2.5" markerHeight="2.5" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M 0 5 L 5 0 L 10 5 L 5 10 z" fill="#FFFFFF"/></marker><marker id="marrow2" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="2.5" markerHeight="2.5" orient="auto" markerUnits="strokeWidth"><circle cx="5" cy="5" r="4" fill="#FFFFFF"/></marker></defs><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="shape-2" data-pptx-object="picture" data-pptx-frame="0 257.52 1280 462.48" data-pptx-source-ref="slide:2">
+<svg data-pptx-object="picture" data-pptx-frame="0 257.52 1280 462.48" x="0" y="257.52" width="1280" height="462.48" viewBox="0 0 0.97857 0.73897" preserveAspectRatio="none" overflow="hidden"><image href="../images/image2.jpeg" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></svg>
+</g>
+<g id="shape-156" data-pptx-object="shape" data-pptx-frame="-4.71 -4.37 1284.71 551.71" data-pptx-geometry-kind="custom" data-pptx-source-ref="slide:156" data-pptx-semantic-object="shape">
+<path d="M -4.71 -4.37 L 1280 -4.37 L 1280 547.34 L -3.18 524.48 L -4.71 -4.37 Z" data-pptx-part="geometry" fill="#134C91"/>
+
+</g>
+<g id="shape-167" data-pptx-object="shape" data-pptx-frame="845 133.3 151.19 727.49" data-pptx-geometry-kind="custom" transform="rotate(86.68005 920.59 497.04) translate(920.59 497.04) scale(-1 -1) translate(-920.59 -497.04)" data-pptx-source-ref="slide:167" data-pptx-semantic-object="shape">
+<path d="M 845 854.52 L 922.19 133.3 L 996.19 860.79 L 845 854.52 Z" data-pptx-part="geometry" fill="#FFFFFF" fill-opacity="0.47" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+<g id="shape-168" data-pptx-object="shape" data-pptx-frame="544.87 -107.55 149.01 1241.63" data-pptx-geometry-kind="custom" transform="rotate(266.68005 619.37 513.27) translate(619.37 513.27) scale(-1 -1) translate(-619.37 -513.27)" data-pptx-source-ref="slide:168" data-pptx-semantic-object="shape">
+<path d="M 544.87 1131.43 L 693.88 -107.55 L 594.24 1134.08 L 544.87 1131.43 Z" data-pptx-part="geometry" fill="#92D050" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+<g id="shape-4" data-pptx-object="picture" data-pptx-frame="80.11 259.05 1104.55 462.47" data-pptx-source-ref="slide:4">
+<image data-pptx-object="picture" data-pptx-frame="80.11 259.05 1104.55 462.47" href="../images/image3.png" x="80.11" y="259.05" width="1104.55" height="462.47" preserveAspectRatio="none"/>
+</g>
+<g id="shape-154" data-pptx-object="shape" data-pptx-frame="122.67 141.33 1034.67 160" data-pptx-prst="rect" data-pptx-source-ref="slide:154" data-pptx-semantic-object="shape">
+<path d="M 122.67 141.33 L 1157.33 141.33 L 1157.33 301.33 L 122.67 301.33 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="640" y="179.99989501" text-anchor="middle" xml:space="preserve" font-size="40" fill="#FFFFFF" font-weight="bold" data-pptx-text-baseline="metrics-v1" data-pptx-text-model="lines" data-paragraph-line-height="48"><tspan><tspan fill-opacity="1" font-style="normal" text-decoration="none">A Study on a Large-Model-Based Intelligent</tspan></tspan><tspan fill-opacity="1" font-style="normal" text-decoration="none" data-paragraph-line-break="1">Question-Answering System for the</tspan><tspan fill-opacity="1" font-style="normal" text-decoration="none" data-paragraph-line-break="1">Overhead Contact System Field</tspan></text>
+</g>
+<g id="shape-175" data-pptx-object="connector" data-pptx-frame="246.86 308 793.9 0" data-pptx-prst="line" data-pptx-source-ref="slide:175" data-pptx-semantic-object="shape">
+<path d="M 246.86 308 L 1040.76 308" stroke-width="1.33333" stroke-linecap="butt" stroke="#FFFFFF" stroke-dasharray="4 4" stroke-linejoin="miter" marker-start="url(#marrow1)" marker-end="url(#marrow2)" fill="none" data-pptx-part="geometry"/>
+
+</g>
+<g id="shape-176" data-pptx-object="shape" data-pptx-frame="200 326.67 880 85.33" data-pptx-prst="rect" data-pptx-source-ref="slide:176" data-pptx-semantic-object="shape">
+<path d="M 200 326.67 L 1080 326.67 L 1080 412 L 200 412 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="640" y="350.66656168" text-anchor="middle" xml:space="preserve" font-size="24.0" fill="#FFFFFF">Junkai Huang | Leeds SID 201804121<tspan x="640" dy="28.799999999999997">SWJTU ID 2023115799 | Supervisor Prof. Deqing Huang</tspan></text></g>
+<g id="shape-3" data-pptx-object="picture" data-pptx-frame="45.71 35.74 262.97 74.13" data-pptx-source-ref="slide:3">
+<image data-pptx-object="picture" data-pptx-frame="45.71 35.74 262.97 74.13" href="../images/image4.png" x="45.71" y="35.74" width="262.97" height="74.13" preserveAspectRatio="none"/>
+</g>
+<g id="shape-13" data-pptx-object="shape" data-pptx-frame="146.67 424 986.67 40" data-pptx-prst="rect" data-pptx-source-ref="slide:13" data-pptx-semantic-object="shape">
+<path d="M 146.67 424 L 1133.33 424 L 1133.33 464 L 146.67 464 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="640" y="446.66666667" text-anchor="middle" xml:space="preserve" font-size="22.0" fill="#FFFFFF">SWJTU-Leeds Joint School | Undergraduate Project Viva</text></g></svg>

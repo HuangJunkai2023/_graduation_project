@@ -1,0 +1,67 @@
+{
+  "status": "passed_with_inherited_font_advisory",
+  "main_slides": 15,
+  "backup_slides": 3,
+  "pdf_pages": 18,
+  "bilingual_notes": 18,
+  "script_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "individually_visually_reviewed_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "planned_speaking_seconds": 436,
+  "native_editable_text": true,
+  "svg_quality": "18 pages passed, no errors or warnings",
+  "pptx_package": "passed, no relationship errors",
+  "page_boundary_check": "no outside-page text",
+  "font_advisory": {
+    "faces": [
+      "微软雅黑",
+      "游ゴシック",
+      "游ゴシック Light"
+    ],
+    "reason": "Inherited template/theme declarations retained. All pages rendered cleanly locally. Target-computer font availability remains unverified."
+  },
+  "study_limitations_included": [
+    "assistant_source_review, zero independent human/expert reviewers",
+    "shared author and evaluator assistant family",
+    "no verified same-family formal edition pairs",
+    "benchmark facts drawn from six corpus documents",
+    "no observed incremental RQ2 or RQ3 improvement"
+  ]
+}

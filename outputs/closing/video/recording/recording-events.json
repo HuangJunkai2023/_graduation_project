@@ -1,0 +1,26 @@
+[
+  {
+    "name": "knowledge-base",
+    "seconds": 10.137
+  },
+  {
+    "name": "answer-with-citations",
+    "seconds": 61.99
+  },
+  {
+    "name": "original-source-page",
+    "seconds": 85.583
+  },
+  {
+    "name": "missing-edition",
+    "seconds": 124.412
+  },
+  {
+    "name": "insufficient-evidence",
+    "seconds": 156.539
+  },
+  {
+    "name": "corpus-and-source-management",
+    "seconds": 180.105
+  }
+]

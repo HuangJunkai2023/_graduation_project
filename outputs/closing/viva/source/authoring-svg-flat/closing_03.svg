@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="720" viewBox="0 0 1280 720" font-family="Arial, &quot;微软雅黑&quot;, &quot;等线&quot;, sans-serif"><defs><linearGradient id="ggrad1" x1="0.5" y1="0" x2="0.5" y2="1"><stop offset="0.42" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient><linearGradient id="ggrad2" x1="0.5" y1="0" x2="0.5" y2="1"><stop offset="0.11" stop-color="#134C91"/><stop offset="0.65735" stop-color="#134C91" stop-opacity="0.46"/><stop offset="1" stop-color="#134C91" stop-opacity="0"/></linearGradient></defs><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="shape-3" data-pptx-object="picture" data-pptx-frame="0 117.31 1280 603.68" data-pptx-source-ref="slide:3">
+<svg data-pptx-object="picture" data-pptx-frame="0 117.31 1280 603.68" x="0" y="117.31" width="1280" height="603.68" viewBox="0 0 1 0.70053" preserveAspectRatio="none" overflow="hidden"><image href="../images/image7.jpeg" x="0" y="0" width="1" height="1" preserveAspectRatio="none"/></svg>
+</g>
+<g id="shape-5" data-pptx-object="shape" data-pptx-frame="0 0 1280 522.67" data-pptx-prst="rect" data-pptx-source-ref="slide:5" data-pptx-semantic-object="shape">
+<path d="M 0 0 L 1280 0 L 1280 522.67 L 0 522.67 Z" fill="url(#ggrad1)" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" data-pptx-part="geometry"/>
+
+
+</g>
+<g id="shape-2" data-pptx-object="group" data-pptx-frame="108.59 -13.09 311.36 395.43" data-pptx-source-ref="slide:2">
+<g id="shape-6" data-pptx-object="shape" data-pptx-frame="109.72 1.02 310.23 381.32" data-pptx-prst="rect" data-pptx-source-ref="slide:6" data-pptx-semantic-object="shape">
+<path d="M 109.72 1.02 L 419.95 1.02 L 419.95 382.34 L 109.72 382.34 Z" fill="url(#ggrad2)" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" data-pptx-part="geometry"/>
+
+
+</g>
+<g id="shape-7" data-pptx-object="group" data-pptx-frame="108.59 -13.09 311.05 38.67" transform="rotate(176.14638333 264.11 6.25)" data-pptx-source-ref="slide:7">
+<g id="shape-8" data-pptx-object="shape" data-pptx-frame="315.23 -78.83 38.67 170.15" data-pptx-geometry-kind="custom" transform="rotate(270 334.57 6.25)" data-pptx-source-ref="slide:8" data-pptx-semantic-object="shape">
+<path d="M 315.23 89.91 L 335.36 -78.83 L 353.9 91.32 L 315.23 89.91 Z" data-pptx-part="geometry" fill="#00B0F0" fill-opacity="0.37" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+<g id="shape-9" data-pptx-object="shape" data-pptx-frame="235.78 -138.9 34.21 288.59" data-pptx-geometry-kind="custom" transform="rotate(90 252.88 5.4)" data-pptx-source-ref="slide:9" data-pptx-semantic-object="shape">
+<path d="M 235.78 149.69 L 269.99 -138.9 L 247.67 149.69 L 235.78 149.69 Z" data-pptx-part="geometry" fill="#92D050" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+<g id="shape-10" data-pptx-object="shape" data-pptx-frame="169.78 -73.06 20.83 143.22" data-pptx-geometry-kind="custom" transform="rotate(90 180.2 -1.45)" data-pptx-source-ref="slide:10" data-pptx-semantic-object="shape">
+<path d="M 169.78 70.16 L 186.8 -73.06 L 190.61 -43.42 L 181.67 70.16 L 169.78 70.16 Z" data-pptx-part="geometry" fill="#92D050" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+</g>
+</g>
+<g id="shape-11" data-pptx-object="shape" data-pptx-frame="173.33 33.33 280 62.67" data-pptx-prst="rect" data-pptx-source-ref="slide:11" data-pptx-semantic-object="shape">
+<path d="M 173.33 33.33 L 453.33 33.33 L 453.33 96 L 173.33 96 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="173.33" y="82.66666667" text-anchor="start" xml:space="preserve" font-size="50.67" fill="#FFFFFF" font-weight="bold" letter-spacing="4" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-style="normal" text-decoration="none">PART</tspan></text>
+</g>
+<g id="shape-15" data-pptx-object="shape" data-pptx-frame="150.67 113.33 326.67 213.33" data-pptx-prst="rect" data-pptx-source-ref="slide:15" data-pptx-semantic-object="shape">
+<path d="M 150.67 113.33 L 477.33 113.33 L 477.33 326.67 L 150.67 326.67 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="150.67" y="274.66666667" text-anchor="start" xml:space="preserve" font-size="165.33" fill="#FFFFFF" font-weight="bold">01</text></g>
+<g id="shape-16" data-pptx-object="shape" data-pptx-frame="573.33 206.67 580 133.33" data-pptx-prst="rect" data-pptx-source-ref="slide:16" data-pptx-semantic-object="shape">
+<path d="M 573.33 206.67 L 1153.33 206.67 L 1153.33 340 L 573.33 340 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="573.33" y="233.33333333" text-anchor="start" xml:space="preserve" font-family="Arial, sans-serif" font-size="27.0" fill="#333333">Standards consultation<tspan x="573.33" dy="32.4">Evidence and edition labels</tspan><tspan x="573.33" dy="32.4">Local working system</tspan></text></g>
+<g id="shape-17" data-pptx-object="shape" data-pptx-frame="560 86.67 684.39 122.67" data-pptx-prst="rect" data-pptx-source-ref="slide:17" data-pptx-semantic-object="shape">
+<path d="M 560 86.67 L 1244.39 86.67 L 1244.39 209.33 L 560 209.33 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="560" y="127.99989501" text-anchor="start" xml:space="preserve" font-size="40.0" fill="#194B8C" font-weight="bold">System and<tspan x="560" dy="48.0">scope</tspan></text></g></svg>

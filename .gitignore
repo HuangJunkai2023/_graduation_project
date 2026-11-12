@@ -56,3 +56,8 @@ Desktop.ini
 # ppt-master往返工作区可从已提交的上版PPT重建；不提交重复输入、导出和媒体缓存。
 /outputs/proposal-defense/**/workspace/
 /outputs/proposal-defense/**/validation/readback_files/
+
+# 结题校验的重复媒体与本次录屏缓存，保留最终媒体和可复建源。
+/outputs/closing/viva/validation/readback_files/
+/outputs/closing/video/recording/page@*.webm
+/outputs/closing/video/assets/encoding.log

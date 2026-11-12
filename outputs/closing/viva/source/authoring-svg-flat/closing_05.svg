@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="720" viewBox="0 0 1280 720" font-family="Arial, sans-serif"><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="layout-shape-5" data-pptx-object="shape" data-pptx-frame="0 0 1280 77.98" data-pptx-prst="rect" data-pptx-source-ref="layout:5" data-pptx-semantic-object="shape">
+<path d="M 0 0 L 1280 0 L 1280 77.98 L 0 77.98 Z" fill="#134C91" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" data-pptx-part="geometry"/>
+
+
+</g>
+<g id="layout-shape-97" data-pptx-object="group" data-pptx-frame="-0.58 -0.06 94.58 78.04" data-pptx-source-ref="layout:97">
+<g id="layout-shape-98" data-pptx-object="shape" data-pptx-frame="-0.58 -0.06 29.67 47.64" data-pptx-geometry-kind="custom" data-pptx-source-ref="layout:98" data-pptx-semantic-object="shape">
+<path d="M -0.58 0 C -0.5 14.98 -0.42 29.96 -0.33 44.94 L 5.82 47.58 L 29.08 -0.06 L -0.58 0 Z" data-pptx-part="geometry" fill="#92D050" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+<g id="layout-shape-99" data-pptx-object="shape" data-pptx-frame="-0.33 32.31 94.33 45.67" data-pptx-geometry-kind="custom" data-pptx-source-ref="layout:99" data-pptx-semantic-object="shape">
+<path d="M -0.33 77.98 L 94 77.98 L -0.33 32.31 L -0.33 77.98 Z" data-pptx-part="geometry" fill="#00B0F0" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+<g id="layout-shape-100" data-pptx-object="shape" data-pptx-frame="-0.25 32 11 26.75" data-pptx-geometry-kind="custom" data-pptx-source-ref="layout:100" data-pptx-semantic-object="shape">
+<path d="M -0.25 32 L 10.75 37.75 L -0.25 58.75 L -0.25 32 Z" data-pptx-part="geometry" fill="#92D050" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+</g>
+<g id="layout-shape-2" data-pptx-object="picture" data-pptx-frame="1072.94 14.84 168.99 47.64" data-pptx-source-ref="layout:2">
+<image data-pptx-object="picture" data-pptx-frame="1072.94 14.84 168.99 47.64" href="../images/image1.png" x="1072.94" y="14.84" width="168.99" height="47.64" preserveAspectRatio="none"/>
+</g>
+<g id="shape-5" data-pptx-object="shape" data-pptx-frame="86.67 13.33 960 50.67" data-ph-type="title" data-pptx-placeholder-index="4294967295" data-pptx-placeholder-local-geometry="true" data-pptx-prst="rect" data-pptx-source-ref="slide:5" data-pptx-semantic-object="shape">
+<path d="M 86.67 13.33 L 1046.67 13.33 L 1046.67 64 L 86.67 64 Z" fill="none" stroke="none" data-ph-type="title" data-pptx-placeholder-index="4294967295" data-pptx-part="geometry"/>
+
+
+<text x="86.67" y="44.0" text-anchor="start" xml:space="preserve" font-size="36.0" fill="#FFFFFF" font-weight="bold">The implemented local interface</text></g>
+<g data-pptx-bounds="54 682 1181 19.5" id="content-05-005"><text x="54" y="695" font-family="Arial" font-size="13" fill="#64748B" font-weight="normal">Frozen OCS study | Review against original sources</text></g><image href="../images/closing-system.png" x="52" y="110" width="920" height="518" preserveAspectRatio="xMidYMid meet"/><g data-pptx-bounds="1000 150 235 37.5" id="content-05-007"><text x="1000" y="175" font-family="Arial" font-size="25" fill="#194B8C" font-weight="bold">Choose a</text></g><g data-pptx-bounds="1000 185.0 235 37.5" id="content-05-008"><text x="1000" y="210.0" font-family="Arial" font-size="25" fill="#194B8C" font-weight="bold">retriever</text></g><g data-pptx-bounds="1000 290 235 37.5" id="content-05-009"><text x="1000" y="315" font-family="Arial" font-size="25" fill="#194B8C" font-weight="bold">Inspect the</text></g><g data-pptx-bounds="1000 325.0 235 37.5" id="content-05-010"><text x="1000" y="350.0" font-family="Arial" font-size="25" fill="#194B8C" font-weight="bold">evidence</text></g><g data-pptx-bounds="1000 430 235 37.5" id="content-05-011"><text x="1000" y="455" font-family="Arial" font-size="25" fill="#194B8C" font-weight="bold">Open the</text></g><g data-pptx-bounds="1000 465.0 235 37.5" id="content-05-012"><text x="1000" y="490.0" font-family="Arial" font-size="25" fill="#194B8C" font-weight="bold">source page</text></g></svg>

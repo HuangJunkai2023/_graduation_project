@@ -1,0 +1,15 @@
+{
+  "raw_duration_seconds": 210.44,
+  "recording_lead_trim_seconds": 0.4399999999999977,
+  "output_seconds": 240,
+  "resolution": [
+    1280,
+    720
+  ],
+  "frames_per_second": 30,
+  "english_word_count": 469,
+  "visual_bytes": 4712186,
+  "student_narration_present": false,
+  "final_video": null,
+  "remaining_action": "Provide the student English narration for final audio integration."
+}

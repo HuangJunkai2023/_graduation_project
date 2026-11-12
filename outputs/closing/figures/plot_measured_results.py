@@ -26,7 +26,11 @@ plt.rcParams.update({'font.family': 'Calibri', 'font.size': 10, 'axes.spines.top
 
 def save(figure, stem):
     for extension in ['png', 'svg', 'pdf']:
-        figure.savefig(HERE / f'{stem}.{extension}', dpi=300, bbox_inches='tight', facecolor='white')
+        output = HERE / f'{stem}.{extension}'
+        figure.savefig(output, dpi=300, bbox_inches='tight', facecolor='white')
+        if extension == 'svg':
+            output.write_text('\n'.join(line.rstrip() for line in output.read_text(encoding='utf-8').splitlines()) + '\n',
+                              encoding='utf-8')
     plt.close(figure)
 
 

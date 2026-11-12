@@ -1,0 +1,77 @@
+{
+  "schema": "ppt-master.roundtrip-page-plan.v1",
+  "pages": [
+    {
+      "source_slide": 1,
+      "svg": "closing_01.svg"
+    },
+    {
+      "source_slide": 2,
+      "svg": "closing_02.svg"
+    },
+    {
+      "source_slide": 3,
+      "svg": "closing_03.svg"
+    },
+    {
+      "source_slide": 4,
+      "svg": "closing_04.svg"
+    },
+    {
+      "source_slide": 10,
+      "svg": "closing_05.svg"
+    },
+    {
+      "source_slide": 6,
+      "svg": "closing_06.svg"
+    },
+    {
+      "source_slide": 10,
+      "svg": "closing_07.svg"
+    },
+    {
+      "source_slide": 10,
+      "svg": "closing_08.svg"
+    },
+    {
+      "source_slide": 9,
+      "svg": "closing_09.svg"
+    },
+    {
+      "source_slide": 10,
+      "svg": "closing_10.svg"
+    },
+    {
+      "source_slide": 10,
+      "svg": "closing_11.svg"
+    },
+    {
+      "source_slide": 12,
+      "svg": "closing_12.svg"
+    },
+    {
+      "source_slide": 10,
+      "svg": "closing_13.svg"
+    },
+    {
+      "source_slide": 10,
+      "svg": "closing_14.svg"
+    },
+    {
+      "source_slide": 15,
+      "svg": "closing_15.svg"
+    },
+    {
+      "source_slide": 10,
+      "svg": "closing_16.svg"
+    },
+    {
+      "source_slide": 10,
+      "svg": "closing_17.svg"
+    },
+    {
+      "source_slide": 10,
+      "svg": "closing_18.svg"
+    }
+  ]
+}

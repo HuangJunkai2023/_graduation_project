@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1280" height="720" viewBox="0 0 1280 720" font-family="Arial, sans-serif"><rect x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+<g id="layout-shape-5" data-pptx-object="shape" data-pptx-frame="0 0 1280 77.98" data-pptx-prst="rect" data-pptx-source-ref="layout:5" data-pptx-semantic-object="shape">
+<path d="M 0 0 L 1280 0 L 1280 77.98 L 0 77.98 Z" fill="#134C91" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter" data-pptx-part="geometry"/>
+
+
+</g>
+<g id="layout-shape-97" data-pptx-object="group" data-pptx-frame="-0.58 -0.06 94.58 78.04" data-pptx-source-ref="layout:97">
+<g id="layout-shape-98" data-pptx-object="shape" data-pptx-frame="-0.58 -0.06 29.67 47.64" data-pptx-geometry-kind="custom" data-pptx-source-ref="layout:98" data-pptx-semantic-object="shape">
+<path d="M -0.58 0 C -0.5 14.98 -0.42 29.96 -0.33 44.94 L 5.82 47.58 L 29.08 -0.06 L -0.58 0 Z" data-pptx-part="geometry" fill="#92D050" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+<g id="layout-shape-99" data-pptx-object="shape" data-pptx-frame="-0.33 32.31 94.33 45.67" data-pptx-geometry-kind="custom" data-pptx-source-ref="layout:99" data-pptx-semantic-object="shape">
+<path d="M -0.33 77.98 L 94 77.98 L -0.33 32.31 L -0.33 77.98 Z" data-pptx-part="geometry" fill="#00B0F0" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+<g id="layout-shape-100" data-pptx-object="shape" data-pptx-frame="-0.25 32 11 26.75" data-pptx-geometry-kind="custom" data-pptx-source-ref="layout:100" data-pptx-semantic-object="shape">
+<path d="M -0.25 32 L 10.75 37.75 L -0.25 58.75 L -0.25 32 Z" data-pptx-part="geometry" fill="#92D050" stroke-width="2" stroke-linecap="butt" stroke="none" stroke-linejoin="miter"/>
+
+</g>
+</g>
+<g id="layout-shape-2" data-pptx-object="picture" data-pptx-frame="1072.94 14.84 168.99 47.64" data-pptx-source-ref="layout:2">
+<image data-pptx-object="picture" data-pptx-frame="1072.94 14.84 168.99 47.64" href="../images/image1.png" x="1072.94" y="14.84" width="168.99" height="47.64" preserveAspectRatio="none"/>
+</g>
+<g id="shape-5" data-pptx-object="shape" data-pptx-frame="86.67 13.33 960 50.67" data-ph-type="title" data-pptx-placeholder-index="4294967295" data-pptx-prst="rect" data-pptx-source-ref="slide:5" data-pptx-semantic-object="shape">
+<path d="M 86.67 13.33 L 1046.67 13.33 L 1046.67 64 L 86.67 64 Z" fill="none" data-ph-type="title" data-pptx-placeholder-index="4294967295" data-pptx-part="geometry"/>
+
+
+<text x="86.67" y="52" text-anchor="start" xml:space="preserve" font-family="Arial, &quot;微软雅黑&quot;, &quot;等线&quot;, sans-serif" font-size="40" fill="#FFFFFF" font-weight="bold" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-style="normal" text-decoration="none">Standards consultation</tspan></text>
+</g>
+<g id="shape-3" data-pptx-object="shape" data-pptx-frame="52.8 672 1174.08 0" data-pptx-prst="line" data-pptx-source-ref="slide:3" data-pptx-semantic-object="shape">
+<path d="M 52.8 672 L 1226.88 672" fill="none" stroke-width="0.93333" stroke="#D7E1EA" data-pptx-part="geometry"/>
+
+
+</g>
+<g id="shape-4" data-pptx-object="shape" data-pptx-frame="52.8 681.6 1084.8 17.28" data-pptx-prst="rect" data-pptx-source-ref="slide:4" data-pptx-semantic-object="shape">
+<path d="M 52.8 681.6 L 1137.6 681.6 L 1137.6 698.88 L 52.8 698.88 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="52.8" y="694.64" text-anchor="start" xml:space="preserve" font-size="12.67" fill="#586D80" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">Proposal pp.1–2. Photo: AlexHe34, Wikimedia Commons, CC BY-SA 3.0</tspan></text>
+</g>
+<g id="shape-6" data-pptx-object="shape" data-pptx-frame="1156.8 677.76 70.08 26.88" data-pptx-prst="rect" data-pptx-source-ref="slide:6" data-pptx-semantic-object="shape">
+<path d="M 1156.8 677.76 L 1226.88 677.76 L 1226.88 704.64 L 1156.8 704.64 Z" fill="none" stroke="none" data-pptx-part="geometry"/>
+
+
+<text x="1226.88" y="696.53333333" text-anchor="end" xml:space="preserve" font-size="16.0" fill="#586D80">04 / 15</text></g>
+<g id="shape-7" data-pptx-object="picture" data-pptx-frame="62.4 142.08 368.64 491.52" data-pptx-source-ref="slide:7">
+<image data-pptx-object="picture" data-pptx-frame="62.4 142.08 368.64 491.52" href="../images/image8.jpg" x="62.4" y="142.08" width="368.64" height="491.52" preserveAspectRatio="none"/>
+</g>
+<g id="shape-8" data-pptx-object="shape" data-pptx-frame="62.4 636.48 368.64 21.12" data-pptx-prst="rect" data-pptx-source-ref="slide:8" data-pptx-semantic-object="shape">
+<path d="M 62.4 636.48 L 431.04 636.48 L 431.04 657.6 L 62.4 657.6 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="62.4" y="652.90666667" text-anchor="start" xml:space="preserve" font-size="14.67" fill="#586D80" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">Overhead-line context</tspan></text>
+</g>
+<g id="shape-9" data-pptx-object="shape" data-pptx-frame="489.6 150.72 681.6 38.4" data-pptx-prst="rect" data-pptx-source-ref="slide:9" data-pptx-semantic-object="shape">
+<path d="M 489.6 150.72 L 1171.2 150.72 L 1171.2 189.12 L 489.6 189.12 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="489.6" y="180.32" text-anchor="start" xml:space="preserve" font-size="29.33" fill="#245A8A" font-weight="bold" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-style="normal" text-decoration="none">Find the requirement</tspan></text>
+</g>
+<g id="shape-10" data-pptx-object="shape" data-pptx-frame="489.6 203.52 681.6 74.88" data-pptx-prst="rect" data-pptx-source-ref="slide:10" data-pptx-semantic-object="shape">
+<path d="M 489.6 203.52 L 1171.2 203.52 L 1171.2 278.4 L 489.6 278.4 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="489.6" y="234.29333333" text-anchor="start" xml:space="preserve" font-size="26.67" fill="#23364B" data-pptx-text-baseline="metrics-v1" data-pptx-text-model="paragraphs" data-paragraph-line-height="32"><tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">Technical requirements and test methods</tspan></tspan><tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">may appear in different documents.</tspan></tspan></text>
+</g>
+<g id="shape-11" data-pptx-object="shape" data-pptx-frame="489.6 295.68 681.6 38.4" data-pptx-prst="rect" data-pptx-source-ref="slide:11" data-pptx-semantic-object="shape">
+<path d="M 489.6 295.68 L 1171.2 295.68 L 1171.2 334.08 L 489.6 334.08 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="489.6" y="325.28" text-anchor="start" xml:space="preserve" font-size="29.33" fill="#245A8A" font-weight="bold" data-pptx-text-baseline="metrics-v1"><tspan fill-opacity="1" font-style="normal" text-decoration="none">Check the edition</tspan></text>
+</g>
+<g id="shape-12" data-pptx-object="shape" data-pptx-frame="489.6 348.48 681.6 74.88" data-pptx-prst="rect" data-pptx-source-ref="slide:12" data-pptx-semantic-object="shape">
+<path d="M 489.6 348.48 L 1171.2 348.48 L 1171.2 423.36 L 489.6 423.36 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="489.6" y="379.25333333" text-anchor="start" xml:space="preserve" font-size="26.67" fill="#23364B" data-pptx-text-baseline="metrics-v1" data-pptx-text-model="paragraphs" data-paragraph-line-height="32"><tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">The answer must preserve the requested</tspan></tspan><tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">edition, units and applicable conditions.</tspan></tspan></text>
+</g>
+<g id="shape-13" data-pptx-object="shape" data-pptx-frame="489.6 446.4 681.6 33.6" data-pptx-prst="rect" data-pptx-source-ref="slide:13" data-pptx-semantic-object="shape">
+<path d="M 489.6 446.4 L 1171.2 446.4 L 1171.2 480 L 489.6 480 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="489.6" y="472.53333333" text-anchor="start" xml:space="preserve" font-size="24.0" fill="#245A8A" font-weight="bold">Examples from the selected corpus</text></g>
+<g id="shape-14" data-pptx-object="shape" data-pptx-frame="489.6 493.44 681.6 76.8" data-pptx-prst="rect" data-pptx-source-ref="slide:14" data-pptx-semantic-object="shape">
+<path d="M 489.6 493.44 L 1171.2 493.44 L 1171.2 570.24 L 489.6 570.24 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="489.6" y="525.17333333" text-anchor="start" xml:space="preserve" font-size="26.67" fill="#23364B" data-pptx-text-baseline="metrics-v1" data-pptx-text-model="paragraphs" data-paragraph-line-height="32"><tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">TB/T 2073-2020: fittings requirements</tspan></tspan><tspan><tspan fill-opacity="1" font-weight="normal" font-style="normal" text-decoration="none">TB/T 2074-2020: test methods</tspan></tspan></text>
+</g>
+<g id="shape-15" data-pptx-object="shape" data-pptx-frame="489.6 595.2 681.6 52.8" data-pptx-prst="rect" data-pptx-source-ref="slide:15" data-pptx-semantic-object="shape">
+<path d="M 489.6 595.2 L 1171.2 595.2 L 1171.2 648 L 489.6 648 Z" fill="none" data-pptx-part="geometry"/>
+
+
+<text x="489.6" y="617.06666667" text-anchor="start" xml:space="preserve" font-size="22.67" fill="#183E69" font-weight="bold" data-pptx-text-baseline="metrics-v1" data-pptx-text-model="lines" data-paragraph-line-height="27.2"><tspan><tspan fill-opacity="1" font-style="normal" text-decoration="none">For learning and consultation. Engineering approval and </tspan></tspan><tspan fill-opacity="1" font-style="normal" text-decoration="none" data-paragraph-line-break="1">operational decisions remain outside scope.</tspan></text>
+</g></svg>

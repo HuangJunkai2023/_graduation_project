@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "defaults": {
+    "transition": {
+      "effect": "none",
+      "duration": 0.0
+    }
+  },
+  "slides": {
+    "closing_01": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_02": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_03": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_04": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_05": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_06": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_07": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_08": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_09": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_10": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_11": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_12": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_13": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_14": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_15": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_16": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_17": {
+      "animation": {
+        "effect": "none"
+      }
+    },
+    "closing_18": {
+      "animation": {
+        "effect": "none"
+      }
+    }
+  }
+}

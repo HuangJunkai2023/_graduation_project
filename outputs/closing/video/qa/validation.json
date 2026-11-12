@@ -1,0 +1,33 @@
+{
+  "video": "OCS_Demo_EN_Visual_Draft.mp4",
+  "video_sha256": "e27fc764f16d26fea689e35ca5feb86dcfafcae905a661a73748d13a69485994",
+  "bytes": 4712186,
+  "full_decode_exit_code": 0,
+  "decode_errors": "",
+  "sample_seconds": [
+    10,
+    30,
+    50,
+    70,
+    90,
+    110,
+    130,
+    150,
+    170,
+    190,
+    210,
+    230
+  ],
+  "audio_stream_present": false,
+  "student_narration_present": false,
+  "browser_playback": {
+    "ended": true,
+    "duration": 240,
+    "width": 1280,
+    "height": 720,
+    "mediaError": null,
+    "playbackRate": 16,
+    "video_sha256": "e27fc764f16d26fea689e35ca5feb86dcfafcae905a661a73748d13a69485994",
+    "checked_at": "2026-11-12T11:06:21.514Z"
+  }
+}
