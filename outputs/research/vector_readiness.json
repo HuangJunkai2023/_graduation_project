@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-11-12T08:20:46.328246+00:00",
+  "documents": 25,
+  "chunks": 3341,
+  "vectors_current_model": 3341,
+  "dimensions": [
+    1024
+  ],
+  "reused_this_run": 503,
+  "embedded": 2838,
+  "blocked_chunks": 0,
+  "model_identity": "https://api.siliconflow.cn/v1|BAAI/bge-m3",
+  "note": "Vector readiness is an interface check, not measured retrieval quality."
+}

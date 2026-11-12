@@ -1,0 +1,50 @@
+{
+  "checked_at": "2026-11-12T08:25:48.922564+00:00",
+  "checks": [
+    {
+      "check": "bm25",
+      "status": "retrieval_only",
+      "source_count": 5,
+      "claims": 0,
+      "all_requested_family_and_year": true,
+      "timings": {
+        "retrieval_ms": 2807.6,
+        "generation_ms": 0.0,
+        "total_ms": 2807.87
+      }
+    },
+    {
+      "check": "dense",
+      "status": "retrieval_only",
+      "source_count": 5,
+      "claims": 0,
+      "all_requested_family_and_year": true,
+      "timings": {
+        "retrieval_ms": 353.69,
+        "generation_ms": 0.0,
+        "total_ms": 353.74
+      }
+    },
+    {
+      "check": "hybrid",
+      "status": "answered",
+      "source_count": 5,
+      "claims": 6,
+      "all_requested_family_and_year": true,
+      "timings": {
+        "retrieval_ms": 334.5,
+        "generation_ms": 2760.26,
+        "total_ms": 3095.14
+      }
+    },
+    {
+      "check": "intentionally_absent_year",
+      "status": "missing_edition",
+      "source_count": 0
+    }
+  ],
+  "documents": 25,
+  "chunks": 3341,
+  "formal_benchmark_runs": 0,
+  "interpretation": "Live request, vector dimensionality, version routing and citation-format checks only. No manual answer correctness judgement; no formal performance claim."
+}
