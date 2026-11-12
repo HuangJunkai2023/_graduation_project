@@ -1,0 +1,10 @@
+{
+  "valid": true,
+  "errors": [],
+  "checked_at": "2026-11-12T08:17:29.877522+00:00",
+  "documents_checked": 25,
+  "chunks_checked": 3341,
+  "derived_sources_checked": 11,
+  "human_content_review": "pending",
+  "limitations": "Byte, identity and page-text checks do not certify tables, numeric semantics or formal applicability."
+}
