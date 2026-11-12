@@ -47,7 +47,9 @@ def resolve_query(question, history, edition_filter=True):
     prior = standards(previous)
     if year and prior and len(prior)==1:
         return f"{prior[0][0]}-{year[1]} {question}", None
-    follow = bool(re.search(r"它|该标准|该规范|这个|上述|其中|那.{0,8}(呢|要求)|还有|继续|其.{0,6}(要求|规定)|^(?:那|那么|还有|是否).{0,20}[？?呢]?$", question))
+    follow = bool(re.search(
+        r"它|该标准|该规范|这个|上述|其中|还有|继续|其.{0,6}(要求|规定)|^\s*那|^是否.{0,20}[？?呢]?$",
+        question))
     if follow:
         if not previous: return question, "clarify_context"
         # Use only the prior user's resolved question, never a model answer as evidence.

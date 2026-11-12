@@ -73,6 +73,24 @@ def test_conflicting_bare_edition_clarifies_but_a1_keeps_its_ablation():
     assert resolve_query('依据TB/T2073-2020回答', [])[1] is None
 
 
+def test_long_followups_inherit_the_existing_standard_topic():
+    history = [{'question': '请查阅Q/CR1001-2023中的预埋槽道要求。',
+                'resolved_query': 'Q/CR1001-2023 预埋槽道要求'}]
+    questions = [
+        '那采用热浸镀锌时，按哪个标准进行，镀锌后表面不应出现什么？',
+        '那槽道本体和锚杆的热浸镀锌应符合哪份标准的什么等级，最小厚度是多少？',
+        '那么T型螺栓及配用螺母、垫圈的热浸镀锌应符合哪份标准的什么等级，最小厚度是多少？',
+    ]
+    for question in questions:
+        resolved, error = resolve_query(question, history)
+        assert error is None
+        assert resolved.startswith('Q/CR1001-2023 预埋槽道要求')
+        assert question in resolved
+        assert resolve_query(question, [])[1] == 'clarify_context'
+    new_topic = '那依据TB/T2073-2020，表面质量有什么要求？'
+    assert resolve_query(new_topic, history) == (new_topic, None)
+
+
 def test_activate_selected_parameters_preserves_other_configuration(frozen, tmp_path, monkeypatch):
     from ocs_qa.calibration import activate_calibration
     store, freeze, _, _ = frozen
