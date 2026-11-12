@@ -1,0 +1,17 @@
+{
+  "status": "development_complete",
+  "slots_by_configuration": {
+    "B1": 20,
+    "B2": 20,
+    "B3": 20,
+    "A1": 20,
+    "A2": 20
+  },
+  "total_slots": 100,
+  "blind_tasks": 72,
+  "freeze_sha256": "a488ccb1370df50fffee4c06cdad0ff8264bc72b407eb798645a11222b864569",
+  "primary_attempt": 1,
+  "split": "dev",
+  "paid_calls_note": "Run slots include early refusals and are not equal to generation requests.",
+  "formal_test_slots": 0
+}

@@ -1,0 +1,110 @@
+{
+  "schema": "ocs-study-freeze.v1",
+  "created_at": "2026-11-12T10:13:29.515660+00:00",
+  "dataset_sha256": "bbaebbed51570ab367cdc5c90cc29c28090aea6700aef4c81959b4164262101c",
+  "development_dataset_sha256": "3fc98513e2b208b7c6898b307e6830396300fd181869dafa5b8a97d6f71aaba5",
+  "corpus_sha256": "f569710daa5fc2db76e0662776cca4c484b547d6cf798c10a65b30e8bcf33446",
+  "vectors_sha256": "5e8094586774c3b9074e75fee61d4d0020948cc1e6fe864c4bc3456adafa934f",
+  "config": {
+    "chat_url": "https://api.deepseek.com",
+    "chat_model": "deepseek-flash",
+    "embedding_url": "https://api.siliconflow.cn/v1",
+    "embedding_model": "BAAI/bge-m3",
+    "timeout": 60.0,
+    "chunk_size": 600,
+    "chunk_overlap": 80,
+    "top_k": 5,
+    "vector_weight": 0.5,
+    "min_coverage": 0.2,
+    "min_cosine": 0.5
+  },
+  "runtime_identity": {
+    "python": "3.12.7",
+    "platform": "Windows",
+    "packages": {
+      "numpy": "2.5.4",
+      "pymupdf": "2.1",
+      "python-docx": "1.2.0",
+      "python-dotenv": "1.2.4",
+      "httpx": "0.28.1",
+      "streamlit": "1.67.0",
+      "jieba": "0.42.1"
+    }
+  },
+  "prompt_sha256": "dc6696f3ea315ad70790af7e409eb6130fca41f09fad6ede88327ee236e9b8c3",
+  "code_sha256": {
+    "ocs_qa/__init__.py": "c0f0dfe1c9e8d841186f4b0f0633992778249372701c233725f6f6740ba67de5",
+    "ocs_qa/__main__.py": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+    "ocs_qa/analysis.py": "aa0ec26009a5a6d1daf19bad46da9bac8556c8a4418a74c1e02119c7311d3fac",
+    "ocs_qa/api.py": "e162c396470ecbce20bc19bacab2ed80fed8f5091c8a3b340b940173f68f4016",
+    "ocs_qa/calibration.py": "f3fdc57dc14cc03adeebfc24312f4b48c623c67ce8547713cbbe16cacf978445",
+    "ocs_qa/cli.py": "5efe86f90698faa9bfb85df605f49dd7c07dc58c864927b00a4ffc575902e01b",
+    "ocs_qa/config.py": "5f5be49c4baebfae03542c9ac566c912a4c9f81500c055552d25f7e39844a738",
+    "ocs_qa/corpus.py": "302ac194d9933a427ee8ca24a559d5f27439be9b24292c52949c533cf1cdcfc0",
+    "ocs_qa/documents.py": "9798e135fca5775ebb9ef4444cef4a894694b78ca7dc69fd078377c3af6312ca",
+    "ocs_qa/evaluation.py": "160f0b65b69d5d0451c99767b7d11ef6e70eb2b93a176cd8d2471fd87c7dd9be",
+    "ocs_qa/pipeline.py": "db822f758eceb5b1bb06219edbacf3966656623741e75c163021fdd12359c084",
+    "ocs_qa/preprocessing.py": "eec6d0b9af16097e0d113c5cc44208317574e27fcaecd9430da6d2ebd3f88998",
+    "ocs_qa/reporting.py": "a37fe0cc89e90b6fea870d1317bb39bff1c15d087be86fe71e27abb81e0bd501",
+    "ocs_qa/research.py": "db4715f83df76814e76afd9a4b76b7db39ee8612391eec25eb4d58e2999a8b20",
+    "ocs_qa/resources/domain_words.txt": "13748591ae62cedf8f3fe8d17ee518d7d8489266601017531a5973a59813d9d2",
+    "ocs_qa/resources/stopwords.txt": "bcc32f4290a2eb51574222e937a505e258263bb13940c39bbedd60a29de3df6c",
+    "ocs_qa/retrieval.py": "4c02ade1fd2b3768c4dab768b962e96af242da8ad30f275127753bf6c661d3a8",
+    "ocs_qa/store.py": "1eb6d5e4a6436a85446225da9fff999175a2d013423f335380b7ecdc848c5b40",
+    "ocs_qa/study.py": "4c9791d92e508c1c5f31ccc3fe7003706d3a407447e9ff7b2f3b11ef7144de58",
+    "ocs_qa/study_run.py": "dbfa46b0975b976cf17b11d3a67f7c34d05bdec6d922b4cb4e0e60221c580c59",
+    "pyproject.toml": "d000e279da62862695e98d1a6c5bb23c01e97f6e18709b05c312aff69759768e",
+    "requirements-lock-windows.txt": "d8e272abb32e7933efc97cfe64d7362091e3590dfd9086173fda1e7d55fddd8d"
+  },
+  "calibration_sha256": "a0f8cb2fad7c9147962770b37b7bc7fe901eedbb3dc899ce0b01a127a44f3953",
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "questions": 100,
+    "approved": 100,
+    "counts": {
+      "dev/clause": 6,
+      "dev/edition": 4,
+      "dev/follow_up": 3,
+      "dev/term": 3,
+      "dev/unanswerable": 4,
+      "test/clause": 24,
+      "test/edition": 16,
+      "test/follow_up": 12,
+      "test/term": 12,
+      "test/unanswerable": 16
+    }
+  },
+  "configurations": {
+    "B1": {
+      "mode": "bm25",
+      "edition_filter": true,
+      "evidence_check": true
+    },
+    "B2": {
+      "mode": "dense",
+      "edition_filter": true,
+      "evidence_check": true
+    },
+    "B3": {
+      "mode": "hybrid",
+      "edition_filter": true,
+      "evidence_check": true
+    },
+    "A1": {
+      "mode": "hybrid",
+      "edition_filter": false,
+      "evidence_check": true
+    },
+    "A2": {
+      "mode": "hybrid",
+      "edition_filter": true,
+      "evidence_check": false
+    }
+  },
+  "main_execution_slots": 400,
+  "review_methods": {
+    "assistant_source_review": 100
+  },
+  "human_reviews_complete": false
+}

@@ -1,0 +1,32 @@
+{
+  "checked_at": "2026-11-12T09:57:03.587596+00:00",
+  "status": "approved",
+  "reviewed_by": "Codex",
+  "review_method": "assistant_source_review",
+  "reviewed_at": "2026-11-12T09:57:03.587596+00:00",
+  "historical_cost_unknown": true,
+  "historical_cost_reserve_gbp": 35.0,
+  "reserve_basis": "Conservative allocation of the existing project budget for unreconciled historical spending; not observed spending.",
+  "cost_evidence": [
+    "runtime/research/api_usage.jsonl",
+    "runtime/verification/deepseek_api_check.json"
+  ],
+  "conservative_remaining_run_gbp": 5.6,
+  "threshold_40_reviewed": true,
+  "pricing_sources": [
+    "https://api-docs.deepseek.com/quick_start/pricing/",
+    "https://www.siliconflow.cn/pricing"
+  ],
+  "calculation": {
+    "maximum_remaining_generation_calls": 600,
+    "input_token_planning_bound": 15931,
+    "input_bound_method": "UTF-8 byte-count allowance using maximum indexed source serialization, longest benchmark question, system prompt and 5000 additional framing bytes. Actual usage remains provider-reported.",
+    "maximum_output_tokens": 2400,
+    "usd_per_million_input_cache_miss_peak": 0.3,
+    "usd_per_million_output_peak": 1.2,
+    "gbp_budget_allowance_per_usd": 1.0,
+    "conversion_note": "Conservative budget allowance, not a quoted exchange rate.",
+    "extra_embedding_and_usage_contingency_gbp": 1.0,
+    "threshold_review": "Historical reserve plus estimated remaining calls checked against £40 review and £50 allocation. No unrecorded historical cost has been recorded as zero."
+  }
+}

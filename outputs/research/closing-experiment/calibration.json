@@ -1,0 +1,17 @@
+{
+  "status": "validated",
+  "validated_by": "development-calibration-runner",
+  "validated_at": "2026-11-12T10:07:13.562693+00:00",
+  "review_methods": {
+    "assistant_source_review": 152
+  },
+  "development_dataset_sha256": "3fc98513e2b208b7c6898b307e6830396300fd181869dafa5b8a97d6f71aaba5",
+  "corpus_sha256": "f569710daa5fc2db76e0662776cca4c484b547d6cf798c10a65b30e8bcf33446",
+  "vectors_sha256": "5e8094586774c3b9074e75fee61d4d0020948cc1e6fe864c4bc3456adafa934f",
+  "selected": {
+    "vector_weight": 0.5,
+    "min_coverage": 0.2,
+    "min_cosine": 0.5
+  },
+  "selection_evidence": "D:\\_graduation_project\\project\\qa_system\\runtime\\research\\calibration\\closing-v2\\selected.selection.json"
+}
