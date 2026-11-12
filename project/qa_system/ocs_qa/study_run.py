@@ -14,7 +14,7 @@ from .api import ModelClient
 from .pipeline import Pipeline,SYSTEM,compact
 from .evaluation import retrieval_metrics
 from .study import (canonical_hash,corpus_fingerprint,vector_fingerprint,runtime_identity,load_questions,
-                    validate_questions,blind_tasks,utc_now,_atomic_jsonl)
+                    validate_questions,blind_tasks,utc_now,_atomic_jsonl,review_methods,development_hash)
 
 def verify_freeze(freeze_dir,store):
     freeze_dir=Path(freeze_dir)
@@ -41,11 +41,14 @@ def _budget_review(path):
     row=json.loads(Path(path).read_text(encoding='utf-8'))
     if row.get('status')!='approved' or not row.get('reviewed_by') or not row.get('reviewed_at') or not row.get('pricing_sources'):
         raise ValueError('正式批次前需要核对实际费用及当前API价格。')
-    for key in ['spent_gbp','conservative_remaining_run_gbp']:
+    historical_unknown = row.get('historical_cost_unknown', True)
+    spent_key = 'historical_cost_reserve_gbp' if historical_unknown else 'spent_gbp'
+    for key in [spent_key, 'conservative_remaining_run_gbp']:
         if type(row.get(key)) not in (int,float) or not math.isfinite(row[key]) or row[key]<0:raise ValueError('预算审计缺少有效金额。')
-    if row.get('historical_cost_unknown',True):raise ValueError('历史费用仍未知，先完成预算核对。')
-    projected=row['spent_gbp']+row['conservative_remaining_run_gbp']
-    if projected>50 or row['spent_gbp']>=50:raise ValueError('将超出Proposal的£50总预算。')
+    if historical_unknown and (not row.get('reserve_basis') or not row.get('cost_evidence')):
+        raise ValueError('历史费用未知时须记录预算预留依据及已取得的费用证据。')
+    projected = row[spent_key] + row['conservative_remaining_run_gbp']
+    if projected>50 or row[spent_key]>=50:raise ValueError('将超出Proposal的£50总预算。')
     if projected>=40 and row.get('threshold_40_reviewed') is not True:raise ValueError('达到£40复核阈值，须明确记录复核。')
     return row
 
@@ -71,14 +74,14 @@ def _exclusive_run(output_dir):
             if os.name=='nt':msvcrt.locking(handle.fileno(),msvcrt.LK_UNLCK,1)
             else:fcntl.flock(handle,fcntl.LOCK_UN)
 
-def _result_row(q,result,label,identity):
+def _result_row(q,result,label,identity,attempt_id=1):
     raw=result.get('retrieved_sources',result['sources'])
-    return {'question_id':q['question_id'],'split':'test','category':q['category'],
+    return {'question_id':q['question_id'],'split':q['split'],'category':q['category'],
             'answerable':q['answerable'],'reference_answer':q['reference_answer'],
             'required_facts':q['required_facts'],'requested_standard':q['requested_standard'],
             'requested_edition':q['requested_edition'],'edition_stratum':q['edition_stratum'],
             'expected_action':q['expected_action'],'question_snapshot':q,
-            'configuration':label,'attempt_id':1,'freeze_sha256':identity,
+            'configuration':label,'attempt_id':attempt_id,'freeze_sha256':identity,
             'created_at':utc_now(),'result':result,'metrics':retrieval_metrics(raw,q['evidence_units'])}
 
 def _append_result(path,row):
@@ -91,8 +94,12 @@ def run_frozen(freeze_dir,store,output_dir,budget_path,client=None):
 
 def _run_frozen_locked(freeze_dir,store,output_dir,budget_path,client=None):
     manifest,questions=verify_freeze(freeze_dir,store)
+    return _execute_slots(manifest, [q for q in questions if q['split']=='test'], store,
+                          output_dir, budget_path, client)
+
+
+def _execute_slots(manifest, tests, store, output_dir, budget_path, client=None, attempt_id=1, eligible=None):
     budget=_budget_review(budget_path)
-    tests=[q for q in questions if q['split']=='test']
     byid={q['question_id']:q for q in tests}
     output_dir=Path(output_dir);output_dir.mkdir(parents=True,exist_ok=True)
     identity=canonical_hash(manifest)
@@ -108,7 +115,9 @@ def _run_frozen_locked(freeze_dir,store,output_dir,budget_path,client=None):
         path=output_dir/f'{label}.jsonl';paths.append(path)
         existing=load_questions(path);counts=Counter(r.get('question_id') for r in existing)
         if any(n!=1 or qid not in byid for qid,n in counts.items()):raise ValueError('已有结果包含重复或未知槽位。')
-        if any(r.get('freeze_sha256')!=identity or r.get('configuration')!=label for r in existing):raise ValueError('已有结果身份不符合冻结配置。')
+        if any(r.get('freeze_sha256')!=identity or r.get('configuration')!=label or r.get('attempt_id')!=attempt_id for r in existing):raise ValueError('已有结果身份不符合冻结配置。')
+        if eligible is not None and any(r['question_id'] not in eligible[label] for r in existing):
+            raise ValueError('恢复结果包含非失败槽位。')
         if any(canonical_hash(r.get('question_snapshot'))!=canonical_hash(byid[r['question_id']]) for r in existing):raise ValueError('已有结果的题目快照与冻结题集不一致。')
         completed[label]=counts
     inflight=output_dir/'inflight.json'
@@ -123,7 +132,7 @@ def _run_frozen_locked(freeze_dir,store,output_dir,budget_path,client=None):
                     'sources':[],'claims':[],'usage':{},'timings':{},
                     'error_code':'interrupted_outcome_unknown','started_at':interrupted.get('started_at'),
                     'outcome_note':'Request completion, cost and retrieval outcome are unknown; retained as a first-attempt failure.'}
-            _append_result(output_dir/f'{label}.jsonl',_result_row(byid[qid],result,label,identity))
+            _append_result(output_dir/f'{label}.jsonl',_result_row(byid[qid],result,label,identity,attempt_id))
             completed[label][qid]=1
         inflight.unlink()
     for label,configuration in manifest['configurations'].items():
@@ -132,22 +141,91 @@ def _run_frozen_locked(freeze_dir,store,output_dir,budget_path,client=None):
         pipeline=Pipeline(store,client)
         for q in tests:
             if q['question_id'] in counts:continue
+            if eligible is not None and q['question_id'] not in eligible[label]:
+                continue
             with inflight.open('x',encoding='utf-8') as handle:
                 json.dump({'configuration':label,'question_id':q['question_id'],
                            'freeze_sha256':identity,'started_at':utc_now()},handle)
                 handle.flush();os.fsync(handle.fileno())
             result=pipeline.answer(q['question'],history=q.get('history',[]),generate=True,top_k=5,**configuration)
             # Never replace a paid/failed first attempt with a preferred retry.
-            _append_result(path,_result_row(q,result,label,identity))
+            _append_result(path,_result_row(q,result,label,identity,attempt_id))
             inflight.unlink()
     tasks=blind_tasks(paths)
     _atomic_jsonl(output_dir/'private'/'blind_tasks.jsonl',tasks)
     counts={p.stem:len(load_questions(p)) for p in paths}
-    summary={'status':'awaiting_human_grades','slots_by_configuration':counts,
+    summary={'status':'awaiting_source_grades','slots_by_configuration':counts,
              'total_slots':sum(counts.values()),'blind_tasks':len(tasks),'freeze_sha256':identity,
-             'primary_attempt':1,'paid_calls_note':'Run slots include early refusals and are not equal to generation requests.'}
+             'primary_attempt':attempt_id,'split':tests[0]['split'],
+             'paid_calls_note':'Run slots include early refusals and are not equal to generation requests.'}
     (output_dir/'execution_summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
     return summary
+
+
+def run_development(dataset_path, store, output_dir, budget_path, client=None):
+    """Run one complete development-only five-configuration integration pass."""
+    from .calibration import _development
+    rows = load_questions(dataset_path)
+    development = _development(rows, store)
+    configurations = {
+        'B1': {'mode': 'bm25', 'edition_filter': True, 'evidence_check': True},
+        'B2': {'mode': 'dense', 'edition_filter': True, 'evidence_check': True},
+        'B3': {'mode': 'hybrid', 'edition_filter': True, 'evidence_check': True},
+        'A1': {'mode': 'hybrid', 'edition_filter': False, 'evidence_check': True},
+        'A2': {'mode': 'hybrid', 'edition_filter': True, 'evidence_check': False},
+    }
+    settings = store.settings
+    manifest = {
+        'schema': 'ocs-development-run.v1',
+        'development_dataset_sha256': development_hash(rows),
+        'corpus_sha256': corpus_fingerprint(store),
+        'vectors_sha256': vector_fingerprint(store),
+        'prompt_sha256': hashlib.sha256(SYSTEM.encode()).hexdigest(),
+        'config': {key: getattr(settings, key) for key in [
+            'chat_url', 'chat_model', 'embedding_url', 'embedding_model',
+            'top_k', 'vector_weight', 'min_coverage', 'min_cosine']},
+        'runtime_identity': runtime_identity(),
+        'code_sha256': {str(path.relative_to(APP_ROOT)).replace('\\', '/'): hashlib.sha256(path.read_bytes()).hexdigest()
+                        for path in sorted((APP_ROOT / 'ocs_qa').rglob('*.py'))},
+        'configurations': configurations,
+    }
+    with _exclusive_run(output_dir):
+        manifest_path = Path(output_dir) / 'development_manifest.json'
+        if manifest_path.exists():
+            previous = json.loads(manifest_path.read_text(encoding='utf-8'))
+            if canonical_hash(previous) != canonical_hash(manifest):
+                raise ValueError('开发运行的代码、题目或配置已改变，请使用新的运行目录。')
+        else:
+            manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
+        summary = _execute_slots(manifest, development, store, output_dir, budget_path, client)
+        summary['status'] = 'development_complete'
+        summary['formal_test_slots'] = 0
+        (Path(output_dir) / 'execution_summary.json').write_text(
+            json.dumps(summary, ensure_ascii=False, indent=2), encoding='utf-8')
+    return summary
+
+
+def run_recovery(freeze_dir, store, primary_dir, budget_path, attempt_id=2, client=None):
+    """Recover only failed primary slots into a separate attempt directory."""
+    if type(attempt_id) is not int or attempt_id < 2:
+        raise ValueError('恢复运行的attempt_id必须至少为2。')
+    manifest, questions = verify_freeze(freeze_dir, store)
+    identity = canonical_hash(manifest)
+    tests = [q for q in questions if q['split'] == 'test']
+    failures = {'api_error', 'invalid_response', 'invalid_citation', 'interrupted_error'}
+    eligible = {}
+    primary_dir = Path(primary_dir)
+    for label in manifest['configurations']:
+        rows = load_questions(primary_dir / f'{label}.jsonl')
+        if len(rows) != 80 or len({row['question_id'] for row in rows}) != 80:
+            raise ValueError('恢复前必须保留完整的80题首次结果。')
+        if any(row.get('freeze_sha256') != identity or row.get('attempt_id') != 1 for row in rows):
+            raise ValueError('恢复来源与冻结版本或首次尝试身份不一致。')
+        eligible[label] = {row['question_id'] for row in rows if row['result']['status'] in failures}
+    output = primary_dir / 'recovery' / f'attempt-{attempt_id:02d}'
+    with _exclusive_run(output):
+        return _execute_slots(manifest, tests, store, output, budget_path, client,
+                              attempt_id=attempt_id, eligible=eligible)
 
 def _ratio(numerator,denominator):
     return {'numerator':numerator,'denominator':denominator,'value':numerator/denominator if denominator else None}
@@ -250,10 +328,13 @@ def summarize_scored(run_dir,grade_path,output_path):
             'failure_types':dict(Counter(grade(r)['failure_type'] for r in rows)),
             'edition_availability':{state:{'items':sum(r['edition_stratum']==state for r in rows),
                 'answered':sum(r['edition_stratum']==state and r['result']['status'] in ['answered','partial'] for r in rows)} for state in ['available','missing','ambiguous','not_applicable']}}
-    result={'status':'human_scored','configurations':groups,'grades_sha256':canonical_hash(grades),
+    methods = review_methods(grades)
+    source_reviewed = 'assistant_source_review' in methods
+    result={'status':'source_reviewed' if source_reviewed else 'human_scored',
+            'review_methods':methods,'configurations':groups,'grades_sha256':canonical_hash(grades),
             'freeze_sha256':loaded_rows_by_label['B1'][0]['freeze_sha256'],
             'run_files_sha256':{f'{label}.jsonl':hashlib.sha256((run_dir/f'{label}.jsonl').read_bytes()).hexdigest() for label in labels},
-            'citation_counting_note':'Coverage and resolvability are mechanical checks of displayed structured claims/retrieved sources; semantic support and atomic-fact adequacy require human judgement.',
+            'citation_counting_note':'Coverage and resolvability use displayed structured claims and retrieved sources. Semantic support and atomic-fact adequacy use the recorded source-review method.',
             'note':'Measured observations; planned thresholds do not determine whether results are reported.'}
     from .analysis import paired_analysis
     result['analysis']=paired_analysis(loaded_rows_by_label,lookup)

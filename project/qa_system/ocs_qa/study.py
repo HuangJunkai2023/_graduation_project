@@ -24,6 +24,7 @@ QUOTAS = {
     "test": {"clause": 24, "term": 12, "edition": 16, "follow_up": 12, "unanswerable": 16},
 }
 REVIEW_STATES = {"unreviewed", "approved", "needs_revision"}
+REVIEW_METHODS = {'human', 'legacy_human', 'assistant_source_review'}
 STRATA = {"available", "missing", "ambiguous", "not_applicable"}
 UNANSWERABLE_TYPES = ("missing_edition", "out_of_corpus", "unrelated", "ambiguous")
 
@@ -78,6 +79,16 @@ def _review_identity(reviewer):
     if not isinstance(reviewer, str) or not reviewer.strip():
         raise ValueError("请填写实际审核人姓名。")
     return reviewer.strip()
+
+
+def review_methods(rows):
+    return dict(Counter(row.get('review_method', 'legacy_human') for row in rows))
+
+
+def _review_method(method):
+    if method not in REVIEW_METHODS:
+        raise ValueError('核查方式须为human、legacy_human或assistant_source_review。')
+    return method
 
 
 def _source_index(store):
@@ -135,10 +146,12 @@ def validate_questions(rows, store=None, *, require_full=False, require_approved
         if q.get("review_status") not in REVIEW_STATES:
             errors.append(f"{label}: review_status无效。")
         if q.get("review_status") == "approved":
+            if q.get('review_method', 'legacy_human') not in REVIEW_METHODS:
+                errors.append(f'{label}: 核查方式无效。')
             if not q.get("reviewer") or not q.get("reviewed_at"):
                 errors.append(f"{label}: approved必须保留审核人与时间。")
         if require_approved and q.get("review_status") != "approved":
-            errors.append(f"{label}: 尚未人工通过。")
+            errors.append(f"{label}: 尚未人工通过或完成已授权的来源核查。")
         if q.get("edition_stratum") not in STRATA:
             errors.append(f"{label}: edition_stratum无效。")
         if q.get("expected_action") not in {"answer", "refuse", "clarify"}:
@@ -197,9 +210,10 @@ def validate_questions(rows, store=None, *, require_full=False, require_approved
             "counts": {f"{s}/{c}": n for (s, c), n in sorted(counts.items())}}
 
 
-def save_review(path, question_id, *, reviewer, status, notes="", edits=None, store=None):
+def save_review(path, question_id, *, reviewer, status, notes="", edits=None, store=None, review_method='human'):
     """Persist one deliberate human decision, with append-only review history."""
     reviewer = _review_identity(reviewer)
+    review_method = _review_method(review_method)
     if status not in REVIEW_STATES:
         raise ValueError("审核状态无效。")
     rows = load_questions(path)
@@ -215,13 +229,13 @@ def save_review(path, question_id, *, reviewer, status, notes="", edits=None, st
         if unknown:
             raise ValueError("此审核接口不能修改题号、分组、划分或配额。")
         selected.update(edits)
-    selected.update(review_status=status, reviewer=reviewer, reviewed_at=utc_now(), review_notes=notes)
+    selected.update(review_status=status, reviewer=reviewer, review_method=review_method, reviewed_at=utc_now(), review_notes=notes)
     checked = validate_questions(rows, store)
     if not checked["valid"]:
         raise ValueError("\n".join(checked["errors"][:10]))
     _atomic_jsonl(path, rows)
     event = {"question_id": question_id, "reviewer": reviewer, "reviewed_at": selected["reviewed_at"],
-             "status": status, "notes": notes, "before_sha256": before,
+             "status": status, "review_method": review_method, "notes": notes, "before_sha256": before,
              "after_sha256": canonical_hash(selected)}
     with Path(path).with_suffix(".reviews.jsonl").open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(event, ensure_ascii=False) + "\n")
@@ -254,9 +268,10 @@ def runtime_identity():
                          ['numpy', 'pymupdf', 'python-docx', 'python-dotenv', 'httpx', 'streamlit', 'jieba']}}
 
 
-def save_passage_label(path, label_id, *, reviewer, relevant, notes=""):
+def save_passage_label(path, label_id, *, reviewer, relevant, notes="", review_method='human'):
     """Record human passage support labels; never promote proposed_relevant."""
     reviewer = _review_identity(reviewer)
+    review_method = _review_method(review_method)
     if type(relevant) is not bool:
         raise ValueError("请明确判断候选段落是否支持该问题。")
     rows = load_questions(path)
@@ -264,11 +279,11 @@ def save_passage_label(path, label_id, *, reviewer, relevant, notes=""):
     if row is None:
         raise ValueError("候选证据编号不存在。")
     before = canonical_hash(row)
-    row.update(relevant=relevant, review_status="approved", reviewer=reviewer,
+    row.update(relevant=relevant, review_status="approved", reviewer=reviewer, review_method=review_method,
                reviewed_at=utc_now(), review_reason=notes)
     _atomic_jsonl(path, rows)
     event = {"label_id": label_id, "reviewer": reviewer, "reviewed_at": row["reviewed_at"],
-             "relevant": relevant, "notes": notes, "before_sha256": before,
+             "relevant": relevant, "review_method": review_method, "notes": notes, "before_sha256": before,
              "after_sha256": canonical_hash(row)}
     with Path(path).with_suffix(".reviews.jsonl").open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(event, ensure_ascii=False) + "\n")
@@ -337,7 +352,8 @@ def freeze_study(dataset_path, store, calibration_path, output_dir):
           "B3": {"mode": "hybrid", "edition_filter": True, "evidence_check": True},
           "A1": {"mode": "hybrid", "edition_filter": False, "evidence_check": True},
           "A2": {"mode": "hybrid", "edition_filter": True, "evidence_check": False}},
-        "main_execution_slots": 400, "human_reviews_complete": True}
+        "main_execution_slots": 400, "review_methods": review_methods(rows),
+        "human_reviews_complete": all(row.get('review_method', 'legacy_human') in {'human', 'legacy_human'} for row in rows)}
     output_dir.mkdir(parents=True)
     _atomic_jsonl(output_dir / "questions.jsonl", rows)
     (output_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -369,8 +385,9 @@ def blind_tasks(run_paths, *, seed=20261111):
 
 
 def save_grade(path, task, *, reviewer, correct, claim_support, wrong_edition,
-               justified_refusal, false_refusal, failure_type, reason):
+               justified_refusal, false_refusal, failure_type, reason, review_method='human'):
     reviewer = _review_identity(reviewer)
+    review_method = _review_method(review_method)
     if not isinstance(reason, str) or not reason.strip():
         raise ValueError("请填写原文核查依据或判分理由。")
     for value in [correct, wrong_edition, justified_refusal, false_refusal]:
@@ -384,7 +401,7 @@ def save_grade(path, task, *, reviewer, correct, claim_support, wrong_edition,
     if len(claim_support) != len(claims) or any(type(v) is not bool for v in claim_support):
         raise ValueError("需逐条判断已展示claim的证据支撑。")
     grade = {"blind_id": task["blind_id"], "question_id": task["question_id"],
-             "reviewer": reviewer, "reviewed_at": utc_now(), "correct": correct,
+             "reviewer": reviewer, "review_method": review_method, "reviewed_at": utc_now(), "correct": correct,
              "claim_support": claim_support, "wrong_edition": wrong_edition,
              "justified_refusal": justified_refusal, "false_refusal": false_refusal,
              "failure_type": failure_type, "reason": reason.strip(), "run_slots": task["run_slots"]}

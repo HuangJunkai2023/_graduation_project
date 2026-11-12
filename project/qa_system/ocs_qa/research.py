@@ -60,6 +60,17 @@ def _main():
     run.add_argument('--freeze', required=True)
     run.add_argument('--budget', required=True)
     run.add_argument('--output', default=str(ROOT / 'results'))
+    development = sub.add_parser('develop', help='执行20道开发题的五配置联调')
+    development.add_argument('--calibration', required=True)
+    development.add_argument('--budget', required=True)
+    development.add_argument('--output', required=True)
+    recovery = sub.add_parser('recover', help='将失败槽位恢复结果保存在独立尝试目录')
+    recovery.add_argument('--freeze', required=True)
+    recovery.add_argument('--budget', required=True)
+    recovery.add_argument('--runs', default=str(ROOT / 'results'))
+    recovery.add_argument('--attempt-id', type=int, default=2)
+    activate = sub.add_parser('activate', help='将已校准参数用于本机演示')
+    activate.add_argument('--calibration', required=True)
     score = sub.add_parser('summarize', help='人工盲评完整后汇总实测结果')
     score.add_argument('--runs', default=str(ROOT / 'results'))
     score.add_argument('--grades', default=str(ROOT / 'scoring/grades.jsonl'))
@@ -92,6 +103,15 @@ def _main():
         elif args.action == 'run':
             from .study_run import run_frozen
             result = run_frozen(args.freeze, store, args.output, args.budget)
+        elif args.action == 'develop':
+            from .study_run import run_development
+            result = run_development(args.dataset, store, args.output, args.budget)
+        elif args.action == 'recover':
+            from .study_run import run_recovery
+            result = run_recovery(args.freeze, store, args.runs, args.budget, args.attempt_id)
+        elif args.action == 'activate':
+            from .calibration import activate_calibration
+            result = activate_calibration(args.calibration, args.dataset, store)
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 

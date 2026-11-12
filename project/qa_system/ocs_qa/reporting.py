@@ -18,13 +18,21 @@ def _number(value):
 
 def render_report(results_path, output_path):
     data = json.loads(Path(results_path).read_text(encoding='utf-8'))
-    if data.get('status') != 'human_scored' or not data.get('grades_sha256') or not data.get('run_files_sha256'):
-        raise ValueError('Only a complete, provenance-bound human-scored summary can produce a measured report.')
+    if data.get('status') not in {'human_scored', 'source_reviewed'} or not data.get('grades_sha256') or not data.get('run_files_sha256'):
+        raise ValueError('A complete provenance-bound scoring summary is required.')
+    assisted = 'assistant_source_review' in data.get('review_methods', {})
+    review_description = (
+        'Question references, candidate passages and output claims were checked against source documents by the assistant. '
+        'This revised the proposal\'s planned human-annotation procedure. Independent human or expert agreement remains unmeasured. '
+        'Shared authorship and scoring may introduce correlated judgement errors.'
+        if assisted else
+        'Scoring records identify human reviewers and preserve their source-based reasons. Legacy records retain their original reviewer attribution.')
     labels = ['B1', 'B2', 'B3', 'A1', 'A2']
     lines = ['# OCS Question-Answering: Controlled Experiment Report', '',
         'This supplementary report describes measured observations on the frozen corpus-bound benchmark. '
         'It is not the final seven-page university report and does not certify railway standards or engineering decisions.', '',
         '## Study design', '',
+        review_description, '',
         'The benchmark uses 20 development questions (16 answerable, 4 unanswerable) and 80 held-out '
         'test questions (64 answerable, 16 unanswerable). Development data alone select the hybrid weight '
         'and heuristic evidence thresholds. Each of five configurations contributes 80 primary first-attempt slots. '
@@ -41,7 +49,7 @@ def render_report(results_path, output_path):
             metric = data['configurations'][label][key]
             cells.append(f"{_number(metric['value'])} ({metric['numerator']:g}/{metric['denominator']})")
         lines.append('| ' + title + ' | ' + ' | '.join(cells) + ' |')
-    lines += ['', 'Citation support is a human judgement on each displayed cited claim and its complete citation set. '
+    lines += ['', 'Citation support records the source-based judgement on each displayed cited claim and its complete citation set. '
         'Citation coverage and resolvability are mechanical checks of the structured output, not proofs of semantic support. '
         'N/A denotes a zero denominator. Planned targets are not substituted for measured values.', '',
         '## Paired comparisons', '',
@@ -80,7 +88,7 @@ def render_report(results_path, output_path):
         '- Examine source-bound failure examples before making a causal or general performance claim. '
         'A heuristic Evidence Gate cannot guarantee the elimination of hallucinations.', '',
         '## Provenance', '', f"- Freeze SHA-256: `{data['freeze_sha256']}`",
-        f"- Human-grade SHA-256: `{data['grades_sha256']}`", '']
+        f"- Grade SHA-256: `{data['grades_sha256']}`", '']
     for name, digest in data['run_files_sha256'].items():
         lines.append(f'- {name}: `{digest}`')
     destination = Path(output_path)

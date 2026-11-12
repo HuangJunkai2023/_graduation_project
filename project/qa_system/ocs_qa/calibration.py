@@ -2,16 +2,19 @@
 from collections import Counter
 from dataclasses import replace
 from pathlib import Path
+from tempfile import NamedTemporaryFile
+import os
+import shutil
 import argparse
 import json
 import math
 from .api import ModelClient
-from .config import Settings
+from .config import Settings, APP_ROOT
 from .evaluation import retrieval_metrics
 from .pipeline import resolve_query
 from .retrieval import Retriever
 from .study import (QUOTAS,canonical_hash,development_hash,load_questions,
-                    validate_questions,utc_now,_atomic_jsonl,corpus_fingerprint,vector_fingerprint)
+                    validate_questions,utc_now,_atomic_jsonl,corpus_fingerprint,vector_fingerprint,review_methods)
 
 WEIGHTS=(.25,.50,.75)
 LEXICAL=(.05,.10,.20)
@@ -136,12 +139,52 @@ def select_gate(prepared_path,dataset_path,store,output_path):
     evidence.write_text(json.dumps({'weight_trials':prepared['weight_trials'],'gate_trials':trials,
         'reviewed_labels_sha256':canonical_hash(labels),'development_only':True},ensure_ascii=False,indent=2),encoding='utf-8')
     output={'status':'validated','validated_by':'development-calibration-runner','validated_at':utc_now(),
+        'review_methods':review_methods(labels),
         'development_dataset_sha256':development_hash(rows),'corpus_sha256':corpus_fingerprint(store),
         'vectors_sha256':vector_fingerprint(store),
         'selected':{'vector_weight':prepared['selected_weight'],'min_coverage':chosen['min_coverage'],'min_cosine':chosen['min_cosine']},
         'selection_evidence':str(evidence.resolve())}
     Path(output_path).write_text(json.dumps(output,ensure_ascii=False,indent=2),encoding='utf-8')
     return output
+
+def activate_calibration(calibration_path, dataset_path, store):
+    """Apply the verified selected parameters to subsequent local UI sessions."""
+    selected = json.loads(Path(calibration_path).read_text(encoding='utf-8'))
+    rows = load_questions(dataset_path)
+    _development(rows, store)
+    expected = {
+        'development_dataset_sha256': development_hash(rows),
+        'corpus_sha256': corpus_fingerprint(store),
+        'vectors_sha256': vector_fingerprint(store),
+    }
+    if selected.get('status') != 'validated' or any(selected.get(key) != value for key, value in expected.items()):
+        raise ValueError('校准记录与当前开发题、语料或向量不一致。')
+    parameters = selected.get('selected', {})
+    if (parameters.get('vector_weight') not in WEIGHTS or parameters.get('min_coverage') not in LEXICAL
+            or parameters.get('min_cosine') not in COSINE):
+        raise ValueError('校准参数不在预定网格中。')
+    updates = {
+        'OCS_DB_PATH': store.settings.db_path.resolve().as_posix(),
+        'VECTOR_WEIGHT': str(parameters['vector_weight']),
+        'MIN_LEXICAL_COVERAGE': str(parameters['min_coverage']),
+        'MIN_COSINE_SIMILARITY': str(parameters['min_cosine']),
+        'TOP_K': '5',
+    }
+    path = APP_ROOT / '.env'
+    text = path.read_text(encoding='utf-8-sig') if path.exists() else ''
+    backup = APP_ROOT / 'runtime/config-backups' / ('env.before-calibration-' + utc_now().replace(':', '-') + '.txt')
+    backup.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        shutil.copy2(path, backup)
+    lines = [line for line in text.splitlines() if line.partition('=')[0].strip() not in updates]
+    lines.extend(f'{key}={value}' for key, value in updates.items())
+    with NamedTemporaryFile('w', encoding='utf-8', dir=APP_ROOT, delete=False) as handle:
+        handle.write('\n'.join(lines) + '\n')
+        temporary = Path(handle.name)
+    os.replace(temporary, path)
+    return {'status': 'activated', 'parameters': parameters,
+            'note': 'Refresh the question-answering page to load the selected settings.'}
+
 
 def main():
     parser=argparse.ArgumentParser(description='仅开发集调参与证据核验准备')

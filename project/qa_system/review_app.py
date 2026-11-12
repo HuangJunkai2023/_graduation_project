@@ -1,4 +1,4 @@
-"""Local human benchmark review and blinded grading; no model calls."""
+"""Local source review and blinded grading workspace."""
 from pathlib import Path
 import hashlib
 import json
@@ -78,7 +78,8 @@ with review_tab:
         counts = validate_questions(questions, store)
         a, b, c = st.columns(3)
         a.metric("候选题", len(questions))
-        b.metric("人工已通过", counts["approved"])
+        b.metric("人工已通过", sum(q.get('review_status') == 'approved' and q.get('review_method', 'legacy_human') != 'assistant_source_review' for q in questions))
+        st.caption(f"来源核查已通过 {counts['approved']} 题，核查方式随记录保存。")
         c.metric("待核查／修订", len(questions) - counts["approved"])
         st.info("先核对问题、原文位置、必要事实、数值／单位／条件，再明确选择通过或待修订。页面不会替代人工判断。")
         first, second = st.columns(2)
@@ -142,13 +143,13 @@ with passages_tab:
     if not labels:
         st.info("先审核开发题，再生成三种检索方式的开发候选段落。每个问题／文本块合并核查；未生成标签不会自动通过。")
     else:
-        st.subheader("用于Evidence Gate阈值选择的人工段落标签")
+        st.subheader("用于Evidence Gate阈值选择的段落核查记录")
         approved = sum(r.get("review_status") == "approved" and type(r.get("relevant")) is bool for r in labels)
         st.metric("已核查候选", f"{approved} / {len(labels)}")
         show_reviewed = st.checkbox("显示已核查候选", key="passages-reviewed")
         choices = {r["label_id"]: r for r in labels if show_reviewed or r.get("review_status") != "approved"}
         if not choices:
-            st.success("所有当前开发候选均已人工核查。")
+            st.success("所有当前开发候选均已核查，执行方式保存在各条记录中。")
         else:
             label_id = st.selectbox("候选证据编号", list(choices))
             label = choices[label_id]
@@ -271,7 +272,7 @@ with readiness_tab:
         st.warning("尚未满足冻结条件。")
         st.write("\n".join(full["errors"][:30]))
     else:
-        st.success("题集配额、证据位置和人工通过记录齐全；仍需核对开发集校准、当前向量及配置冻结。")
+        st.success("题集配额、证据位置和核查通过记录齐全，请继续核对开发集校准、当前向量及配置冻结。")
     if questions:
         st.caption("开发集指纹：" + development_hash(questions))
     st.write("后续顺序：仅用已审核开发题选择权重与门槛 → 记录校准依据 → 冻结题集、语料、代码和配置 → 五组正式运行。")

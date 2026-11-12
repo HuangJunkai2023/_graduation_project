@@ -3,7 +3,7 @@ import re
 import time
 from functools import cached_property
 from .api import ModelClient, APIError
-from .documents import standards
+from .documents import standards, STANDARD
 from .retrieval import Retriever
 
 SYSTEM = '''你是接触网规范查阅助手。只能依据用户消息中的 evidence 数据回答。
@@ -22,6 +22,7 @@ MESSAGES = {
     "empty_question": "请输入需要查询的问题。", "empty_kb": "知识库为空，请先导入 PDF 或 DOCX。",
     "insufficient_evidence": "当前检索证据不足，无法据此给出规范答案。请补充标准号、年份或具体主题。",
     "clarify_context": "当前没有可用的上文，请补充所指的标准、版本或部件。",
+    "clarify_edition": "问题中的版本线索不一致，请确认需要查询的标准年份。",
 }
 
 
@@ -29,9 +30,18 @@ def compact(text):
     return re.sub(r"\s+", "", text)
 
 
-def resolve_query(question, history):
+def resolve_query(question, history, edition_filter=True):
     # Explicit standard overrides the previous topic. A bare edition can inherit it.
-    if standards(question): return question, None
+    requested = standards(question)
+    if requested:
+        # A bare contradictory edition must not be silently discarded when an
+        # explicit standard identifier already supplies another year.
+        if edition_filter and len(requested) == 1 and requested[0][1]:
+            remainder = STANDARD.sub('', question)
+            bare_editions = re.findall(r'(?<!\d)((?:19|20)\d{2})\s*(?:年版|版)', remainder)
+            if any(year != requested[0][1] for year in bare_editions):
+                return question, 'clarify_edition'
+        return question, None
     year = re.search(r"(?<!\d)((?:19|20)\d{2})\s*年?(?:版)?", question)
     previous = history[-1].get("resolved_query", history[-1].get("question", "")) if history else ""
     prior = standards(previous)
@@ -68,7 +78,7 @@ class Pipeline:
 
         if not question.strip(): return finish("empty_question",MESSAGES["empty_question"])
         if len(question)>4000: return finish("invalid_question","问题过长，请控制在 4000 个字符以内。")
-        query, context_error = resolve_query(question,history)
+        query, context_error = resolve_query(question,history,edition_filter=edition_filter)
         result["resolved_query"] = query
         if context_error: return finish(context_error,MESSAGES[context_error])
         phase = time.perf_counter()
