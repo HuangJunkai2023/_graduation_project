@@ -1,0 +1,25 @@
+{
+  "valid": true,
+  "errors": [],
+  "questions": 100,
+  "approved": 100,
+  "counts": {
+    "dev/clause": 6,
+    "dev/edition": 4,
+    "dev/follow_up": 3,
+    "dev/term": 3,
+    "dev/unanswerable": 4,
+    "test/clause": 24,
+    "test/edition": 16,
+    "test/follow_up": 12,
+    "test/term": 12,
+    "test/unanswerable": 16
+  },
+  "checked_at": "2026-11-12T10:02:15.806481+00:00",
+  "review_method": "assistant_source_review",
+  "reviewer": "Codex",
+  "source_review_passes": 200,
+  "human_reviewers": 0,
+  "dataset_sha256": "bbaebbed51570ab367cdc5c90cc29c28090aea6700aef4c81959b4164262101c",
+  "formal_test_slots": 0
+}
