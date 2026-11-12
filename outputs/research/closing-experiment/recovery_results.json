@@ -1,0 +1,14 @@
+{
+  "review_method": "assistant_source_review",
+  "attempt_id": 2,
+  "primary_analysis_replaced": false,
+  "slots": 9,
+  "blind_tuples": 8,
+  "statuses": {
+    "answered": 5,
+    "invalid_citation": 4
+  },
+  "correct_slots": 4,
+  "citation_claims": 17,
+  "supported_claims": 17
+}

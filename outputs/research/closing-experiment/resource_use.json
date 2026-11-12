@@ -1,0 +1,16 @@
+{
+  "recorded_at": "2026-11-12T10:45:13.008943+00:00",
+  "scope": "Recorded research API ledger including setup, development, primary tests, recovery and demonstration. Earlier unlogged project spending remains unknown.",
+  "chat_requests": 468,
+  "embedding_requests": 586,
+  "chat_prompt_tokens": 875267,
+  "chat_completion_tokens": 72088,
+  "embedding_tokens": 471215,
+  "returned_chat_model_labels": [
+    "deepseek-flash"
+  ],
+  "chat_cost_estimate_usd_peak_uncached": 0.349086,
+  "estimate_note": "Peak input-cache-miss/output tariff estimate, not an account invoice. Historical \u00a335 is a budget reserve; \u00a35.60 is remaining-call provision.",
+  "pricing_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "ledger_sha256": "0c28c1345e83965c61551337a64a3bdc93671192af061e2e67f229076b396d11"
+}
