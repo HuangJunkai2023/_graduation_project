@@ -86,6 +86,7 @@ Week 10新增：[WEEK_10.md](WEEK_10.md)，recorded_through为2026-11-10，状�
 | 10 | [WEEK_10.md](WEEK_10.md) | 2026-11-10 | Draft, for student review | Not confirmed |
 | 11 | [WEEK_11.md](WEEK_11.md) | 2026-11-17 | Draft, current-week recheck | Not confirmed |
 | 12 | [WEEK_12.md](WEEK_12.md) | 2026-11-17 | Draft, advance preparation for 23–29 November | Not confirmed |
+| 13 | [WEEK_13.md](WEEK_13.md) | 2026-11-17 | Draft, advance preparation for 30 November–6 December | Not confirmed |
 
 Add future rows only with the corresponding actual draft/activity. Student approval of wording is `Approved for posting`; actual posting confirmed by the student permits `Published` and an actual date. Neither a generated file nor a Git commit establishes publication.
 
@@ -149,3 +150,17 @@ Scheduled Week 12 covers 23–29 November. The complete local draft was prepared
 | E12-03 | [Existing benchmark verification](../../outputs/research/closing-review/benchmark_verification.json), originally dated 12 November; schema reviewed on 17 November | Existing split is 20 development / 80 test, with 16 / 64 answerable items. The original review method and absence of independent human reviewers remain recorded. No fresh annotation or annotation time is claimed. |
 
 The [Week 12 draft](WEEK_12.md) contains seven English sections and 421 rendered whitespace-delimited words including the title and inline evidence. Its opening and metadata state the advance-preparation basis. The student should update any actual Week 12 activity before publication. The check executor was Codex, with zero API requests. Student review, publication and supervision feedback remain unconfirmed.
+
+## Week 13 — Hybrid retrieval advance preparation on 17 November 2026
+
+Scheduled Week 13 covers 30 November–6 December. Its complete draft was prepared on 17 November and draws on the same current recheck as Weeks 11 and 12. The three thematic entries share this activity. Its execution is counted once.
+
+| ID | Evidence and actual activity | Observation and journal scope |
+| --- | --- | --- |
+| E13-01 | [Preparation checks](evidence/week13/preparation_checks.json), from the shared 17 November script | Same 16 answerable development queries compared across BM25, Dense and Hybrid. Every method had Recall@5 and MRR@5 of 1.0, while all 16 queries had different five-result lists between methods. |
+| E13-02 | Same replay and source inspection | 80 returned Hybrid scores agreed with `(1-w)B+wD` at w=0.50 within 1e-12. Four normalisation edge cases passed. Eligible-set min–max and stable-ID tie ordering remain in the existing implementation. |
+| E13-03 | [Selection record](../../outputs/research/closing-experiment/selection_evidence.json) and [calibration](../../outputs/research/closing-experiment/calibration.json), dated 12 November | Weights 0.25/0.50/0.75 tied on development Recall@5 and MRR@5. The predefined rule selected 0.50. Calibration was completed ahead of the planned Week 17 and is retained with that actual date. |
+
+The [Week 13 draft](WEEK_13.md) has seven English sections and 434 rendered whitespace-delimited words including its title and evidence. No new weight selection or formal experiment was undertaken during journal preparation. The current check used zero API requests, accessed no formal test questions and preserved the selected parameters and research results. The check executor was Codex. The draft awaits student review, actual-week updates and publication confirmation.
+
+The signed Proposal, WEEKLY_PLAN.md, Weeks 8–10 journals and SUPERVISION_LOG.md were unchanged by the 17 November journal preparation. No new meeting, supervisor approval or actual working hours were added.

@@ -2,7 +2,7 @@
 from collections import Counter
 from contextlib import contextmanager
 from dataclasses import replace
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import hashlib
 import json
@@ -120,7 +120,9 @@ def main():
     assert normalize({0: 2, 1: 2}) == {0: 1., 1: 1.}
     assert normalize({0: 0, 1: 0}) == {0: 0., 1: 0.}
     assert normalize({0: 2, 1: 4}) == {0: 0., 1: 1.}
-    common = {'checked_at': datetime.now(timezone.utc).isoformat(), 'activity_date_local': '2026-11-17',
+    checked_at = datetime.now(timezone.utc)
+    common = {'checked_at': checked_at.isoformat(),
+              'activity_date_local': checked_at.astimezone(timezone(timedelta(hours=8))).date().isoformat(),
               'actor': 'Codex', 'method': 'read_only_database_and_cached_development_replay',
               'git_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT).decode().strip(),
               'api_requests': 0, 'test_questions_accessed': 0, 'formal_results_modified': False,

@@ -41,6 +41,9 @@ Proposal 截止为课堂确认的 **Week 8，2026-10-29，14:00 UK**，优先于
 - [SUPERVISION_LOG.md](SUPERVISION_LOG.md)：真实审核/会议记录、后续行动及 Review Document 索引。
 - [WEEK_11.md](WEEK_11.md)及[Week 11证据](evidence/week11/README.md)记录11月17日的语料、索引与BM25只读复核，正文约416词，状态Draft。
 - [WEEK_12.md](WEEK_12.md)及[Week 12证据](evidence/week12/README.md)为11月17日提前准备的Dense检索草稿，正文约421词；计划周为11月23–29日，实际检查日期保留为11月17日，待当周核对后发布。
+- [WEEK_13.md](WEEK_13.md)及[Week 13证据](evidence/week13/README.md)为11月17日提前准备的Hybrid检索草稿，正文约434词；计划周为11月30日至12月6日，明确保留11月12日既有校准与11月17日复核的日期。
+
+11月17日新增的三篇均为英文七段式Draft，并包含可直接阅读的证据表。三篇按不同技术主题组织同一次只读复核，Week 12、13为提前准备稿。实际执行者与日期保存在证据记录，发表状态待本人确认。原周计划及既有Journal保持原有内容。
 
 ## 每周维护流程
 
