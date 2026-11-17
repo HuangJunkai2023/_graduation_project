@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-11-17T06:33:50.005764+00:00",
+  "activity_date_local": "2026-11-17",
+  "actor": "Codex",
+  "method": "read_only_database_and_cached_development_replay",
+  "git_commit": "4119dd52d70c4ae5d6067ac1af45f1ef99ced924",
+  "api_requests": 0,
+  "test_questions_accessed": 0,
+  "formal_results_modified": false,
+  "corpus_sha256": "f569710daa5fc2db76e0662776cca4c484b547d6cf798c10a65b30e8bcf33446",
+  "vectors_sha256": "5e8094586774c3b9074e75fee61d4d0020948cc1e6fe864c4bc3456adafa934f",
+  "scope": "Post-experiment documentation check; original implementation and calibration dated 12 November remain historical.",
+  "entry_status": "advance_preparation_draft",
+  "embedding_model": "BAAI/bge-m3",
+  "dimensions": 1024,
+  "finite_nonzero_document_vectors": 3341,
+  "cosine_cross_checks": 16,
+  "cached_query_vectors_used": 16,
+  "reloaded_cache_same_top_five": true,
+  "development_items": 16,
+  "dense_gold_recall_sum": 16.0
+}

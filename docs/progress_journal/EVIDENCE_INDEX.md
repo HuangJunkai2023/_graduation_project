@@ -85,6 +85,7 @@ Week 10新增：[WEEK_10.md](WEEK_10.md)，recorded_through为2026-11-10，状�
 | 9 | [WEEK_09.md](WEEK_09.md) | 2026-11-04 | Draft, for student review | Not confirmed |
 | 10 | [WEEK_10.md](WEEK_10.md) | 2026-11-10 | Draft, for student review | Not confirmed |
 | 11 | [WEEK_11.md](WEEK_11.md) | 2026-11-17 | Draft, current-week recheck | Not confirmed |
+| 12 | [WEEK_12.md](WEEK_12.md) | 2026-11-17 | Draft, advance preparation for 23–29 November | Not confirmed |
 
 Add future rows only with the corresponding actual draft/activity. Student approval of wording is `Approved for posting`; actual posting confirmed by the student permits `Published` and an actual date. Neither a generated file nor a Git commit establishes publication.
 
@@ -136,3 +137,15 @@ The existing corpus and freeze date to 12 November. The current-week activity is
 | E11-03 | [Corpus review](../../outputs/research/corpus/review_summary.md) and [Week 11 scope](evidence/week11/README.md) | No verified same-family formal edition pair admitted. Document count and edition coverage are assessed separately for M2/RQ2. |
 
 The [Week 11 draft](WEEK_11.md) has seven English sections and 416 rendered whitespace-delimited words including the title and evidence table. It records work through 17 November, with source preparation dated 12 November kept as background. The new check used zero external API requests and left the frozen study intact. Status remains Draft and Minerva publication is unconfirmed.
+
+## Week 12 — Dense retrieval advance preparation on 17 November 2026
+
+Scheduled Week 12 covers 23–29 November. The complete local draft was prepared early from existing research records and the shared 17 November check. This preparation is dated to its actual occurrence. No activity during the future reporting period is claimed.
+
+| ID | Evidence and actual activity | Observation and journal scope |
+| --- | --- | --- |
+| E12-01 | [Preparation checks](evidence/week12/preparation_checks.json), executed by the shared [check script](evidence/week11/verify_journal_basis.py) on 17 November | All 3,341 vectors have compatible BAAI/bge-m3 identity, 1,024 dimensions, finite values and non-zero norms. |
+| E12-02 | Same cached development replay | Dense recovered the reference evidence at Top-5 for 16/16 answerable development items. Sixteen independently calculated top-result cosine scores agreed within 1e-12. One reinitialised cache/store check reproduced its top-five ordering. |
+| E12-03 | [Existing benchmark verification](../../outputs/research/closing-review/benchmark_verification.json), originally dated 12 November; schema reviewed on 17 November | Existing split is 20 development / 80 test, with 16 / 64 answerable items. The original review method and absence of independent human reviewers remain recorded. No fresh annotation or annotation time is claimed. |
+
+The [Week 12 draft](WEEK_12.md) contains seven English sections and 421 rendered whitespace-delimited words including the title and inline evidence. Its opening and metadata state the advance-preparation basis. The student should update any actual Week 12 activity before publication. The check executor was Codex, with zero API requests. Student review, publication and supervision feedback remain unconfirmed.
