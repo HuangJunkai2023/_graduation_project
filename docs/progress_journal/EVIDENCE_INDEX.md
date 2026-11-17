@@ -59,7 +59,7 @@ The fingerprints below identify the readable material inspected on 2026-10-27; t
 
 ## Future evidence: append only when activity actually occurs
 
-Weeks 11–24 remain future plans; Week 10 now has a dated draft recorded only through 10 November. Week 9 now has actual checks and a separate draft, recorded below. Keep permitted raw runs under the application's ignored `runtime/` or `outputs/`; store shareable summaries/plots with their actual week only when generated. Register a hash/configuration so ignored local evidence remains traceable, and use an approved independent backup rather than treating a local Git repository as a backup of ignored files.
+At the 10 November checkpoint, Weeks 11–24 were future plans and the Week 10 draft recorded work only through that date. The dated 17 November additions below record current checks and clearly identified advance preparation. Keep permitted raw runs under the application's ignored `runtime/` or `outputs/`; store shareable summaries/plots with their actual activity dates. Register a hash/configuration so ignored local evidence remains traceable, and use an approved independent backup for ignored files.
 
 Append a record with the following fields, not invented values:
 
@@ -84,6 +84,7 @@ Week 10新增：[WEEK_10.md](WEEK_10.md)，recorded_through为2026-11-10，状�
 | 8 | [WEEK_08.md](WEEK_08.md) | 2026-10-27 | Draft, for student review | Not confirmed |
 | 9 | [WEEK_09.md](WEEK_09.md) | 2026-11-04 | Draft, for student review | Not confirmed |
 | 10 | [WEEK_10.md](WEEK_10.md) | 2026-11-10 | Draft, for student review | Not confirmed |
+| 11 | [WEEK_11.md](WEEK_11.md) | 2026-11-17 | Draft, current-week recheck | Not confirmed |
 
 Add future rows only with the corresponding actual draft/activity. Student approval of wording is `Approved for posting`; actual posting confirmed by the student permits `Published` and an actual date. Neither a generated file nor a Git commit establishes publication.
 
@@ -123,3 +124,15 @@ The [Week 10 draft](WEEK_10.md) retains seven first-person English sections and 
 - The revised Week 10 body reviews document processing, chunking, source tracing and edition metadata against that plan. It does not describe all components as newly implemented this week. The earlier assertion that presentation work displaced unfinished engineering is withdrawn: missing repository evidence does not establish non-completion.
 - E10-01–03 and the presentation audit remain supporting preparation records. Presentation checks and the slide-5 note discrepancy are not the technical focus of the revised journal.
 - The added Week 10 deviation checkpoint was removed from WEEKLY_PLAN.md; the original schedule is retained. No milestone, Proposal or prior-week journal was changed.
+
+## Week 11 — corpus and baseline recheck on 17 November 2026
+
+The existing corpus and freeze date to 12 November. The current-week activity is their read-only recheck and journal preparation on 17 November, executed by Codex. Student review and actual working hours remain unconfirmed.
+
+| ID | Evidence and actual activity | Observation and journal scope |
+| --- | --- | --- |
+| E11-01 | [Current verification](evidence/week11/verification.json), [executed script](evidence/week11/verify_journal_basis.py) | 25 source hashes match. The database retains 3,341 chunks and compatible, finite, non-zero 1,024-dimensional vectors. Corpus and numerical-vector fingerprints match the existing freeze. |
+| E11-02 | Same read-only check, using the 16 answerable development items and existing BM25 | Reference evidence was recovered at Top-5 for all 16. No generated answers or formal test questions were used. |
+| E11-03 | [Corpus review](../../outputs/research/corpus/review_summary.md) and [Week 11 scope](evidence/week11/README.md) | No verified same-family formal edition pair admitted. Document count and edition coverage are assessed separately for M2/RQ2. |
+
+The [Week 11 draft](WEEK_11.md) has seven English sections and 416 rendered whitespace-delimited words including the title and evidence table. It records work through 17 November, with source preparation dated 12 November kept as background. The new check used zero external API requests and left the frozen study intact. Status remains Draft and Minerva publication is unconfirmed.

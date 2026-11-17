@@ -39,6 +39,7 @@ Proposal 截止为课堂确认的 **Week 8，2026-10-29，14:00 UK**，优先于
 - [Week 9证据包](evidence/week09/README.md)：依赖快照、12项现有测试、7个合成响应检查、候选清单与只读数据库统计，含复查命令。
 - [EVIDENCE_INDEX.md](EVIDENCE_INDEX.md)：证据、发生时间、支持范围及后续实际工作登记方式。
 - [SUPERVISION_LOG.md](SUPERVISION_LOG.md)：真实审核/会议记录、后续行动及 Review Document 索引。
+- [WEEK_11.md](WEEK_11.md)及[Week 11证据](evidence/week11/README.md)记录11月17日的语料、索引与BM25只读复核，正文约416词，状态Draft。
 
 ## 每周维护流程
 
