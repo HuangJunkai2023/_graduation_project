@@ -1,56 +1,39 @@
 # 接触网问答项目结题交付包
 
-整理日期为2026年11月12日。研究依据为签署Proposal及ELEC3801要求，学生为Junkai Huang／黄俊凯，导师为Prof. Deqing Huang／黄德青。
-
-系统、基准核查、开发校准、正式实验、结果分析和技术结题材料均已完成当前验收。学校认可及本人参与事项按下方实际缺项继续完成。
+2026 年 11 月 23 日提交前审阅版。以已签署的 Proposal 和 ELEC3801 要求为依据。学生为 Junkai Huang，导师为 Prof. Deqing Huang。
 
 ## 报告与答辩
 
-| 文件 | 用途与状态 |
+| 文件 | 内容 |
 | --- | --- |
-| [英文技术报告PDF](source/generated/OCS_Final_Report_EN.pdf)／[可编辑Word](source/generated/OCS_Final_Report_EN.docx) | 学校模板，标题至参考文献共5页，含Reflection与16项LO证据表；供本人及导师审阅 |
-| [学校审阅合并稿](source/generated/OCS_Submission_Review_Draft.pdf) | 封面、待本人完成声明、5页报告、实际Portfolio缺项，共8页 |
-| [英文Viva PPTX](viva/OCS_Viva_EN.pptx)／[PDF](viva/OCS_Viva_EN.pdf) | 交大模板，15页主讲、3页备份；每页中英对照备注，主讲约7分16秒 |
-| [Viva中英讲稿](viva/OCS_Viva_CN_EN_Script.md)／[16组双语问答](viva/OCS_Viva_QA_CN_EN.md) | 与实际页码对应，覆盖方法、真实结果、失败案例和研究限制 |
-| [PPT总览](viva/overview.png)／[逐页预览](viva/previews/) | 18页逐页检查完成；跨电脑字体可用性待目标电脑核验 |
-| [实测补充分析](Results_Supplement_EN.md)／[实测图表](figures/) | 完整分母、类别结果、覆盖率、延迟、成对置信区间和计划目标对照 |
+| [英文技术报告 PDF](source/generated/OCS_Final_Report_EN.pdf)与[可编辑 Word](source/generated/OCS_Final_Report_EN.docx) | 学校模板 6 页，含系统流程、实测召回差值、扭矩仪案例、Reflection 和 16 项 LO 证据表。 |
+| [学校审阅合并稿](source/generated/OCS_Submission_Review_Draft.pdf) | 9 页，包含封面、待签声明、技术报告和 Portfolio 证据状态。 |
+| [英文 Viva PPTX](viva/OCS_Viva_EN.pptx)与[PDF](viva/OCS_Viva_EN.pdf) | 交大模板，15 页主讲、3 页备份，18 页中英对照备注。主讲约 7 分 16 秒。 |
+| [Viva 中英讲稿](viva/OCS_Viva_CN_EN_Script.md)与[双语问答](viva/OCS_Viva_QA_CN_EN.md) | 讲稿与实际页码对应，问答覆盖方法、实测结果、失败案例和研究限制。 |
+| [Viva 总览](viva/overview.png)和[报告总览](source/generated/render-OCS_Final_Report_EN-v4b/overview.png) | 所有页面已本机渲染检查。继承的模板字体仍需在目标电脑确认。 |
+| [实测补充分析](Results_Supplement_EN.md) | 总体与分层结果、分母、覆盖率、延时、成对置信区间及计划目标对照。 |
 
-报告生成源在[source](source/)，PPT可编辑SVG、备注及构建源在[viva/source](viva/source/)。学校原模板保留在本机原位置。
+报告与 PPT 构建源分别位于[source](source/)和[viva/source](viva/source/)。最终文件及 SHA-256 见[验收记录](DELIVERY_VALIDATION.json)和[交付清单](DELIVERY_MANIFEST.json)。
 
-[最终交付验收](DELIVERY_VALIDATION.json)记录实际页数、备注、实验及服务健康状态，[文件清单](DELIVERY_MANIFEST.json)保存本机交付文件的SHA-256。
+## 演示
 
-## 演示视频
+- [4 分钟合成旁白审阅预览](video/OCS_Demo_EN_Synthetic_Voice_Preview.mp4)保留实际系统录屏，加入实测召回差值图与英文字幕。1280×720、30 fps、6.21 MB，已完整解码并在 Chrome 播放至结束。画面全程标注合成旁白。[播放及音轨回执](video/qa/synthetic-preview/validation.json)与[抽帧总览](video/qa/synthetic-preview/contact-sheet.png)
+- [无旁白画面稿](video/OCS_Demo_EN_Visual_Draft.mp4)可用于接入本人录音。[中英对照讲稿](video/OCS_Demo_CN_EN_Script.md)与[英文字幕](video/OCS_Demo_EN.srt)
+- 本人录音可保存于本机项目 runtime/closing_delivery 目录。构建脚本的 --narration 可接入配合讲稿时标的录音，最终音画与院系访问需在正式版本中复验。
 
-- [4分钟画面及字幕稿](video/OCS_Demo_EN_Visual_Draft.mp4)为实际系统录屏，1280×720、30fps、约4.7MB，已完整解码并播放至结束。
-- [中英对照讲稿](video/OCS_Demo_CN_EN_Script.md)含469个英文词，[英文字幕](video/OCS_Demo_EN.srt)随画面提供。当前画面稿没有本人英文音轨。
-- 请将本人录音保存到`project/qa_system/runtime/closing_delivery/student_narration.wav`或`.m4a`。构建脚本支持`--narration`接入录音，接入后需复核全片音画与时长。
-- [视频验收回执](video/qa/validation.json)和[抽帧总览](video/qa/contact-sheet.png)对应当前画面稿的SHA-256。
+## 系统、复现与结论
 
-## 系统与复现
+问答入口为 <http://127.0.0.1:8501>，核查入口为 <http://127.0.0.1:8502>。[工程说明](../../project/qa_system/README.md)
 
-本机问答入口为<http://127.0.0.1:8501>，核查入口为<http://127.0.0.1:8502>。启动命令及配置见[工程README](../../project/qa_system/README.md)。研究库包含25份文档、3341个文本块及向量，当前Hybrid采用开发集所选参数。
-
-| 资料 | 验证情况 |
+| 文件 | 核验 |
 | --- | --- |
-| [公开工程ZIP与回执](repro/) | 白名单源码、资源、测试、示例配置及启动脚本；实际解压后109项测试通过 |
-| 本机受控研究ZIP | 位于`project/qa_system/runtime/closing_delivery/closing-v1/OCS_Controlled_Research.zip`；包含获许可来源、研究库、冻结及原始研究记录，继续仅本机保存 |
-| [复现说明](repro/REPRODUCIBILITY_EN.md)／[验证结果](repro/VALIDATION_RESULT_CN.md) | 实际恢复来源、校验冻结并复算全部指标，结果完全一致，复算0次API调用 |
-| [研究状态](../research/STATUS_CN.md)／[实测JSON](../research/closing-experiment/measured_results.json) | 400个首次槽位、296个匿名输出元组评分；9个恢复尝试独立汇总 |
+| [修订工程 ZIP](repro/OCS_Public_Code_submission-v2.zip)与[Windows 测试回执](repro/windows_recheck_receipt.json) | 新目录解压后确认加载归档源码，Windows 默认编码与 UTF-8 模式各通过 109 项测试。 |
+| [复现说明](repro/REPRODUCIBILITY_EN.md)与[验证结果](repro/VALIDATION_RESULT_CN.md) | 受控快照恢复 25 份来源，核对冻结身份。按保存的首次输出与评分复算指标，结果完全一致，使用 0 次模型 API。受限原文、摘录和密钥保留于本机。 |
+| [遮蔽复核](repro/SUBMISSION_RECHECK.md) | 24 道分层测试题的 48 条 B1/B3 输出，适用判断均与原评分一致。复核由同一助手工作流完成。 |
+| [实测 JSON](../research/closing-experiment/measured_results.json)与[研究状态](../research/STATUS_CN.md) | 400 个正式首次槽位，296 个匿名输出元组评分，9 次恢复尝试单列。 |
 
-复现验证使用既有Python 3.12.7环境。另一台电脑上的依赖安装、云端模型未来别名对应关系及字体显示仍需按目标环境核验。受限标准和密钥保留在本机。
+Hybrid 的 Recall@5 为 95.3%，完整回答正确率为 89.1%。Hybrid 比 Dense 的 Recall@5 高 18.75 个百分点，BM25 在本基准的 Recall@5 为 96.9%，为当前语料的首选默认方案。版本过滤与 Evidence Gate 在本轮未观察到增量收益。题目事实集中于 6 份来源，缺少同系列正式版本对和独立人工评分验证。账户真实费用需按账单核对，跨电脑依赖与字体需按目标环境核验。
 
-## 研究结论与限制
+## 正式提交依赖
 
-Hybrid的Recall@5为95.3%，完整回答正确率为89.1%。它相对Dense提高召回18.75个百分点，BM25本轮召回为96.9%。版本过滤和Evidence Gate的增量收益在本轮未获观测支持。
-
-100题及输出评分采用记录执行者和依据的助手原文核查，方法调整已在报告披露。独立人工／专家核查尚未开展，制题与评分共享助手工作流。题目事实集中于6份来源，未取得同系列正式版本对。结论范围限定于当前语料与基准。
-
-账单前的历史项目费用仍未知。£35历史预留与£5.60剩余调用预留属于预算分配；已记录台账的聊天费用估算约USD 0.3491，实际费用需账户账单核对。
-
-## 真实待办
-
-1. 本人英文录音，接入视频后的最终播放检查及学校账号访问链接。
-2. 10份Review Documents的真实资料及导师认可依据，现有3份本地Journal草稿的实际发布记录。
-3. Symposium资料、assessor信息、本人声明、导师最终审阅及实际学校提交回执。
-
-[Portfolio证据清单](portfolio/Portfolio_Evidence_Status.md)记录现有资料与缺项。已生成材料均保留其审阅或草稿状态，最终课程认可按真实记录完成喵~
+本机已有 6 份 Journal 草稿，10 份 Review Documents 的真实文档与认可依据仍待入库。正式包还需要 assessor 姓名、本人签署及演示音轨、学校账号可访问的 OneDrive 链接。实际发布、参加课程活动及提交回执按学校平台记录。[Portfolio 证据、缺项及本地组装](portfolio/Portfolio_Evidence_Status.md)

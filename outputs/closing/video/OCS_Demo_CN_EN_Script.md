@@ -6,11 +6,11 @@ The planned video length is four minutes. Record the English passages in order a
 
 **English**
 
-Hello, I am Junkai Huang from the SWJTU Leeds Joint School. My project investigates question answering for Overhead Contact System standards. The application helps readers locate requirements and inspect the evidence behind an answer. It combines document retrieval, standard edition checks, and a heuristic Evidence Gate with DeepSeek generation.
+This demonstration presents Junkai Huang's Overhead Contact System standards project at the SWJTU Leeds Joint School. The application helps readers locate requirements and inspect the evidence behind an answer. It combines document retrieval, standard edition checks, and a heuristic Evidence Gate with DeepSeek generation.
 
 **中文对照**
 
-大家好，我是西南交通大学—利兹学院的黄俊凯。我的项目研究接触网标准领域的问答。这个应用帮助读者查找要求，并检查答案所依据的证据。系统将文档检索、标准版本检查、启发式Evidence Gate与DeepSeek生成结合起来。
+本演示介绍西南交通大学利兹学院黄俊凯的接触网标准问答项目。应用支持查找要求并检查答案所依据的证据，结合文档检索、标准版本检查、启发式Evidence Gate和DeepSeek生成。
 
 ## 00:25–00:50 Corpus
 
@@ -62,12 +62,22 @@ I now clear the conversation and ask a weather question. The available standards
 
 现在清空会话，输入一个天气问题。现有标准没有所需证据，应用会拒绝给出标准依据的答案。Gate采用启发式信号，可能接受不合适的证据，也可能拒绝有用证据，因此需要结合回答覆盖率和误拒答评价其效果。
 
-## 03:15–04:00 Evaluation and scope
+## 03:15–03:25 Evaluation setup
 
 **English**
 
-The evaluation uses twenty development questions and eighty held out test questions. Five configurations compare BM25, Dense and Hybrid retrieval, then remove edition checks or the Evidence Gate individually. The primary experiment contains four hundred first attempt slots, with failures retained. Source reviews and scoring follow the documented assistant review protocol. The report presents measured results, uncertainty and failure cases, including the limitations of this evaluation method. The system supports technical document learning and consultation. Readers must verify the original documents before practical engineering use. Thank you.
+The study uses twenty development and eighty test questions. Five configurations yield four hundred first attempts, including failures.
 
 **中文对照**
 
-评价使用20道开发题和80道保留测试题。五组配置比较BM25、Dense与Hybrid检索，再分别关闭版本检查或Evidence Gate。主要实验包含400个首次运行槽位，并保留失败结果。来源核查和评分采用已记录的助手核查方案。报告呈现实测结果、不确定性、失败案例，以及该评价方式的局限。系统用于技术文档学习和查询，实际工程使用前需要核实原文件。谢谢。
+研究使用20道开发题和80道测试题。五组配置共400个首次运行，包含失败结果。
+
+## 03:25–04:00 Measured results and scope
+
+**English**
+
+The chart shows paired differences in recall at five. Hybrid exceeded Dense by eighteen point seven five percentage points. BM25 had the highest measured recall and complete correctness. The checks on edition and evidence showed no measured incremental benefit on these questions. Scoring and the masked recheck shared the assistant workflow. The system supports document consultation. Consult the original standard and seek qualified review for engineering decisions.
+
+**中文对照**
+
+这张图展示Recall@5的配对差值。Hybrid比Dense高18.75个百分点，BM25的实测召回和完整正确率最高。版本检查与证据门控在本次题集上未测得额外收益。评分和遮蔽复核共享助手工作流。系统用于资料查询，实际工程决策需核对原始标准并由有资质的人员审核。

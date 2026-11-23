@@ -32,7 +32,7 @@ python <documents-skill>/render_docx.py `
 python outputs/closing/source/validate_final_report.py --render-tag v4b
 ```
 
-当前v3目录保存最终逐页PNG及渲染PDF。早期渲染保存在本机runtime/tooling/report-render-history中。验证器检查页数、模板部件差异、纸张和页边距、LO1–LO16、关键数值及正文限制说明，并复制最终PDF至generated目录。更改报告后必须重新渲染并逐页目检，原QA记录对应现存文件哈希。
+v4b 子目录保存最终逐页 PNG 和总览。最终 PDF 位于 generated 目录。早期渲染保存在本机runtime/tooling/report-render-history中。验证器检查页数、模板部件差异、纸张和页边距、LO1–LO16、关键数值及正文限制说明，并复制最终PDF至generated目录。更改报告后必须重新渲染并逐页目检，原QA记录对应现存文件哈希。
 
 ## 审阅状态
 

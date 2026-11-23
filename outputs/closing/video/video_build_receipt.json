@@ -7,9 +7,11 @@
     720
   ],
   "frames_per_second": 30,
-  "english_word_count": 469,
-  "visual_bytes": 4712186,
+  "english_word_count": 462,
+  "visual_bytes": 4507378,
   "student_narration_present": false,
   "final_video": null,
-  "remaining_action": "Provide the student English narration for final audio integration."
+  "synthetic_voice_preview": "OCS_Demo_EN_Synthetic_Voice_Preview.mp4",
+  "synthetic_voice": "Microsoft Zira Desktop",
+  "remaining_action": "Final narration and course suitability are pending."
 }

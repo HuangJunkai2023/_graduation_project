@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const runtime = 'C:/Program Files/WindowsApps/OpenAI.CodexPrimaryRuntime.v26-1105-1297-0_26.1105.1297.0_x64__3k8sg7r9htsxt/dependencies';
+const runtime = process.env.OCS_DEMO_RUNTIME;
 const { chromium } = require(path.join(runtime, 'node/node_modules/playwright'));
 const videoPath = path.resolve(process.argv[2]);
 const outputPath = path.resolve(process.argv[3]);

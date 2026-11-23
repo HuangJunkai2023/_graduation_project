@@ -1,11 +1,14 @@
 """Build a captioned four-minute demo from the actual browser recording."""
 from pathlib import Path
 import argparse
+import base64
 import json
 import re
 import subprocess
 import sys
+from tempfile import TemporaryDirectory
 import textwrap
+import wave
 
 ROOT = Path(__file__).resolve().parents[4]
 VIDEO = Path(__file__).resolve().parents[1]
@@ -42,30 +45,112 @@ def timestamp(seconds):
     return f'{hours:02}:{minutes:02}:{seconds:02},{milliseconds:03}'
 
 
-def subtitles():
+def caption_plan():
     script = (VIDEO / 'OCS_Demo_CN_EN_Script.md').read_text(encoding='utf-8')
     passages = re.findall(r'\*\*English\*\*\s+(.*?)\s+\*\*中文对照\*\*', script, flags=re.S)
-    intervals = [(0,25),(25,50),(50,100),(100,135),(135,165),(165,195),(195,240)]
+    intervals = [(0,25),(25,50),(50,100),(100,135),(135,165),(165,195),(195,205),(205,240)]
     if len(passages) != len(intervals):
         raise ValueError('Narration sections do not match the video schedule')
-    captions = []
+    plan = []
     for passage, (start, end) in zip(passages, intervals):
         words = passage.split()
-        chunks = [words[i:i+18] for i in range(0, len(words), 18)]
-        cursor = start
-        for chunk in chunks:
-            finish = cursor + (end - start) * len(chunk) / len(words)
-            captions.append(f'{len(captions)+1}\n{timestamp(cursor)} --> {timestamp(finish)}\n'
-                            + '\n'.join(textwrap.wrap(' '.join(chunk), width=60)) + '\n')
-            cursor = finish
+        chunks = [' '.join(words[i:i+15]) for i in range(0, len(words), 15)]
+        plan.append((start, end, chunks))
+    return plan
+
+
+def synthesize(plan, directory):
+    """Generate local synthetic preview speech and obtain its actual cue boundaries."""
+    cues = [chunk for _, _, chunks in plan for chunk in chunks]
+    request = directory / 'captions.json'
+    request.write_text(json.dumps(cues), encoding='utf-8')
+    sound_script = r'''
+$ErrorActionPreference = 'Stop'
+Add-Type -AssemblyName System.Speech
+$voice = New-Object System.Speech.Synthesis.SpeechSynthesizer
+$voice.SelectVoice('Microsoft Zira Desktop')
+$voice.Rate = 1
+$format = New-Object System.Speech.AudioFormat.SpeechAudioFormatInfo(22050, 'Sixteen', 'Mono')
+$entries = Get-Content -LiteralPath captions.json -Raw -Encoding UTF8 | ConvertFrom-Json
+for ($index=0; $index -lt $entries.Count; $index++) {
+    $voice.SetOutputToWaveFile(('{0}.wav' -f $index), $format)
+    $spoken = $entries[$index] -replace '\bBM25\b','B M twenty-five' -replace '\bOCS\b','O C S' -replace '\bPDF\b','P D F'
+    $voice.Speak($spoken)
+    $voice.SetOutputToNull()
+}
+$voice.Dispose()
+'''
+    encoded = base64.b64encode(sound_script.encode('utf-16le')).decode('ascii')
+    subprocess.run(['powershell.exe', '-NoProfile', '-EncodedCommand', encoded], cwd=directory, check=True)
+    audio = directory / 'synthetic-preview.wav'
+    segments = []
+    rate = 22050
+    timeline = 0
+    index = 0
+    with wave.open(str(audio), 'wb') as track:
+        track.setparams((1, 2, rate, 0, 'NONE', 'not compressed'))
+        for start, end, chunks in plan:
+            samples = []
+            for chunk in chunks:
+                with wave.open(str(directory / f'{index}.wav'), 'rb') as sound:
+                    if (sound.getnchannels(), sound.getsampwidth(), sound.getframerate()) != (1, 2, rate):
+                        raise ValueError('Unexpected local narration sample format')
+                    frames = sound.getnframes()
+                    samples.append((chunk, frames, sound.readframes(frames)))
+                index += 1
+            available = round((end-start)*rate) - sum(frames for _, frames, _ in samples)
+            if available < 0:
+                raise ValueError(f'Narration exceeds its scene at {start} seconds')
+            pause = min(round(.45*rate), available//(len(samples)+1))
+            begin = round(start*rate) + pause
+            track.writeframes(b'\0\0' * (begin-timeline))
+            timeline = begin
+            for chunk, frames, samples_bytes in samples:
+                track.writeframes(samples_bytes)
+                segments.append((timeline/rate, (timeline+frames)/rate, chunk))
+                track.writeframes(b'\0\0' * pause)
+                timeline += frames + pause
+        track.writeframes(b'\0\0' * (240*rate-timeline))
+    return audio, segments
+
+
+def subtitles(plan, measured=None):
+    if measured is None:
+        measured = []
+        for start, end, chunks in plan:
+            count = sum(len(chunk.split()) for chunk in chunks)
+            cursor = start
+            for chunk in chunks:
+                finish = cursor + (end-start) * len(chunk.split())/count
+                measured.append((cursor, finish, chunk))
+                cursor = finish
+    captions = [f'{i}\n{timestamp(start)} --> {timestamp(end)}\n'
+                + '\n'.join(textwrap.wrap(chunk, width=60)) + '\n'
+                for i, (start, end, chunk) in enumerate(measured, 1)]
     (VIDEO / 'OCS_Demo_EN.srt').write_text('\n'.join(captions), encoding='utf-8')
-    return sum(len(p.split()) for p in passages)
+    return sum(len(chunk.split()) for _, _, chunk in measured)
+
+
+def result_card(path):
+    card(path, ['Measured retrieval comparison'], [])
+    image = Image.open(path).convert('RGB')
+    plot = Image.open(VIDEO.parent / 'figures/report_paired_recall.png').convert('RGB')
+    plot.thumbnail((900, 404), Image.Resampling.LANCZOS)
+    image.paste(plot, ((1280-plot.width)//2, 213))
+    image.save(path)
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--narration')
+    narration_options = parser.add_mutually_exclusive_group()
+    narration_options.add_argument('--narration')
+    narration_options.add_argument('--synthetic-preview', action='store_true')
     args = parser.parse_args()
+    with TemporaryDirectory(prefix='ocs-demo-audio-') as temporary:
+        build(args, Path(temporary))
+
+
+def build(args, temporary):
     raw = VIDEO / 'recording/OCS_Demo_Raw.webm'
     if not raw.is_file():
         raise ValueError('The actual browser recording is required')
@@ -84,12 +169,10 @@ def main():
         'Question-Answering System for the', 'Overhead Contact System Field'],
         ['Junkai Huang  |  Leeds SID 201804121', 'Supervisor  Prof. Deqing Huang',
          'Retrieval  /  Edition checks  /  Traceable sources'])
-    card(assets/'conclusion.png', ['Corpus bound evaluation'],
-        ['25 documents  |  100 questions  |  Five configurations',
-         '400 primary first attempt slots',
-         'Source reviews and scoring use the documented assistant protocol',
-         'Technical document learning and consultation'])
-    word_count = subtitles()
+    result_card(assets/'conclusion.png')
+    plan = caption_plan()
+    preview_audio, measured = synthesize(plan, temporary) if args.synthetic_preview else (None, None)
+    word_count = subtitles(plan, measured)
     visual = VIDEO / 'OCS_Demo_EN_Visual_Draft.mp4'
     graph = ('[0:v]fps=30,format=yuv420p,setpts=PTS-STARTPTS[a];'
              '[1:v]fps=30,format=yuv420p,setpts=PTS-STARTPTS[b];'
@@ -97,8 +180,8 @@ def main():
              "[a][b][c]concat=n=3:v=1:a=0,subtitles=OCS_Demo_EN.srt:"
              "force_style='FontName=Calibri,FontSize=18,Outline=1,Shadow=0,MarginV=18'[v]")
     command = [ffmpeg, '-y', '-loop', '1', '-t', '15', '-i', str(assets/'title.png'),
-               '-ss', str(offset), '-t', '210', '-i', str(raw),
-               '-loop', '1', '-t', '15', '-i', str(assets/'conclusion.png'),
+               '-ss', str(offset), '-t', '190', '-i', str(raw),
+               '-loop', '1', '-t', '35', '-i', str(assets/'conclusion.png'),
                '-filter_complex', graph, '-map', '[v]', '-t', '240', '-c:v', 'libx264',
                '-crf', '22', '-preset', 'fast', '-pix_fmt', 'yuv420p',
                '-movflags', '+faststart', str(visual)]
@@ -126,11 +209,25 @@ def main():
                         '-vf', 'tpad=stop_mode=clone:stop_duration=60', '-c:a', 'aac',
                         '-af', 'apad', '-t', str(final_seconds), '-movflags', '+faststart', str(final)],
                        check=True, creationflags=subprocess.CREATE_NO_WINDOW)
+    preview = None
+    if preview_audio:
+        preview = VIDEO / 'OCS_Demo_EN_Synthetic_Voice_Preview.mp4'
+        badge = Image.new('RGB', (420, 42), '#173C68')
+        font = ImageFont.truetype('C:/Windows/Fonts/calibrib.ttf', 21)
+        ImageDraw.Draw(badge).text((13, 9), 'REVIEW PREVIEW  |  SYNTHETIC NARRATION', font=font, fill='white')
+        badge_path = temporary / 'badge.png'
+        badge.save(badge_path)
+        subprocess.run([ffmpeg, '-v', 'error', '-y', '-i', str(visual), '-i', str(preview_audio),
+                        '-i', str(badge_path), '-filter_complex', '[0:v][2:v]overlay=W-w-10:10[v]',
+                        '-map', '[v]', '-map', '1:a:0', '-t', '240', '-c:v', 'libx264', '-crf', '22',
+                        '-preset', 'fast', '-c:a', 'aac', '-movflags', '+faststart', str(preview)], check=True)
     receipt = {'raw_duration_seconds': duration, 'recording_lead_trim_seconds': offset,
                'output_seconds': final_seconds, 'resolution': [1280,720], 'frames_per_second': 30,
                'english_word_count': word_count, 'visual_bytes': visual.stat().st_size,
-               'student_narration_present': bool(final), 'final_video': str(final) if final else None,
-               'remaining_action': None if final else 'Provide the student English narration for final audio integration.'}
+               'student_narration_present': bool(final), 'final_video': final.name if final else None,
+               'synthetic_voice_preview': preview.name if preview else None,
+               'synthetic_voice': 'Microsoft Zira Desktop' if preview else None,
+               'remaining_action': None if final else 'Final narration and course suitability are pending.'}
     (VIDEO/'video_build_receipt.json').write_text(json.dumps(receipt, indent=2), encoding='utf-8')
     print(json.dumps(receipt, indent=2))
 

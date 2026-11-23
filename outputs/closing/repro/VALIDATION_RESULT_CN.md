@@ -19,3 +19,7 @@
 验证使用本机已有Python 3.12.7及锁定依赖，覆盖新解压源码目录和新恢复数据库。独立电脑上的重新安装仍依赖该电脑的Python和包仓库环境。研究资料的许可继续按本机受控交付处理。
 
 详细回执见`verification_receipt.json`和`public_receipt_closing-v1.json`。受控主包与补充包的回执、完整文件清单、解压目录和恢复数据库保存在`project/qa_system/runtime/closing_delivery/closing-v1/`。后续报告、演示文稿和视频由结题材料总索引另行列出。
+
+## 2026-11-23 提交前复核
+
+修订的[公开工程包](OCS_Public_Code_submission-v2.zip)包含显式 UTF-8 读取修复。从全新解压目录导入源码，Windows 默认编码模式及 UTF-8 模式各通过 109 项测试。压缩包校验、实际耗时及源码提交见[Windows验证回执](windows_recheck_receipt.json)。用冻结结果再次复算所有正式指标，结果与原汇总完全一致。24道测试题的48条 B1/B3 输出经过遮蔽配置和原评分的原文复核，所有适用字段一致。复算及复核流水未重新调用模型，原分数和受控快照继续保留。[复核记录](SUBMISSION_RECHECK.md)

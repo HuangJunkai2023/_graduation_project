@@ -38,10 +38,11 @@ The question-answering page opens at `http://127.0.0.1:8501` and the review work
 ## Check the software
 
 ```powershell
+& ./project/qa_system/.venv-win/Scripts/python.exe -X utf8=0 -m pytest project/qa_system/tests -q
 & ./project/qa_system/.venv-win/Scripts/python.exe -X utf8 -m pytest project/qa_system/tests -q
 ```
 
-Tests use isolated fixtures and mocked service responses. The actual interface and research runs have separate dated receipts. The final test count and commit should be read from the accompanying delivery receipt.
+Tests use isolated fixtures and mocked service responses. The actual interface and research runs have separate dated receipts. The final test count and commit are recorded in the Windows recheck and public archive receipts.
 
 ## Restore the controlled research snapshot
 
@@ -77,10 +78,10 @@ The selected corpus is fixed to available permitted files. Formal edition-pair a
 Run after the primary experiment and scoring summary have completed.
 
 ```powershell
-& ./project/qa_system/.venv-win/Scripts/python.exe -X utf8 outputs/closing/repro/build_delivery.py public --version closing-v1
+& ./project/qa_system/.venv-win/Scripts/python.exe -X utf8 outputs/closing/repro/build_delivery.py public --version submission-v2
 & ./project/qa_system/.venv-win/Scripts/python.exe -X utf8 outputs/closing/repro/build_delivery.py controlled --version closing-v1
 ```
 
 The default freeze is `runtime/research/freezes/closing-v1`, with primary results in `runtime/research/results`, the summary in `runtime/research/measured_results.json`, and grades in `runtime/research/scoring/grades.jsonl`. Explicit command options select a different accepted run version.
 
-The public archive and receipt are written under `outputs/closing/repro/`. The controlled archive and receipt are written under `project/qa_system/runtime/closing_delivery/closing-v1/`. The public code archive uses an explicit source allowlist and checks that configured API keys are absent. The controlled archive retains the private research material and is handled through the authorised handover. Each archive receives a SHA-256 digest and ZIP integrity check. The controlled build also verifies a restored database with relocated source paths.
+The public archive and receipt are written under `outputs/closing/repro/`. The controlled archive and receipt are written under `project/qa_system/runtime/closing_delivery/closing-v1/`. The public code archive uses an explicit source allowlist and checks that configured API keys are absent. The controlled archive retains the private research material and is handled through the authorised handover. The submission-v2 public archive includes the Windows encoding fix. Each archive receives a SHA-256 digest and ZIP integrity check. The controlled build also verifies a restored database with relocated source paths.

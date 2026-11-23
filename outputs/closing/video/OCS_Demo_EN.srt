@@ -1,159 +1,171 @@
 1
-00:00:00,000 --> 00:00:09,184
-Hello, I am Junkai Huang from the SWJTU Leeds Joint School.
-My project investigates question answering for Overhead
+00:00:00,450 --> 00:00:06,733
+This demonstration presents Junkai Huang's Overhead Contact
+System standards project at the SWJTU Leeds Joint
 
 2
-00:00:09,184 --> 00:00:18,367
-Contact System standards. The application helps readers
-locate requirements and inspect the evidence behind an
-answer. It combines
+00:00:07,183 --> 00:00:14,341
+School. The application helps readers locate requirements
+and inspect the evidence behind an answer. It
 
 3
-00:00:18,367 --> 00:00:25,000
-document retrieval, standard edition checks, and a heuristic
-Evidence Gate with DeepSeek generation.
+00:00:14,791 --> 00:00:21,224
+combines document retrieval, standard edition checks, and a
+heuristic Evidence Gate with DeepSeek generation.
 
 4
-00:00:25,000 --> 00:00:33,182
+00:00:25,278 --> 00:00:30,507
 The knowledge base contains twenty five selected documents
-and three thousand three hundred and forty one text chunks.
+and three thousand three hundred and forty
 
 5
-00:00:33,182 --> 00:00:41,364
-Each chunk retains its document identity, standard
-identifier, year, and original location. The vector index
-uses BGE M3
+00:00:30,785 --> 00:00:38,188
+one text chunks. Each chunk retains its document identity,
+standard identifier, year, and original location.
 
 6
-00:00:41,364 --> 00:00:49,545
-embeddings. Source files and numerical statements require
-careful checking because document extraction can lose
-conditions or split a
+00:00:38,466 --> 00:00:45,405
+The vector index uses BGE M3 embeddings. Source files and
+numerical statements require careful checking
 
 7
-00:00:49,545 --> 00:00:50,000
+00:00:45,683 --> 00:00:49,722
+because document extraction can lose conditions or split a
 clause.
 
 8
-00:00:50,000 --> 00:00:59,574
+00:00:50,450 --> 00:00:56,338
 Here I select Hybrid retrieval and enable answer generation.
-I ask about the surface quality of cast components
+I ask about the surface quality
 
 9
-00:00:59,574 --> 00:01:09,149
-in the twenty twenty edition of TB slash T twenty seventy
-three. BM25 matches terms and numbers, while
+00:00:56,788 --> 00:01:01,712
+of cast components in the twenty twenty edition of TB slash
+T twenty seventy three.
 
 10
-00:01:09,149 --> 00:01:18,723
-Dense retrieval uses semantic similarity. Hybrid combines
-their normalised scores. Edition filtering restricts the
-requested standard and year.
+00:01:02,162 --> 00:01:10,180
+BM25 matches terms and numbers, while Dense retrieval uses
+semantic similarity. Hybrid combines their normalised
 
 11
-00:01:18,723 --> 00:01:28,298
-The Evidence Gate then screens the retrieved passages using
-lexical coverage or raw cosine similarity. DeepSeek receives
-the
+00:01:10,630 --> 00:01:17,673
+scores. Edition filtering restricts the requested standard
+and year. The Evidence Gate then screens the
 
 12
-00:01:28,298 --> 00:01:37,872
-selected passages and returns structured factual claims with
-citations. These thresholds were selected using the
-development set before
+00:01:18,123 --> 00:01:25,356
+retrieved passages using lexical coverage or raw cosine
+similarity. DeepSeek receives the selected passages and
 
 13
-00:01:37,872 --> 00:01:40,000
-the study was frozen.
+00:01:25,806 --> 00:01:32,664
+returns structured factual claims with citations. These
+thresholds were selected using the development set before
 
 14
-00:01:40,000 --> 00:01:50,328
-I can expand a source to read the stored passage and its
-location. Opening the original PDF page
+00:01:33,114 --> 00:01:34,913
+the study was frozen.
 
 15
-00:01:50,328 --> 00:02:00,656
-lets the reader compare the answer with the document. The
-application checks citation identifiers and literal
-excerpts. Semantic
+00:01:40,450 --> 00:01:45,454
+I can expand a source to read the stored passage and its
+location. Opening the
 
 16
-00:02:00,656 --> 00:02:10,984
-support still requires source review, including numerical
-values, units and applicable conditions. A plausible answer
-can contain an
+00:01:45,904 --> 00:01:52,132
+original PDF page lets the reader compare the answer with
+the document. The application checks
 
 17
-00:02:10,984 --> 00:02:15,000
-omission even when its citation text exists.
+00:01:52,582 --> 00:02:01,335
+citation identifiers and literal excerpts. Semantic support
+still requires source review, including numerical values,
+units
 
 18
-00:02:15,000 --> 00:02:23,182
-Next, I ask about the twenty ten edition. This edition is
-absent from the selected knowledge base. The
+00:02:01,785 --> 00:02:07,968
+and applicable conditions. A plausible answer can contain an
+omission even when its citation text
 
 19
-00:02:23,182 --> 00:02:31,364
-system reports the missing edition and identifies the
-available year. This example checks whether the requested
-document context
+00:02:08,418 --> 00:02:09,942
+exists.
 
 20
-00:02:31,364 --> 00:02:39,545
-is preserved during a follow up. The study currently has no
-verified same family pair of formal editions,
+00:02:15,450 --> 00:02:21,088
+Next, I ask about the twenty ten edition. This edition is
+absent from the selected
 
 21
-00:02:39,545 --> 00:02:45,000
-which limits the conclusions that can be drawn about cross
-edition selection.
+00:02:21,538 --> 00:02:28,407
+knowledge base. The system reports the missing edition and
+identifies the available year. This example
 
 22
-00:02:45,000 --> 00:02:54,474
-I now clear the conversation and ask a weather question. The
-available standards do not provide the required
+00:02:28,857 --> 00:02:34,690
+checks whether the requested document context is preserved
+during a follow up. The study currently
 
 23
-00:02:54,474 --> 00:03:03,947
-evidence, so the application refuses to give a standards
-based answer. The Gate uses heuristic signals and can
+00:02:35,140 --> 00:02:40,618
+has no verified same family pair of formal editions, which
+limits the conclusions that can
 
 24
-00:03:03,947 --> 00:03:13,421
-accept unsuitable evidence or reject useful evidence. Its
-effect therefore needs to be assessed together with answer
-coverage
+00:02:41,068 --> 00:02:43,647
+be drawn about cross edition selection.
 
 25
-00:03:13,421 --> 00:03:15,000
-and false refusals.
+00:02:45,450 --> 00:02:51,048
+I now clear the conversation and ask a weather question. The
+available standards do not
 
 26
-00:03:15,000 --> 00:03:24,310
-The evaluation uses twenty development questions and eighty
-held out test questions. Five configurations compare BM25,
-Dense and
+00:02:51,498 --> 00:02:57,752
+provide the required evidence, so the application refuses to
+give a standards based answer. The
 
 27
-00:03:24,310 --> 00:03:33,621
-Hybrid retrieval, then remove edition checks or the Evidence
-Gate individually. The primary experiment contains four
-hundred first
+00:02:58,202 --> 00:03:04,675
+Gate uses heuristic signals and can accept unsuitable
+evidence or reject useful evidence. Its effect
 
 28
-00:03:33,621 --> 00:03:42,931
-attempt slots, with failures retained. Source reviews and
-scoring follow the documented assistant review protocol. The
-report presents
+00:03:05,125 --> 00:03:09,368
+therefore needs to be assessed together with answer coverage
+and false refusals.
 
 29
-00:03:42,931 --> 00:03:52,241
-measured results, uncertainty and failure cases, including
-the limitations of this evaluation method. The system
-supports technical document
+00:03:15,181 --> 00:03:21,854
+The study uses twenty development and eighty test questions.
+Five configurations yield four hundred first
 
 30
-00:03:52,241 --> 00:04:00,000
-learning and consultation. Readers must verify the original
-documents before practical engineering use. Thank you.
+00:03:22,035 --> 00:03:24,819
+attempts, including failures.
+
+31
+00:03:25,450 --> 00:03:31,344
+The chart shows paired differences in recall at five. Hybrid
+exceeded Dense by eighteen point
+
+32
+00:03:31,794 --> 00:03:39,617
+seven five percentage points. BM25 had the highest measured
+recall and complete correctness. The checks
+
+33
+00:03:40,067 --> 00:03:45,925
+on edition and evidence showed no measured incremental
+benefit on these questions. Scoring and the
+
+34
+00:03:46,375 --> 00:03:54,203
+masked recheck shared the assistant workflow. The system
+supports document consultation. Consult the original
+standard
+
+35
+00:03:54,653 --> 00:03:57,897
+and seek qualified review for engineering decisions.

@@ -32,19 +32,46 @@ def check_markdown_links(path):
     assert not missing, (str(path), missing)
 
 
+def check_video(receipt_path, kind):
+    video = read_json(CLOSING / receipt_path)
+    path = CLOSING / 'video' / video['video']
+    assert digest(path) == video['video_sha256']
+    assert path.stat().st_size == video['bytes'] <= 200_000_000
+    assert video['full_decode_exit_code'] == 0 and not video['decode_errors']
+    playback = video['browser_playback']
+    assert playback['ended'] and not playback['mediaError']
+    assert playback['duration'] == 240 and (playback['width'], playback['height']) == (1280, 720)
+    assert video['frames_per_second'] == 30 and video['narration_kind'] == kind
+    assert not video['student_narration_present'] and video['audio_stream_present'] == (kind == 'synthetic')
+    if kind == 'synthetic':
+        assert video['cue_count'] > 0 and 205 < video['last_cue_end_seconds'] <= playback['duration']
+        assert video['narration_peak_dbfs'] > -60
+    return playback['duration']
+
+
 def main():
     measured = read_json(ROOT / 'outputs/research/closing-experiment/measured_results.json')
     assert measured['status'] == 'source_reviewed'
     assert measured['review_methods'] == {'assistant_source_review': 296}
     assert measured['configurations']['B3']['recall_at_5']['numerator'] == 61
     assert measured['configurations']['B3']['answer_correctness']['numerator'] == 57
+    recheck = read_json(CLOSING / 'repro/submission_recheck.json')
+    assert recheck['freeze_sha256'] == measured['freeze_sha256']
+    assert len(recheck['sampled_question_ids']) == 24
+    assert recheck['outputs'] == recheck['outputs_agreeing_on_all_applicable_fields'] == 48
+    assert recheck['formal_metrics_recomputed_identically'] and recheck['api_requests'] == 0
     report = read_json(CLOSING / 'source/generated/Final_Report_QA.json')
-    assert [row['pages'] for row in report['artifacts']] == [5, 8]
+    report_pages, combined_pages = [row['pages'] for row in report['artifacts']]
+    assert 6 <= report_pages <= report['technical_report_page_limit'] == 7
+    assert combined_pages == report_pages + 3
+    assert report['visual_review']['standalone_pages'] == list(range(1, report_pages + 1))
     for row in report['artifacts']:
         for extension in ['docx', 'pdf']:
             assert digest(CLOSING / 'source/generated' / (row['artifact'] + '.' + extension)) == row[extension + '_sha256']
     viva = read_json(CLOSING / 'viva/validation/final_validation.json')
     assert (viva['main_slides'], viva['backup_slides'], viva['bilingual_notes']) == (15, 3, 18)
+    for name, sha in viva['artifact_sha256'].items():
+        assert digest(CLOSING / 'viva' / name) == sha
     namespace = {'a': 'http://schemas.openxmlformats.org/drawingml/2006/main'}
     with zipfile.ZipFile(CLOSING / 'viva/OCS_Viva_EN.pptx') as archive:
         assert archive.testzip() is None
@@ -59,18 +86,26 @@ def main():
         for name in notes:
             text = ' '.join(node.text or '' for node in ET.fromstring(archive.read(name)).findall('.//a:t', namespace))
             assert re.search(r'[\u4e00-\u9fff]', text) and 'English' in text
-    video = read_json(CLOSING / 'video/qa/validation.json')
-    assert digest(CLOSING / 'video' / video['video']) == video['video_sha256']
-    assert video['full_decode_exit_code'] == 0 and not video['decode_errors']
-    assert video['browser_playback']['ended'] and video['browser_playback']['duration'] == 240
-    assert video['browser_playback']['width'] == 1280 and video['browser_playback']['height'] == 720
-    assert not video['student_narration_present'] and not video['audio_stream_present']
+    demo_seconds = check_video('video/qa/validation.json', 'none')
+    preview_seconds = check_video('video/qa/synthetic-preview/validation.json', 'synthetic')
     repro = read_json(CLOSING / 'repro/verification_receipt.json')
     assert repro['recomputed_summary_identical'] and repro['api_requests'] == 0
     assert repro['extracted_source_tests']['passed'] == 109
     public_zip = CLOSING / 'repro/OCS_Public_Code_closing-v1.zip'
     assert digest(public_zip) == repro['public_zip_sha256']
-    for path in [CLOSING / 'README.md', ROOT / 'outputs/research/STATUS_CN.md']:
+    windows = read_json(CLOSING / 'repro/windows_recheck_receipt.json')
+    assert digest(CLOSING / 'repro' / windows['public_zip']) == windows['public_zip_sha256']
+    assert set(windows['modes']) == {'utf8=0', 'utf8'}
+    assert all(mode['passed'] == 109 and mode['extracted_import'] for mode in windows['modes'].values())
+    portfolio = read_json(CLOSING / 'portfolio/Portfolio_Manifest.json')
+    assert portfolio['missing_review_documents'] == list(range(1, 11))
+    assert portfolio['approved_review_documents_confirmed'] == 0
+    journal_count = sum(record['status'] == 'local_draft' for record in portfolio['records'])
+    assert journal_count == 6
+    for record in portfolio['records']:
+        assert digest(ROOT / record['path']) == record['sha256']
+    for path in [CLOSING / 'README.md', CLOSING / 'portfolio/Portfolio_Evidence_Status.md',
+                 ROOT / 'outputs/research/STATUS_CN.md']:
         check_markdown_links(path)
     services = {}
     for port in [8501, 8502]:
@@ -84,11 +119,16 @@ def main():
         'primary_slots': 400,
         'scored_blind_tuples': 296,
         'recovery_slots_separate': 9,
-        'program_tests_passed': 109,
-        'report_pages': 5,
-        'combined_review_pages': 8,
+        'program_tests_passed_by_windows_encoding': {flag: row['passed'] for flag, row in windows['modes'].items()},
+        'masked_recheck_outputs_agreeing': recheck['outputs_agreeing_on_all_applicable_fields'],
+        'metric_recomputation_api_requests': recheck['api_requests'],
+        'report_pages': report_pages,
+        'combined_review_pages': combined_pages,
         'viva_pages_and_bilingual_notes': 18,
-        'visual_demo_seconds': 240,
+        'visual_demo_seconds': demo_seconds,
+        'synthetic_narration_preview_seconds': preview_seconds,
+        'local_journal_drafts': journal_count,
+        'approved_review_documents_confirmed': portfolio['approved_review_documents_confirmed'],
         'service_health': services,
         'pending': ['Student English audio and final audio-video review',
                     'Actual Portfolio Review Documents and supervisor approvals',

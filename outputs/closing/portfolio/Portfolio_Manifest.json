@@ -1,5 +1,5 @@
 {
-  "checked_on": "2026-11-12",
+  "checked_on": "2026-11-23",
   "scope": "Available local records only",
   "records": [
     {
@@ -18,13 +18,30 @@
       "status": "local_draft"
     },
     {
+      "path": "docs/progress_journal/WEEK_11.md",
+      "sha256": "ad597d2af548c41c871f01366a593da33152d1011e7298beb5baefa9dcfec936",
+      "status": "local_draft"
+    },
+    {
+      "path": "docs/progress_journal/WEEK_12.md",
+      "sha256": "c4c19943f1200374885ff39f7aab314e1ef8568e181ce838c38b249bbec4d9d7",
+      "status": "local_draft",
+      "prepared_in_advance_on": "2026-11-17"
+    },
+    {
+      "path": "docs/progress_journal/WEEK_13.md",
+      "sha256": "c3d583be51d0abe1f218c277b8df647c00eaa92802173882a1b238919ea999b4",
+      "status": "local_draft",
+      "prepared_in_advance_on": "2026-11-17"
+    },
+    {
       "path": "docs/progress_journal/SUPERVISION_LOG.md",
       "sha256": "29bb9d5c7df8cf3f1c7f62ed71a72413a30c2ecf1506a35248cba77a3e774192",
       "status": "local_register"
     },
     {
       "path": "docs/progress_journal/EVIDENCE_INDEX.md",
-      "sha256": "0a89769b387eff02dde5c27732eff8e23415b45692cebf58ac3491b7da52e0d9",
+      "sha256": "03cc22de69696baf085288a394c0baa4665c1d0f5b7433822238469575859c4d",
       "status": "local_register"
     }
   ],
@@ -40,5 +57,15 @@
     8,
     9,
     10
+  ],
+  "status": "review_draft",
+  "institutional_items_pending": [
+    "assessor",
+    "student_signed_declaration",
+    "confirmed_one_drive_link",
+    "student_narration_or_course_permission",
+    "journal_publication",
+    "symposium_evidence",
+    "submission_receipt"
   ]
 }

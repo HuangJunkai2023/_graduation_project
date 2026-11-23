@@ -1,15 +1,23 @@
 {
-  "checked_at": "2026-11-12T11:10:21.476394+00:00",
+  "checked_at": "2026-11-23T06:12:15.489690+00:00",
   "status": "technical_delivery_review_ready",
   "freeze_sha256": "929f09cbd8fa1add989543488045a3fbb92fc913014b7c545ed2741120865fe6",
   "primary_slots": 400,
   "scored_blind_tuples": 296,
   "recovery_slots_separate": 9,
-  "program_tests_passed": 109,
-  "report_pages": 5,
-  "combined_review_pages": 8,
+  "program_tests_passed_by_windows_encoding": {
+    "utf8=0": 109,
+    "utf8": 109
+  },
+  "masked_recheck_outputs_agreeing": 48,
+  "metric_recomputation_api_requests": 0,
+  "report_pages": 6,
+  "combined_review_pages": 9,
   "viva_pages_and_bilingual_notes": 18,
   "visual_demo_seconds": 240,
+  "synthetic_narration_preview_seconds": 240,
+  "local_journal_drafts": 6,
+  "approved_review_documents_confirmed": 0,
   "service_health": {
     "8501": "ok",
     "8502": "ok"

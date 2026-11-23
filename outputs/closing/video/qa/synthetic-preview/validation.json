@@ -1,0 +1,38 @@
+{
+  "video": "OCS_Demo_EN_Synthetic_Voice_Preview.mp4",
+  "video_sha256": "183b7ac287774a2be79ae80033019f5ed0f97cc80c379771e6b482ed1dbd0d67",
+  "bytes": 6209432,
+  "full_decode_exit_code": 0,
+  "decode_errors": "",
+  "sample_seconds": [
+    10,
+    30,
+    50,
+    70,
+    90,
+    110,
+    130,
+    150,
+    170,
+    190,
+    210,
+    230
+  ],
+  "frames_per_second": 30.0,
+  "audio_stream_present": true,
+  "narration_kind": "synthetic",
+  "student_narration_present": false,
+  "browser_playback": {
+    "ended": true,
+    "duration": 240,
+    "width": 1280,
+    "height": 720,
+    "mediaError": null,
+    "playbackRate": 16,
+    "video_sha256": "183b7ac287774a2be79ae80033019f5ed0f97cc80c379771e6b482ed1dbd0d67",
+    "checked_at": "2026-11-23T06:10:29.343Z"
+  },
+  "narration_peak_dbfs": -2.2,
+  "cue_count": 35,
+  "last_cue_end_seconds": 237.897
+}
