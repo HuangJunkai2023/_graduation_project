@@ -214,7 +214,7 @@ def test_evaluation_matches_quote_not_just_page(store,tmp_path):
     output=tmp_path/"results.jsonl"
     summary=run_evaluation(Pipeline(store,FakeClient()),dataset,output)
     assert summary["metrics"]["recall_at_5"]==1 and summary["questions"]==1
-    assert json.loads(output.read_text())["manual_grade"]["answer_correct"] is None
+    assert json.loads(output.read_text(encoding="utf-8"))["manual_grade"]["answer_correct"] is None
     with pytest.raises(ValueError): run_evaluation(Pipeline(store,FakeClient()),dataset,output)
 
 
