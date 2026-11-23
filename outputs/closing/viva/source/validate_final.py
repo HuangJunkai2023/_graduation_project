@@ -1,4 +1,5 @@
 """Check final Viva notes, script alignment and delivered page count."""
+from argparse import ArgumentParser
 import json
 from pathlib import Path
 import posixpath
@@ -10,13 +11,10 @@ import pymupdf
 from lxml import etree
 
 
-def main():
-    output = Path('outputs/closing/viva')
-    workspace = Path('project/qa_system/runtime/closing_ppt_workspace')
-    source = output / 'source'
+def main(output, workspace, source):
     for folder in ('authoring-svg-flat', 'notes'):
         target = source / folder
-        target.mkdir(exist_ok=True)
+        target.mkdir(parents=True, exist_ok=True)
         for item in (workspace / folder).glob('closing_*'):
             shutil.copy2(item, target / item.name)
     for name in ('page_plan.json', 'animations.json'):
@@ -56,6 +54,10 @@ def main():
     for number, note in enumerate(note_texts, start=1):
         expected = (workspace / 'notes' / f'closing_{number:02}.md').read_text(encoding='utf-8')
         assert ''.join(expected.split()) in ''.join(note.split())
+    mapping = json.loads((output / 'content_mapping.json').read_text(encoding='utf-8'))
+    assert [row['page'] for row in mapping] == list(range(1, 19))
+    assert '48/48' in pdf[13].get_text()
+    assert 'BM25 is the best-supported default' in pdf[12].get_text()
     result = {
         'status': 'passed_with_inherited_font_advisory',
         'main_slides': 15,
@@ -63,8 +65,7 @@ def main():
         'pdf_pages': len(pdf),
         'bilingual_notes': len(notes),
         'script_pages': script_pages,
-        'individually_visually_reviewed_pages': list(range(1, 19)),
-        'planned_speaking_seconds': 436,
+        'planned_speaking_seconds': sum(row['seconds'] for row in mapping),
         'native_editable_text': True,
         'svg_quality': '18 pages passed, no errors or warnings',
         'pptx_package': 'passed, no relationship errors',
@@ -87,4 +88,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    parser = ArgumentParser(description=__doc__)
+    parser.add_argument('--output', type=Path, default=Path('outputs/closing/viva'))
+    parser.add_argument('--workspace', type=Path, default=Path('project/qa_system/runtime/closing_ppt_workspace'))
+    parser.add_argument('--source', type=Path)
+    args = parser.parse_args()
+    main(args.output, args.workspace, args.source or args.output / 'source')

@@ -3,12 +3,12 @@
   "converter": "ppt_to_md.py",
   "conversion_type": "pptx",
   "source": {
-    "path": "D:/_graduation_project/outputs/closing/viva/OCS_Viva_EN.pptx",
+    "path": "D:/_graduation_project/project/qa_system/runtime/closing_delivery/submission-revision/viva/OCS_Viva_EN.pptx",
     "name": "OCS_Viva_EN.pptx",
     "suffix": ".pptx",
     "kind": "file",
     "exists": true,
-    "size_bytes": 16337634
+    "size_bytes": 16337802
   },
   "outputs": {
     "markdown": "readback.md",
@@ -17,8 +17,8 @@
     "image_count": 11
   },
   "markdown": {
-    "line_count": 680,
-    "char_count": 13325,
+    "line_count": 686,
+    "char_count": 13465,
     "heading_count": 37,
     "table_count": 0,
     "image_ref_count": 14,

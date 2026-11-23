@@ -1,6 +1,6 @@
 # Viva presentation source
 
-The editable presentation uses the retained SWJTU native slide design. Its 15 main slides and three backup slides are populated from the completed scored study, selected calibration, recorded failure cases and an actual local interface screenshot. The speaking plan totals 436 seconds.
+The editable presentation uses the retained SWJTU native slide design. Its 15 main slides and three backup slides are populated from the completed scored study, selected calibration, the masked recheck, source-bound failure cases and an actual local interface screenshot. The speaking plan totals 436 seconds.
 
 `build_viva.py` writes a PPT Master round-trip page plan, native-editable SVG content and bilingual notes. It also writes the matching Chinese–English script and question bank. It requires completed measured results and a source-bound case file.
 
@@ -18,4 +18,4 @@ Convert the final PPTX to PDF with local LibreOffice using a dedicated profile. 
 
 `validate_final.py` confirms the final eighteen-slide PDF, slide-to-note relationships and bilingual note alignment, then snapshots the authoring overlay and writes `validation/final_validation.json`. The final package checker reports an inherited font-portability advisory for Microsoft YaHei and Japanese theme font declarations. The local render has no observed font/layout defects. Font availability on another computer remains unverified.
 
-The final metrics table and RQ findings are measured observations from the frozen five-configuration study. The slides retain assistant source-review provenance, the shared author/evaluator limitation, six-document question coverage and the absence of verified same-family formal edition pairs.
+The final metrics table and RQ findings are measured observations from the frozen five-configuration study. The slides retain assistant source-review provenance, the shared author/evaluator limitation, six-document question coverage and the absence of verified same-family formal edition pairs. Slide 11 locates the torque-instrument case in the original PDF. Slide 13 identifies BM25 as the best-supported default for this corpus and retains Hybrid as an option.

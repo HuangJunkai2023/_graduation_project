@@ -1,30 +1,38 @@
 {
   "status": "review_ready",
   "technical_report_page_limit": 7,
-  "word_count_including_tables_and_references": 3537,
+  "word_count_including_tables_and_references": 4013,
   "rendering": "LibreOffice 25.8.7.3, source geometry and styles retained",
   "artifacts": [
     {
       "artifact": "OCS_Final_Report_EN",
-      "pages": 5,
-      "docx_sha256": "8fd6b3554760692767765da4843743fe4d2b083680e9e311471f64a532d49c6e",
-      "pdf_sha256": "3cbfdb24d247903725163a3576970d924757dc49893aca11ec4c6e542d679d8f",
+      "pages": 6,
+      "docx_sha256": "77668ca16578fca51ba7bceb2b585a542cbe73fd7ee41ac0e123cf93779d830c",
+      "pdf_sha256": "7e67bf91a8a35002c895413e6ae1942ef7abe53f75ffbf13bf1c069052188930",
       "modified_template_parts": [
+        "word/_rels/document.xml.rels",
         "word/document.xml"
       ],
-      "visual_review": "All 5 final pages inspected individually",
-      "visual_findings": "No clipped text, overlapping elements, unreadable tables or missing glyphs observed."
+      "added_figure_parts": [
+        "word/media/image4.png",
+        "word/media/image5.png"
+      ],
+      "rendered_page_images": 6
     },
     {
       "artifact": "OCS_Submission_Review_Draft",
-      "pages": 8,
-      "docx_sha256": "5a205f4b1d48b5e32b2dcfc341453cba0b9b13388004347796020af613ff13cf",
-      "pdf_sha256": "ac3fe8d0248f36d10a235d14e2641c2c5a3ac7c3f9a2e0c7a53a9ad25017fe97",
+      "pages": 9,
+      "docx_sha256": "bd43d2830eb9227a87104af1392fab2cdf679d337f420ca878220f1e31de490a",
+      "pdf_sha256": "4499cde8efc3ed9e4cdf2e9d3feb102c7e9d11f48b8256b88b58a10c00007d35",
       "modified_template_parts": [
+        "word/_rels/document.xml.rels",
         "word/document.xml"
       ],
-      "visual_review": "All 8 final pages inspected individually",
-      "visual_findings": "No clipped text, overlapping elements, unreadable tables or missing glyphs observed."
+      "added_figure_parts": [
+        "word/media/image4.png",
+        "word/media/image5.png"
+      ],
+      "rendered_page_images": 9
     }
   ],
   "source_review_method": "assistant_source_review",
@@ -41,5 +49,36 @@
     "student audio",
     "OneDrive access link",
     "actual submission"
-  ]
+  ],
+  "visual_review": {
+    "reviewed_on": "2026-11-23",
+    "standalone_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "additional_combined_pages": [
+      1,
+      2,
+      9
+    ],
+    "combined_body_pages_pixel_identical_to_standalone": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "focus": [
+      "template geometry",
+      "figure legibility",
+      "column and reference flow",
+      "repeated learning outcome header",
+      "unsigned and pending fields"
+    ]
+  }
 }

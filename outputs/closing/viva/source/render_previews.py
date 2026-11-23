@@ -1,10 +1,14 @@
 """Render the exported Viva PDF and check its page geometry."""
+from argparse import ArgumentParser
 from pathlib import Path
 import json
 import pymupdf
 from PIL import Image, ImageDraw
 
-root = Path(__file__).resolve().parents[1]
+parser = ArgumentParser(description=__doc__)
+parser.add_argument('--output', type=Path, default=Path(__file__).resolve().parents[1])
+root = parser.parse_args().output
+(root / 'validation').mkdir(exist_ok=True)
 preview = root / 'previews'
 preview.mkdir(exist_ok=True)
 document = pymupdf.open(root / 'OCS_Viva_EN.pdf')

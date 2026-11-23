@@ -2,8 +2,8 @@
   "schema": "ppt-master.pptx-delivery-check.v1",
   "status": "passed-with-advisories",
   "file": {
-    "path": "D:\\_graduation_project\\outputs\\closing\\viva\\OCS_Viva_EN.pptx",
-    "bytes": 16337634
+    "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva\\OCS_Viva_EN.pptx",
+    "bytes": 16337802
   },
   "package": {
     "zip_integrity": "passed",
@@ -53,7 +53,7 @@
       "latin": [
         {
           "value": "Arial",
-          "count": 262
+          "count": 265
         },
         {
           "value": "+mn-lt",
@@ -75,7 +75,7 @@
       "ea": [
         {
           "value": "Arial",
-          "count": 212
+          "count": 215
         },
         {
           "value": "微软雅黑",
@@ -93,7 +93,7 @@
       "cs": [
         {
           "value": "Arial",
-          "count": 212
+          "count": 215
         },
         {
           "value": "+mn-ea",
@@ -256,8 +256,8 @@
     "external": [],
     "uncompressed_bytes": 16223312,
     "archive_compressed_bytes": 16199929,
-    "share_of_archive": 0.991571,
-    "share_of_uncompressed_parts": 0.964495,
+    "share_of_archive": 0.991561,
+    "share_of_uncompressed_parts": 0.96432,
     "top_contributors": [
       {
         "part": "ppt/media/image9.jpeg",

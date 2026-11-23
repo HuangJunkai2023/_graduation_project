@@ -40,7 +40,15 @@ Why can Hybrid fail to improve retrieval?
 
 Semantic similarity can introduce passages on the same topic that do not support the question. Normalisation and weighting also change ranking. The frozen questions, evidence labels and paired intervals determine the observed effect.
 
-## 6. Evidence Gate怎样工作？
+## 6. 现场默认选什么？
+
+Which retriever would you select by default?
+
+对这个语料和已有测试，BM25的召回与完整正确率最高，而且无需额外查询向量请求。标准号或部件已知时建议优先BM25。Hybrid保留为可选模式，后续可专门调查同义改写。
+
+BM25 produced the highest measured recall and complete correctness on this corpus and requires no query embedding request. It is the supported default for known standard numbers or component names. Hybrid remains selectable for future research on paraphrased queries.
+
+## 7. Evidence Gate怎样工作？
 
 How does the Evidence Gate work?
 
@@ -48,7 +56,7 @@ How does the Evidence Gate work?
 
 A candidate passes when lexical coverage reaches 0.20 or raw cosine reaches 0.50. These development-selected thresholds provide heuristic evidence screening.
 
-## 7. 门控能消除幻觉吗？
+## 8. 门控能消除幻觉吗？
 
 Can the gate eliminate unsupported answers?
 
@@ -56,7 +64,7 @@ Can the gate eliminate unsupported answers?
 
 Heuristic signals can accept irrelevant evidence or reject useful evidence. Evaluation therefore includes unsupported answers, refusal recall, false refusal and answer coverage, alongside claim-level semantic review.
 
-## 8. 怎样验证版本正确？
+## 9. 怎样验证版本正确？
 
 How is edition handling evaluated?
 
@@ -64,7 +72,7 @@ How is edition handling evaluated?
 
 The system extracts the standard family and year from metadata and the request. A missing explicit edition triggers an early return. A1 removes year-related checks while retaining family filtering, enabling a comparison on unambiguous edition requests.
 
-## 9. 没有两个正式版本怎么办？
+## 10. 没有两个正式版本怎么办？
 
 What follows from the missing formal edition pairs?
 
@@ -72,7 +80,7 @@ What follows from the missing formal edition pairs?
 
 The conclusions cover available editions and unavailable-year requests in this corpus. Verified historical editions and hypothetical inputs are recorded separately. Evaluating selection between multiple formal editions requires additional usable documents and a repeated frozen comparison.
 
-## 10. 100道题是否足够？
+## 11. 100道题是否足够？
 
 What can a 100-question benchmark establish?
 
@@ -80,7 +88,7 @@ What can a 100-question benchmark establish?
 
 The size supports a fixed-corpus undergraduate comparison. The test set contains eighty items and the question facts come from six documents. Group-bootstrap intervals, category counts and coverage limitations are therefore retained.
 
-## 11. 五组实验怎样保证公平？
+## 12. 五组实验怎样保证公平？
 
 How are the five configurations controlled?
 
@@ -88,7 +96,7 @@ How are the five configurations controlled?
 
 The configurations share the corpus, chunks, generation settings, Top-K and scoring rules. A1 retains family filtering, and A2 retains prompts and citation validation. First-attempt failures remain recorded and recoveries have separate attempt identities.
 
-## 12. 答案由谁评分？
+## 13. 答案由谁评分？
 
 Who reviewed the benchmark and answers?
 
@@ -96,7 +104,7 @@ Who reviewed the benchmark and answers?
 
 Under the amended arrangement, the Codex assistant reviewed the original sources and retained the executor, time, method and reasoning. Benchmark preparation and evaluation used the same assistant system. Independent human or domain-expert validation remains further work.
 
-## 13. 正式结果是什么？
+## 14. 正式结果是什么？
 
 What are the principal measured observations?
 
@@ -104,7 +112,15 @@ B3的Recall@5为95.3%，完整正确率为89.1%。B3与A1错版本率分别为0.
 
 B3 has Recall at five of 95.3% and complete answer correctness of 89.1%. Wrong-edition rates for B3 and A1 are 0.0% and 0.0%. Interpretation includes the denominators and paired intervals.
 
-## 14. 怎样复现实验？
+## 15. 抽样复核能说明什么？
+
+What does the masked recheck establish?
+
+从测试集分层抽24题，遮蔽配置名和原评分后复核48个保存输出，48个的适用字段一致。两轮共享助手工作流，结果表明这次抽样复核的一致性。
+
+The recheck sampled twenty-four held-out questions. With configurations and original labels masked, all applicable judgements agreed for 48 of 48 saved outputs. Both passes used the same assistant workflow, so this measures consistency on the selected sample.
+
+## 16. 怎样复现实验？
 
 How can the experiment be reproduced?
 
@@ -112,7 +128,7 @@ How can the experiment be reproduced?
 
 Use the frozen questions, corpus and vector fingerprints, code, environment and model settings. Saved first-attempt outputs and grades permit offline metric recomputation. New online generations can be affected by changes in the external model service.
 
-## 15. Embedding接口不能使用怎么办？
+## 17. Embedding接口不能使用怎么办？
 
 What happens if the embedding service fails?
 
@@ -120,7 +136,7 @@ What happens if the embedding service fails?
 
 Stored document vectors remain local and BM25 remains available. Dense and Hybrid require query vectors from the configured model. Service failures are recorded explicitly and recovered runs retain separate identities.
 
-## 16. 文档与外部API有哪些注意事项？
+## 18. 文档与外部API有哪些注意事项？
 
 How are documents and external API processing handled?
 

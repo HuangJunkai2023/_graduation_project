@@ -24,26 +24,6 @@
     17,
     18
   ],
-  "individually_visually_reviewed_pages": [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18
-  ],
   "planned_speaking_seconds": 436,
   "native_editable_text": true,
   "svg_quality": "18 pages passed, no errors or warnings",
@@ -63,5 +43,10 @@
     "no verified same-family formal edition pairs",
     "benchmark facts drawn from six corpus documents",
     "no observed incremental RQ2 or RQ3 improvement"
-  ]
+  ],
+  "artifact_sha256": {
+    "OCS_Viva_EN.pptx": "9d0ac174b52a3de13c805ea02abb19a1c769acf1ff4d3b48b9a354a45475aff9",
+    "OCS_Viva_EN.pdf": "f0424fcfe83b0bc470eb8bfe656583196b50e887233a72466d5ae642c73f0252",
+    "OCS_Viva_CN_EN_Script.md": "40299a18524204939a3a31e1bea18d4f70aa41938cfe0b9efcf1ab96010fb122"
+  }
 }

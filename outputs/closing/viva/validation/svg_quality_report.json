@@ -1,10 +1,10 @@
 {
   "schema": "ppt-master.svg-quality-report.v1",
   "stage": "final",
-  "target": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace",
+  "target": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace",
   "source_fingerprint": {
     "algorithm": "sha256",
-    "digest": "3cf302f33fa9ae70f7913a53f69baa9343b89c45f312a162237495446e634f0a",
+    "digest": "f527c59448ccf3ba302a2a6617d508ab3b7d989c5cff33fe06012357a7062cb6",
     "file_count": 39,
     "files": [
       {
@@ -57,11 +57,11 @@
       },
       {
         "file": "authoring-svg-flat/closing_13.svg",
-        "sha256": "741778b5dcbf919b883357ec40143e2cd7d9cb7bc8b231e13ba858759f3b08d5"
+        "sha256": "749cb3ec171a0aa08048cc43af718a25f4c1cff9f2cc78e98edf2c4ac5ecfdf9"
       },
       {
         "file": "authoring-svg-flat/closing_14.svg",
-        "sha256": "c5cb985cbcce80bd1c3a0106f98402f2225a897c5dfa15ef146ec6fec1941fcd"
+        "sha256": "5e6ee9de69759cc970a7ad3f100b61eadbba27325c2c3c9fe172945a75b445c4"
       },
       {
         "file": "authoring-svg-flat/closing_15.svg",
@@ -69,7 +69,7 @@
       },
       {
         "file": "authoring-svg-flat/closing_16.svg",
-        "sha256": "aa74e5688f09422eb18f27de2ede4ce67df3c102766c128f9779bcead4bb834d"
+        "sha256": "dba5a02dae7dc16b9a9a87dfe00788f9141f0c80270474bd86fa3556d089e75d"
       },
       {
         "file": "authoring-svg-flat/closing_17.svg",
@@ -242,7 +242,7 @@
   "files": [
     {
       "file": "closing_01.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_01.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_01.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -262,7 +262,7 @@
     },
     {
       "file": "closing_02.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_02.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_02.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -282,7 +282,7 @@
     },
     {
       "file": "closing_03.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_03.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_03.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -302,7 +302,7 @@
     },
     {
       "file": "closing_04.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_04.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_04.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -322,7 +322,7 @@
     },
     {
       "file": "closing_05.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_05.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_05.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -345,7 +345,7 @@
     },
     {
       "file": "closing_06.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_06.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_06.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -365,7 +365,7 @@
     },
     {
       "file": "closing_07.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_07.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_07.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -388,7 +388,7 @@
     },
     {
       "file": "closing_08.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_08.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_08.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -411,7 +411,7 @@
     },
     {
       "file": "closing_09.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_09.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_09.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -431,7 +431,7 @@
     },
     {
       "file": "closing_10.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_10.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_10.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -454,7 +454,7 @@
     },
     {
       "file": "closing_11.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_11.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_11.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -477,7 +477,7 @@
     },
     {
       "file": "closing_12.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_12.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_12.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -497,7 +497,7 @@
     },
     {
       "file": "closing_13.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_13.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_13.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -516,11 +516,11 @@
         }
       },
       "passed": true,
-      "source_sha256": "741778b5dcbf919b883357ec40143e2cd7d9cb7bc8b231e13ba858759f3b08d5"
+      "source_sha256": "749cb3ec171a0aa08048cc43af718a25f4c1cff9f2cc78e98edf2c4ac5ecfdf9"
     },
     {
       "file": "closing_14.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_14.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_14.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -539,11 +539,11 @@
         }
       },
       "passed": true,
-      "source_sha256": "c5cb985cbcce80bd1c3a0106f98402f2225a897c5dfa15ef146ec6fec1941fcd"
+      "source_sha256": "5e6ee9de69759cc970a7ad3f100b61eadbba27325c2c3c9fe172945a75b445c4"
     },
     {
       "file": "closing_15.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_15.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_15.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -563,7 +563,7 @@
     },
     {
       "file": "closing_16.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_16.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_16.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -571,7 +571,7 @@
         "output_page": 16,
         "source_slide": 10,
         "viewbox": "0 0 1280 720",
-        "edited_text_elements": 9,
+        "edited_text_elements": 12,
         "fonts": [
           "Arial"
         ],
@@ -582,11 +582,11 @@
         }
       },
       "passed": true,
-      "source_sha256": "aa74e5688f09422eb18f27de2ede4ce67df3c102766c128f9779bcead4bb834d"
+      "source_sha256": "dba5a02dae7dc16b9a9a87dfe00788f9141f0c80270474bd86fa3556d089e75d"
     },
     {
       "file": "closing_17.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_17.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_17.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -609,7 +609,7 @@
     },
     {
       "file": "closing_18.svg",
-      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_ppt_workspace\\authoring-svg-flat\\closing_18.svg",
+      "path": "D:\\_graduation_project\\project\\qa_system\\runtime\\closing_delivery\\submission-revision\\viva-workspace\\authoring-svg-flat\\closing_18.svg",
       "exists": true,
       "errors": [],
       "warnings": [],

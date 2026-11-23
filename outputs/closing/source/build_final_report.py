@@ -8,8 +8,10 @@ import re
 from zipfile import ZipFile
 
 from docx import Document
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
+from docx.shared import Inches
 from lxml import etree
 
 import report_content as prose
@@ -59,7 +61,7 @@ def paragraph(source, text):
     return element
 
 
-def keep_table_together(element):
+def protect_table_rows(element, *, keep_whole=True):
     rows = element.findall(qn('w:tr'))
     for index, row in enumerate(rows):
         properties = row.find(qn('w:trPr'))
@@ -74,8 +76,11 @@ def keep_table_together(element):
             if ppr is None:
                 ppr = OxmlElement('w:pPr')
                 p.insert(0, ppr)
-            if index < len(rows) - 1 and ppr.find(qn('w:keepNext')) is None:
+            keep_next = ppr.find(qn('w:keepNext'))
+            if (keep_whole or index == 0) and index < len(rows) - 1 and keep_next is None:
                 ppr.append(OxmlElement('w:keepNext'))
+            elif not keep_whole and index > 0 and keep_next is not None:
+                ppr.remove(keep_next)
 
 
 def table(rows, widths, normal):
@@ -132,11 +137,11 @@ def table(rows, widths, normal):
             cell.append(p)
             row.append(cell)
         element.append(row)
-    keep_table_together(element)
+    protect_table_rows(element)
     return element
 
 
-def report_blocks(data, selected, cases):
+def report_blocks(data, selected, cases, recheck):
     groups = data['configurations']
     full = groups['B3']
     blocks = []
@@ -153,6 +158,9 @@ def report_blocks(data, selected, cases):
     blocks.append(('h1', 'I. Introduction'))
     blocks.extend(('p', text) for text in prose.INTRODUCTION)
     blocks.append(('h1', 'II. System Design and Implementation'))
+    blocks.append(('p', 'Fig. 1 traces source location from document ingestion to the response. Edition and evidence checks determine which passages can reach the generator.'))
+    blocks.extend([('figure', 'report_architecture.png'),
+                   ('figure_caption', 'Fig. 1. Document ingestion, evidence selection and source navigation. Edition constraints apply before ranking and citation checks apply after generation.')])
     blocks.extend(prose.METHOD)
     blocks.append(('h1', 'III. Experimental Design'))
     blocks.extend(prose.EVALUATION)
@@ -211,9 +219,13 @@ def report_blocks(data, selected, cases):
         difference, interval = paired(data, comparison, key)
         comparison_table.append([title, difference, interval])
     blocks.append(('table_wide', comparison_table))
+    blocks.extend([('figure', 'report_paired_recall.png'),
+                   ('figure_caption', 'Fig. 2. Hybrid increased Recall@5 over Dense in the frozen benchmark. The BM25 comparison reached zero at the upper endpoint. Bars show paired group-bootstrap 95% intervals.')])
     timing = full['total_latency']
     blocks.append(('p', f"The grouped analysis contains {data['analysis']['groups']} resampling groups. Table III reports absolute differences and uncertainty, "
-                   'preserving the same sampled questions for both configurations. The category tables in the supplementary record show the corresponding sample counts. '
+                   'preserving the same sampled questions for both configurations. The [0, 0] intervals arise from identical paired differences in these resamples. '
+                   'Their width reflects the observed sample. Other documents and questions could produce different outcomes. '
+                   'The category tables in the supplementary record show the corresponding sample counts. '
                    f"For B3, median end-to-end time is {timing['median_ms']:.0f} ms and P95 is {timing['p95_ms']:.0f} ms. "
                    f"The five configurations record {sum(row['api_errors'] for row in groups.values())} API errors and "
                    f"{sum(row['interrupted_unknown_outcomes'] for row in groups.values())} unknown interrupted outcomes. "
@@ -223,6 +235,13 @@ def report_blocks(data, selected, cases):
         blocks.append(('p', f"A source-review example is {case['question_id']}. {case.get('analysis', case.get('grade_reason', ''))} "
                        f"The reference locations include {', '.join(locations[:2])}."))
     blocks.append(('h2', 'D. Interpretation and limitations'))
+    if recheck:
+        counts = recheck['field_counts']
+        blocks.append(('p', f"For a submission-stage consistency check, 24 test questions were sampled by stratum with seed 3801. "
+                       f"The assistant reviewed {recheck['outputs']} saved BM25 and Hybrid outputs against sources with configurations and original scores masked. "
+                       f"All applicable fields agreed with the original scores on {recheck['outputs_agreeing_on_all_applicable_fields']} of {recheck['outputs']} outputs, "
+                       f"including {counts['claim_support_compared'] - counts['claim_support_different']} of {counts['claim_support_compared']} claim-support judgements. "
+                       'The two passes share an assistant workflow, so this measures consistency within that workflow. The sample did not contain an invalid-citation outcome.'))
     blocks.append(('p', 'RQ1 is assessed from pre-gate Recall@5 and its paired B3–B1 and B3–B2 differences. RQ2 is assessed from the B3–A1 edition behaviour under the documented corpus limitation. '
                    'RQ3 is assessed jointly from unsupported answers, false refusals and coverage in B3–A2. These comparisons isolate the declared components while keeping generation and citation checks fixed. '
                    'Their scope remains bounded by the available sources, small grouped benchmark, heuristic evidence signals and assistant-based scoring. '
@@ -247,11 +266,30 @@ def report_blocks(data, selected, cases):
     return blocks
 
 
-def write_package(path, document_xml):
+def write_package(path, document_xml, document_part):
     with ZipFile(TEMPLATE) as source, ZipFile(path, 'w') as destination:
+        rels_name = 'word/_rels/document.xml.rels'
+        relationships = etree.fromstring(source.read(rels_name))
+        original_ids = {row.get('Id') for row in relationships}
+        additions = [row for row in etree.fromstring(document_part.rels.xml) if row.get('Id') not in original_ids]
+        for row in additions:
+            relationships.append(row)
+        types = etree.fromstring(source.read('[Content_Types].xml'))
+        changes = {'word/document.xml': document_xml}
+        if additions:
+            changes[rels_name] = etree.tostring(relationships)
+            if not any(row.get('Extension') == 'png' for row in types):
+                etree.SubElement(types, '{http://schemas.openxmlformats.org/package/2006/content-types}Default',
+                                 Extension='png', ContentType='image/png')
+                changes['[Content_Types].xml'] = etree.tostring(types)
         for item in source.infolist():
-            payload = document_xml if item.filename == 'word/document.xml' else source.read(item.filename)
+            payload = changes[item.filename] if item.filename in changes else source.read(item.filename)
             destination.writestr(item, payload)
+        for row in additions:
+            part = document_part.related_parts[row.get('Id')]
+            part_name = str(part.partname).lstrip('/')
+            if part_name not in source.namelist():
+                destination.writestr(part_name, part.blob)
 
 
 def replace_cell(cell, text):
@@ -288,8 +326,8 @@ def submission_copy(doc, report_elements, output):
     body.append(boundary)
     body.append(paragraph(doc.paragraphs[22], 'Portfolio Evidence Status'))
     for text in [
-        'Review draft prepared from the available project records on 12 November 2026. The technical report precedes this section. The cover, personal declaration, video link and Portfolio approvals require the corresponding actual completion records before institutional submission.',
-        'Available reflective material comprises local Draft Progress Journal entries for Weeks 8, 9 and 10. The supervision log records the student-confirmed English Proposal review and signing on 26 October 2026 and the Chinese-side report feedback and signing confirmation recorded on 4 November 2026.',
+        'The technical report precedes this evidence status section. The cover, personal declaration, video link and Portfolio approvals require corresponding completion records before institutional submission.',
+        'Available reflective material comprises local Draft Progress Journal entries for Weeks 8 to 13. The supervision log records the student-confirmed English Proposal review and signing on 26 October 2026 and the Chinese-side report feedback and signing confirmation recorded on 4 November 2026.',
         'The local register contains no confirmed approved Review Documents 1–10. Original meeting notes, actual Teams sharing records and supervisor approval means and dates are required to assemble that component. No numbered meeting or approval is inferred from a proposal signature.',
         'The final video requires the student\'s own English recording and a verified University of Leeds access link. Symposium participation, final submission and Viva remain associated with the actual course activities and their records.',
     ]:
@@ -302,7 +340,7 @@ def submission_copy(doc, report_elements, output):
     section_type.set(qn('w:val'), 'nextPage')
     body.append(portfolio_section)
     write_package(output / 'OCS_Submission_Review_Draft.docx', etree.tostring(
-        root, xml_declaration=True, encoding='UTF-8', standalone=True))
+        root, xml_declaration=True, encoding='UTF-8', standalone=True), doc.part)
 
 
 def build(args):
@@ -311,6 +349,9 @@ def build(args):
     protocol = Path(args.protocol).read_text(encoding='utf-8')
     cases_data = json.loads(Path(args.cases).read_text(encoding='utf-8')) if args.cases else []
     cases = cases_data.get('cases', []) if isinstance(cases_data, dict) else cases_data
+    recheck = json.loads(Path(args.recheck).read_text(encoding='utf-8'))
+    if recheck['freeze_sha256'] != data['freeze_sha256'] or recheck['outputs'] != 48:
+        raise ValueError('The masked recheck must match the frozen study and contain 48 outputs.')
     if data.get('status') not in {'source_reviewed', 'human_scored'}:
         raise ValueError('Complete scored observations are required for the final report.')
     if set(data.get('configurations', {})) != {'B1', 'B2', 'B3', 'A1', 'A2'}:
@@ -322,7 +363,8 @@ def build(args):
     doc = Document(TEMPLATE)
     sources = {'p': doc.paragraphs[27], 'h1': doc.paragraphs[22], 'h2': doc.paragraphs[35],
                'abstract': doc.paragraphs[15], 'caption': doc.paragraphs[85], 'reference': doc.paragraphs[93]}
-    blocks = report_blocks(data, selected, cases)
+    sources['figure_caption'] = sources['caption']
+    blocks = report_blocks(data, selected, cases, recheck)
     report_elements = [paragraph(doc.paragraphs[11], prose.TITLE),
                        paragraph(doc.paragraphs[13], 'Junkai Huang, SID 201804121, Prof. Deqing Huang (Supervisor)')]
     title_end = deepcopy(doc.paragraphs[14]._p)
@@ -331,7 +373,14 @@ def build(args):
     report_elements.append(title_end)
     markdown = ['# ' + prose.TITLE, '', 'Junkai Huang · SID 201804121 · Supervisor Prof. Deqing Huang', '']
     for kind, value in blocks:
-        if kind in {'table', 'table_wide'}:
+        if kind == 'figure':
+            image = doc.add_paragraph()
+            image.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            image.paragraph_format.keep_with_next = True
+            image.add_run().add_picture(str(Path(args.figure_dir) / value), width=Inches(3.42))
+            report_elements.append(deepcopy(image._p))
+            markdown.extend([f'![{value}](../../figures/{value})', ''])
+        elif kind in {'table', 'table_wide'}:
             widths = [800, 1060, 1060, 1060, 1060] if kind == 'table' else [1900, 1200, 1940]
             report_elements.append(table(value, widths, sources['p']))
             markdown.extend(['| ' + ' | '.join(row) + ' |' for row in value] + [''])
@@ -357,7 +406,7 @@ def build(args):
                     run.append(t)
                     replacement.append(run)
                     cell.append(replacement)
-            keep_table_together(original)
+            protect_table_rows(original, keep_whole=False)
             report_elements.append(original)
             markdown.extend(['| ' + ' | '.join(row) + ' |' for row in value] + [''])
         else:
@@ -381,16 +430,17 @@ def build(args):
         body.append(deepcopy(element))
     body.append(deepcopy(doc.sections[3]._sectPr))
     path = output / 'OCS_Final_Report_EN.docx'
-    write_package(path, etree.tostring(root, xml_declaration=True, encoding='UTF-8', standalone=True))
+    write_package(path, etree.tostring(root, xml_declaration=True, encoding='UTF-8', standalone=True), doc.part)
     submission_copy(doc, report_elements, output)
     (output / 'OCS_Final_Report_EN.md').write_text('\n'.join(markdown), encoding='utf-8')
     with ZipFile(TEMPLATE) as before, ZipFile(path) as after:
         changed = [name for name in before.namelist() if before.read(name) != after.read(name)]
+        added = sorted(set(after.namelist()) - set(before.namelist()))
     text = '\n'.join(markdown)
     receipt = {'template_sha256': sha256(TEMPLATE.read_bytes()).hexdigest(),
                'report_sha256': sha256(path.read_bytes()).hexdigest(),
                'word_count': len(re.findall(r'\b[\w−-]+\b', text)),
-               'modified_package_parts': changed, 'source_review_status': data['status'],
+               'modified_package_parts': changed, 'added_package_parts': added, 'source_review_status': data['status'],
                'result_freeze_sha256': data.get('freeze_sha256'), 'render_required': True,
                'institutional_items_pending': ['assessor details', 'personal declaration', 'Review Document approvals',
                                                'student audio', 'OneDrive access link', 'actual submission'],
@@ -405,5 +455,7 @@ if __name__ == '__main__':
     parser.add_argument('--calibration', required=True)
     parser.add_argument('--protocol', required=True)
     parser.add_argument('--cases')
+    parser.add_argument('--recheck', default=str(Path(__file__).resolve().parents[1] / 'repro/submission_recheck.json'))
+    parser.add_argument('--figure-dir', default=str(Path(__file__).resolve().parents[1] / 'figures'))
     parser.add_argument('--output-dir', default=str(Path(__file__).parent / 'generated'))
     build(parser.parse_args())

@@ -1,7 +1,7 @@
 中文逐字稿
 
-RQ1的观察是Hybrid超过Dense，BM25仍有最高的证据召回。RQ2中各组错版本均为零，因此本次比较没有证实版本过滤带来的改进，真实双版本资料不足也限制了结论。RQ3中完整Hybrid与关闭Gate配置的无依据回答和拒答率相同，本次没有观察到门槛的增量收益。差值和不确定性在报告中展开。
+Hybrid比Dense的Recall@5高18.75个百分点。BM25在同一语料上的召回和正确率最高，因此建议在标准号或部件明确时优先选BM25。RQ2缺少真实正式版本对，各组都没有出现错版本。RQ3两组各有一条无支撑答案，拒答指标相同。零宽度区间反映当前样本的重采样结果。
 
 English Script
 
-For RQ1, Hybrid exceeded Dense, while BM25 retained the highest observed evidence recall. For RQ2, all configurations had zero wrong-edition answers, so this comparison did not establish an improvement from edition filtering. Verified formal edition pairs were also unavailable. For RQ3, complete Hybrid and the Gate-off configuration had the same unsupported-answer and refusal rates. This test therefore showed no incremental benefit from the selected gate.
+Hybrid exceeded Dense by 18.75 percentage points on Recall at five. BM25 had the highest measured recall and correctness, supporting its use for queries with known standard numbers or terms. Version filtering showed no measured improvement and the corpus lacked verified formal edition pairs. With the gate on or off, one output was unsupported and refusal rates matched. The zero-width intervals reflect the observed sample.

@@ -439,11 +439,11 @@ Frozen OCS study | Review against original sources
 
 中文逐字稿
 
-这里展示已评分的test-041案例。判断时同时核对问题所需事实、答案陈述和整组引文。引用能够定位到原文后，还需要继续判断数值、单位、条件和版本是否真正支持答案。案例的具体失败依据保留在实验记录和报告中。
+在test-041中，题目问扭矩仪精度。Dense找到了有出处的装配力矩公差，但对象不同。Hybrid命中PDF文件第10页的仪器精度要求，能沿出处回查。这个案例说明引用支撑与整题正确性需要分别判断。
 
 English Script
 
-This slide follows scored case test-041 back to its source. The review considers the required facts, answer claims and the complete citation set together. Once an excerpt can be located, its numerical values, units, conditions and edition still require semantic checking. The case-specific reasoning is retained in the experiment record and report.
+In test-041, the question asked for torque instrument precision. Dense cited a documented tolerance for assembly torque. Hybrid found the instrument precision requirement on PDF file page ten. The source trace shows exactly where the two requirements diverge and why citation support and complete correctness are scored separately.
 
 ## Slide 12
 
@@ -478,7 +478,7 @@ RQ1 Retrieval
 
 Recall@5 B1 96.9% · B2 76.6% · B3 95.3%
 
-Hybrid exceeded Dense. BM25 retained the highest observed recall.
+BM25 is the best-supported default for this corpus. Hybrid remains selectable.
 
 RQ2 Editions
 
@@ -500,11 +500,11 @@ Frozen OCS study | Review against original sources
 
 中文逐字稿
 
-RQ1的观察是Hybrid超过Dense，BM25仍有最高的证据召回。RQ2中各组错版本均为零，因此本次比较没有证实版本过滤带来的改进，真实双版本资料不足也限制了结论。RQ3中完整Hybrid与关闭Gate配置的无依据回答和拒答率相同，本次没有观察到门槛的增量收益。差值和不确定性在报告中展开。
+Hybrid比Dense的Recall@5高18.75个百分点。BM25在同一语料上的召回和正确率最高，因此建议在标准号或部件明确时优先选BM25。RQ2缺少真实正式版本对，各组都没有出现错版本。RQ3两组各有一条无支撑答案，拒答指标相同。零宽度区间反映当前样本的重采样结果。
 
 English Script
 
-For RQ1, Hybrid exceeded Dense, while BM25 retained the highest observed evidence recall. For RQ2, all configurations had zero wrong-edition answers, so this comparison did not establish an improvement from edition filtering. Verified formal edition pairs were also unavailable. For RQ3, complete Hybrid and the Gate-off configuration had the same unsupported-answer and refusal rates. This test therefore showed no incremental benefit from the selected gate.
+Hybrid exceeded Dense by 18.75 percentage points on Recall at five. BM25 had the highest measured recall and correctness, supporting its use for queries with known standard numbers or terms. Version filtering showed no measured improvement and the corpus lacked verified formal edition pairs. With the gate on or off, one output was unsupported and refusal rates matched. The zero-width intervals reflect the observed sample.
 
 ## Slide 14
 
@@ -526,7 +526,7 @@ Frozen five-configuration experiment
 
 documents
 
-Reproducible records and report
+Masked recheck: 48/48 outputs aligned
 
 Shared assistant author and evaluator
 
@@ -544,11 +544,11 @@ Frozen OCS study | Review against original sources
 
 中文逐字稿
 
-项目交付了本地系统、题集、冻结实验和复现材料。目前同系列双正式版本不足，题目来源集中于六份文档，核查也由同一助手体系完成。这些因素限制了结论的推广。后续最有价值的工作是扩大独立核查和真实版本覆盖，再重复同样的受控比较。
+项目交付了本地系统、题集和冻结实验。遮蔽配置与原评分后，抽查二十四题共48条输出，48条的适用字段全部一致。两轮复核共享助手工作流。保存的首次输出和评分可以在本机离线复算。真实版本对和独立领域专家复核仍是后续工作。
 
 English Script
 
-The project delivers the local system, benchmark, frozen experiment and reproducibility material. Formal edition pairs are unavailable, the question facts come from six documents, and review was conducted within the same assistant system. These factors limit generalisation. The next useful step is independently checked coverage and verified edition pairs, followed by the same controlled comparison.
+The project delivers a local system, benchmark and frozen experiment. The masked review of twenty-four questions matched the original judgement on all applicable fields for 48 of 48 outputs. Both passes share the assistant workflow. Saved first attempts and grades allow offline recomputation. Independent domain review and verified edition pairs remain priorities.
 
 ## Slide 15
 
@@ -592,6 +592,12 @@ References
 \[6\] Es et al. RAGAs. EACL Demonstrations, 2024. doi 10.18653/v1/2024.eacl-demo.16.
 
 \[7\] Chen et al. BGE M3-Embedding. 2024. arXiv 2402.03216.
+
+\[8\] Rayo Mosquera et al. Hybrid retrieval for regulatory text. RegNLP, 2025.
+
+\[9\] Russo et al. Railway engineering RAG case study. 2026. arXiv 2607.01244v2.
+
+\[10\] Huwiler et al. VersionRAG. 2025. arXiv 2510.08109.
 
 Primary literature and project source records
 

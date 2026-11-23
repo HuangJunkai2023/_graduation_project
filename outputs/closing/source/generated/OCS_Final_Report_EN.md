@@ -12,11 +12,19 @@ Railway overhead contact systems (OCS) depend on technical requirements distribu
 
 Retrieval-augmented generation (RAG) combines an external evidence collection with language generation [1]. BM25 supplies a lexical baseline weighted by matching terms [2]. Dense retrieval represents query and passage meaning in a vector space [3]. Their rankings can differ for component names, identifiers, paraphrases and conditions. Combining scores is a testable choice whose benefit depends on the corpus and questions.
 
-Query rewriting can help express an information need [4]. This project uses rules for topic inheritance in simple follow-ups. Distractor studies motivate testing evidence sufficiency [5]. RAGAs separates retrieval and answer assessment [6]. Here, correctness and semantic support are assessed against source documents through a recorded assistant review procedure.
+Query rewriting can help express an information need [4]. This project uses rules for topic inheritance in simple follow-ups. Distractor studies motivate testing evidence sufficiency [5]. RAGAs separates retrieval and answer assessment [6]. Here, correctness and semantic support are assessed against source documents through a recorded assistant review procedure. Dense retrieval uses the multilingual BGE-M3 encoder [7].
+
+Regulatory text retrieval has combined BM25 with a fine-tuned sentence encoder [8]. A railway engineering case study illustrates retrieval-augmented consultation of UNISIG specifications [9]. VersionRAG models changes between document versions in a graph [10]. For Chinese OCS standards, this project retains explicit standard numbers, editions and original page locations through the answer pipeline. Its controlled evaluation tests how much lexical matching, semantic ranking, edition checks and evidence screening contribute within the selected corpus.
 
 The project develops an OCS document-learning and consultation system around DeepSeek generation, BAAI/bge-m3 embeddings, external application programming interfaces (APIs) and a local Streamlit interface. Its research contribution is a controlled comparison of retrieval, edition constraints and a heuristic Evidence Gate within an auditable pipeline. The research questions are whether Hybrid improves evidence recall over BM25 and Dense, whether edition filtering reduces answers based on a non-requested edition, and whether the Evidence Gate reduces unsupported answers while maintaining acceptable refusal behaviour.
 
 ## II. System Design and Implementation
+
+Fig. 1 traces source location from document ingestion to the response. Edition and evidence checks determine which passages can reach the generator.
+
+![report_architecture.png](../../figures/report_architecture.png)
+
+Fig. 1. Document ingestion, evidence selection and source navigation. Edition constraints apply before ranking and citation checks apply after generation.
 
 ### A. Corpus and evidence provenance
 
@@ -111,13 +119,19 @@ Paired differences in percentage points
 | B3 − A1 wrong edition | +0.0 | [+0.0, +0.0] |
 | B3 − A2 unsupported | +0.0 | [+0.0, +0.0] |
 
-The grouped analysis contains 50 resampling groups. Table III reports absolute differences and uncertainty, preserving the same sampled questions for both configurations. The category tables in the supplementary record show the corresponding sample counts. For B3, median end-to-end time is 1627 ms and P95 is 2810 ms. The five configurations record 0 API errors and 0 unknown interrupted outcomes. Timings describe these sequential runs on the local machine and include early refusals when timings are known.
+![report_paired_recall.png](../../figures/report_paired_recall.png)
+
+Fig. 2. Hybrid increased Recall@5 over Dense in the frozen benchmark. The BM25 comparison reached zero at the upper endpoint. Bars show paired group-bootstrap 95% intervals.
+
+The grouped analysis contains 50 resampling groups. Table III reports absolute differences and uncertainty, preserving the same sampled questions for both configurations. The [0, 0] intervals arise from identical paired differences in these resamples. Their width reflects the observed sample. Other documents and questions could produce different outcomes. The category tables in the supplementary record show the corresponding sample counts. For B3, median end-to-end time is 1627 ms and P95 is 2810 ms. The five configurations record 0 API errors and 0 unknown interrupted outcomes. Timings describe these sequential runs on the local machine and include early refusals when timings are known.
 
 A source-review example is test-041. Dense returned assembly torque tolerances of +/-1.0 and +/-1.5 N m around a 44 N m boundary. The question asked for the torque instrument precision, which the original clause specifies as better than +/-3 percent. Hybrid answered that requested fact correctly. This case demonstrates a task mismatch despite source-supported claims. The reference locations include TBT2074-2020 / PDF p. 10, TBT2074-2020 / PDF p. 9.
 
 A source-review example is test-079. The follow-up leaves both the standard and the length object unclear. Hybrid supplied source-supported values from the GB/T 32578 table and added a qualification. The frozen expected action required clarification before supplying substantive values. The answer therefore failed the clarification task. The reference locations include TBT2073-2020 / PDF p. 4, GBT32578-2016 / PDF p. 64.
 
 ### D. Interpretation and limitations
+
+For a submission-stage consistency check, 24 test questions were sampled by stratum with seed 3801. The assistant reviewed 48 saved BM25 and Hybrid outputs against sources with configurations and original scores masked. All applicable fields agreed with the original scores on 48 of 48 outputs, including 84 of 84 claim-support judgements. The two passes share an assistant workflow, so this measures consistency within that workflow. The sample did not contain an invalid-citation outcome.
 
 RQ1 is assessed from pre-gate Recall@5 and its paired B3–B1 and B3–B2 differences. RQ2 is assessed from the B3–A1 edition behaviour under the documented corpus limitation. RQ3 is assessed jointly from unsupported answers, false refusals and coverage in B3–A2. These comparisons isolate the declared components while keeping generation and citation checks fixed. Their scope remains bounded by the available sources, small grouped benchmark, heuristic evidence signals and assistant-based scoring. String-valid citations can omit a necessary condition, and a high similarity score can accompany an irrelevant requirement. Operational railway decisions require qualified review of applicable standards.
 
@@ -139,29 +153,33 @@ The highest-priority extension is a broader benchmark reviewed by railway-domain
 
 ### D. Reflection
 
-The project demonstrates how much research quality depends on data identity and evaluation discipline. A running interface established feasibility, but the evidential work required checking source editions, separating prototype settings from selected parameters and retaining unsuccessful runs. Development review exposed a long-follow-up resolution defect, which was corrected before the formal freeze. Excluding date-placeholder material reduced the breadth of the edition study while improving the defensibility of its claims. These decisions show the value of resolving data and protocol assumptions before interpreting performance.
+Development output exposed a context-resolution defect. A long follow-up beginning with “then” lost the previous standard identifier under the original length rule. The rule was corrected before freezing and covered by a regression check. The change made the boundary between conversation history and retrieval explicit. Future acceptance tests should include long and ambiguous follow-ups before calibration begins.
 
-Assistant-supported implementation and scoring require attribution, student review and supervisor scrutiny. The learning-outcome map points to inspectable evidence and assessment limits. Future repetitions should obtain formal editions and independent annotation earlier. Real supervision, reflective records and personal explanation remain necessary to demonstrate professional development.
+Corpus screening exposed a different source of uncertainty. A candidate edition carried date placeholders on its cover. Excluding it protected provenance and narrowed the scope of RQ2 to available and missing requested editions. A future plan should make access to verified edition pairs an early dependency and record the decision about study scope when the dependency fails.
+
+The comparison also changed the practical retrieval recommendation. BM25 had the highest observed recall and correctness and does not require an embedding request for each query. It is therefore the better-supported default for this corpus when users know the standard or component name. Hybrid remains an option for consultation using different wording. Its value on that query type requires a targeted evaluation.
+
+The staged research records and journal drafts show how source identity, reproducibility and uncertainty were documented. Judgements produced through assistant source review have their own provenance. Independent expert review and verified supervision records would strengthen the evidence for the technical and professional learning outcomes.
 
 TABLE IV
 Learning outcome evidence map
 
-| LO1 | Apply principles | Section II applies lexical ranking, vector similarity and transactional persistence. |
-| LO2 | Analyse problems | Sections I and III define edition, evidence and refusal failure modes. |
-| LO3 | Computational techniques | Sections II–IV document retrieval, calibration and paired bootstrap. |
-| LO4 | Evaluate literature | Section I compares RAG, BM25, Dense and evidence-assessment literature. |
-| LO5 | Design with constraints | Sections II–III address document permissions, fixed scope and API budget. |
-| LO6 | Systems approach | Section II links parsing, indexing, retrieval, generation and provenance. |
-| LO7 | Environmental/Societal impact | Section V limits operational use and prioritises bounded API processing. |
-| LO8 | Ethical concerns | Section III records assistant review and source-use conditions. |
-| LO9 | Risk management | Sections II and V address missing editions and heuristic-gate errors. |
-| LO10 | Security risks | Section II uses local secrets, processing permissions and output validation. |
-| LO11 | Inclusion & EDI | Streamlit exposes readable evidence, explicit statuses and source navigation. |
-| LO12 | Practical/Lab skills | Software integration and API verification are evidenced, with hardware outside scope. |
-| LO13 | Materials/Technologies | Section II evaluates PDF/DOCX, SQLite, Streamlit and model APIs. |
-| LO14 | Engineering Management | Frozen manifests, budget records and Git changes support project control. |
-| LO15 | Communication | This report and demonstration materials explain the system and its limits. |
-| LO16 | Lifelong Learning/CPD | Section V and available Journal drafts support reflection, approvals remain pending. |
+| LO1 | Apply principles | Section II-B specifies BM25, vector similarity and query-wise normalisation. |
+| LO2 | Analyse problems | Section IV-C contrasts the requested instrument precision with the returned assembly tolerance. |
+| LO3 | Computational techniques | Fig. 2 and Table III show paired bootstrap differences under the fixed evaluation. |
+| LO4 | Evaluate literature | Section I compares regulatory fusion, UNISIG consultation and graph-based version modelling [8]–[10]. |
+| LO5 | Design with constraints | Section II-A records the exclusion decision for a candidate edition with date placeholders. |
+| LO6 | Systems approach | Fig. 1 links ingestion, edition filtering, gated generation and source navigation. |
+| LO7 | Environmental/Societal impact | Section V-D relates the BM25 recommendation to embedding calls. Section IV-D defines the consultation boundary. |
+| LO8 | Ethical concerns | Section III-A attributes source review. Section IV-D discloses the same-family recheck limitation. |
+| LO9 | Risk management | Section V-D explains the source-edition dependency and the timing of the regression fix. |
+| LO10 | Security risks | Section II-C identifies processing permissions and the checks on citation identifiers and excerpts. |
+| LO11 | Inclusion & EDI | The local interface offers explicit status text and visible source navigation. Accessibility evaluation remains open. |
+| LO12 | Practical/Lab skills | Section IV-C records integration outcomes and measured latency from the working prototype. |
+| LO13 | Materials/Technologies | Section II explains the PDF/DOCX, SQLite, vector index and Streamlit roles. |
+| LO14 | Engineering Management | Section III-B ties the 400 first attempts to the fixed calibration and frozen data and code. |
+| LO15 | Communication | Fig. 1, Tables I–III and the viva case connect system behaviour to measurable outcomes. |
+| LO16 | Lifelong Learning/CPD | Section V-D records lessons from follow-up resolution and source screening. Journal drafts trace Weeks 8–13. |
 
 ## Acknowledgment
 
@@ -182,3 +200,9 @@ The project acknowledges Prof. Deqing Huang as supervisor and attributes the ext
 [6] S. Es, J. James, L. Espinosa Anke, and S. Schockaert, “RAGAs: Automated Evaluation of Retrieval Augmented Generation,” Proceedings of EACL System Demonstrations, pp. 150–158, 2024, doi 10.18653/v1/2024.eacl-demo.16.
 
 [7] J. Chen, S. Xiao, P. Zhang, K. Luo, D. Lian, and Z. Liu, “BGE M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation,” arXiv:2402.03216, 2024.
+
+[8] J. S. Rayo Mosquera, C. R. De La Rosa Peredo, and M. Garrido Cordoba, “A Hybrid Approach to Information Retrieval and Answer Generation for Regulatory Texts,” Proc. RegNLP, pp. 31–35, 2025.
+
+[9] A. G. Russo et al., “Retrieval-Augmented Generation to Support Railways Engineering Tasks: A Case Study,” arXiv:2607.01244v2, 2026.
+
+[10] D. Huwiler, K. Stockinger, and J. Fürst, “VersionRAG: Version-Aware Retrieval-Augmented Generation for Evolving Documents,” arXiv:2510.08109, 2025.
